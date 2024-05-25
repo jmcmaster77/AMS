@@ -1,0 +1,5 @@
+notas_ams.txt
+*.pyc
+.vscode
+__pycache__/
+/data/db/journal
