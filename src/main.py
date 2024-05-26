@@ -1,5 +1,6 @@
 from flask import Flask
 from routes.glogin import glogin
+from config import FLASK_RUN_HOST, FLASK_RUN_PORT, creator
 
 # instancia de la app
 app = Flask(__name__)
@@ -8,4 +9,4 @@ app = Flask(__name__)
 app.register_blueprint(glogin)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
