@@ -1,12 +1,14 @@
-from flask import Blueprint, request, redirect, url_for, render_template, flash
+from flask import Blueprint, request, redirect, url_for, render_template
 from flask_login import login_required, login_user, logout_user, UserMixin, current_user
 
 
 # instanciando ruta en blueprint
 
 glogin = Blueprint("login", __name__)
-
+# base de datos simulada
 users = {'jmcmaster77@gmail.com': {'password': '1234'}}
+
+# formateando los datos de la base de datos
 
 
 class User(UserMixin):
@@ -14,14 +16,14 @@ class User(UserMixin):
 
 
 @glogin.route("/")
-def index():
-    print("solicitud get a /")
+def tologin():
+    print("solicitud get a /") # reemplazar esto con un log de verdad en el futuro 
     return redirect(url_for("login.login"))
 
 
 @glogin.route('/login', methods=['GET', 'POST'])
 def login():
-    print("Login get")
+
     if request.method == 'GET':
         return '''
                 <form action='login' method='POST'>
@@ -31,25 +33,23 @@ def login():
                 </form>
                 '''
     email = request.form['email']
-    print("userfdb", users)
+
     if email in users and request.form['password'] == users[email]['password']:
         user = User()
         user.id = email
-        print("user", user.id)  # comentar
-        print("pass")  # comentar
         login_user(user)
-        return redirect(url_for("login.protected"))
+        return redirect(url_for("home.home_page"))
 
     return 'Bad login'
 
-
+# ya no lo estoy utlizando 
 @glogin.route('/protected')
 @login_required
 def protected():
-    return 'Logged in as: ' + current_user.id
+    return redirect(url_for("home.home_page"))
+
 
 @glogin.route('/logout')
 def logout():
     logout_user()
     return 'Logged out'
-
