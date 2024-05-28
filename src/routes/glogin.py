@@ -1,5 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, render_template
 from flask_login import login_required, login_user, logout_user, UserMixin, current_user
+from utils.log import logger
 
 
 # instanciando ruta en blueprint
@@ -17,7 +18,8 @@ class User(UserMixin):
 
 @glogin.route("/")
 def tologin():
-    print("solicitud get a /") # reemplazar esto con un log de verdad en el futuro 
+    logger.info("to login")
+    
     return redirect(url_for("login.login"))
 
 
@@ -51,5 +53,7 @@ def protected():
 
 @glogin.route('/logout')
 def logout():
+    logger.info("User id " + current_user.id + " logout")
     logout_user()
+
     return 'Logged out'

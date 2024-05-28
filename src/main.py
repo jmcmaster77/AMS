@@ -1,6 +1,6 @@
 from flask import Flask
 import flask_login
-import logging
+from utils.log import logger
 from routes.glogin import glogin
 from routes.home import home
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, creator, sk, DATABASE_CONEXION_URI
@@ -50,13 +50,13 @@ app.register_blueprint(glogin)
 app.register_blueprint(home)
 
 # logger
-logger = logging.getLogger("waitress")
-logger.setLevel(logging.DEBUG)
+# logger = logging.getLogger("waitress")
+# logger.setLevel(logging.DEBUG)
 
 if __name__ == '__main__':
     from waitress import serve
     print(appinfo)
     print(creator)
-    print("Servidor running on port: ", FLASK_RUN_PORT)
+    logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
     serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
     # app.run(host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
