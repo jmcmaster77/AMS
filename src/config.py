@@ -13,4 +13,4 @@ FLASK_RUN_PORT = os.environ["FLASK_RUN_PORT"]
 appinfo = os.environ["appinfo"]
 creator = os.environ["creator"]
 
-DATABASE_CONEXION_URI = f'postgresql://{usermdb}:{pwdb}@{hostdbs}/{dbname}'
+DATABASE_CONEXION_URI = f'mariadb+mariadbconnector://{usermdb}:{pwdb}@{hostdbs}/{dbname}'

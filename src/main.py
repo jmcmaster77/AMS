@@ -1,6 +1,8 @@
 from flask import Flask
 import flask_login
 from utils.log import logger
+from utils.db import db
+from flask_sqlalchemy import SQLAlchemy
 from routes.glogin import glogin
 from routes.home import home
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, creator, sk, DATABASE_CONEXION_URI
@@ -16,6 +18,8 @@ app.secret_key = sk
 # db conexion
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONEXION_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db.init_app(app)
+db = SQLAlchemy()
 
 # login seguridad
 
