@@ -23,28 +23,32 @@ def tologin():
 def login():
 
     if request.method == 'GET':
-        return '''
-                <form action='login' method='POST'>
-                    <input type='text' name='email' id='email' placeholder='email'/>
-                    <input type='password' name='password' id='password' placeholder='password'/>
-                    <input type='submit' name='submit'/>
-                </form>
-                '''
-    email = request.form['email']
+        return render_template("auth/login.html")
 
-    # consultando a la db 
+    username = request.form['username']
+    password = request.form['password']
 
-    consulta = Usuarios.query.all()
-    print("consulta", consulta[0].id, consulta[0].fullname)
-    if email in users and request.form['password'] == users[email]['password']:
+    # consultando a la db
+
+    # consulta = Usuarios.query.all()
+    print("username: " + username)
+    id = 1
+    consulta = Usuarios.query.filter_by(username=username).first()
+    print("Consulta", consulta) 
+    # print("consulta", consulta[0].id, consulta[0].fullname)
+    if consulta != None:
+
         test = "Jorge"
-        logged_user = Authenticate.login(test)
-        print("logged_user", logged_user)
+        if Authenticate.login(test):
 
-        # login_user(user)
-        return redirect(url_for("home.home_page"))
+            print("Sesion", test, "succes")
 
-    return 'Bad login'
+            # login_user(user)
+            return redirect(url_for("home.home_page"))
+    else:
+        print("Usuario ", username ," no encontrado")
+
+    return redirect(url_for("login.login"))
 
 # ya no lo estoy utlizando
 

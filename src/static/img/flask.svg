@@ -1,0 +1,1349 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"  data-a11y-animated-images="system" data-a11y-link-underlines="false">
+
+
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+  <link rel="preconnect" href="https://github.githubassets.com" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+
+  
+
+
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/light-983b05c0927a.css" /><link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dark-5d486a4ede8e.css" /><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-27c8d635e4e5.css" /><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-8438e75afd36.css" /><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-bf5665b96628.css" /><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-c414b5ba1dce.css" /><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-e5868b7374db.css" /><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-299ac9c64ec0.css" /><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-3a26e78ad0ff.css" />
+  
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-primitives-49b09e982548.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-15214e5f9104.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-38f5d4710d3e.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/github-5636d019c151.css" />
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/code-ea610ed618d5.css" />
+
+  
+
+  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["failbot_handle_non_errors","fix_react_title","geojson_azure_maps","image_metric_tracking","turbo_experiment_risky","use_scroll_restoration","sample_network_conn_type"]}</script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-9c35ce79f163.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_dompurify_dist_purify_js-64d590970fa6.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_stacktrace-parser_dist_stack-trace-parser_esm_js-node_modules_github_bro-a4c183-18bf85b8e9f4.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_soft-nav_soft-nav_ts-df17d5597d8f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/environment-509b58e05b9f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_selector-observer_dist_index_esm_js-2646a2c533e3.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_focus-zone_js-d55308df5023.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_relative-time-element_dist_index_js-99e288659d4f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_fzy_js_index_js-node_modules_github_markdown-toolbar-element_dist_index_js-d2119e75298d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_auto-complete-element-5b3870-9b38c0812424.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_filter-input-element_dist_index_js-node_modules_github_remote-inp-8873b7-5771678648e0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_file-attachment-element_dist_index_js-node_modules_primer_view-co-bdc901-81f1e189072b.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/github-elements-1ff8b48eef26.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/element-registry-c83040bbd24c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lit-html_lit-html_js-9d9fe1859ce5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_hydro-analytics-client_dist_analytics-client_js-node_modules_gith-f3aee1-fd3c22610e40.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_morphdom_dist_morphdom-esm_js-b1fdd7158cf0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_index_js-node_modules_github_alive-client_dist-bf5aa2-4aefce0fc3c8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_turbo_dist_turbo_es2017-esm_js-1f4793023fcd.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_scroll-anchoring_dist_scro-52dc4b-e1e33bfc0b7e.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_color-convert_index_js-35b3ae68c408.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_paste-markdown_dist_index_esm_js-node_modules_github_quote-select-7a8e2b-f036384374ea.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_details-dialog_ts-app_assets_modules_github_fetch_ts-9ca164041015.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_updatable-content_ts-ui_packages_hydro-analytics_hydro-analytics_ts-e4da304b75e7.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_onfocus_ts-app_assets_modules_github_sticky-scroll-into-view_ts-7ce0c9d975f3.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_task-list_ts-app_assets_modules_github_sso_ts-ui_packages-7d50ad-9491f2be61ee.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_ajax-error_ts-app_assets_modules_github_behaviors_include-2e2258-f7b8ad0ef997.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_behaviors_commenting_edit_ts-app_assets_modules_github_behaviors_ht-83c235-f22ac6b94445.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_blob-anchor_ts-app_assets_modules_github_filter-sort_ts-app_assets_-c96432-b9f980134541.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/behaviors-acb436a18e50.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_delegated-events_dist_index_js-node_modules_github_catalyst_lib_index_js-06ff531-fe0b8ccc90a5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/notifications-global-f57687007bfc.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/code-menu-c743a13234fc.js"></script>
+  
+  <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-lib-210c4b5934c3.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_octicons-react_dist_index_esm_js-node_modules_primer_react_lib-es-14a089-2f72bb170ade.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Box_Box_js-8d2713f90c9a.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_Button_js-node_modules_primer_react_lib-esm_-c2022e-70aff6ca05a9.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionList_index_js-7bad8659e7bd.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Button_index_js-node_modules_primer_react_lib-esm_O-133b0c-6f42d36f1de7.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_TextInput_TextInput_js-47fe5c8a888d.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_ActionMenu_js-f0cd24c33676.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_behaviors_dist_esm_scroll-into-view_js-node_modules_primer_react_-04bb1b-f1945840d2c2.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_FormControl_FormControl_js-eadb97e299c8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_react-router-dom_dist_index_js-4a785319b497.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Heading_Heading_js-node_modules_primer_react_lib-es-20c766-83991b288f66.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Dialog_js-node_modules_primer_react_lib-esm_Flash_F-ad64b6-2f6c119b1b24.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Avatar_Avatar_js-node_modules_primer_react_lib-esm_-b5621e0-6334f99521f0.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_UnderlineNav2_index_js-f81b8e23600f.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_TreeView_TreeView_js-d86950fa1004.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_AvatarStack_AvatarStack_js-node_modules_primer_reac-f3f8d8-8c642384763c.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_primer_react_lib-esm_Breadcrumbs_Breadcrumbs_js-node_modules_primer_reac-4a8b91-0923bb14d9e1.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_create-browser-history_ts-ui_packages_react-core_deferred-registry_ts--ebbb92-d8da67bbc7fc.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_react-core_register-app_ts-3f96a0d371d8.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_paths_index_ts-b152abc91cec.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_ref-selector_RefSelector_tsx-adb3d3ae81f5.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/app_assets_modules_github_command-palette_copy_ts-app_assets_modules_react-shared_hooks_use-v-328d8a-866b24f68543.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/ui_packages_alive_alive_ts-ui_packages_alive_connect-alive-subscription_ts-app_assets_modules-face4e-f4447303bdd6.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/react-code-view-d0b87985803e.js"></script>
+
+
+  <title>flask-login-mysql/src/static/img/flask.svg at master · UskoKruM/flask-login-mysql · GitHub</title>
+
+
+
+  <meta name="route-pattern" content="/:user_id/:repository/blob/*name(/*path)">
+
+    
+  <meta name="current-catalog-service-hash" content="82c569b93da5c18ed649ebd4c2c79437db4611a6a1373e805a3cb001c64130b7">
+
+
+  <meta name="request-id" content="3374:7BDB:27BEDFF:352296B:64F581B2" data-pjax-transient="true"/><meta name="html-safe-nonce" content="d890bb8753a3bb0c2f8f385b317d73da616795d39ff36544fa17d86160911f32" data-pjax-transient="true"/><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9Vc2tvS3J1TS9mbGFzay1sb2dpbi1teXNxbC90cmVlL21hc3Rlci9zcmMvc3RhdGljL2ltZyIsInJlcXVlc3RfaWQiOiIzMzc0OjdCREI6MjdCRURGRjozNTIyOTZCOjY0RjU4MUIyIiwidmlzaXRvcl9pZCI6Ijc1MzcyNDQxMzA5ODY3MDE3NzYiLCJyZWdpb25fZWRnZSI6ImlhZCIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-pjax-transient="true"/><meta name="visitor-hmac" content="89aa8501d1eff9591ba99444aaf796a354939a92725250215ec9b737b8b058b8" data-pjax-transient="true"/>
+
+
+    <meta name="hovercard-subject-tag" content="repository:448725591" data-turbo-transient>
+
+
+  <meta name="github-keyboard-shortcuts" content="repository,source-code,file-tree" data-turbo-transient="true" />
+  
+
+  <meta name="selected-link" value="repo_source" data-turbo-transient>
+  <link rel="assets" href="https://github.githubassets.com/">
+
+    <meta name="google-site-verification" content="c1kuD-K2HIVF635lypcsWPoD4kilo5-jA_wBFyT4uMY">
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+  <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I">
+
+<meta name="octolytics-url" content="https://collector.github.com/github/collect" />
+
+  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-turbo-transient="true" />
+
+  
+
+
+
+
+  
+
+    <meta name="user-login" content="">
+
+  
+
+    <meta name="viewport" content="width=device-width">
+    
+      <meta name="description" content="Proyecto con login (inicio de sesión) creado con Python, Flask y MySQL, utilizando los paquetes flask-login, flask-mysqldb y flask-wtf. - flask-login-mysql/src/static/img/flask.svg at master · UskoKruM/flask-login-mysql">
+      <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg" />
+      <meta name="twitter:image:src" content="https://opengraph.githubassets.com/95475a7ff39114afcc5d396b6f8e21b06ccc367975769ea0bf54114bd61650c2/UskoKruM/flask-login-mysql" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="flask-login-mysql/src/static/img/flask.svg at master · UskoKruM/flask-login-mysql" /><meta name="twitter:description" content="Proyecto con login (inicio de sesión) creado con Python, Flask y MySQL, utilizando los paquetes flask-login, flask-mysqldb y flask-wtf. - UskoKruM/flask-login-mysql" />
+      <meta property="og:image" content="https://opengraph.githubassets.com/95475a7ff39114afcc5d396b6f8e21b06ccc367975769ea0bf54114bd61650c2/UskoKruM/flask-login-mysql" /><meta property="og:image:alt" content="Proyecto con login (inicio de sesión) creado con Python, Flask y MySQL, utilizando los paquetes flask-login, flask-mysqldb y flask-wtf. - UskoKruM/flask-login-mysql" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="600" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="flask-login-mysql/src/static/img/flask.svg at master · UskoKruM/flask-login-mysql" /><meta property="og:url" content="https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg" /><meta property="og:description" content="Proyecto con login (inicio de sesión) creado con Python, Flask y MySQL, utilizando los paquetes flask-login, flask-mysqldb y flask-wtf. - UskoKruM/flask-login-mysql" />
+      
+
+
+
+        <meta name="hostname" content="github.com">
+
+
+
+        <meta name="expected-hostname" content="github.com">
+
+
+  <meta http-equiv="x-pjax-version" content="636511ce2dabb41a3a4bcdca3f85c3be0d5c0a17659e7ca0fe5708b6901934e9" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-csp-version" content="d713d2ca11d75b8c93dacfdec00b69719c558829d34d429464b90aa8734a0ef5" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-css-version" content="7105049cbd7fd6987856e205be00a261e049ad32a3b48ed09ac48bbc17461f89" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="48d0f8fd24c505767549379802634ad8272239520ba5f38c22cd694a3ee7bebb" data-turbo-track="reload">
+
+  <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
+
+      <meta name="turbo-cache-control" content="no-cache" data-turbo-transient>
+    <meta data-hydrostats="publish">
+
+  <meta name="go-import" content="github.com/UskoKruM/flask-login-mysql git https://github.com/UskoKruM/flask-login-mysql.git">
+
+  <meta name="octolytics-dimension-user_id" content="11650755" /><meta name="octolytics-dimension-user_login" content="UskoKruM" /><meta name="octolytics-dimension-repository_id" content="448725591" /><meta name="octolytics-dimension-repository_nwo" content="UskoKruM/flask-login-mysql" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="448725591" /><meta name="octolytics-dimension-repository_network_root_nwo" content="UskoKruM/flask-login-mysql" />
+
+
+
+  <meta name="turbo-body-classes" content="logged-out env-production page-responsive">
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <meta name="browser-optimizely-client-errors-url" content="https://api.github.com/_private/browser/optimizely_client/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+
+<meta name="theme-color" content="#1e2327">
+<meta name="color-scheme" content="light dark" />
+
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body class="logged-out env-production page-responsive" style="word-wrap: break-word;">
+    <div data-turbo-body class="logged-out env-production page-responsive" style="word-wrap: break-word;">
+      
+
+
+    <div class="position-relative js-header-wrapper ">
+      <a href="#start-of-content" class="px-2 py-4 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
+      <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
+    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
+</span>      
+      
+
+
+      
+
+        
+
+            
+
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_remote-form_dist_index_js-node_modules_github_memoize_dist_esm_in-687f35-d131f0b6de8e.js"></script>
+<script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/sessions-bd945c2d2b47.js"></script>
+<header class="Header-old header-logged-out js-details-container Details position-relative f4 py-3" role="banner" data-color-mode=light data-light-theme=light data-dark-theme=dark>
+  <button type="button" class="Header-backdrop d-lg-none border-0 position-fixed top-0 left-0 width-full height-full js-details-target" aria-label="Toggle navigation">
+    <span class="d-none">Toggle navigation</span>
+  </button>
+
+  <div class=" d-flex flex-column flex-lg-row flex-items-center p-responsive height-full position-relative z-1">
+    <div class="d-flex flex-justify-between flex-items-center width-full width-lg-auto">
+      <a class="mr-lg-3 color-fg-inherit flex-order-2" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+        <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+      </a>
+
+        <div class="flex-1">
+          <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&amp;source=header-repo"
+            class="d-inline-block d-lg-none flex-order-1 f5 no-underline border color-border-default rounded-2 px-2 py-1 color-fg-inherit"
+            data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="beb96d68e559f6c72fadc03900bac4335753b300fe4259c67003d71b0b2bdb8c"
+          >
+            Sign&nbsp;up
+          </a>
+        </div>
+
+      <div class="flex-1 flex-order-2 text-right">
+          <button aria-label="Toggle navigation" aria-expanded="false" type="button" data-view-component="true" class="js-details-target Button--link Button--medium Button d-lg-none color-fg-inherit p-1">    <span class="Button-content">
+      <span class="Button-label"><div class="HeaderMenu-toggle-bar rounded my-1"></div>
+            <div class="HeaderMenu-toggle-bar rounded my-1"></div>
+            <div class="HeaderMenu-toggle-bar rounded my-1"></div></span>
+    </span>
+</button>  
+      </div>
+    </div>
+
+
+    <div class="HeaderMenu--logged-out p-responsive height-fit position-lg-relative d-lg-flex flex-column flex-auto pt-7 pb-4 top-0">
+      <div class="header-menu-wrapper d-flex flex-column flex-self-end flex-lg-row flex-justify-between flex-auto p-3 p-lg-0 rounded rounded-lg-0 mt-3 mt-lg-0">
+          <nav class="mt-0 px-3 px-lg-0 mb-3 mb-lg-0" aria-label="Global">
+            <ul class="d-lg-flex list-style-none">
+                <li class="HeaderMenu-item position-relative flex-wrap flex-justify-between flex-items-center d-block d-lg-flex flex-lg-nowrap flex-lg-items-center js-details-container js-header-menu-item">
+      <button type="button" class="HeaderMenu-link border-0 width-full width-lg-auto px-0 px-lg-2 py-3 py-lg-2 no-wrap d-flex flex-items-center flex-justify-between js-details-target" aria-expanded="false">
+        Product
+        <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+    <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+</svg>
+      </button>
+      <div class="HeaderMenu-dropdown dropdown-menu rounded m-0 p-0 py-2 py-lg-4 position-relative position-lg-absolute left-0 left-lg-n3 d-lg-flex dropdown-menu-wide">
+          <div class="px-lg-4 border-lg-right mb-4 mb-lg-0 pr-lg-7">
+            <ul class="list-style-none f5" >
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Actions&quot;,&quot;label&quot;:&quot;ref_cta:Actions;&quot;}" href="/features/actions">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-workflow color-fg-subtle mr-3">
+    <path d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.939 2.939 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5ZM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Actions</div>
+        Automate any workflow
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Packages&quot;,&quot;label&quot;:&quot;ref_cta:Packages;&quot;}" href="/features/packages">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-package color-fg-subtle mr-3">
+    <path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Packages</div>
+        Host and manage packages
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Security&quot;,&quot;label&quot;:&quot;ref_cta:Security;&quot;}" href="/features/security">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-shield-check color-fg-subtle mr-3">
+    <path d="M16.53 9.78a.75.75 0 0 0-1.06-1.06L11 13.19l-1.97-1.97a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5-5Z"></path><path d="m12.54.637 8.25 2.675A1.75 1.75 0 0 1 22 4.976V10c0 6.19-3.771 10.704-9.401 12.83a1.704 1.704 0 0 1-1.198 0C5.77 20.705 2 16.19 2 10V4.976c0-.758.489-1.43 1.21-1.664L11.46.637a1.748 1.748 0 0 1 1.08 0Zm-.617 1.426-8.25 2.676a.249.249 0 0 0-.173.237V10c0 5.46 3.28 9.483 8.43 11.426a.199.199 0 0 0 .14 0C17.22 19.483 20.5 15.461 20.5 10V4.976a.25.25 0 0 0-.173-.237l-8.25-2.676a.253.253 0 0 0-.154 0Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Security</div>
+        Find and fix vulnerabilities
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Codespaces&quot;,&quot;label&quot;:&quot;ref_cta:Codespaces;&quot;}" href="/features/codespaces">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-codespaces color-fg-subtle mr-3">
+    <path d="M3.5 3.75C3.5 2.784 4.284 2 5.25 2h13.5c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 18.75 13H5.25a1.75 1.75 0 0 1-1.75-1.75Zm-2 12c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v4a1.75 1.75 0 0 1-1.75 1.75H3.25a1.75 1.75 0 0 1-1.75-1.75ZM5.25 3.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h13.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Zm-2 12a.25.25 0 0 0-.25.25v4c0 .138.112.25.25.25h17.5a.25.25 0 0 0 .25-.25v-4a.25.25 0 0 0-.25-.25Z"></path><path d="M10 17.75a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Codespaces</div>
+        Instant dev environments
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Copilot&quot;,&quot;label&quot;:&quot;ref_cta:Copilot;&quot;}" href="/features/copilot">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-copilot color-fg-subtle mr-3">
+    <path d="M9.75 14a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 .75-.75Zm4.5 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 .75-.75Z"></path><path d="M12 2c2.214 0 4.248.657 5.747 1.756.136.099.268.204.397.312.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086l.633 1.478.043.022A4.75 4.75 0 0 1 24 15.222v1.028c0 .529-.309.987-.565 1.293-.28.336-.636.653-.966.918a13.84 13.84 0 0 1-1.299.911l-.024.015-.006.004-.039.025c-.223.135-.45.264-.68.386-.46.245-1.122.571-1.941.895C16.845 21.344 14.561 22 12 22c-2.561 0-4.845-.656-6.479-1.303a19.046 19.046 0 0 1-1.942-.894 14.081 14.081 0 0 1-.535-.3l-.144-.087-.04-.025-.006-.004-.024-.015a13.16 13.16 0 0 1-1.299-.911 6.913 6.913 0 0 1-.967-.918C.31 17.237 0 16.779 0 16.25v-1.028a4.75 4.75 0 0 1 2.626-4.248l.043-.022.633-1.478a10.195 10.195 0 0 1-.052-1.086c0-1.331.282-2.498 1.132-3.368.397-.406.89-.717 1.474-.952.129-.108.261-.213.397-.312C7.752 2.657 9.786 2 12 2Zm-8 9.654v6.669a17.59 17.59 0 0 0 2.073.98C7.595 19.906 9.686 20.5 12 20.5c2.314 0 4.405-.594 5.927-1.197a17.59 17.59 0 0 0 2.073-.98v-6.669l-.038-.09c-.046.061-.095.12-.145.177-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.544-3.508-1.492a4.323 4.323 0 0 1-.355-.508h-.344a4.323 4.323 0 0 1-.355.508C10.704 12.456 9.555 13 7.965 13c-1.725 0-2.989-.359-3.782-1.259a3.026 3.026 0 0 1-.145-.177Zm6.309-1.092c.445-.547.708-1.334.851-2.301.057-.357.087-.718.09-1.079v-.031c-.001-.762-.166-1.26-.43-1.568l-.008-.01c-.341-.391-1.046-.689-2.533-.529-1.505.163-2.347.537-2.824 1.024-.462.473-.705 1.18-.705 2.32 0 .605.044 1.087.135 1.472.092.384.231.672.423.89.365.413 1.084.75 2.657.75.91 0 1.527-.223 1.964-.564.14-.11.268-.235.38-.374Zm2.504-2.497c.136 1.057.403 1.913.878 2.497.442.545 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.151.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.318-.862-2.824-1.025-1.487-.161-2.192.139-2.533.529-.268.308-.437.808-.438 1.578v.02c.002.299.023.598.063.894Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Copilot</div>
+        Write better code with AI
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Code review&quot;,&quot;label&quot;:&quot;ref_cta:Code review;&quot;}" href="/features/code-review">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-code-review color-fg-subtle mr-3">
+    <path d="M10.3 6.74a.75.75 0 0 1-.04 1.06l-2.908 2.7 2.908 2.7a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 0 1 1.06.04Zm3.44 1.06a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.908-2.7-2.908-2.7Z"></path><path d="M1.5 4.25c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v12.5a1.75 1.75 0 0 1-1.75 1.75h-9.69l-3.573 3.573A1.458 1.458 0 0 1 5 21.043V18.5H3.25a1.75 1.75 0 0 1-1.75-1.75ZM3.25 4a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 .75.75v3.19l3.72-3.72a.749.749 0 0 1 .53-.22h10a.25.25 0 0 0 .25-.25V4.25a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Code review</div>
+        Manage code changes
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center pb-lg-3" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Issues&quot;,&quot;label&quot;:&quot;ref_cta:Issues;&quot;}" href="/features/issues">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-issue-opened color-fg-subtle mr-3">
+    <path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Zm9.5 2a2 2 0 1 1-.001-3.999A2 2 0 0 1 12 14Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Issues</div>
+        Plan and track work
+      </div>
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Discussions&quot;,&quot;label&quot;:&quot;ref_cta:Discussions;&quot;}" href="/features/discussions">
+      <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-comment-discussion color-fg-subtle mr-3">
+    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"></path><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"></path>
+</svg>
+      <div>
+        <div class="color-fg-default h4">Discussions</div>
+        Collaborate outside of code
+      </div>
+
+    
+</a></li>
+
+            </ul>
+          </div>
+          <div class="px-lg-4">
+              <span class="d-block h4 color-fg-default my-1" id="product-explore-heading">Explore</span>
+            <ul class="list-style-none f5" aria-labelledby="product-explore-heading">
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to All features&quot;,&quot;label&quot;:&quot;ref_cta:All features;&quot;}" href="/features">
+      All features
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Documentation&quot;,&quot;label&quot;:&quot;ref_cta:Documentation;&quot;}" href="https://docs.github.com">
+      Documentation
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to GitHub Skills&quot;,&quot;label&quot;:&quot;ref_cta:GitHub Skills;&quot;}" href="https://skills.github.com/">
+      GitHub Skills
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Product&quot;,&quot;action&quot;:&quot;click to go to Blog&quot;,&quot;label&quot;:&quot;ref_cta:Blog;&quot;}" href="https://github.blog">
+      Blog
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+            </ul>
+          </div>
+      </div>
+</li>
+
+
+                <li class="HeaderMenu-item position-relative flex-wrap flex-justify-between flex-items-center d-block d-lg-flex flex-lg-nowrap flex-lg-items-center js-details-container js-header-menu-item">
+      <button type="button" class="HeaderMenu-link border-0 width-full width-lg-auto px-0 px-lg-2 py-3 py-lg-2 no-wrap d-flex flex-items-center flex-justify-between js-details-target" aria-expanded="false">
+        Solutions
+        <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+    <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+</svg>
+      </button>
+      <div class="HeaderMenu-dropdown dropdown-menu rounded m-0 p-0 py-2 py-lg-4 position-relative position-lg-absolute left-0 left-lg-n3 px-lg-4">
+          <div class="border-bottom pb-3 mb-3">
+              <span class="d-block h4 color-fg-default my-1" id="solutions-for-heading">For</span>
+            <ul class="list-style-none f5" aria-labelledby="solutions-for-heading">
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Enterprise&quot;,&quot;label&quot;:&quot;ref_cta:Enterprise;&quot;}" href="/enterprise">
+      Enterprise
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Teams&quot;,&quot;label&quot;:&quot;ref_cta:Teams;&quot;}" href="/team">
+      Teams
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Startups&quot;,&quot;label&quot;:&quot;ref_cta:Startups;&quot;}" href="/enterprise/startups">
+      Startups
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Education&quot;,&quot;label&quot;:&quot;ref_cta:Education;&quot;}" href="https://education.github.com">
+      Education
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+            </ul>
+          </div>
+          <div class="border-bottom pb-3 mb-3">
+              <span class="d-block h4 color-fg-default my-1" id="solutions-by-solution-heading">By Solution</span>
+            <ul class="list-style-none f5" aria-labelledby="solutions-by-solution-heading">
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to CI/CD &amp;amp; Automation&quot;,&quot;label&quot;:&quot;ref_cta:CI/CD &amp;amp; Automation;&quot;}" href="/solutions/ci-cd/">
+      CI/CD &amp; Automation
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to DevOps&quot;,&quot;label&quot;:&quot;ref_cta:DevOps;&quot;}" href="https://resources.github.com/devops/">
+      DevOps
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to DevSecOps&quot;,&quot;label&quot;:&quot;ref_cta:DevSecOps;&quot;}" href="https://resources.github.com/devops/fundamentals/devsecops/">
+      DevSecOps
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+            </ul>
+          </div>
+          <div class="">
+              <span class="d-block h4 color-fg-default my-1" id="solutions-resources-heading">Resources</span>
+            <ul class="list-style-none f5" aria-labelledby="solutions-resources-heading">
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Customer Stories&quot;,&quot;label&quot;:&quot;ref_cta:Customer Stories;&quot;}" href="/customer-stories">
+      Customer Stories
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to White papers, Ebooks, Webinars&quot;,&quot;label&quot;:&quot;ref_cta:White papers, Ebooks, Webinars;&quot;}" href="https://resources.github.com/">
+      White papers, Ebooks, Webinars
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" target="_blank" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Solutions&quot;,&quot;action&quot;:&quot;click to go to Partners&quot;,&quot;label&quot;:&quot;ref_cta:Partners;&quot;}" href="https://partner.github.com/">
+      Partners
+
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-link-external HeaderMenu-external-icon color-fg-subtle">
+    <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path>
+</svg>
+</a></li>
+
+            </ul>
+          </div>
+      </div>
+</li>
+
+
+                <li class="HeaderMenu-item position-relative flex-wrap flex-justify-between flex-items-center d-block d-lg-flex flex-lg-nowrap flex-lg-items-center js-details-container js-header-menu-item">
+      <button type="button" class="HeaderMenu-link border-0 width-full width-lg-auto px-0 px-lg-2 py-3 py-lg-2 no-wrap d-flex flex-items-center flex-justify-between js-details-target" aria-expanded="false">
+        Open Source
+        <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+    <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+</svg>
+      </button>
+      <div class="HeaderMenu-dropdown dropdown-menu rounded m-0 p-0 py-2 py-lg-4 position-relative position-lg-absolute left-0 left-lg-n3 px-lg-4">
+          <div class="border-bottom pb-3 mb-3">
+            <ul class="list-style-none f5" >
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Open Source&quot;,&quot;action&quot;:&quot;click to go to GitHub Sponsors&quot;,&quot;label&quot;:&quot;ref_cta:GitHub Sponsors;&quot;}" href="/sponsors">
+      
+      <div>
+        <div class="color-fg-default h4">GitHub Sponsors</div>
+        Fund open source developers
+      </div>
+
+    
+</a></li>
+
+            </ul>
+          </div>
+          <div class="border-bottom pb-3 mb-3">
+            <ul class="list-style-none f5" >
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary d-flex flex-items-center" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Open Source&quot;,&quot;action&quot;:&quot;click to go to The ReadME Project&quot;,&quot;label&quot;:&quot;ref_cta:The ReadME Project;&quot;}" href="/readme">
+      
+      <div>
+        <div class="color-fg-default h4">The ReadME Project</div>
+        GitHub community articles
+      </div>
+
+    
+</a></li>
+
+            </ul>
+          </div>
+          <div class="">
+              <span class="d-block h4 color-fg-default my-1" id="open-source-repositories-heading">Repositories</span>
+            <ul class="list-style-none f5" aria-labelledby="open-source-repositories-heading">
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Open Source&quot;,&quot;action&quot;:&quot;click to go to Topics&quot;,&quot;label&quot;:&quot;ref_cta:Topics;&quot;}" href="/topics">
+      Topics
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Open Source&quot;,&quot;action&quot;:&quot;click to go to Trending&quot;,&quot;label&quot;:&quot;ref_cta:Trending;&quot;}" href="/trending">
+      Trending
+
+    
+</a></li>
+
+                <li>
+  <a class="HeaderMenu-dropdown-link lh-condensed d-block no-underline position-relative py-2 Link--secondary" data-analytics-event="{&quot;category&quot;:&quot;Header dropdown (logged out), Open Source&quot;,&quot;action&quot;:&quot;click to go to Collections&quot;,&quot;label&quot;:&quot;ref_cta:Collections;&quot;}" href="/collections">
+      Collections
+
+    
+</a></li>
+
+            </ul>
+          </div>
+      </div>
+</li>
+
+
+                <li class="HeaderMenu-item position-relative flex-wrap flex-justify-between flex-items-center d-block d-lg-flex flex-lg-nowrap flex-lg-items-center js-details-container js-header-menu-item">
+    <a class="HeaderMenu-link no-underline px-0 px-lg-2 py-3 py-lg-2 d-block d-lg-inline-block" data-analytics-event="{&quot;category&quot;:&quot;Header menu top item (logged out)&quot;,&quot;action&quot;:&quot;click to go to Pricing&quot;,&quot;label&quot;:&quot;ref_cta:Pricing;&quot;}" href="/pricing">Pricing</a>
+</li>
+
+            </ul>
+          </nav>
+
+        <div class="d-lg-flex flex-items-center mb-3 mb-lg-0 text-center text-lg-left ml-3" style="">
+                
+
+
+<qbsearch-input class="search-input" data-scope="repo:UskoKruM/flask-login-mysql" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="tJOJnJwlCNp0doSLl1AZLOxTwVQ8GzxkYrNBD-U8cW_gd5zYQUba_mp_cpeVgP48h1-Rjd7-MeRZGwEgEk5Fow" data-max-custom-scopes="10" data-header-redesign-enabled="false" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="UskoKruM/flask-login-mysql" data-current-org="" data-current-owner="UskoKruM" data-logged-in="false">
+  <div
+    class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center mr-4 rounded"
+    data-action="click:qbsearch-input#searchInputContainerClicked"
+  >
+      <button
+        type="button"
+        class="header-search-button placeholder  input-button form-control d-flex flex-1 flex-self-stretch flex-items-center no-wrap width-full py-0 pl-2 pr-0 text-left border-0 box-shadow-none"
+        data-target="qbsearch-input.inputButton"
+        placeholder="Search or jump to..."
+        data-hotkey=s,/
+        autocapitalize="off"
+        data-action="click:qbsearch-input#handleExpand"
+      >
+        <div class="mr-2 color-fg-muted">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+        </div>
+        <span class="flex-1" data-target="qbsearch-input.inputButtonText">Search or jump to...</span>
+          <div class="d-flex" data-target="qbsearch-input.hotkeyIndicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
+
+          </div>
+      </button>
+
+    <input type="hidden" name="type" class="js-site-search-type-field">
+
+    
+<div class="Overlay--hidden " data-modal-dialog-overlay>
+  <modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" id="search-suggestions-dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true" class="Overlay Overlay--width-large Overlay--height-auto">
+      <h1 id="search-suggestions-dialog-header" class="sr-only">Search code, repositories, users, issues, pull requests...</h1>
+    <div class="Overlay-body Overlay-body--paddingNone">
+      
+          <div data-view-component="true">        <div class="search-suggestions position-fixed width-full color-shadow-large border color-fg-default color-bg-default overflow-hidden d-flex flex-column query-builder-container"
+          style="border-radius: 12px;"
+          data-target="qbsearch-input.queryBuilderContainer"
+          hidden
+        >
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="query-builder-test-form" action="" accept-charset="UTF-8" method="get">
+  <query-builder data-target="qbsearch-input.queryBuilder" id="query-builder-query-builder-test" data-filter-key=":" data-view-component="true" class="QueryBuilder search-query-builder">
+    <div class="FormControl FormControl--fullWidth">
+      <label id="query-builder-test-label" for="query-builder-test" class="FormControl-label sr-only">
+        Search
+      </label>
+      <div
+        class="QueryBuilder-StyledInput width-fit "
+        data-target="query-builder.styledInput"
+      >
+          <span id="query-builder-test-leadingvisual-wrap" class="FormControl-input-leadingVisualWrap QueryBuilder-leadingVisualWrap">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search FormControl-input-leadingVisual">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+          </span>
+        <div data-target="query-builder.styledInputContainer" class="QueryBuilder-StyledInputContainer">
+          <div
+            aria-hidden="true"
+            class="QueryBuilder-StyledInputContent"
+            data-target="query-builder.styledInputContent"
+          ></div>
+          <div class="QueryBuilder-InputWrapper">
+            <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"></div>
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-91a3a088-92be-45f5-b5e7-0dcd5f2658f3" data-target="query-builder.input" data-action="
+          input:query-builder#inputChange
+          blur:query-builder#inputBlur
+          keydown:query-builder#inputKeydown
+          focus:query-builder#inputFocus
+        " data-view-component="true" class="FormControl-input QueryBuilder-Input FormControl-medium" />
+          </div>
+        </div>
+          <span class="sr-only" id="query-builder-test-clear">Clear</span>
+          
+  <button role="button" id="query-builder-test-clear-button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-target="query-builder.clearButton" data-action="
+                click:query-builder#clear
+                focus:query-builder#clearButtonFocus
+                blur:query-builder#clearButtonBlur
+              " variant="small" hidden="hidden" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium mr-1 px-2 py-0 d-flex flex-items-center rounded-1 color-fg-muted">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill Button-visual">
+    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
+</svg>
+</button>  
+
+      </div>
+      <template id="search-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+</template>
+
+<template id="code-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</template>
+
+<template id="file-code-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-code">
+    <path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06ZM3.28 7.78 1.81 9.25l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Zm8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+</svg>
+</template>
+
+<template id="history-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-history">
+    <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
+</svg>
+</template>
+
+<template id="repo-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+</template>
+
+<template id="bookmark-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bookmark">
+    <path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template>
+
+<template id="plus-circle-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus-circle">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7.25-3.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"></path>
+</svg>
+</template>
+
+<template id="circle-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill">
+    <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
+</svg>
+</template>
+
+<template id="trash-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
+    <path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path>
+</svg>
+</template>
+
+<template id="team-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
+    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+</svg>
+</template>
+
+<template id="project-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
+    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
+</svg>
+</template>
+
+<template id="pencil-icon">
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
+    <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path>
+</svg>
+</template>
+
+        <div class="position-relative">
+                <ul
+                  role="listbox"
+                  class="ActionListWrap QueryBuilder-ListWrap"
+                  aria-label="Suggestions"
+                  data-action="
+                    combobox-commit:query-builder#comboboxCommit
+                    mousedown:query-builder#resultsMousedown
+                  "
+                  data-target="query-builder.resultsList"
+                  data-persist-list=false
+                  id="query-builder-test-results"
+                ></ul>
+        </div>
+      <div class="FormControl-inlineValidation" id="validation-91a3a088-92be-45f5-b5e7-0dcd5f2658f3" hidden="hidden">
+        <span class="FormControl-inlineValidation--visual">
+          <svg aria-hidden="true" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
+    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+</svg>
+        </span>
+        <span></span>
+</div>    </div>
+    <div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+</query-builder></form>
+          <div class="d-flex flex-row color-fg-muted px-3 text-small color-bg-default search-feedback-prompt">
+            <a target="_blank" href="https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true" class="Link color-fg-accent text-normal ml-2">
+              Search syntax tips
+</a>            <div class="d-flex flex-1"></div>
+          </div>
+        </div>
+</div>
+
+    </div>
+</modal-dialog></div>
+  </div>
+  <div data-action="click:qbsearch-input#retract" class="dark-backdrop position-fixed" hidden data-target="qbsearch-input.darkBackdrop"></div>
+  <div class="color-fg-default">
+    
+<div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay>
+  <modal-dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" role="dialog" id="feedback-dialog" aria-modal="true" aria-disabled="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
+    <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="feedback-dialog-title">
+        Provide feedback
+      </h1>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="code-search-feedback-form" data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="qKmJksNuwlhNPGNMQMYnLmH1gKOtdm3pcMB1p92MSaALJYqij2EZIZqvcV4S5LqSphGXCzjfEJzi6/3lNiVxtA==" />
+          <p>We read every piece of feedback, and take your input very seriously.</p>
+          <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
+          <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
+          <label for="include_email" style="font-weight: normal">Include my email address so I can be contacted</label>
+</form></div>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">          <button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true" class="btn-primary btn">    Submit feedback
+</button>
+</div>
+</modal-dialog></div>
+
+    <custom-scopes data-target="qbsearch-input.customScopesManager">
+    
+<div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay>
+  <modal-dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" role="dialog" id="custom-scopes-dialog" aria-modal="true" aria-disabled="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade">
+    <div data-view-component="true" class="Overlay-header Overlay-header--divided">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="custom-scopes-dialog-title">
+        Saved searches
+      </h1>
+        <h2 id="custom-scopes-dialog-description" class="Overlay-description">Use saved searches to filter your results more quickly</h2>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+</div>
+      <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+        <div hidden class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form id="custom-scopes-dialog-form" data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" data-csrf="true" name="authenticity_token" value="1P1AExgOHbxfk0XG41PWIxUL/NxBJuynKnZBN8YNcwELeTB35L0J3qkpdx1YnbIQSqjZ46lCvB3BmYw/YP+aPA==" />
+          <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+          <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
+
+          <div class="form-group">
+            <label for="custom_scope_name">Name</label>
+            <auto-check src="/search/custom_scopes/check_name" required>
+              <input
+                type="text"
+                name="custom_scope_name"
+                id="custom_scope_name"
+                data-target="custom-scopes.customScopesNameField"
+                class="form-control"
+                autocomplete="off"
+                placeholder="github-ruby"
+                required
+                maxlength="50">
+              <input type="hidden" data-csrf="true" value="TJp3uuEkbanWipBeEdCjWllTr7aed34owAPdFWwcP3jUZj94dFqgFqUtQ1rXtsb2eaP5dIauGJhxJ5kgEqEZ6A==" />
+            </auto-check>
+          </div>
+
+          <div class="form-group">
+            <label for="custom_scope_query">Query</label>
+            <input
+              type="text"
+              name="custom_scope_query"
+              id="custom_scope_query"
+              data-target="custom-scopes.customScopesQueryField"
+              class="form-control"
+              autocomplete="off"
+              placeholder="(repo:mona/a OR repo:mona/b) AND lang:python"
+              required
+              maxlength="500">
+          </div>
+
+          <p class="text-small color-fg-muted">
+            To see all available qualifiers, see our <a class="Link--inTextBlock" href="https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
+          </p>
+</form>        </div>
+
+        <div data-target="custom-scopes.manageCustomScopesForm">
+          <div data-target="custom-scopes.list"></div>
+        </div>
+
+</div>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">          <button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true" class="btn-primary btn">    Create saved search
+</button>
+</div>
+</modal-dialog></div>
+    </custom-scopes>
+  </div>
+</qbsearch-input><input type="hidden" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" value="E0T9aT82p7KJ8C6gDwZXzeJRw0ddiEhfE8sR4aPQyi/qAs+b1DcmmZXgBl/aJQfTvbeQgwTfsYhhnlS/UbIYtQ==" />
+
+
+          <div class="position-relative mr-lg-3 d-lg-inline-block">
+            <a href="/login?return_to=https%3A%2F%2Fgithub.com%2FUskoKruM%2Fflask-login-mysql%2Fblob%2Fmaster%2Fsrc%2Fstatic%2Fimg%2Fflask.svg"
+              class="HeaderMenu-link HeaderMenu-link--sign-in flex-shrink-0 no-underline d-block d-lg-inline-block border border-lg-0 rounded rounded-lg-0 p-2 p-lg-0"
+              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="1b532047093adb3389cf369a6b953ecd7fd49bd8042f815db0f40640d65b14ef"
+              data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">
+              Sign in
+            </a>
+          </div>
+
+            <a href="/signup?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fblob%2Fshow&amp;source=header-repo&amp;source_repo=UskoKruM%2Fflask-login-mysql"
+              class="HeaderMenu-link HeaderMenu-link--sign-up flex-shrink-0 d-none d-lg-inline-block no-underline border color-border-default rounded px-2 py-1"
+              data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header menu&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="1b532047093adb3389cf369a6b953ecd7fd49bd8042f815db0f40640d65b14ef"
+              data-analytics-event="{&quot;category&quot;:&quot;Sign up&quot;,&quot;action&quot;:&quot;click to sign up for account&quot;,&quot;label&quot;:&quot;ref_page:/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show;ref_cta:Sign up;ref_loc:header logged out&quot;}"
+            >
+              Sign up
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div hidden="hidden" data-view-component="true" class="js-stale-session-flash flash flash-warn mb-3">
+  
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        <span class="js-stale-session-flash-signed-in" hidden>You signed in with another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-signed-out" hidden>You signed out in another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-switched" hidden>You switched accounts on another tab or window. <a class="Link--inTextBlock" href="">Reload</a> to refresh your session.</span>
+
+    <div data-view-component="true" class="flash-close">
+  <button id="icon-button-c8611f08-adf0-4366-b7f8-e4ae7dfebe16" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium js-flash-close">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</button>  <tool-tip id="tooltip-995d0386-1664-4a5c-b89a-be86be7788e1" for="icon-button-c8611f08-adf0-4366-b7f8-e4ae7dfebe16" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute">Dismiss alert</tool-tip>
+</div>
+
+  
+</div>
+    </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+
+
+
+
+
+
+    <div id="js-flash-container" data-turbo-replace>
+
+
+
+
+
+  <template class="js-flash-template">
+    
+<div class="flash flash-full   {{ className }}">
+  <div class="px-2" >
+    <button autofocus class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    <div aria-atomic="true" role="alert" class="js-flash-alert">
+      
+      <div>{{ message }}</div>
+
+    </div>
+  </div>
+</div>
+  </template>
+</div>
+
+
+    
+    <include-fragment class="js-notification-shelf-include-fragment" data-base-src="https://github.com/notifications/beta/shelf"></include-fragment>
+
+
+
+
+
+
+  <div
+    class="application-main "
+    data-commit-hovercards-enabled
+    data-discussion-hovercards-enabled
+    data-issue-and-pr-hovercards-enabled
+  >
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container" >
+      
+      
+      
+
+
+
+
+
+
+  
+  <div id="repository-container-header"  class="pt-3 hide-full-screen" style="background-color: var(--color-page-header-bg);" data-turbo-replace>
+
+      <div class="d-flex flex-wrap flex-justify-end mb-3  px-3 px-md-4 px-lg-5" style="gap: 1rem;">
+
+        <div class="flex-auto min-width-0 width-fit mr-3">
+            
+  <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo color-fg-muted mr-2">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+    
+    <span class="author flex-self-stretch" itemprop="author">
+      <a class="url fn" rel="author" data-hovercard-type="user" data-hovercard-url="/users/UskoKruM/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/UskoKruM">
+        UskoKruM
+</a>    </span>
+    <span class="mx-1 flex-self-stretch color-fg-muted">/</span>
+    <strong itemprop="name" class="mr-2 flex-self-stretch">
+      <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/UskoKruM/flask-login-mysql">flask-login-mysql</a>
+    </strong>
+
+    <span></span><span class="Label Label--secondary v-align-middle mr-1">Public</span>
+  </div>
+
+
+        </div>
+
+        <div id="repository-details-container" data-turbo-replace>
+            <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
+    
+      
+
+  <li>
+            <a href="/login?return_to=%2FUskoKruM%2Fflask-login-mysql" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;notification subscription menu watch&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="64a6d2dd72495994b44d079d4abb2721e180d9ea566e898d30060d0a1cc9b0b1" aria-label="You must be signed in to change notification settings" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell mr-2">
+    <path d="M8 16a2 2 0 0 0 1.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 0 0 8 16ZM3 5a5 5 0 0 1 10 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.519 1.519 0 0 1 13.482 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947Zm5-3.5A3.5 3.5 0 0 0 4.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01l.001.006c0 .002.002.004.004.006l.006.004.007.001h10.964l.007-.001.006-.004.004-.006.001-.007a.017.017 0 0 0-.003-.01l-1.703-2.554a1.745 1.745 0 0 1-.294-.97V5A3.5 3.5 0 0 0 8 1.5Z"></path>
+</svg>Notifications
+</a>
+  </li>
+
+  <li>
+          <a icon="repo-forked" id="fork-button" href="/login?return_to=%2FUskoKruM%2Fflask-login-mysql" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;repo details fork button&quot;,&quot;repository_id&quot;:448725591,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="d44d11352801b056eb9ec180ca218ec0707a76f859c91be8c0f027a162465f68" data-view-component="true" class="btn-sm btn">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
+    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+</svg>Fork
+    <span id="repo-network-counter" data-pjax-replace="true" data-turbo-replace="true" title="13" data-view-component="true" class="Counter">13</span>
+</a>
+  </li>
+
+  <li>
+        <div data-view-component="true" class="BtnGroup d-flex">
+        <a href="/login?return_to=%2FUskoKruM%2Fflask-login-mysql" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;star button&quot;,&quot;repository_id&quot;:448725591,&quot;auth_type&quot;:&quot;LOG_IN&quot;,&quot;originating_url&quot;:&quot;https://github.com/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg&quot;,&quot;user_id&quot;:null}}" data-hydro-click-hmac="36e4e37e5e4a860f90c22dc76f9b5d1085062737eb7ed40162bbe52c5506bece" aria-label="You must be signed in to star a repository" data-view-component="true" class="tooltipped tooltipped-s btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star v-align-text-bottom d-inline-block mr-2">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg><span data-view-component="true" class="d-inline">
+          Star
+</span>          <span id="repo-stars-counter-star" aria-label="20 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="20" data-view-component="true" class="Counter js-social-count">20</span>
+</a>        <button aria-label="You must be signed in to add this repository to a list" type="button" disabled="disabled" data-view-component="true" class="btn-sm btn BtnGroup-item px-2">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</button></div>
+  </li>
+
+</ul>
+
+        </div>
+      </div>
+
+        <div id="responsive-meta-container" data-turbo-replace>
+</div>
+
+
+          <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
+
+  <ul data-view-component="true" class="UnderlineNav-body list-style-none">
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="code-tab" href="/UskoKruM/flask-login-mysql" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /UskoKruM/flask-login-mysql" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" aria-current="page" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        <span data-content="Code">Code</span>
+          <span id="code-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="issues-tab" href="/UskoKruM/flask-login-mysql/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /UskoKruM/flask-login-mysql/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+        <span data-content="Issues">Issues</span>
+          <span id="issues-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="pull-requests-tab" href="/UskoKruM/flask-login-mysql/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /UskoKruM/flask-login-mysql/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+</svg>
+        <span data-content="Pull requests">Pull requests</span>
+          <span id="pull-requests-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="actions-tab" href="/UskoKruM/flask-login-mysql/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /UskoKruM/flask-login-mysql/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+</svg>
+        <span data-content="Actions">Actions</span>
+          <span id="actions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="projects-tab" href="/UskoKruM/flask-login-mysql/projects" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /UskoKruM/flask-login-mysql/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+</svg>
+        <span data-content="Projects">Projects</span>
+          <span id="projects-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true" class="Counter">0</span>
+
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="security-tab" href="/UskoKruM/flask-login-mysql/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /UskoKruM/flask-login-mysql/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        <span data-content="Security">Security</span>
+          <include-fragment src="/UskoKruM/flask-login-mysql/security/overall-count" accept="text/fragment+html"></include-fragment>
+
+    
+</a></li>
+      <li data-view-component="true" class="d-inline-flex">
+  <a id="insights-tab" href="/UskoKruM/flask-login-mysql/pulse" data-tab-item="i6insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /UskoKruM/flask-login-mysql/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+    
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
+    <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+        <span data-content="Insights">Insights</span>
+          <span id="insights-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+
+
+    
+</a></li>
+</ul>
+    <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">        <details data-view-component="true" class="details-overlay details-reset position-relative">
+    <summary role="button" data-view-component="true">          <div class="UnderlineNav-item mr-0 border-0">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+    <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+</svg>
+            <span class="sr-only">More</span>
+          </div>
+</summary>
+    <details-menu role="menu" data-view-component="true" class="dropdown-menu dropdown-menu-sw">
+          <ul>
+              <li data-menu-item="i0code-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item selected dropdown-item" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /UskoKruM/flask-login-mysql" href="/UskoKruM/flask-login-mysql">
+                  Code
+</a>              </li>
+              <li data-menu-item="i1issues-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_issues repo_labels repo_milestones /UskoKruM/flask-login-mysql/issues" href="/UskoKruM/flask-login-mysql/issues">
+                  Issues
+</a>              </li>
+              <li data-menu-item="i2pull-requests-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_pulls checks /UskoKruM/flask-login-mysql/pulls" href="/UskoKruM/flask-login-mysql/pulls">
+                  Pull requests
+</a>              </li>
+              <li data-menu-item="i3actions-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_actions /UskoKruM/flask-login-mysql/actions" href="/UskoKruM/flask-login-mysql/actions">
+                  Actions
+</a>              </li>
+              <li data-menu-item="i4projects-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_projects new_repo_project repo_project /UskoKruM/flask-login-mysql/projects" href="/UskoKruM/flask-login-mysql/projects">
+                  Projects
+</a>              </li>
+              <li data-menu-item="i5security-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="security overview alerts policy token_scanning code_scanning /UskoKruM/flask-login-mysql/security" href="/UskoKruM/flask-login-mysql/security">
+                  Security
+</a>              </li>
+              <li data-menu-item="i6insights-tab" hidden>
+                <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /UskoKruM/flask-login-mysql/pulse" href="/UskoKruM/flask-login-mysql/pulse">
+                  Insights
+</a>              </li>
+          </ul>
+</details-menu>
+</details></div>
+</nav>
+
+  </div>
+
+  
+
+
+
+<turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
+    <div id="repo-content-pjax-container" class="repository-content " >
+    
+
+
+    
+      
+    
+
+
+
+
+
+<react-app
+  app-name="react-code-view"
+  initial-path="/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg"
+  style="min-height: calc(100vh - 62px)"
+  data-ssr="false"
+  data-lazy="false"
+  data-alternate="false"
+>
+  
+  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"allShortcutsEnabled":false,"fileTree":{"src/static/img":{"items":[{"name":"flask.svg","path":"src/static/img/flask.svg","contentType":"file"},{"name":"logo.png","path":"src/static/img/logo.png","contentType":"file"}],"totalCount":2},"src/static":{"items":[{"name":"css","path":"src/static/css","contentType":"directory"},{"name":"img","path":"src/static/img","contentType":"directory"}],"totalCount":2},"src":{"items":[{"name":"models","path":"src/models","contentType":"directory"},{"name":"static","path":"src/static","contentType":"directory"},{"name":"templates","path":"src/templates","contentType":"directory"},{"name":"app.py","path":"src/app.py","contentType":"file"},{"name":"config.py","path":"src/config.py","contentType":"file"}],"totalCount":5},"":{"items":[{"name":"database","path":"database","contentType":"directory"},{"name":"src","path":"src","contentType":"directory"},{"name":".gitignore","path":".gitignore","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"},{"name":"preview1.JPG","path":"preview1.JPG","contentType":"file"},{"name":"preview2.png","path":"preview2.png","contentType":"file"},{"name":"preview3.png","path":"preview3.png","contentType":"file"},{"name":"preview4.JPG","path":"preview4.JPG","contentType":"file"},{"name":"requirements.txt","path":"requirements.txt","contentType":"file"}],"totalCount":9}},"fileTreeProcessingTime":9.65508,"foldersToFetch":[],"reducedMotionEnabled":null,"repo":{"id":448725591,"defaultBranch":"master","name":"flask-login-mysql","ownerLogin":"UskoKruM","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2022-01-17T02:07:39.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/11650755?v=4","public":true,"private":false,"isOrgOwned":false},"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"master","listCacheKey":"v0:1642385348.0341911","canEdit":false,"refType":"branch","currentOid":"243108a5a343fdf4973402309f278784367b1ff6"},"path":"src/static/img/flask.svg","currentUser":null,"blob":{"rawLines":["\u003c?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?\u003e","\u003csvg width=\"256px\" height=\"329px\" viewBox=\"0 0 256 329\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" preserveAspectRatio=\"xMidYMid\"\u003e","\t\u003cg fill=\"#000000\"\u003e","\t\t\u003cpath d=\"M76.5010971,203.351341 C66.7517513,195.681097 56.3478735,188.330586 49.2400916,177.97358 C34.2795999,159.710296 22.7641896,138.569416 14.891392,116.348809 C10.1305508,101.898885 8.50175383,86.4077375 2.36154086,72.5186025 C-4.05320726,62.4277618 3.46637743,51.404506 14.5180912,48.1988059 C19.4346139,47.2513248 28.0858191,42.6093372 17.6434395,45.9305429 C8.27911252,52.7972697 7.37682931,39.6915643 16.9771896,38.8612628 C23.5292052,37.9924595 25.9414318,32.6306542 23.6982787,27.8045271 C16.6624785,23.2144333 40.7529379,18.1790569 28.6298674,11.3324182 C16.0096206,-2.28887761 46.2905127,-4.91035349 38.8177999,10.5607066 C37.0316474,22.4561137 59.9837903,8.37614333 54.6537908,22.1146188 C60.069164,28.7135063 74.925868,23.6195401 74.5525671,32.8717094 C82.4387567,33.4140837 85.1456063,40.0447772 92.5413154,40.5553456 C100.218256,44.0205149 114.120782,46.7474524 116.728866,55.3919616 C109.118886,61.4149949 91.5017646,42.9491582 90.6513752,59.6238205 C92.9531181,84.2616761 92.3655459,109.641111 101.37666,133.102149 C105.638651,147.305995 115.977243,158.486606 125.30809,169.551712 C134.240526,180.385806 146.338487,188.017549 158.670806,194.438993 C169.486487,199.539655 181.145861,202.91945 192.935806,205.045424 C197.715061,201.389419 206.157017,187.794907 213.611316,193.523317 C213.971225,199.971546 198.814876,206.993954 212.899868,206.280832 C221.177773,203.783232 226.912879,212.675492 233.726038,204.652035 C240.003518,212.08792 259.816921,199.904586 255.350703,215.102785 C249.309255,218.999845 240.500695,216.644534 234.452552,222.008013 C224.480564,217.024531 216.540807,226.460839 205.497463,225.270629 C193.237125,227.46691 180.759168,228.35078 168.329756,228.369193 C147.933804,226.760484 127.107634,226.080843 107.706034,218.979757 C96.7731742,215.802514 86.1081533,209.576928 76.5010971,203.351341 L76.5010971,203.351341 Z M93.7248297,210.819032 C104.396547,215.429214 114.833904,220.293843 126.53178,221.765284 C145.089686,224.341562 164.255253,228.3173 182.878445,224.694775 C174.449881,220.889785 165.733391,226.172912 157.336633,221.974533 C147.267554,224.139009 136.458569,221.418767 126.217069,220.077897 C114.577783,214.893535 102.011104,211.3296 91.1100498,204.593445 C77.482058,199.618333 98.152546,210.976387 101.833661,211.898759 C110.347598,216.729908 92.4693336,209.419572 89.9449494,207.412452 C82.8120575,203.409931 81.9030783,204.246928 89.2401976,208.30804 C90.716661,209.171821 92.1763845,210.0808 93.7248297,210.819032 L93.7248297,210.819032 Z M73.4142506,196.4662 C83.7595386,200.297974 73.3690528,189.194367 68.6349955,189.835507 C66.535806,186.192894 60.6115383,183.891151 64.7898294,181.935925 C57.2769407,184.545683 56.9170318,172.015832 53.3865767,173.808681 C45.4351014,171.297688 50.2930343,162.403754 40.8182237,156.938161 C39.9544423,151.182967 31.4086988,146.194462 28.6884573,137.516473 C27.484855,133.070343 19.0295072,120.312828 24.2222391,132.186474 C28.6415854,143.61651 36.4172913,153.412728 42.8906292,163.188858 C47.9126137,172.499617 53.8502733,182.237244 62.9986549,188.044332 C66.0855014,191.005629 69.0601901,195.537133 73.4142506,196.4662 L73.4142506,196.4662 Z M43.623839,163.75132 C43.9820739,162.187809 45.5137791,167.131115 43.623839,163.75132 L43.623839,163.75132 Z M85.8068342,201.056294 C88.0951851,200.030135 82.5107384,199.762296 85.8068342,201.056294 L85.8068342,201.056294 Z M91.4163908,203.10359 C90.8355146,200.277887 88.8535048,204.685515 91.4163908,203.10359 L91.4163908,203.10359 Z M98.4471691,206.033081 C101.788463,202.847469 93.287917,204.024287 98.4471691,206.033081 L98.4471691,206.033081 Z M110.491562,212.747474 C112.525465,209.746001 103.984744,211.617527 110.491562,212.747474 L110.491562,212.747474 Z M87.3636494,196.623556 C92.5547073,193.262174 80.6475822,196.576684 87.3636494,196.623556 L87.3636494,196.623556 Z M92.6333851,199.251728 C92.4827255,197.478967 90.7568369,200.048549 92.6333851,199.251728 L92.6333851,199.251728 Z M118.978715,215.697053 C123.215596,218.372096 143.717011,221.556035 130.880819,216.795193 C128.728061,217.247172 107.078286,210.668372 118.978715,215.697053 L118.978715,215.697053 Z M77.155629,183.11944 C76.7438263,181.341657 70.5768294,181.150822 77.155629,183.11944 L77.155629,183.11944 Z M89.415967,190.274094 C92.6132971,188.044332 82.7919696,188.553227 89.415967,190.274094 L89.415967,190.274094 Z M99.7344711,196.596772 C104.317869,194.870883 92.3069561,194.864187 99.7344711,196.596772 L99.7344711,196.596772 Z M72.1587545,177.685653 C77.1288451,181.497339 92.2081904,178.176133 79.7704089,175.410694 C74.1139805,172.395829 61.363162,170.330119 70.0545431,177.228652 L72.1587545,177.685653 L72.1587545,177.685653 Z M106.725073,198.781335 C108.797479,195.255902 98.0403883,196.765845 106.725073,198.781335 L106.725073,198.781335 Z M96.2224299,190.436471 C108.372284,193.869834 86.0026916,182.746139 93.2226312,189.167583 L94.8246443,189.894097 L96.2224299,190.436471 L96.2224299,190.436471 Z M117.279611,202.606413 C128.788325,202.716897 106.882429,201.017792 117.279611,202.606413 L117.279611,202.606413 Z M67.7327122,171.028175 C67.2807336,168.883788 64.895291,171.205619 67.7327122,171.028175 L67.7327122,171.028175 Z M136.746496,213.525881 C137.052837,209.655605 132.991726,216.410175 136.746496,213.525881 L136.746496,213.525881 Z M87.3753674,183.054154 C86.6756375,181.013554 83.7796265,182.96878 87.3753674,183.054154 L87.3753674,183.054154 Z M68.8241569,169.682283 C75.4297404,169.283873 59.7745409,166.77288 68.8241569,169.682283 L68.8241569,169.682283 Z M46.846279,155.478437 C46.0226735,152.307891 39.6598193,149.783507 46.846279,155.478437 L46.846279,155.478437 Z M104.54051,192.092052 C103.331886,190.711006 103.971352,192.391697 104.54051,192.092052 L104.54051,192.092052 Z M140.446025,214.12852 C140.335541,212.015938 138.490799,214.925341 140.446025,214.12852 L140.446025,214.12852 Z M101.363268,188.809348 C102.011104,186.089107 95.7269275,187.984069 101.363268,188.809348 L101.363268,188.809348 Z M74.6111569,171.853455 C79.5293537,171.329494 66.7316633,168.530575 74.6111569,171.853455 L74.6111569,171.853455 Z M119.862585,199.971546 C127.526133,196.936593 112.394894,198.493408 119.862585,199.971546 L119.862585,199.971546 Z M96.3278916,183.996613 C105.154866,185.133255 85.8202262,177.986972 94.3860576,183.355473 L96.3278916,183.996613 L96.3278916,183.996613 Z M127.008869,202.860861 C135.254967,197.937642 132.534725,214.403055 140.996769,204.253624 C149.339959,198.160283 133.790222,211.786601 144.070224,205.340047 C151.511131,200.36326 162.495885,207.70038 169.434593,210.087496 C174.423098,209.844767 179.276009,214.403055 184.395085,211.629245 C194.243196,208.97429 165.132426,207.693684 172.762495,202.991432 C163.751381,205.614582 157.095577,199.866084 152.661165,194.092476 C142.55191,191.757253 130.867427,186.591305 125.818658,177.640455 C123.759645,174.285769 128.788325,178.117543 124.040876,172.625166 C117.952557,167.209793 114.912582,161.056188 110.824687,154.472367 C105.93997,151.869305 105.364116,144.19906 104.873635,154.217919 C104.913811,147.893567 98.9761514,143.636598 97.5247979,145.402663 C97.498014,139.314344 103.880956,142.36771 99.4147381,137.86299 C98.453865,131.55203 95.2883408,124.974904 94.3391858,117.847034 C92.8627224,114.413671 94.1299364,107.058137 89.2920914,114.832169 C87.5327229,123.051484 88.7095412,104.736307 91.4498707,110.771058 C95.0456116,104.612431 90.1541988,105.337271 89.9583414,106.18766 C92.3002601,100.989906 91.4431748,93.6126112 89.3439853,96.4249224 C90.5927854,90.9124575 91.3192991,76.1411273 87.480829,78.7626032 C89.8076818,72.9956911 91.8951534,52.3837929 81.7842247,60.2448726 C77.6913074,60.3034624 70.5969174,61.729706 67.2489277,63.3970048 C77.7565932,69.1907008 66.189289,65.4894983 61.9055363,64.5671272 C61.34977,69.9289326 57.1128892,67.6137977 51.8163696,67.6656916 C60.2784134,68.7119383 47.6966683,76.3168968 42.8521274,73.3622959 C36.5478629,76.3704646 48.2859145,83.8900493 42.976003,86.2169021 C43.6305349,89.7155512 33.3237489,84.949688 34.1289404,93.0451269 C28.0138374,90.4671749 33.291943,102.643813 36.3520055,98.5241119 C46.7558833,101.343119 43.6757328,107.757867 43.936876,113.857904 C42.2427932,117.408447 35.5669019,105.508018 42.4520426,106.057089 C37.0182554,97.2351359 36.4440752,102.866454 31.9309852,106.966068 C30.8847385,107.260691 43.4396995,112.798266 35.560206,115.531899 C42.4922185,116.60493 42.6947718,122.673161 44.1076235,126.511631 C48.2725226,130.8523 47.4154372,121.71731 52.4056158,126.936826 C49.2467875,122.286468 35.6907776,113.837816 46.6052237,116.54634 C46.5466339,111.870873 44.6299099,108.097688 47.9778995,108.188084 C51.2940832,102.191835 44.5060342,122.979502 51.9737251,115.35613 C54.0394347,114.453847 54.5566991,109.353184 58.2712936,115.839914 C63.6649049,121.149826 60.2198235,124.993318 52.6081691,120.128689 C53.9674529,124.752263 62.7894056,126.399474 61.1288027,133.626109 C62.8864973,139.982267 65.3455956,137.640349 67.489983,137.273744 C69.1706738,143.447437 70.1265248,138.909237 70.2052026,135.966354 C77.9005567,137.615239 76.0959903,142.165157 78.5082169,145.344073 C83.8114324,147.736211 70.9166504,129.119715 80.0198342,139.746234 C89.5984325,148.397439 83.615575,152.006572 75.0179377,150.620504 C80.4584208,150.181918 82.2094194,157.977712 89.0175563,157.703177 C95.223055,160.657777 99.42813,171.997418 88.7296292,167.275079 C85.0217307,163.927089 71.8842194,159.800692 82.6162001,166.163546 C92.5162054,170.75364 100.389003,173.49397 109.942491,179.25586 C116.775738,184.133881 119.730339,189.723349 122.320009,190.82986 C116.573185,193.575211 105.005881,188.638601 113.596822,187.128657 C108.235017,186.154392 102.206961,183.440847 107.339429,190.116738 C111.706882,193.766047 122.803794,193.379354 124.799195,193.791157 C123.111809,197.505751 120.215798,197.800374 124.864481,198.088301 C119.678445,200.853741 126.53178,201.285631 127.008869,202.860861 L127.008869,202.860861 Z M116.402437,172.906397 C113.243609,169.603606 112.4267,163.424891 115.839975,168.798414 C117.592648,169.50484 121.44451,178.902647 116.402437,172.906397 L116.402437,172.906397 Z M150.948668,194.850795 C152.917286,194.720224 151.007258,196.347347 150.948668,194.850795 L150.948668,194.850795 Z M111.420629,164.810958 C111.295079,159.82078 112.557271,168.661147 111.420629,164.810958 L111.420629,164.810958 Z M107.987265,160.194081 C104.011528,152.523837 112.989162,162.365252 107.987265,160.194081 L107.987265,160.194081 Z M66.3717545,131.475026 C68.7069772,130.8523 67.5234629,135.462481 66.3717545,131.475026 L66.3717545,131.475026 Z M99.4934158,149.423598 C100.924681,144.041705 101.174107,153.936688 99.4934158,149.423598 L99.4934158,149.423598 Z M76.0959903,133.154043 C74.4487794,130.18605 79.5427456,135.941244 76.0959903,133.154043 L76.0959903,133.154043 Z M96.1705361,139.588879 C92.4107438,131.167011 98.8388838,134.985393 97.0075335,140.96825 L96.1705361,139.588879 L96.1705361,139.588879 Z M61.5473014,116.499468 C59.8666106,113.734029 57.0877792,105.625198 57.9833665,103.147686 C58.786884,107.182013 66.5558939,120.50199 61.7883567,108.666846 C56.525317,98.7467532 68.0859252,111.882591 69.2761355,114.361777 C69.8319017,116.820875 66.0252375,113.688831 68.6015156,119.462439 C63.9009381,112.890335 65.8293801,123.09166 61.5473014,116.499468 L61.5473014,116.499468 Z M50.8488006,109.123847 C51.2873872,102.695707 53.294507,113.531475 50.8488006,109.123847 L50.8488006,109.123847 Z M55.6615357,110.78445 C57.9565825,105.933213 59.5518996,117.545715 55.6615357,110.78445 L55.6615357,110.78445 Z M44.0808396,101.826904 C40.0984059,97.862884 37.2141128,94.2152493 44.270001,99.3678053 C46.9835466,99.471593 38.2285537,91.069813 44.9245329,96.6994576 C51.9603331,97.9817376 48.3963982,108.241652 44.0808396,101.826904 L44.0808396,101.826904 Z M50.1624627,101.669548 C52.4775975,99.3745013 51.3911749,103.926093 50.1624627,101.669548 L50.1624627,101.669548 Z M53.9088631,102.866454 C50.396822,96.2943508 58.1658319,105.625198 53.9088631,102.866454 L53.9088631,102.866454 Z M46.4679562,95.7586725 C34.88726,85.4451905 61.0166451,101.145588 48.3578963,97.6670266 L46.4679562,95.7586725 L46.4679562,95.7586725 Z M79.6532293,115.034723 C74.6379408,112.03325 78.3190554,93.8821243 80.0332261,106.293122 C84.904551,104.716219 79.763713,112.70787 83.3929337,112.629192 C82.8254495,117.669591 81.1966525,119.482527 79.6532293,115.034723 L79.6532293,115.034723 Z M91.9269593,122.293164 C92.4174397,116.820875 92.9598141,126.034543 91.9269593,122.293164 L91.9269593,122.293164 Z M89.7959639,120.180583 C90.3450342,117.847034 89.8478577,122.934304 89.7959639,120.180583 L89.7959639,120.180583 Z M48.7362191,92.370507 C41.2953122,82.1038968 70.3608841,102.754297 53.5037563,94.9735689 C51.7443878,94.5098724 49.6200884,94.3458209 48.7362191,92.370507 L48.7362191,92.370507 Z M72.3746999,104.900358 C71.669948,96.255849 73.944907,106.331624 72.3746999,104.900358 L72.3746999,104.900358 Z M90.3182502,116.414094 C91.704318,111.490876 90.4237119,119.671688 90.3182502,116.414094 L90.3182502,116.414094 Z M49.8812316,88.4533591 C54.3022519,87.5058781 68.2031048,96.2156731 55.4388944,90.9392414 C54.0210207,89.3690343 50.9927641,90.0821561 49.8812316,88.4533591 L49.8812316,88.4533591 Z M87.8524559,107.37787 C88.3245224,98.5375039 90.4956937,102.101439 87.8725438,108.646759 L87.8524559,107.37787 L87.8524559,107.37787 Z M53.1706314,85.3748827 C54.9751978,82.7316449 48.3830062,73.4275817 54.1181124,82.038611 C56.5972988,84.0072289 61.2911802,85.3347068 57.1463691,86.1650082 C63.6649049,91.9135064 55.557748,87.7218234 53.1706314,85.3748827 L53.1706314,85.3748827 Z M85.9759077,104.619127 C87.2196859,94.5483743 87.0757223,110.516611 85.9759077,104.619127 L85.9759077,104.619127 Z M49.4041431,76.0758415 C50.7835148,75.4865953 50.1356788,77.9122138 49.4041431,76.0758415 L49.4041431,76.0758415 Z M57.9632785,81.1698077 C60.1662557,76.546234 62.0243899,86.3223637 57.9632785,81.1698077 L57.9632785,81.1698077 Z M82.0989357,94.5935721 C82.0788478,92.8224856 82.5559363,97.1765461 82.0989357,94.5935721 L82.0989357,94.5935721 Z M80.6994761,91.5017037 C77.3514864,83.2355173 83.8181284,95.8758521 80.6994761,91.5017037 L80.6994761,91.5017037 Z M78.6454844,86.0796345 C78.0846962,82.6663591 80.5555125,90.3700832 78.6454844,86.0796345 L78.6454844,86.0796345 Z M81.993474,80.6391514 C79.6917312,76.5914319 84.897855,62.7876707 85.4804052,71.3484802 C83.0531128,78.0176755 84.7806754,81.7456619 86.4663882,72.7998337 C89.5934105,65.7640335 85.7934423,86.6956646 81.993474,80.6391514 L81.993474,80.6391514 Z M85.4335334,60.114301 C86.4345823,58.8839148 85.6561747,61.5974604 85.4335334,60.114301 L85.4335334,60.114301 Z M79.6867092,173.324896 C78.3257514,172.134686 79.8624787,174.07652 79.6867092,173.324896 L79.6867092,173.324896 Z M91.5218525,179.307754 C98.1056741,181.001836 98.0738682,178.286617 92.1228167,177.476403 C88.9254866,174.501714 78.8229279,171.342886 87.8658478,177.109798 C88.46179,178.628112 90.3517301,178.587936 91.5218525,179.307754 L91.5218525,179.307754 Z M68.151211,163.783126 C71.7737357,166.491649 81.8110086,171.446674 73.3171589,164.817654 C76.1813641,161.488079 67.8364999,159.716992 70.6036133,157.487231 C63.5611172,153.176695 65.0442766,153.563387 69.9825613,153.700655 C61.5205175,149.914079 71.2045775,150.202006 70.7475769,148.260172 C67.484961,147.619032 54.5366111,142.504978 62.1549615,148.67867 C54.4127355,144.734739 60.3102193,150.150112 57.9699745,149.580954 C50.0503051,147.423174 65.0191667,155.610683 56.7144784,153.576779 C61.2526783,157.17252 68.9363145,162.797143 58.6295285,157.38177 C57.2769407,159.336995 66.0068236,162.299966 68.151211,163.783126 L68.151211,163.783126 Z M80.5287286,170.897604 C95.576268,175.743819 73.1464115,164.96664 80.5287286,170.897604 L80.5287286,170.897604 Z M143.89278,209.282305 C144.088638,206.294224 141.838789,211.831799 143.89278,209.282305 L143.89278,209.282305 Z M150.406294,212.022634 C153.878159,208.661253 150.550258,217.38444 156.159814,211.199029 C156.218404,206.771312 155.990741,204.156533 149.71326,209.536752 C147.979002,210.499299 147.208964,214.572128 150.406294,212.022634 L150.406294,212.022634 Z M47.0237224,147.096745 C45.9573877,142.905062 39.5493356,142.923476 47.0237224,147.096745 L47.0237224,147.096745 Z M53.9741489,151.653359 C51.3911749,147.371281 44.7604814,147.776387 53.9741489,151.653359 L53.9741489,151.653359 Z M93.5423643,175.514481 C97.4076183,178.947845 111.283361,178.03217 98.2312237,175.939676 C96.3011077,173.082167 85.9641897,173.768505 93.5423643,175.514481 L93.5423643,175.514481 Z M147.927108,209.106535 C153.871463,204.116357 142.166892,211.3296 147.927108,209.106535 L147.927108,209.106535 Z M160.292907,217.600385 C160.331409,215.998372 157.730021,218.300115 160.292907,217.600385 L160.292907,217.600385 Z M160.312995,215.357232 C166.896817,208.386717 153.936749,215.769035 160.312995,215.357232 L160.312995,215.357232 Z M29.9171695,132.77572 C24.3076128,124.772351 26.4319123,121.174936 21.018213,114.636312 C19.9903802,109.634415 11.7325638,98.2947746 16.7478523,110.307361 C21.337946,117.336466 22.6989038,128.217432 29.9171695,132.77572 L29.9171695,132.77572 Z M158.245612,213.140863 C170.36366,205.313263 153.277195,209.734283 158.245612,213.140863 L158.245612,213.140863 Z M167.492759,216.763387 C173.56099,211.557264 163.654289,215.676965 167.492759,216.763387 L167.492759,216.763387 Z M44.9630348,138.248009 C46.6972934,135.665035 40.4784027,137.914884 44.9630348,138.248009 L44.9630348,138.248009 Z M165.562643,214.290897 C171.435017,210.505995 164.210055,211.086871 164.497982,214.637414 L165.562643,214.290897 L165.562643,214.290897 Z M85.865424,164.057661 C85.6628707,161.494775 82.7601637,164.273606 85.865424,164.057661 L85.865424,164.057661 Z M90.7886428,166.89006 C89.2201097,163.724536 88.3831122,167.387236 90.7886428,166.89006 L90.7886428,166.89006 Z M174.98556,216.848761 C182.511841,211.419996 170.428946,215.807536 173.410331,217.881616 L174.98556,216.848761 L174.98556,216.848761 Z M172.102941,215.455998 C178.236458,210.321855 165.634625,217.730956 172.102941,215.455998 L172.102941,215.455998 Z M186.827399,225.257237 C190.942078,222.503516 181.825503,224.368346 186.827399,225.257237 L186.827399,225.257237 Z M48.7362191,136.384853 C54.248684,137.620261 70.7793828,149.965972 61.030037,137.241938 C56.0348365,135.763801 59.0296132,123.555356 53.935647,125.713136 C57.3556184,131.428154 56.7462843,133.853772 49.5665206,130.258032 C40.5503845,125.850403 44.4993383,132.435899 46.2654028,134.253857 C43.8581982,134.802927 49.4426449,136.339655 48.7362191,136.384853 L48.7362191,136.384853 Z M23.607883,116.539644 C24.593866,112.451749 14.5113952,94.0712857 18.8470418,107.325977 C20.4088789,110.104808 20.2465014,115.367848 23.607883,116.539644 L23.607883,116.539644 Z M69.733136,144.977468 C66.8890189,142.603743 69.5958685,144.637647 69.733136,144.977468 L69.733136,144.977468 Z M76.7237384,146.606265 C76.7237384,142.277314 68.9949043,144.846896 76.7237384,146.606265 L76.7237384,146.606265 Z M137.340765,184.813522 C136.184034,181.857248 132.770759,184.748237 137.340765,184.813522 L137.340765,184.813522 Z M140.250167,186.937822 C139.818277,185.283915 138.569477,187.259229 140.250167,186.937822 L140.250167,186.937822 Z M164.275341,202.075757 C166.58378,200.369956 161.391048,201.85479 164.275341,202.075757 L164.275341,202.075757 Z M36.1561481,119.74367 C42.7667536,117.185806 29.0734761,117.919016 36.1561481,119.74367 L36.1561481,119.74367 Z M132.004069,180.124663 C131.927065,175.847606 127.787276,181.190998 132.004069,180.124663 L132.004069,180.124663 Z M33.5463902,113.655351 C37.7899671,112.224085 29.6158504,112.714566 33.5463902,113.655351 L33.5463902,113.655351 Z M45.865318,119.624817 C45.7933362,118.220335 44.5646241,120.162169 45.865318,119.624817 L45.865318,119.624817 Z M196.166616,211.793297 C201.625513,210.68846 214.069991,214.572128 216.07711,210.348639 C209.446417,210.184588 193.145056,205.666476 192.373344,211.419996 L193.824697,211.649333 L196.166616,211.793297 L196.166616,211.793297 Z M49.7824659,120.612473 C49.8812316,116.276827 46.4026704,120.450096 49.7824659,120.612473 L49.7824659,120.612473 Z M17.3889923,98.1390931 C15.9175508,89.8796027 11.7911536,96.888619 17.3889923,98.1390931 L17.3889923,98.1390931 Z M25.1111303,100.080927 C25.209896,97.4259713 18.0418503,97.6938105 25.1111303,100.080927 L25.1111303,100.080927 Z M29.5254547,102.252098 C28.2498706,101.21757 28.5311017,103.552792 29.5254547,102.252098 L29.5254547,102.252098 Z M57.3087466,120.070099 C58.6178105,118.866497 54.2101822,119.181208 57.3087466,120.070099 L57.3087466,120.070099 Z M26.5892678,97.3606855 C25.8376441,91.1217069 17.6367435,96.4249224 26.5892678,97.3606855 L26.5892678,97.3606855 Z M10.7449069,87.0806834 C10.5222656,84.2030863 9.20148366,88.165432 10.7449069,87.0806834 L10.7449069,87.0806834 Z M13.1052396,85.3029009 C12.7202208,81.8879515 11.0780318,85.7331176 13.1052396,85.3029009 L13.1052396,85.3029009 Z M26.1188752,93.0702368 C31.6246442,90.9124575 16.0933203,88.5973227 24.9939507,92.6651301 L26.1188752,93.0702368 L26.1188752,93.0702368 Z M200.344907,200.689689 C203.868666,197.460553 195.871993,199.690314 200.344907,200.689689 L200.344907,200.689689 Z M221.393718,211.597439 C222.80657,207.425844 217.836479,212.14651 221.393718,211.597439 L221.393718,211.597439 Z M27.4513751,86.250382 C28.0339253,82.2093585 23.0839226,87.0538995 27.4513751,86.250382 L27.4513751,86.250382 Z M8.92694851,73.8393844 C7.93259559,68.1377581 8.06986316,58.1255951 17.5848497,61.5070647 C4.88592503,64.0314488 26.3800184,77.2978577 23.6664728,66.8219982 C29.0081903,67.0848154 34.1155484,63.664844 31.3099331,68.8492059 C41.8376865,67.6924755 49.1296079,58.5641818 59.2974524,59.8464618 C67.2154479,58.7935191 75.873349,58.0017195 84.4073746,54.8110854 C91.4230868,54.307213 98.1776559,46.7541484 94.3341638,42.2745383 C84.7672835,41.4643248 74.7484245,42.6612311 64.1754733,44.7671165 C52.4575096,47.199431 41.8125766,51.8280267 29.9891512,53.8167325 C18.460349,55.3668517 32.3042861,58.0803973 29.0014943,58.6880574 C22.9918529,60.7738549 36.1745621,62.1800106 28.2230867,64.3829877 C23.3132599,63.4488986 18.1992058,61.7615119 20.2983953,56.5821719 C9.26007348,58.0218075 -0.444074448,62.5985093 8.27911252,73.8326885 L8.92694851,73.8393844 L8.92694851,73.8393844 Z M35.535096,60.2900704 C38.11807,50.75667 49.3974471,68.1377581 39.7719769,61.5589585 C38.6269645,60.6951772 36.7303283,59.9954473 35.535096,60.2900704 L35.535096,60.2900704 Z M36.0372945,55.6664968 C39.7719769,52.8876654 38.0193043,57.2300079 36.0372945,55.6664968 L36.0372945,55.6664968 Z M40.7780478,55.7451745 C41.1195427,51.3576341 51.6406001,58.0670053 42.5123064,57.3220776 L40.7780478,55.7451745 L40.7780478,55.7451745 Z M47.2647777,53.1370906 C49.6385023,50.3632812 47.9527896,55.594515 47.2647777,53.1370906 L47.2647777,53.1370906 Z M48.9270545,52.025558 C52.8760083,47.2848047 71.2698633,48.9973014 57.805923,51.5601875 C54.1967902,48.8399459 51.4313508,53.1622005 48.9270545,52.025558 L48.9270545,52.025558 Z M72.9371621,48.3243555 C72.342894,35.3693097 84.8710711,52.9211453 72.9371621,48.3243555 L72.9371621,48.3243555 Z M79.751995,48.2841796 C82.2428993,41.7589479 89.422663,45.6627038 80.9087254,46.9700937 C81.0911908,47.6698235 80.6542782,50.3448673 79.751995,48.2841796 L79.751995,48.2841796 Z M24.7646134,82.9023923 C32.2055204,78.3441045 16.8650319,78.9467426 24.7646134,82.9023923 L24.7646134,82.9023923 Z M30.2703824,84.4257276 C32.8801403,81.6535922 24.593866,83.3008031 30.2703824,84.4257276 L30.2703824,84.4257276 Z M14.0543946,72.9237093 C18.3046674,69.6543974 9.01901822,71.6816051 14.0543946,72.9237093 L14.0543946,72.9237093 Z M233.818107,210.407229 C233.941983,206.613957 230.56721,212.11303 233.818107,210.407229 L233.818107,210.407229 Z M211.487017,195.163832 C212.121461,190.803076 208.616116,195.543829 211.487017,195.163832 L211.487017,195.163832 Z M239.95832,211.878671 C245.902676,211.898759 257.972179,210.027232 245.038895,210.033928 C243.004991,210.348639 233.210447,210.283354 239.95832,211.878671 L239.95832,211.878671 Z M35.1099014,81.7506839 C39.9226364,81.4242549 42.636182,76.4474684 34.1741383,76.7286995 C21.0634109,75.3761117 45.7414424,81.2217016 32.4934475,79.5477067 C30.715665,80.7245251 35.0044397,82.0787869 35.1099014,81.7506839 L35.1099014,81.7506839 Z M39.3467822,83.8967453 C38.8429098,80.8098988 37.8552528,85.5372602 39.3467822,83.8967453 L39.3467822,83.8967453 Z M44.3754626,70.4913948 C46.4612602,67.9017248 41.4844736,69.798361 44.3754626,70.4913948 L44.3754626,70.4913948 Z M28.3670503,43.7392837 C36.9596656,40.8231848 48.7044132,37.5404809 52.7588287,45.1789193 C48.6324314,40.2155247 51.0915298,35.3241118 54.9885897,42.5892493 C60.5010547,49.9330645 63.2597981,39.2479556 59.6757752,36.7821613 C63.7636705,41.8560396 68.4056582,44.2565481 62.4094087,37.1035683 C68.9296185,29.2625766 49.3639672,38.1297271 44.917837,38.0376574 C42.7801456,38.9985304 22.8294754,43.1249276 28.3670503,43.7392837 L28.3670503,43.7392837 Z M33.4024266,34.1020956 C38.3005355,30.407589 50.3449281,36.3050728 42.6160941,30.426003 C41.8577744,29.7597531 25.6936805,34.8855252 33.4024266,34.1020956 L33.4024266,34.1020956 Z M51.2606033,34.8403273 C56.9890135,34.9842909 48.789787,27.1366032 55.6163378,30.6938422 C54.4981093,27.0328155 47.6648624,26.3464776 44.3235688,24.8817322 C42.4336287,28.2297218 48.1670609,34.8855252 51.2606033,34.8403273 L51.2606033,34.8403273 Z M36.5344709,18.6293616 C38.5164808,15.9425999 33.0559097,19.9970153 36.5344709,18.6293616 L36.5344709,18.6293616 Z M43.8330883,20.3753381 C53.0718657,19.1533219 41.4777776,16.3996005 41.9682581,20.2782464 L43.8330883,20.3753381 L43.8330883,20.3753381 Z M30.2050966,9.71701318 C23.6982787,1.2231635 42.4403246,11.1432568 35.8280451,2.24932232 C30.2636864,-2.17671996 24.9219689,7.23950086 30.2050966,9.71701318 L30.2050966,9.71701318 Z M113.6755,54.6738178 C116.658559,49.3890162 101.363268,47.5459479 111.66838,52.8022916 C112.615861,53.1170027 112.40159,55.0387487 113.6755,54.6738178 L113.6755,54.6738178 Z\"\u003e\u003c/path\u003e","\t\t\u003cg transform=\"translate(0.000000, 244.000000)\"\u003e","\t\t\t\u003cpath d=\"M53.1076167,7.49458425 C52.4484426,10.1012239 52.0390499,14.4739527 51.8856572,20.611734 C51.8856572,21.818147 51.342564,22.4213535 50.2543049,22.4213535 C49.1650094,22.4213535 48.4073738,21.8948434 47.9782887,20.8459689 C46.8122968,18.0082037 45.7074547,16.0286085 44.6544345,14.8988919 C43.4117462,13.5795073 41.7596653,12.7814506 39.699228,12.5099041 C37.4843616,12.1585519 31.9663697,11.9844304 23.1442159,11.9844304 C21.1241997,11.9844304 19.8006693,12.1989729 19.1808798,12.6280579 C18.7922159,12.8985681 18.5984021,13.4820822 18.5984021,14.3765276 L18.5984021,40.7859851 C18.5984021,41.6804304 19.1611875,42.1053697 20.2857219,42.0690944 C23.7474223,42.0286733 28.7596329,41.7934021 35.3264993,41.3684628 C36.6096086,41.2109243 37.4760701,40.7942766 37.9217381,40.1133373 C38.3715519,39.4334345 38.8089284,37.6766733 39.2338677,34.8378717 C39.5043778,33.2832158 40.4195519,32.6800094 41.9742078,33.032398 C43.2946288,33.3039446 43.86156,33.9071511 43.6667098,34.8378717 C42.5774142,40.1257745 42.2250256,47.0046085 42.6136895,55.477483 C42.655147,56.4859365 42.0146288,57.0321389 40.6910985,57.1098717 C39.6018029,57.2269891 38.9219001,56.6434749 38.6503535,55.3603656 C37.6429365,50.5025842 35.7638758,47.9073454 33.026645,47.574649 C30.2863049,47.2471349 25.8244426,47.0813049 19.6462402,47.0813049 C18.946645,47.0813049 18.5984021,47.3321227 18.5984021,47.8379041 L18.5984021,74.0732401 C18.5984021,76.01656 19.3145802,77.3400903 20.7521187,78.0365762 C21.8818353,78.6200903 24.3102078,79.145564 28.039309,79.6119608 C29.9463535,79.8057745 30.7796491,80.6442523 30.54956,82.118066 C30.3142887,83.4011753 28.6062402,83.9069567 25.4160863,83.6354102 C16.2052685,82.895394 8.6061106,82.935815 2.62275837,83.753564 C0.949948653,83.9836531 0.116653106,83.3037502 0.116653106,81.7128191 C0.116653106,80.7002199 0.949948653,80.1177421 2.62275837,79.963313 C6.43166525,79.534228 8.33456404,76.1906814 8.33456404,69.9357826 L8.33456404,20.0282199 C8.33456404,17.466147 7.87749521,15.4938069 6.96646687,14.1132725 C6.05129278,12.7327381 4.35049926,11.4776126 1.86512274,10.3520417 C0.310466871,9.6524466 -0.272010861,8.7009972 0.116653106,7.49458425 C0.310466871,6.75767737 0.622434483,6.34828465 1.04737375,6.2715883 C1.43603772,6.15447089 2.46832922,6.23116724 4.13595675,6.50582312 C6.5860944,6.89448708 12.3590499,7.08933729 21.4517138,7.08933729 C32.1809122,7.08933729 41.4476976,6.85406603 49.2624345,6.38870571 C51.8649284,6.23116724 53.1687665,6.44570976 53.1687665,7.02818749 C53.1687665,7.18676239 53.1490742,7.3401551 53.1076167,7.49458425 L53.1076167,7.49458425 Z\"\u003e\u003c/path\u003e","\t\t\t\u003cpath d=\"M90.9152389,81.5023158 C90.9152389,83.0569717 90.0404858,83.7368745 88.2920162,83.5420243 C82.9315628,83.0362429 76.2838543,83.1129393 68.3561457,83.7731498 C66.7610688,83.9306883 65.7816356,83.8902672 65.4095547,83.6601781 C65.040583,83.4249069 64.85817,82.7854251 64.85817,81.7324049 C64.85817,80.8016842 65.915336,80.0160648 68.0327773,79.3724372 C70.1543644,78.7329555 71.2104939,76.8176194 71.2104939,73.6316113 L71.2104939,20.8707368 C71.2104939,17.721004 70.7534251,15.4087126 69.8423968,13.930753 C68.9272227,12.45383 67.3238543,11.3075304 65.0322915,10.4939271 C63.8258785,10.0648421 63.2226721,9.46163563 63.2226721,8.68430769 C63.2226721,7.51831579 64.0974251,6.64356275 65.8458947,6.06108502 C68.4898462,5.20602429 71.2312227,3.88663968 74.0689879,2.09671255 C76.4009717,0.69648583 77.8789312,0 78.4976842,0 C79.9352227,0 80.656583,0.987724696 80.656583,2.97146559 C80.656583,2.81807287 80.5788502,4.76139271 80.4213117,8.8014251 C80.3083401,12.6476437 80.267919,16.4368583 80.3083401,20.1701053 L80.5384291,72.2303482 C80.5384291,74.602753 81.1219433,76.3242753 82.2879352,77.3928421 C83.4539271,78.4614089 85.4573603,79.170332 88.2920162,79.5185749 C90.0404858,79.7123887 90.9152389,80.3725992 90.9152389,81.5023158 L90.9152389,81.5023158 Z\"\u003e\u003c/path\u003e","\t\t\t\u003cpath d=\"M143.643984,78.0644534 C143.643984,78.8822024 142.157733,80.1134899 139.186267,81.7645344 C136.210656,83.4166154 133.82996,84.2426559 132.044178,84.2426559 C130.525798,84.2426559 129.186721,83.505749 128.020729,82.0277895 C126.854737,80.5508664 126.035951,79.8139595 125.570591,79.8139595 C125.222348,79.8139595 123.376453,80.6109798 120.03187,82.2019109 C116.69247,83.7969879 113.328194,84.5950445 109.947336,84.5950445 C106.761328,84.5950445 104.096648,83.6601781 101.959514,81.7977004 C99.6275304,79.7362267 98.4615385,76.9388826 98.4615385,73.4004858 C98.4615385,66.676081 106.158121,61.8576842 121.550251,58.9432227 C124.190057,58.4374413 125.534316,57.3678381 125.570591,55.7364858 L125.688745,52.0042753 C125.92298,45.6312227 123.104907,42.4452146 117.234526,42.4452146 C115.562753,42.4452146 113.980113,43.9387206 112.481425,46.930915 C110.987919,49.9272551 108.838348,51.5378785 106.039968,51.7731498 C102.85396,52.0809717 101.258883,50.7408583 101.258883,47.748664 C101.258883,45.8820405 103.631287,43.7086316 108.371951,41.2180729 C113.347887,38.6155789 118.130008,37.3117409 122.716243,37.3117409 C130.60353,37.3117409 134.509862,41.0646802 134.433166,48.566413 L134.197895,72.5827368 C134.161619,75.1095709 135.231223,76.3719514 137.404632,76.3719514 C137.833717,76.3719514 138.651466,76.2755628 139.853733,76.0807126 C141.061182,75.8868988 141.760777,75.7894737 141.955628,75.7894737 C143.081198,75.7894737 143.643984,76.5502186 143.643984,78.0644534 L143.643984,78.0644534 Z M125.688745,64.7731822 C125.729166,63.801004 125.502186,63.1573765 125.016097,62.8495547 C124.530008,62.5386235 123.765117,62.4774737 122.716243,62.6723239 C113.347887,64.3440972 108.664227,67.3964049 108.664227,71.8261377 C108.664227,76.2952551 111.092599,78.5298138 115.951417,78.5298138 C117.894737,78.5298138 119.899206,78.1618785 121.955498,77.4249717 C124.368324,76.5668016 125.570591,75.5386559 125.570591,74.3322429 L125.688745,64.7731822 Z\"\u003e\u003c/path\u003e","\t\t\t\u003cpath d=\"M186.987789,71.3566316 C186.987789,75.4775061 185.399968,78.7536842 182.234688,81.1820567 C179.068372,83.6114656 174.744356,84.82617 169.26264,84.82617 C165.611271,84.82617 161.954721,84.4375061 158.303352,83.6601781 C155.153619,82.9595466 153.327417,82.3200648 152.821636,81.7365506 C152.509668,81.1903482 152.356275,78.5308502 152.356275,73.7487287 C152.356275,71.6882915 152.821636,70.6197247 153.756502,70.5430283 C154.688259,70.4248745 155.485279,70.9316923 156.14549,72.0572632 C159.059951,77.1503158 163.76434,79.6968421 170.25451,79.6968421 C175.732081,79.6968421 178.473457,77.7897976 178.473457,73.9798543 C178.473457,72.3122267 177.853668,70.9109636 176.606834,69.7853927 C175.245992,68.5022834 172.607223,67.0046316 168.680162,65.2955466 C163.003595,62.769749 159.214381,60.5548826 157.311482,58.6478381 C155.250008,56.6278219 154.221862,53.9071741 154.221862,50.4858947 C154.221862,46.2872874 155.833522,43.024583 159.059951,40.6925992 C162.052146,38.4373117 166.055903,37.3117409 171.068113,37.3117409 C174.217846,37.3117409 177.092923,37.5625587 179.699563,38.0693765 C182.497943,38.5751579 183.955174,39.1949474 184.072291,39.9349636 C184.380113,42.1094089 185.023741,45.2591417 185.995919,49.3810526 C186.113036,49.8826883 185.565798,50.292081 184.36353,50.6030121 C183.080421,50.8745587 182.226397,50.6600162 181.797312,49.9635304 C178.728421,44.9471741 174.841781,42.4410688 170.137393,42.4410688 C164.813215,42.4410688 162.149571,44.1501538 162.149571,47.5714332 C162.149571,49.4774413 162.869895,50.9916761 164.307433,52.117247 C165.590543,53.0894251 168.602429,54.6078057 173.34413,56.6682429 C178.319028,58.8053765 181.699887,60.729004 183.489814,62.4370526 C185.821798,64.651919 186.987789,67.6275304 186.987789,71.3566316 L186.987789,71.3566316 Z\"\u003e\u003c/path\u003e","\t\t\t\u003cpath d=\"M255.575061,81.5593198 C255.575061,82.9191255 254.659887,83.6404858 252.833684,83.7171822 C250.113036,83.7576032 246.553911,83.951417 242.165636,84.2996599 C239.988081,84.7287449 238.433425,84.4582348 237.501668,83.4860567 C231.359741,76.8787692 226.149571,69.9595142 221.874267,62.7293279 C221.526024,62.1095385 221.080356,61.7975709 220.534154,61.7975709 C219.873943,61.7975709 218.72868,62.381085 217.097328,63.5470769 C215.26698,64.5555304 214.355951,65.9961781 214.355951,67.8586559 C214.355951,69.1821862 214.392227,71.085085 214.473069,73.5756437 C214.550802,76.0610202 215.169555,77.6923725 216.335547,78.4697004 C217.153296,79.0169393 219.040648,79.4418785 221.991385,79.7538462 C223.817587,79.988081 224.732761,80.6679838 224.732761,81.7935547 C224.732761,82.6890364 224.586623,83.2435304 224.295385,83.4539271 C224.004146,83.6684696 223.234073,83.7171822 221.991385,83.6000648 C218.104745,83.2518219 211.537879,83.4456356 202.287676,84.1825425 C199.955692,84.3773927 198.692275,84.0851174 198.497425,83.3077895 C198.420729,83.0372794 198.380308,82.6486154 198.380308,82.1417976 C198.380308,80.9395304 199.567028,80.0243563 201.939433,79.4056032 C204.076567,78.8583644 205.145134,76.3522591 205.145134,71.8831417 L205.145134,20.9277409 C205.145134,17.7417328 204.834202,15.5268664 204.210267,14.2841781 C203.356243,12.6891012 201.566316,11.4453765 198.845668,10.5509312 C197.566704,10.1259919 196.923077,9.52278543 196.923077,8.74545749 C196.923077,7.61574089 197.838251,6.74098785 199.663417,6.12223482 C202.578915,5.15005668 205.35553,3.80994332 207.999482,2.09774899 C210.137652,0.700631579 211.461182,0 211.962818,0 C213.558931,0 214.355951,1.00845344 214.355951,3.03261538 C214.355951,2.75795951 214.336259,4.68469636 214.294802,8.80246154 C214.258526,11.6402267 214.238834,15.45017 214.238834,20.2312551 L214.355951,56.725247 C214.355951,57.7368097 214.627498,58.2394818 215.169555,58.2394818 C215.753069,58.2394818 216.647514,57.7368097 217.853927,56.725247 C221.080356,54.198413 225.044729,50.8952874 229.744972,46.8137976 C230.679838,45.8426559 231.145198,45.0653279 231.145198,44.4818138 C231.145198,43.4339757 229.57085,42.6929231 226.425263,42.2679838 C225.064421,42.1094089 224.420794,41.3528097 224.49749,39.9919676 C224.614607,38.6321619 225.295547,38.0486478 226.538235,38.243498 C229.339725,38.6321619 233.421215,38.8467045 238.780632,38.8871255 C242.513879,38.9234008 246.226397,38.9441296 249.919223,38.9441296 C251.12149,38.9845506 251.724696,39.7007287 251.724696,41.1019919 C251.724696,42.4213765 250.773247,43.1417004 248.870348,43.2598543 C245.874008,43.3728259 243.055935,44.0527287 240.417166,45.2995628 C236.72434,46.9682267 232.776551,49.903417 228.57898,54.1020243 C228.271158,54.3362591 228.112583,54.627498 228.112583,54.9757409 C228.112583,55.518834 228.772794,56.8226721 230.09736,58.8831093 C234.955142,66.2677247 239.542413,71.8427206 243.853992,75.6153522 C246.615061,77.9846478 249.197862,79.170332 251.606543,79.170332 C253.39647,79.170332 254.505457,79.2957409 254.930397,79.5507045 C255.360518,79.8025587 255.575061,80.47417 255.575061,81.5593198 L255.575061,81.5593198 Z\"\u003e\u003c/path\u003e","\t\t\u003c/g\u003e","\t\u003c/g\u003e","\u003c/svg\u003e"],"stylingDirectives":null,"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/UskoKruM/flask-login-mysql/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/UskoKruM/flask-login-mysql/security/dependabot","repoSecurityAndAnalysisPath":"/UskoKruM/flask-login-mysql/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"flask.svg","displayUrl":"https://viewscreen.githubusercontent.com/view/svg?browser=opera\u0026bypass_fastly=true\u0026color_mode=auto\u0026commit=243108a5a343fdf4973402309f278784367b1ff6\u0026device=unknown_device\u0026docs_host=https%3A%2F%2Fdocs.github.com\u0026enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f55736b6f4b72754d2f666c61736b2d6c6f67696e2d6d7973716c2f323433313038613561333433666466343937333430323330396632373837383433363762316666362f7372632f7374617469632f696d672f666c61736b2e737667\u0026logged_in=false\u0026nwo=UskoKruM%2Fflask-login-mysql\u0026path=src%2Fstatic%2Fimg%2Fflask.svg\u0026platform=windows\u0026repository_id=448725591\u0026repository_type=Repository\u0026version=101","headerInfo":{"blobSize":"36.2 KB","deleteInfo":{"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":"https://desktop.github.com","gitLfsPath":null,"onBranch":true,"shortPath":"928046a","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2FUskoKruM%2Fflask-login-mysql%2Fblob%2Fmaster%2Fsrc%2Fstatic%2Fimg%2Fflask.svg","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"13","truncatedSloc":"13"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"SVG","languageID":337,"large":false,"loggedIn":false,"newDiscussionPath":"/UskoKruM/flask-login-mysql/discussions/new","newIssuePath":"/UskoKruM/flask-login-mysql/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/UskoKruM/flask-login-mysql/blob/master/src/static/img/flask.svg","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/UskoKruM/flask-login-mysql/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":{"identityUUID":"aa63c6d2-9751-4b7c-928e-e0c685369042","renderFileType":"svg","size":37040},"shortPath":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"UskoKruM","repoName":"flask-login-mysql","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotInfo":null,"csrf_tokens":{"/UskoKruM/flask-login-mysql/branches":{"post":"j-TDS9I4TLkd22Qwjg4P0QqH0iJTSmQLUdB1Mt0f5QVdb--Lcz5rq_FLB9pXA8FXwGVtHxPmJlzMYXtGfO6ihA"},"/repos/preferences":{"post":"4M26Eajvb0cBhVvyqZiTclx7qvuav_3Tt6Vx2suQKs7XHCH6YeCAUdwPLXZN8NQKsXPpbGxPuKm911NaX4PvAw"}}},"title":"flask-login-mysql/src/static/img/flask.svg at master · UskoKruM/flask-login-mysql","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-83d4418b406d.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-fb8f4fb0e8c0.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":true,"code_nav_ui_events":false,"ref_selector_v2":false,"blob_firefox_separate_characters":true,"copilot_conversational_ux":false,"react_code_view_delete":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false,"copilot_smell_icebreaker_ux":false,"lfs_download_button":true}}}</script>
+  <div data-target="react-app.reactRoot"></div>
+</react-app>
+</turbo-frame>
+
+
+
+  </div>
+
+</turbo-frame>
+
+    </main>
+  </div>
+
+  </div>
+
+          <footer class="footer width-full container-xl p-responsive" role="contentinfo">
+  <h2 class='sr-only'>Footer</h2>
+
+  <div class="position-relative d-flex flex-items-center pb-2 f6 color-fg-muted border-top color-border-muted flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap mt-6 pt-6">
+    <div class="list-style-none d-flex flex-wrap col-0 col-lg-2 flex-justify-start flex-lg-justify-between mb-2 mb-lg-0">
+      <div class="mt-2 mt-lg-0 d-flex flex-items-center">
+        <a aria-label="Homepage" title="GitHub" class="footer-octicon mr-2" href="https://github.com">
+          <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+</svg>
+</a>        <span>
+        &copy; 2023 GitHub, Inc.
+        </span>
+      </div>
+    </div>
+
+    <nav aria-label='Footer' class="col-12 col-lg-8">
+      <h3 class='sr-only' id='sr-footer-heading'>Footer navigation</h3>
+      <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0" aria-labelledby='sr-footer-heading'>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
+          <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
+          <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com">Docs</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://support.github.com?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://services.github.com" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.blog" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
+          <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 color-fg-muted"></span>
+  </div>
+</footer>
+
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden>
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+    <template id="site-details-dialog">
+  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open>
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog>
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template>
+
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+    <template id="snippet-clipboard-copy-button">
+  <div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template>
+<template id="snippet-clipboard-copy-button-unpositioned">
+  <div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template>
+
+
+
+
+    </div>
+
+    <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite" ></div>
+  </body>
+</html>
+

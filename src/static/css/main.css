@@ -1,0 +1,24 @@
+body {
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0F2027, #203A43, #2C5364);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0F2027, #203A43, #2C5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+.bg-black {
+  background: #477706;
+}
+
+.bg-agregar {
+  background: #0a9745;
+}
+
+.bg-prof {
+  background: #494b4a;
+}
+
+/* Lista */
+
+body.lista {
+  background: white !important;
+}

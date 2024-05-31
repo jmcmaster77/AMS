@@ -3,13 +3,14 @@ import flask_login
 from utils.log import logger
 from utils.db import db
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
 from routes.home import home
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, creator, sk, DATABASE_CONEXION_URI
 
 # instancia de la app
 app = Flask(__name__)
-
+csrf = CSRFProtect()
 # llave de seguridad
 
 app.secret_key = sk
@@ -46,6 +47,7 @@ def user_loader(email):
         return
     user = User()
     user.id = email
+    user.fullname = "Jorge Martin Editar"
     return user
 
 
@@ -59,6 +61,7 @@ app.register_blueprint(home)
 
 if __name__ == '__main__':
     from waitress import serve
+    csrf.init_app(app)
     print(appinfo)
     print(creator)
     logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
