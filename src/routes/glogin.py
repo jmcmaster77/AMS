@@ -31,22 +31,24 @@ def login():
     # consultando a la db
 
     # consulta = Usuarios.query.all()
-    print("username: " + username)
-    id = 1
-    consulta = Usuarios.query.filter_by(username=username).first()
-    print("Consulta", consulta) 
-    # print("consulta", consulta[0].id, consulta[0].fullname)
-    if consulta != None:
 
-        test = "Jorge"
-        if Authenticate.login(test):
+    userdata = Usuarios.query.filter_by(username=username).first()
 
-            print("Sesion", test, "succes")
+    if userdata != None:
+        print("userdata", userdata.id, userdata.fullname)
 
-            # login_user(user)
+        
+        if Authenticate.login(userdata, password):
+
+            print("Sesion", userdata.fullname , "succes")
+
+            # login_user(user) # lo estoy realizando en auth.authenticate
             return redirect(url_for("home.home_page"))
+        else:
+            print("Sesion", userdata.fullname , "failed")
+            return redirect(url_for("login.login"))
     else:
-        print("Usuario ", username ," no encontrado")
+        print("Usuario ", username, " no encontrado")
 
     return redirect(url_for("login.login"))
 
@@ -61,7 +63,7 @@ def protected():
 
 @glogin.route('/logout')
 def logout():
-    logger.info("User id " + current_user.id + " logout")
+    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " logout")
     logout_user()
 
     return 'Logged out'

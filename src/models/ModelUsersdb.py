@@ -3,7 +3,7 @@ from utils.db import db
 class Usuarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20))
-    password = db.Column(db.String(120))
+    password = db.Column(db.String(240))
     fullname = db.Column(db.String(50))
     rol = db.Column(db.Integer)
 

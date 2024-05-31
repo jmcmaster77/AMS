@@ -7,6 +7,7 @@ from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
 from routes.home import home
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, creator, sk, DATABASE_CONEXION_URI
+from utils.auth import Authenticate
 
 # instancia de la app
 app = Flask(__name__)
@@ -14,6 +15,7 @@ csrf = CSRFProtect()
 # llave de seguridad
 
 app.secret_key = sk
+
 
 
 # db conexion
@@ -42,13 +44,8 @@ users = {'jmcmaster77@gmail.com': {'password': '1234'}}
 
 
 @login_manager.user_loader
-def user_loader(email):
-    if email not in users:
-        return
-    user = User()
-    user.id = email
-    user.fullname = "Jorge Martin Editar"
-    return user
+def user_loader(id):
+    return Authenticate.get_by_id(id)
 
 
 # registrando Blueprint

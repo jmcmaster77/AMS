@@ -15,7 +15,8 @@ class User(UserMixin):
     def check_password(sefl, hashed_password, password):
         # print(hashed_password)
         # print(password)
-        # check_password_hash(hashed_password, password)
+        # print(generate_password_hash(password))
+        # print(check_password_hash(hashed_password, password))
         return check_password_hash(hashed_password, password)
     
 
