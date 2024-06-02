@@ -1,9 +1,38 @@
 {% extends './base.html' %} {% block title %}Admin me Store | home{% endblock %}
 {% block body %}
 {% include('partials/_navbar.html') %}
-<div class="form">
-  <h1>Bienvenido {{ current_user.fullname }}</h1>
-  <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Logout </a>
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between">
+            <h5> Inicio </h5>
+
+            
+            <div class="mb-3">
+                <label for="" class="form-label">Modo</label>
+                <label for="" class="text-danger">{{ current_user.rol }}</label>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h4>Bienvenido {{ current_user.fullname }}</h4>
+            </div>
+            
+            
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
 </div>
+
 
 {% endblock %}

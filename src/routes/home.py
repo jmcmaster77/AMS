@@ -9,7 +9,17 @@ home = Blueprint("home", __name__)
 @login_required
 def home_page():
     logger.info("Home page session id " + current_user.fullname)
-    flash("All OK")
+    # flash("Todo OK", 'success')
+    # example 
+    # flash("All OK")
+    # flash("All OK", 'success')
+    # flash("All Normal", 'info')
+    # flash("Not So OK", 'error')
+    # flash("So So", 'warning')
+    # example custom titles  
+    # flash("Message", 'Custom Title')
+    # flash({'title': "Custom Title", 'message': "Error Message"}, 'error')
+    flash({'title': "AMS", 'message': "Bienvenido "}, 'success')
     return render_template("home.html", fullname=current_user.fullname)
 
 

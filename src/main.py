@@ -65,5 +65,7 @@ if __name__ == '__main__':
     print(storeinfo)
     print(creator)
     logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
-    serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
-    # app.run(host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
+    # ejecutar en produccion 
+    # serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
+    # ejecutar en desarrollo 
+    app.run(host=FLASK_RUN_HOST, port=FLASK_RUN_PORT, debug=True)
