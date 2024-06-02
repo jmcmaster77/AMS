@@ -21,11 +21,16 @@
     <!-- Estilos Animado-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css_4.1.1_animate.min.css')}}">
     
+    {{ toastr.include_jquery() }}
+    {{ toastr.include_toastr_css() }}
+    {{ toastr.message() }}
+
     {% block customCSS %}
 
     {% endblock %}
 </head>
 <body class="text-center">
+    {{ toastr.include_toastr_js() }}
     <div class="container">
         <div class="container p-2 ">
             

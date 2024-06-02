@@ -9,4 +9,11 @@ home = Blueprint("home", __name__)
 @login_required
 def home_page():
     logger.info("Home page session id " + current_user.fullname)
+    flash("All OK")
     return render_template("home.html", fullname=current_user.fullname)
+
+
+@home.route("/acercade")
+@login_required
+def acercade():
+    return render_template("acerca.html")

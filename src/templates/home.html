@@ -1,8 +1,9 @@
-{% extends './base.html' %}
-{% block title %}Admin me Store | home{% endblock %}
-
+{% extends './base.html' %} {% block title %}Admin me Store | home{% endblock %}
 {% block body %}
-
-<h1> Bienvenido {{ current_user.fullname }} </h1>
+{% include('partials/_navbar.html') %}
+<div class="form">
+  <h1>Bienvenido {{ current_user.fullname }}</h1>
+  <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Logout </a>
+</div>
 
 {% endblock %}

@@ -6,8 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
 from routes.home import home
-from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, creator, sk, DATABASE_CONEXION_URI
+from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
+from flask_toastr import Toastr 
 
 # instancia de la app
 app = Flask(__name__)
@@ -16,6 +17,7 @@ csrf = CSRFProtect()
 
 app.secret_key = sk
 
+toastr = Toastr(app)
 
 
 # db conexion
@@ -60,6 +62,7 @@ if __name__ == '__main__':
     from waitress import serve
     csrf.init_app(app)
     print(appinfo)
+    print(storeinfo)
     print(creator)
     logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
     serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)

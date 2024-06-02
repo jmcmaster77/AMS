@@ -1,5 +1,5 @@
-from flask import Blueprint, request, redirect, url_for, render_template
-from flask_login import login_required, login_user, logout_user, UserMixin, current_user
+from flask import Blueprint, request, redirect, url_for, render_template, flash
+from flask_login import login_required, logout_user, UserMixin, current_user
 from utils.log import logger
 from utils.db import db
 from models.ModelUsersdb import Usuarios
@@ -63,7 +63,13 @@ def protected():
 
 @glogin.route('/logout')
 def logout():
-    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " logout")
-    logout_user()
+    print("upa", current_user.is_authenticated)
+    if current_user.is_authenticated:
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " logout")
+        logout_user()
+        flash("User logged out") 
+        return redirect(url_for("login.tologin"))
+    else:
+        flash("No user not logged") 
 
-    return 'Logged out'
+    return redirect(url_for("login.tologin"))

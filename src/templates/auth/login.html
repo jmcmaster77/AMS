@@ -11,19 +11,7 @@
         <h2 class="h3 mb-3 fw-normal">Admin me Store</h2>
     </div>
     <img class="mb-4" src="{{ url_for('static', filename='img/auth.png') }}" alt="" width="175" height="150">
-    {% with messages = get_flashed_messages() %}
 
-    {% if messages %}
-    <br />
-    {% for message in messages %}
-    <div class="alert alert-primary alert-dismissible" role="alert">
-        <strong>{{ message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    {% endif %}
-
-    {% endwith %}
     <div class="mb-2 text-white">
         <h2 class="h3 mb-3 fw-normal">Inicia sesión</h2>
     </div>
