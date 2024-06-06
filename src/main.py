@@ -17,8 +17,11 @@ csrf = CSRFProtect()
 
 app.secret_key = sk
 
-toastr = Toastr(app)
+toastr = Toastr()
+toastr.init_app(app)
 
+app.config['TOASTR_CLOSE_BUTTON'] = 'false'
+app.config['TOASTR_TIMEOUT'] = '1000'
 
 # db conexion
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONEXION_URI
