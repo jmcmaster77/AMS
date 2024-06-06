@@ -19,8 +19,15 @@ def home_page():
     # example custom titles  
     # flash("Message", 'Custom Title')
     # flash({'title': "Custom Title", 'message': "Error Message"}, 'error')
-    print ("current app: ", current_app.config.get('TOASTR_CLOSE_BUTTON'))
-    flash({'title': "AMS", 'message': "Bienvenido ", '': "false"}, 'success')
+    print ("current app:TOASTR_CLOSE_BUTTON | ", current_app.config.get('TOASTR_CLOSE_BUTTON'))
+    # print ("current app.config: ", current_app.config)
+    current_app.config['TOASTR_CLOSE_BUTTON'] = 'false'
+    current_app.config['TOASTR_TIMEOUT'] = '1500'
+    print ("current app: TOASTR_CLOSE_BUTTON |", current_app.config.get('TOASTR_CLOSE_BUTTON'))
+    flash({'title': "AMS", 'message': "Bienvenido"}, 'success')
+    
+    # app.config['TOASTR_CLOSE_BUTTON'] = 'false'
+    # app.config['TOASTR_TIMEOUT'] = '1000'
     
     return render_template("home.html", fullname=current_user.fullname)
 
