@@ -1,4 +1,5 @@
 notas_ams.txt
+ams.log
 *.pyc
 .vscode
 __pycache__/
