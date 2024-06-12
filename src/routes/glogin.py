@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, render_template, flash
+from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
 from flask_login import login_required, logout_user, UserMixin, current_user
 from utils.log import logger
 from utils.db import db
@@ -67,9 +67,15 @@ def logout():
     if current_user.is_authenticated:
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " logout")
         logout_user()
-        flash("User logged out") 
+        current_app.config['TOASTR_CLOSE_BUTTON'] = 'false'
+        current_app.config['TOASTR_TIMEOUT'] = '1500'
+        
+        flash({'title': "AMS", 'message': "User logout"}, 'info')
+        
         return redirect(url_for("login.tologin"))
     else:
-        flash("No user not logged") 
+
+        flash({'title': "AMS", 'message': "No user not logged in"}, 'info')
+        
 
     return redirect(url_for("login.tologin"))

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for, flash
 import flask_login
 from utils.log import logger
 from utils.db import db
@@ -20,8 +20,8 @@ app.secret_key = sk
 toastr = Toastr()
 toastr.init_app(app)
 
-# app.config['TOASTR_CLOSE_BUTTON'] = 'false'
-# app.config['TOASTR_TIMEOUT'] = '1000'
+app.config['TOASTR_CLOSE_BUTTON'] = 'false'
+app.config['TOASTR_TIMEOUT'] = '1500'
 
 # db conexion
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONEXION_URI
@@ -35,31 +35,26 @@ login_manager = flask_login.LoginManager()
 
 login_manager.init_app(app)
 
-# eso va para models
-
-
-class User(flask_login.UserMixin):
-    pass
-
-
-# base de datos simulada se va cuando sea una consulta de verdad
-users = {'jmcmaster77@gmail.com': {'password': '1234'}}
-
 # cargando el usuario que inicio sesion de la webapp
-
 
 @login_manager.user_loader
 def user_loader(id):
     return Authenticate.get_by_id(id)
+
+# manejando en caso de respuesta 401 y 404 
+def status_401(error):
+    flash({'title': "AMS", 'message': "Por favor inicar sesión"}, 'info')
+    return redirect(url_for("login.login"))
+
+
+def status_404(error):
+    return "<h1> Pagina no encontrada </h1>", 404
 
 
 # registrando Blueprint
 app.register_blueprint(glogin)
 app.register_blueprint(home)
 
-# logger
-# logger = logging.getLogger("waitress")
-# logger.setLevel(logging.DEBUG)
 
 if __name__ == '__main__':
     from waitress import serve
@@ -67,6 +62,8 @@ if __name__ == '__main__':
     print(appinfo)
     print(storeinfo)
     print(creator)
+    app.register_error_handler(401, status_401)
+    app.register_error_handler(404, status_401)
     logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
     # ejecutar en produccion 
     # serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)

@@ -8,7 +8,7 @@ home = Blueprint("home", __name__)
 @home.route('/home')
 @login_required
 def home_page():
-    logger.info("Home page session id " + current_user.fullname)
+    logger.info("Home page session id " + str(current_user.id) + " | "+ current_user.fullname)
     # flash("Todo OK", 'success')
     # example 
     # flash("All OK")
@@ -19,11 +19,11 @@ def home_page():
     # example custom titles  
     # flash("Message", 'Custom Title')
     # flash({'title': "Custom Title", 'message': "Error Message"}, 'error')
-    print ("current app:TOASTR_CLOSE_BUTTON | ", current_app.config.get('TOASTR_CLOSE_BUTTON'))
+    # print ("current app:TOASTR_CLOSE_BUTTON | ", current_app.config.get('TOASTR_CLOSE_BUTTON'))
     # print ("current app.config: ", current_app.config)
     current_app.config['TOASTR_CLOSE_BUTTON'] = 'false'
     current_app.config['TOASTR_TIMEOUT'] = '1500'
-    print ("current app: TOASTR_CLOSE_BUTTON |", current_app.config.get('TOASTR_CLOSE_BUTTON'))
+    # print ("current app: TOASTR_CLOSE_BUTTON |", current_app.config.get('TOASTR_CLOSE_BUTTON'))
     flash({'title': "AMS", 'message': "Bienvenido"}, 'success')
     
     # app.config['TOASTR_CLOSE_BUTTON'] = 'false'

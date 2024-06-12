@@ -9,6 +9,10 @@
     <!-- scripts para fucionalidad de busqueda de la tabla -->
     
     <script src="{{url_for('static', filename='js/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js')}}"></script>
+    
+    <!-- Date toastr js  -->
+    <script src="{{url_for('static', filename='js/toastr.min.js')}}"></script>
+
     <!-- Date picker  -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/datepicker_1.9.0_css_bootstrap-datepicker.min.css')}}"/>
     <script src="{{url_for('static', filename='js/bootstrap-datepicker.min.js')}}"></script>
@@ -21,8 +25,9 @@
     <!-- Estilos Animado-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css_4.1.1_animate.min.css')}}">
     
+    <!-- Date toastr css  -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/toastr.css')}}"/>
     
-    {{ toastr.include_toastr_css() }}
     {{ toastr.message() }}
 
     {% block customCSS %}
@@ -30,7 +35,7 @@
     {% endblock %}
 </head>
 <body class="text-center">
-    {{ toastr.include_toastr_js() }}
+    
     <div class="container">
         <div class="container p-2 ">
             
