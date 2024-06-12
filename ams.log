@@ -553,3 +553,7 @@
 2024-06-12 02:22:57,501 - INFO - Home page session id 1 | Jorge Martin
 2024-06-12 02:23:53,509 - INFO - Servidor running on port: 5000
 2024-06-12 02:23:55,604 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:25:20,533 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:25:26,465 - INFO - User id 1 | Jorge Martin logout
+2024-06-12 02:25:26,570 - INFO - to login
+2024-06-12 02:25:39,074 - INFO - Home page session id 1 | Jorge Martin
