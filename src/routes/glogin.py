@@ -63,7 +63,7 @@ def protected():
 
 @glogin.route('/logout')
 def logout():
-    print("upa", current_user.is_authenticated)
+    
     if current_user.is_authenticated:
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " logout")
         logout_user()

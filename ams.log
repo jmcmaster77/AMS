@@ -518,3 +518,38 @@
 2024-06-12 01:43:39,096 - INFO - User id 1 | Jorge Martin logout
 2024-06-12 01:43:39,175 - INFO - to login
 2024-06-12 01:43:44,667 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:45:02,037 - INFO - User id 1 | Jorge Martin logout
+2024-06-12 01:45:02,132 - INFO - to login
+2024-06-12 01:45:09,375 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:45:14,470 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:50:18,582 - INFO - Servidor running on port: 5000
+2024-06-12 01:50:20,015 - INFO - Servidor running on port: 5000
+2024-06-12 01:50:21,224 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:53:45,485 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:53:48,627 - INFO - User id 1 | Jorge Martin logout
+2024-06-12 01:53:48,927 - INFO - to login
+2024-06-12 01:53:59,569 - INFO - Servidor running on port: 5000
+2024-06-12 01:55:03,457 - INFO - Servidor running on port: 5000
+2024-06-12 01:55:59,239 - INFO - Servidor running on port: 5000
+2024-06-12 01:58:47,862 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 01:59:07,598 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:03:18,464 - INFO - User id 1 | Jorge Martin logout
+2024-06-12 02:03:18,573 - INFO - to login
+2024-06-12 02:06:05,549 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:07:07,738 - INFO - Servidor running on port: 5000
+2024-06-12 02:08:40,156 - INFO - Servidor running on port: 5000
+2024-06-12 02:08:52,103 - INFO - Servidor running on port: 5000
+2024-06-12 02:09:21,372 - INFO - Servidor running on port: 5000
+2024-06-12 02:09:48,657 - INFO - Servidor running on port: 5000
+2024-06-12 02:09:51,276 - INFO - User id 1 | Jorge Martin logout
+2024-06-12 02:09:51,356 - INFO - to login
+2024-06-12 02:10:06,818 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:10:39,342 - INFO - Servidor running on port: 5000
+2024-06-12 02:18:03,610 - INFO - Servidor running on port: 5000
+2024-06-12 02:18:05,049 - INFO - Servidor running on port: 5000
+2024-06-12 02:18:34,467 - INFO - Servidor running on port: 5000
+2024-06-12 02:20:39,454 - INFO - Servidor running on port: 5000
+2024-06-12 02:21:42,320 - INFO - Servidor running on port: 5000
+2024-06-12 02:22:57,501 - INFO - Home page session id 1 | Jorge Martin
+2024-06-12 02:23:53,509 - INFO - Servidor running on port: 5000
+2024-06-12 02:23:55,604 - INFO - Home page session id 1 | Jorge Martin

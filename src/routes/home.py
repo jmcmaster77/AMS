@@ -24,7 +24,7 @@ def home_page():
     current_app.config['TOASTR_CLOSE_BUTTON'] = 'false'
     current_app.config['TOASTR_TIMEOUT'] = '1500'
     # print ("current app: TOASTR_CLOSE_BUTTON |", current_app.config.get('TOASTR_CLOSE_BUTTON'))
-    flash({'title': "AMS", 'message': "Bienvenido"}, 'success')
+    flash({'title': "AMS", 'message': "Bienvenido " + current_user.fullname}, 'success')
     
     # app.config['TOASTR_CLOSE_BUTTON'] = 'false'
     # app.config['TOASTR_TIMEOUT'] = '1000'
@@ -36,3 +36,9 @@ def home_page():
 @login_required
 def acercade():
     return render_template("acerca.html")
+
+@home.route("/error")
+@login_required
+def error():
+    flash({'title': "AMS", 'message': "Recurso no encontrado"}, 'error')
+    return render_template("error.html")

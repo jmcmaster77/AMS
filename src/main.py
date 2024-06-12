@@ -8,7 +8,7 @@ from routes.glogin import glogin
 from routes.home import home
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
-from flask_toastr import Toastr 
+from flask_toastr import Toastr
 
 # instancia de la app
 app = Flask(__name__)
@@ -37,18 +37,23 @@ login_manager.init_app(app)
 
 # cargando el usuario que inicio sesion de la webapp
 
+
 @login_manager.user_loader
 def user_loader(id):
     return Authenticate.get_by_id(id)
 
-# manejando en caso de respuesta 401 y 404 
+# manejando en caso de respuesta 401 y 404
+
+
 def status_401(error):
+    
     flash({'title': "AMS", 'message': "Por favor inicar sesión"}, 'info')
     return redirect(url_for("login.login"))
 
 
 def status_404(error):
-    return "<h1> Pagina no encontrada </h1>", 404
+    
+    return redirect(url_for("home.error"))
 
 
 # registrando Blueprint
@@ -62,10 +67,12 @@ if __name__ == '__main__':
     print(appinfo)
     print(storeinfo)
     print(creator)
+
     app.register_error_handler(401, status_401)
-    app.register_error_handler(404, status_401)
+    app.register_error_handler(404, status_404)
+
     logger.info("Servidor running on port: " + str(FLASK_RUN_PORT))
-    # ejecutar en produccion 
+    # ejecutar en produccion
     # serve(app, host=FLASK_RUN_HOST, port=FLASK_RUN_PORT)
-    # ejecutar en desarrollo 
+    # ejecutar en desarrollo
     app.run(host=FLASK_RUN_HOST, port=FLASK_RUN_PORT, debug=True)
