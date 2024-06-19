@@ -44,7 +44,11 @@ def user_loader(id):
     return Authenticate.get_by_id(id)
 
 # manejando en caso de respuesta 401 y 404
+# validacion del CSRF token | experimental 
+def status_400(error):
 
+    flash({'title': "AMS", 'message': "Token experiado"}, 'info')
+    return redirect(url_for("login.login"))
 
 def status_401(error):
     
@@ -70,6 +74,7 @@ if __name__ == '__main__':
     print(storeinfo)
     print(creator)
 
+    app.register_error_handler(400, status_400)
     app.register_error_handler(401, status_401)
     app.register_error_handler(404, status_404)
 

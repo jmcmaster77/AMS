@@ -1,6 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
 from flask_login import login_required, current_user
 from models.ModelUsersdb import Usuarios
+from datetime import datetime # para manejar fechas papu 
 from utils.db import db
 from utils.log import logger
 from werkzeug.security import generate_password_hash
@@ -20,7 +21,18 @@ def usuarios():
         #     print("username: ", registro.username)
         #     print("fullname: ", registro.fullname)
         #     print("rol: ", registro.rol)
-
+        # experimentando con la fecha 
+        # estableciendo la fecha del sistema 
+        fecha = datetime.now()
+        # desde un formulario 
+        # dando formato a la fecha 
+        # fechan = datetime.strptime(request.form["fechan"], "%d/%m/%Y")
+        # otro formato de fecha 
+        fechar = fecha.strftime("%d/%m/%Y %H:%M:%S")
+        print("fecha: ", fechar)
+        # dia = fechan.day
+        # mes = fechan.month
+        # year = fechan.year
         return render_template("gusuarios/usuarios.html", usuarios=resgistros)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
@@ -85,31 +97,85 @@ def modificaru(id):
         if current_user.id == 1 and id == "1":
             userdata = Usuarios.query.get(id)
             if request.method == 'POST':
-                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
-                flash({'title': "AMS", 'message': "usuario " + request.form['username'] + "modificado"}, 'info')
-                return redirect(url_for("gusuarios.usuarios"))
+                # validar que las claves coinciden 
+                if request.form['clave1'] == request.form['clave2']:
+
+                    # ahora si almacenando los cambios papu  
+                    userdata.username = request.form['username']
+                    userdata.fullname = request.form['fullname']
+                    userdata.password = generate_password_hash(request.form['clave1'])
+                    userdata.rol = request.form['rol']
+                    db.session.commit()
+                    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
+                    flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
+                    return redirect(url_for("gusuarios.usuarios"))
+                else:
+                    flash({'title': "AMS", 'message': "Claves suministradas no coinciden"}, 'error')
+                    return render_template("gusuarios/modificaru.html", userdata=userdata)
             return render_template("gusuarios/modificaru.html", userdata=userdata)
-        elif current_user != 1 and id == "1":
+        # validacion que el usuario con id 1 no sea modificado por otro usuario
+        elif current_user.id != 1 and id == "1":
             flash({'title': "AMS", 'message': "este usuario no puede ser modificado"}, 'info')
             return redirect(url_for("gusuarios.usuarios"))
-        elif id != 1:  
+        # validacion que puedan modificar cualquier usuario menos el id 1 
+        elif id != "1":  
             userdata = Usuarios.query.get(id)
             if request.method == 'POST':
-                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
-                flash({'title': "AMS", 'message': "usuario " + request.form['username'] + "modificado"}, 'info')
-                return redirect(url_for("gusuarios.usuarios"))
+                # validacion que el id 4 siempre sea admin 
+                if id == "4":
+                    
+                    userdata.rol = 0
+                    # validar que las claves coinciden 
+                    if request.form['clave1'] == request.form['clave2']:
+
+                        # ahora si almacenando los cambios papu  
+                        userdata.username = request.form['username']
+                        userdata.fullname = request.form['fullname']
+                        userdata.password = generate_password_hash(request.form['clave1'])
+                        
+                        db.session.commit()
+                        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
+                        flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
+                        return redirect(url_for("gusuarios.usuarios"))
+                    else:
+                        flash({'title': "AMS", 'message': "Claves suministradas no coinciden"}, 'error')
+                        return render_template("gusuarios/modificaru.html", userdata=userdata)
+                else:     
+                # validar que las claves coinciden 
+                    if request.form['clave1'] == request.form['clave2']:
+
+                        # ahora si almacenando los cambios papu  
+                        userdata.username = request.form['username']
+                        userdata.fullname = request.form['fullname']
+                        userdata.password = generate_password_hash(request.form['clave1'])
+                        userdata.rol = request.form['rol']
+                        db.session.commit()
+                        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
+                        flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
+                        return redirect(url_for("gusuarios.usuarios"))
+                    else:
+                        flash({'title': "AMS", 'message': "Claves suministradas no coinciden"}, 'error')
+                        return render_template("gusuarios/modificaru.html", userdata=userdata)
             return render_template("gusuarios/modificaru.html", userdata=userdata)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))
 
 
-@gu.route("/eliminaru/<id>", methods=["GET", "POST"])
+@gu.route("/eliminaru/<id>")
 @login_required
 def eliminaru(id):
     if current_user.rol == 0:
-        flash({'title': "AMS", 'message': "en construccion papu"}, 'info')
-        return redirect(url_for("gusuarios.usuarios"))
+        if id != "1" and id != "2" and id != "4":
+            userdata = Usuarios.query.get(id)
+            logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario id " + id + " | " + userdata.fullname + " eliminado")
+            flash({'title': "AMS", 'message': "Usuario con el id " + id + " | " + userdata.fullname + " eliminado"}, 'warning')
+            db.session.delete(userdata)
+            db.session.commit()
+            return redirect(url_for("gusuarios.usuarios"))
+        else:
+            flash({'title': "AMS", 'message': "Usuario con el id: " + id + " no puede ser eliminado"}, 'info')
+            return redirect(url_for("gusuarios.usuarios"))
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))
