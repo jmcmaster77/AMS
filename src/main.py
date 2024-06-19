@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
 from routes.home import home
+from routes.gusuarios import gu
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
 from flask_toastr import Toastr
@@ -59,6 +60,7 @@ def status_404(error):
 # registrando Blueprint
 app.register_blueprint(glogin)
 app.register_blueprint(home)
+app.register_blueprint(gu)
 
 
 if __name__ == '__main__':

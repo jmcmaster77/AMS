@@ -23,6 +23,17 @@
         </div>
         <div class="container">
             <div class="row">
+                {% if current_user.rol == 0 %}
+                <div class="col">
+                    <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}" disabled> gestion usuarios </a>
+                </div>
+                
+                {% else %}
+                <div class="col">
+                    <a type="button" class="btn btn-secondary disabled" style="color:grey" href="" disabled> gestion usuarios </a>
+                </div>
+                {% endif %}
+
                 <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
                 </div>

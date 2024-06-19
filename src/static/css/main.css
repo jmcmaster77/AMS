@@ -5,6 +5,11 @@ body {
   
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 .bg-black {
   background: #477706;
 }

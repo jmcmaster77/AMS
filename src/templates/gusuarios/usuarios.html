@@ -1,0 +1,82 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Gestion de usuarios {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4> Gestion de usuarios </h4>
+            <div class="mb-3">
+                <label for="" class="form-label">Modo</label>
+                <label for="" class="text-danger">{{ current_user.rol }}</label>
+            </div>
+        </div>
+            
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="d-flex justify-content-between">
+                <input class="form-control" id="binadmin" type="text" placeholder="Escriba para buscar">
+                <br>
+            </div>
+            <div class="d-flex justify-content-between">
+            
+                    <table class="table table-dark table-striped table-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Fullname</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="TrAdmin">
+                        {% for usuario in usuarios %}
+                            <tr>
+                            <th scope="row">{{usuario.id}}</th>
+                            <td>{{usuario.username}}</td>
+                            <td>{{usuario.fullname}}</td>
+                            <td>{{usuario.rol}}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="/modificar/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                    <a href="/suprimiru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                </div>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+       
+            </div>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+      $("#binadmin").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#TrAdmin tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
+
+{% endblock %}
