@@ -1,0 +1,101 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Registro de usuario {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4> Registro de usuario </h4>
+            <div class="mb-3">
+                <label for="" class="form-label">Modo</label>
+                <label for="" class="text-danger">{{ current_user.rol }}</label>
+            </div>
+        </div>
+            
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="{{ url_for('gusuarios.usuarios') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+        
+
+        <form action="/registraru" method="post" class="mt-2">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="row">
+                <div class="col">
+                    
+                    <input type="text" class="form-control" placeholder="Nombres de usuario" aria-label="Nombre de usuario" name = "username" id="username" minlength="4" maxlength="10" required>
+                    
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $("#username").keypress(function(event) {
+                            var key = event.which || event.keyCode;
+                            if((key!=32) && (key<65) || (key>90) && (key<97) || (key>122 && key != 241 && key != 209 && key != 225 && key != 233 && key != 237 && key != 243 && key != 250 && key != 193 && key != 201 && key != 205 && key != 211 && key != 218)){
+                                return false;
+                            }
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Nombre Completo" name = "fullname" id="fullname" minlength="4" maxlength="20" required>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $("#fullname").keypress(function(event) {
+                            var key = event.which || event.keyCode;
+                            if((key!=32) && (key<65) || (key>90) && (key<97) || (key>122 && key != 241 && key != 209 && key != 225 && key != 233 && key != 237 && key != 243 && key != 250 && key != 193 && key != 201 && key != 205 && key != 211 && key != 218)){
+                                return false;
+                            }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="clave" aria-label="clave" name = "clave1" minlength="6" maxlength="10" required>
+                    
+                </div>
+                <div class="col">
+                    <input type="password" class="form-control" placeholder="repetir clave" aria-label="repetir clave" name = "clave2" minlength="6" maxlength="10" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rol" id="gridRadios1" value=1 checked>
+                        <label class="form-check-label" for="gridRadios1">Usuario</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rol" id="gridRadios2" value=0>
+                        <label class="form-check-label" for="gridRadios2">Administrador</label>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="row">
+                    <div class="col">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
+                            <a href="{{ url_for('gusuarios.usuarios') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+{% endblock %}
+

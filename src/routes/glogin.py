@@ -11,8 +11,11 @@ glogin = Blueprint("login", __name__)
 
 @glogin.route("/")
 def tologin():
-    logger.info("to login")
-
+    if current_user.is_authenticated:
+        return redirect(url_for("home.home_page"))
+    else:
+        logger.info("to login")
+    
     return redirect(url_for("login.login"))
 
 
