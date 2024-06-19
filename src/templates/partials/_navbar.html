@@ -1,6 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/" >Admin me Store</a>
+    
+    <a class="navbar-brand" href="/" >
+      <img src="{{ url_for('static', filename='ico/store-svgrepo-com2.svg') }}" alt="" width="50" height="35" class="d-inline-block align-text-top">
+      Admin me Store | {{current_user.fullname}}
+      {% if current_user.rol == 0 %}
+      <img src="{{ url_for('static', filename='ico/admin.svg') }}" alt="" width="50" height="30" class="d-inline-block align-text-top">
+      {% else %}
+      <img src="{{ url_for('static', filename='ico/user.svg') }}" alt="" width="50" height="30" class="d-inline-block align-text-top">
+      {% endif %}
+    </a>
 
     <button
       class="navbar-toggler"

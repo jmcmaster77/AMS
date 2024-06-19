@@ -9,6 +9,7 @@ gu = Blueprint("gusuarios", __name__)
 
 
 @gu.route("/gusuarios")
+@login_required
 def usuarios():
     if current_user.rol == 0:
 
@@ -27,6 +28,7 @@ def usuarios():
 
 
 @gu.route("/registraru", methods=["GET", "POST"])
+@login_required
 def registro_usuarios():
     if request.method == "GET":
         # validacion que un usuario ingrese al modulos de gestion de usuario colocando la ruta /registraru
@@ -62,7 +64,7 @@ def registro_usuarios():
 
                 db.session.add(usuario)
                 db.session.commit() # guarda los cambios mosca con esto 
-
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " registrado")
                 flash({'title': "AMS", 'message': "Usuario: " + request.form['username'] + " registrado satisfactoriamente"}, 'success')
                 return redirect(url_for("gusuarios.usuarios"))
             else:
@@ -75,25 +77,35 @@ def registro_usuarios():
 
 
 @gu.route("/modificaru/<id>", methods=["GET", "POST"])
+@login_required
 def modificaru(id):
-    
+
     if current_user.rol == 0:
         # validar que el id 1 solo pueda ser modificado por el mismo
         if current_user.id == 1 and id == "1":
-            flash({'title': "AMS", 'message': "se puede editar"}, 'info')
-            return redirect(url_for("gusuarios.usuarios"))
+            userdata = Usuarios.query.get(id)
+            if request.method == 'POST':
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
+                flash({'title': "AMS", 'message': "usuario " + request.form['username'] + "modificado"}, 'info')
+                return redirect(url_for("gusuarios.usuarios"))
+            return render_template("gusuarios/modificaru.html", userdata=userdata)
         elif current_user != 1 and id == "1":
-            flash({'title': "AMS", 'message': "este usuario no puede ser modificado por otro"}, 'info')
+            flash({'title': "AMS", 'message': "este usuario no puede ser modificado"}, 'info')
             return redirect(url_for("gusuarios.usuarios"))
-        elif id != 1:
-            flash({'title': "AMS", 'message': "puede modificar el otro usuario"}, 'info')
-            return redirect(url_for("gusuarios.usuarios"))
+        elif id != 1:  
+            userdata = Usuarios.query.get(id)
+            if request.method == 'POST':
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
+                flash({'title': "AMS", 'message': "usuario " + request.form['username'] + "modificado"}, 'info')
+                return redirect(url_for("gusuarios.usuarios"))
+            return render_template("gusuarios/modificaru.html", userdata=userdata)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))
 
 
 @gu.route("/eliminaru/<id>", methods=["GET", "POST"])
+@login_required
 def eliminaru(id):
     if current_user.rol == 0:
         flash({'title': "AMS", 'message': "en construccion papu"}, 'info')

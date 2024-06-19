@@ -42,6 +42,7 @@ def login():
             print("Sesion", userdata.fullname, "succes")
 
             # login_user(user) # lo estoy realizando en auth.authenticate
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | login")
             return redirect(url_for("home.home_page"))
         else:
             print("Sesion", userdata.fullname, "failed")
@@ -64,8 +65,7 @@ def protected():
 def logout():
 
     if current_user.is_authenticated:
-        logger.info("User id " + str(current_user.id) +
-                    " | " + current_user.fullname + " logout")
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | logout")
         logout_user()
         current_app.config['TOASTR_CLOSE_BUTTON'] = 'false'
         current_app.config['TOASTR_TIMEOUT'] = '1500'
