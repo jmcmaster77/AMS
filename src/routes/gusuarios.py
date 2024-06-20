@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
 from flask_login import login_required, current_user
 from models.ModelUsersdb import Usuarios
@@ -38,7 +39,7 @@ def usuarios():
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))
 
-
+# variable para dar respuesta a mostrar los usuarios borrados papu 
 @gu.route("/gusuarios_all")
 @login_required
 def usuarios_all():
@@ -83,9 +84,12 @@ def registro_usuarios():
 
                 # encriptar la clave
                 # generando el objeto usuario
-                usuario = Usuarios(request.form['username'], generate_password_hash(request.form['clave2']), request.form['fullname'], request.form['rol'])
+                fecha = datetime.now()
+                # fechaf = fecha.strftime("%d/%m/%Y %H:%M:%S")
+                fechaf = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi 
+                usuario = Usuarios(request.form['username'], generate_password_hash(request.form['clave2']), request.form['fullname'], request.form['rol'], fechaf, False)
                 # se lo empujo a la bd
-
+                
                 db.session.add(usuario)
                 db.session.commit() # guarda los cambios mosca con esto 
                 logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " registrado")
@@ -117,6 +121,8 @@ def modificaru(id):
                     userdata.fullname = request.form['fullname']
                     userdata.password = generate_password_hash(request.form['clave1'])
                     userdata.rol = request.form['rol']
+                    fecha = datetime.now()
+                    userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi 
                     db.session.commit()
                     logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
                     flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
@@ -144,7 +150,8 @@ def modificaru(id):
                         userdata.username = request.form['username']
                         userdata.fullname = request.form['fullname']
                         userdata.password = generate_password_hash(request.form['clave1'])
-                        
+                        fecha = datetime.now()
+                        userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi
                         db.session.commit()
                         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
                         flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
@@ -161,6 +168,8 @@ def modificaru(id):
                         userdata.fullname = request.form['fullname']
                         userdata.password = generate_password_hash(request.form['clave1'])
                         userdata.rol = request.form['rol']
+                        fecha = datetime.now()
+                        userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi
                         db.session.commit()
                         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario " + request.form['username'] + " modificado")
                         flash({'title': "AMS", 'message': "usuario " + request.form['username'] + " modificado"}, 'info')
@@ -182,12 +191,34 @@ def eliminaru(id):
             userdata = Usuarios.query.get(id)
             logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario id " + id + " | " + userdata.fullname + " eliminado")
             flash({'title': "AMS", 'message': "Usuario con el id " + id + " | " + userdata.fullname + " eliminado"}, 'warning')
-            db.session.delete(userdata)
+            # no se va a borrar se marcara como borrado 
+            # db.session.delete(userdata)
+            fecha = datetime.now()
+            userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi
+            userdata.deleted = True
             db.session.commit()
             return redirect(url_for("gusuarios.usuarios"))
         else:
             flash({'title': "AMS", 'message': "Usuario con el id: " + id + " no puede ser eliminado"}, 'info')
             return redirect(url_for("gusuarios.usuarios"))
     else:
+        flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
+        return redirect(url_for("home.home_page"))
+    
+
+@gu.route("/eliminarur/<id>")
+@login_required
+def eliminarur(id):
+    if current_user.rol == 0:
+        userdata = Usuarios.query.get(id)
+        userdata.deleted = False
+        fecha = datetime.now()
+        userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi
+        db.session.commit()
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario id " + id + " | " + userdata.fullname + " restaurado")
+        flash({'title': "AMS", 'message': "Usuario con el id " + id + " | " + userdata.fullname + " restaurado"}, 'success')
+        return redirect(url_for("gusuarios.usuarios"))
+    else:
+
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))

@@ -15,9 +15,8 @@ def tologin():
     if current_user.is_authenticated:
         return redirect(url_for("home.home_page"))
     else:
-        logger.info("to login")
-    
-    return redirect(url_for("login.login"))
+        
+        return redirect(url_for("login.login"))
 
 
 @glogin.route('/login', methods=['GET', 'POST'])
