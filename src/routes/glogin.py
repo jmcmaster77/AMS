@@ -1,5 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
 from flask_login import login_required, logout_user, UserMixin, current_user
+from sqlalchemy import true
 from utils.log import logger
 from models.ModelUsersdb import Usuarios
 from utils.auth import Authenticate
@@ -35,21 +36,26 @@ def login():
     userdata = Usuarios.query.filter_by(username=username).first()
 
     if userdata != None:
-        print("userdata", userdata.id, userdata.fullname)
 
         if Authenticate.login(userdata, password):
 
-            print("Sesion", userdata.fullname, "succes")
-
             # login_user(user) # lo estoy realizando en auth.authenticate
-            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | login")
-            return redirect(url_for("home.home_page"))
+            if userdata.deleted == True:
+                logger.error("User id " + str(current_user.id) + " | " + current_user.fullname + " | login user deleted")
+                flash({'title': "AMS", 'message': "Usuario inhabilitado"}, 'error')
+                logout_user()
+                return redirect(url_for("login.login"))
+            else:
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | login")
+                return redirect(url_for("home.home_page"))
         else:
-            print("Sesion", userdata.fullname, "failed")
+            logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | error login")
             return redirect(url_for("login.login"))
     else:
-        print("Usuario ", username, " no encontrado")
-
+        
+        flash({'title': "AMS", 'message': "no encontrado"}, 'error')
+        logger.error("Usuario " + username + " no encontrado error login")
+        
     return redirect(url_for("login.login"))
 
 # ya no lo estoy utlizando

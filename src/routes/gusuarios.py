@@ -23,17 +23,29 @@ def usuarios():
         #     print("rol: ", registro.rol)
         # experimentando con la fecha 
         # estableciendo la fecha del sistema 
-        fecha = datetime.now()
+        # fecha = datetime.now()
         # desde un formulario 
         # dando formato a la fecha 
         # fechan = datetime.strptime(request.form["fechan"], "%d/%m/%Y")
         # otro formato de fecha 
-        fechar = fecha.strftime("%d/%m/%Y %H:%M:%S")
-        print("fecha: ", fechar)
+        # fechaf = fecha.strftime("%d/%m/%Y %H:%M:%S")
+
         # dia = fechan.day
         # mes = fechan.month
         # year = fechan.year
-        return render_template("gusuarios/usuarios.html", usuarios=resgistros)
+        return render_template("gusuarios/usuarios.html", usuarios=resgistros, deleted=False)
+    else:
+        flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
+        return redirect(url_for("home.home_page"))
+
+
+@gu.route("/gusuarios_all")
+@login_required
+def usuarios_all():
+    if current_user.rol == 0:
+
+        resgistros = Usuarios.query.all()
+        return render_template("gusuarios/usuarios.html", usuarios=resgistros, deleted=True)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))

@@ -20,6 +20,11 @@
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
                 <a href="/registraru" class="btn btn-success text-white btn-sm" >Agregar</a>
+                {% if deleted == true %}
+                <a href="/gusuarios" class="btn btn-primary text-white btn-sm" >Ocultar Borrrados</a>
+                {% else %}
+                <a href="/gusuarios_all" class="btn btn-primary text-white btn-sm" >Mostrar Borrrados</a>
+                {% endif %}
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
@@ -37,6 +42,7 @@
                             <th scope="col">Username</th>
                             <th scope="col">Fullname</th>
                             <th scope="col">Rol</th>
+                            <th scope="col">Fecha</th>
                             <th scope="col">Acción</th>
                             </tr>
                         </thead>
@@ -44,16 +50,33 @@
                         <tbody id="TrAdmin">
                         {% for usuario in usuarios %}
                             <tr>
+                            {% if usuario.deleted == true and deleted == true %}
                             <th scope="row">{{usuario.id}}</th>
                             <td>{{usuario.username}}</td>
                             <td>{{usuario.fullname}}</td>
                             <td>{{usuario.rol}}</td>
+                            <td>{{usuario.fecha}}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
                                     <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
                                 </div>
                             </td>
+                            {% else %}
+                                {% if usuario.deleted == false and deleted == false%}
+                            <th scope="row">{{usuario.id}}</th>
+                            <td>{{usuario.username}}</td>
+                            <td>{{usuario.fullname}}</td>
+                            <td>{{usuario.rol}}</td>
+                            <td>{{usuario.fecha}}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                    <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                </div>
+                            </td>
+                                {% endif %}
+                            {% endif %}
                             </tr>
                         {% endfor %}
                         </tbody>
