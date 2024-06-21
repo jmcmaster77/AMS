@@ -7,9 +7,9 @@
     <title>{% block title %}{% endblock %}</title>
     
     <!-- scripts para fucionalidad de busqueda de la tabla -->
-    
     <script src="{{url_for('static', filename='js/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js')}}"></script>
-    
+    <!-- Style DataTables  -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='dt/css/dataTables.bootstrap5.min.css')}}">
     <!-- Date toastr js  -->
     <script src="{{url_for('static', filename='js/toastr.min.js')}}"></script>
 
@@ -47,4 +47,19 @@
 <!-- scripts para fucionalidad de navbar -->
 
 <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+<!-- scripts Datatables -->
+
+<script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/jquery.dataTables.min.js')}}" ></script>
+<script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/dataTables.bootstrap5.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/dataTables.responsive.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/datetime.js')}}" ></script>
+
+<!-- scripts Botones Datatables -->
+<script src="{{url_for('static', filename='dt/js/dataTables.buttons.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/jszip.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/pdfmake.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/vfs_fonts.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/buttons.html5.min.js')}}" ></script>
+<script src="{{url_for('static', filename='dt/js/buttons.print.min.js')}}" ></script>
+
 </html>

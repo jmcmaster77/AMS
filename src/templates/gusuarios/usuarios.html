@@ -10,10 +10,6 @@
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <h4> Gestion de usuarios </h4>
-            <div class="mb-3">
-                <label for="" class="form-label">Modo</label>
-                <label for="" class="text-danger">{{ current_user.rol }}</label>
-            </div>
         </div>
             
         <div class="d-flex justify-content-end">
@@ -29,13 +25,10 @@
             </div>
         </div>
         <div class="container mt-3">
-            <div class="d-flex justify-content-between">
-                <input class="form-control" id="binadmin" type="text" placeholder="Escriba para buscar">
-                <br>
-            </div>
-            <div class="d-flex justify-content-between">
+
+            <div class="">
             
-                    <table class="table table-dark table-striped table-sm">
+                    <table id="listausers" class="table table-dark table-striped table-sm">
                         <thead>
                             <tr>
                             <th scope="col">Id</th>
@@ -47,37 +40,39 @@
                             </tr>
                         </thead>
                         
-                        <tbody id="TrAdmin">
+                        <tbody id="Trlistausers">
                         {% for usuario in usuarios %}
-                            <tr>
                             {% if usuario.deleted == true and deleted == true %}
-                            <th scope="row">{{usuario.id}}</th>
-                            <td>{{usuario.username}}</td>
-                            <td>{{usuario.fullname}}</td>
-                            <td>{{usuario.rol}}</td>
-                            <td>{{usuario.fecha}}</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                    <a href="/eliminarur/{{usuario.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
-                                </div>
-                            </td>
+                            <tr>
+                                <th scope="row">{{usuario.id}}</th>
+                                <td>{{usuario.username}}</td>
+                                <td>{{usuario.fullname}}</td>
+                                <td>{{usuario.rol}}</td>
+                                <td>{{usuario.fecha}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarur/{{usuario.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
+                                    </div>
+                                </td>
+                            </tr>
                             {% else %}
                                 {% if usuario.deleted == false and deleted == false%}
-                            <th scope="row">{{usuario.id}}</th>
-                            <td>{{usuario.username}}</td>
-                            <td>{{usuario.fullname}}</td>
-                            <td>{{usuario.rol}}</td>
-                            <td>{{usuario.fecha}}</td>
-                            <td>
-                                <div class="btn-group" role="group">
-                                    <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                    <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
-                                </div>
-                            </td>
+                            <tr>
+                                <th scope="row">{{usuario.id}}</th>
+                                <td>{{usuario.username}}</td>
+                                <td>{{usuario.fullname}}</td>
+                                <td>{{usuario.rol}}</td>
+                                <td>{{usuario.fecha}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                    </div>
+                                </td>
+                            </tr>
                                 {% endif %}
                             {% endif %}
-                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -91,15 +86,48 @@
     </div>
 </div>
 
-
 <script>
-    $(document).ready(function(){
-      $("#binadmin").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#TrAdmin tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $(function() {
+        $("#listausers").DataTable({
+            "language":{
+                "url":"{{url_for('static', filename='dt/json/DTSpanish.json')}}"
+            },
+            <!-- responsive: true, -->
+            dom: "Bfrtpli",
+            buttons: [
+                {
+                    extend: "copyHtml5",
+                    text: '<img src ="static/ico/copy.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Copiar al portapapeles',
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "excelHtml5",
+                    text: '<img src ="static/ico/excel2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar Excel",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "csvHtml5",
+                    text: '<img src ="static/ico/csv.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a csv",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "pdfHtml5",
+                    text: '<img src ="static/ico/pdf2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a PDF",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: 'print',
+                    text: '<img src ="static/ico/print.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-primary',
+
+                },
+            ]
         });
-      });
     });
 </script>
 

@@ -10,7 +10,12 @@
             
             <div class="mb-3">
                 <label for="" class="form-label">Modo</label>
-                <label for="" class="text-danger">{{ current_user.rol }}</label>
+                {% if current_user.rol == 0 %}
+                <label for="" class="text-danger">Admin</label>
+                {% else %}
+                <label for="" class="text-danger">User</label>
+                {% endif %}
+                
             </div>
         </div>
 
