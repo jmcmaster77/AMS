@@ -3,6 +3,7 @@ from flask_login import login_required, logout_user, UserMixin, current_user
 from sqlalchemy import true
 from utils.log import logger
 from models.ModelUsersdb import Usuarios
+from models.ModelTasadb import Tasa
 from utils.auth import Authenticate
 
 # instanciando ruta en blueprint
@@ -46,6 +47,8 @@ def login():
                 return redirect(url_for("login.login"))
             else:
                 logger.info("User id " + str(current_user.id) + " | " + current_user.fullname + " | login")
+                flash({'title': "AMS", 'message': "Bienvenido " + current_user.fullname}, 'success')
+                
                 return redirect(url_for("home.home_page"))
         else:
             logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | error login")

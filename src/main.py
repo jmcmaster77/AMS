@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, flash
 import flask_login
 from utils.log import logger
 from utils.db import db
+from models.ModelTasadb import Tasa
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
@@ -29,6 +30,13 @@ app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONEXION_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 db = SQLAlchemy()
+
+@app.context_processor
+def tasa():
+    tasa = Tasa.query.get(1)
+    
+    return dict(tasa=tasa)
+
 
 # login seguridad
 
@@ -68,6 +76,7 @@ app.register_blueprint(gu)
 
 
 if __name__ == '__main__':
+    
     from waitress import serve
     csrf.init_app(app)
     print(appinfo)

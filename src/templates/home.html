@@ -4,48 +4,47 @@
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
 
-        <div class="d-flex justify-content-between">
-            <h5> Inicio </h5>
 
-            
-            <div class="mb-3">
-                <label for="" class="form-label">Modo</label>
-                {% if current_user.rol == 0 %}
-                <label for="" class="text-danger">Admin</label>
-                {% else %}
-                <label for="" class="text-danger">User</label>
-                {% endif %}
-                
-            </div>
-        </div>
 
         <div class="container">
-            <div class="row">
-                <h4>Bienvenido {{ current_user.fullname }}</h4>
+            <div class="row d-flex justify-content-between" >
+                <div class="col-4">
+                    <h5> Inicio </h5>
+                </div>
+                <div class="col-4">
+                    <h6>Modo</h6>
+                    {% if current_user.rol == 0 %}
+                    <h6 class="text-danger">Administrador</h6>
+                    {% else %}
+                    <h6 class="text-danger">Usuario</h6>
+                    {% endif %}
+                </div>
             </div>
-            
-            
-        </div>
-        <div class="container">
-            <div class="row">
-                {% if current_user.rol == 0 %}
+
+            <div class="row align-items-center">
                 <div class="col">
+                    <h4>Bienvenido {{ current_user.fullname }}</h4>
+                </div>
+            </div>
+            <div class="row justify-content-evenly">
+                {% if current_user.rol == 0 %}
+                <div class="col-4">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}" disabled> gestion usuarios </a>
                 </div>
                 
                 {% else %}
-                <div class="col">
+                <div class="col-4">
                     <a type="button" class="btn btn-secondary disabled" style="color:grey" href="" disabled> gestion usuarios </a>
                 </div>
                 {% endif %}
 
-                <div class="col">
+                <div class="col-4">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
                 </div>
                 
             </div>
-
         </div>
+        
     </div>
 
 </div>
