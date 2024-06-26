@@ -51,7 +51,9 @@ def login():
                 
                 return redirect(url_for("home.home_page"))
         else:
-            logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | error login")
+            # no puedes colocar attributos del usuarios si no esta authenticate 
+            logger.warning("User id " + username + " | error clave")
+            flash({'title': "AMS", 'message': "Error clave"}, 'error')
             return redirect(url_for("login.login"))
     else:
         

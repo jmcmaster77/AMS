@@ -1,0 +1,146 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Gestion de clientes {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4> Gestion de clientes </h4>
+        </div>
+            
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="/registrarc" class="btn btn-success text-white btn-sm" >Agregar</a>
+                {% if deleted == true %}
+                <a href="/clientes" class="btn btn-primary text-white btn-sm" >Ocultar Borrrados</a>
+                {% else %}
+                <a href="/clientes_deleted" class="btn btn-primary text-white btn-sm" >Mostrar Borrrados</a>
+                {% endif %}
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+        <div class="container mt-3">
+
+            <div class="">
+            
+                    <table id="clientes" class="table table-dark table-striped table-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo Doc</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Número</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Registrado</th>
+                            <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="Trclientes">
+                        {% for cliente in clientes %}
+                            {% if cliente.deleted == true and deleted == true %}
+                            <tr>
+                                <th scope="row">{{cliente.id}}</th>
+                                <td>{{cliente.fullname}}</td>
+                                <td>{{cliente.tipod}}</td>
+                                <td>{{cliente.documento}}</td>
+                                <td>{{cliente.numero}}</td>
+                                <td>{{cliente.email}}</td>
+                                <td>{{cliente.direccion}}</td>
+                                <td>{{cliente.fecha}}</td>
+                                <td>{{cliente.id_u}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarur/{{usuario.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% else %}
+                                {% if cliente.deleted == false and deleted == false%}
+                            <tr>
+                                <th scope="row">{{cliente.id}}</th>
+                                <td>{{cliente.fullname}}</td>
+                                <td>{{cliente.tipod}}</td>
+                                <td>{{cliente.documento}}</td>
+                                <td>{{cliente.numero}}</td>
+                                <td>{{cliente.email}}</td>
+                                <td>{{cliente.direccion}}</td>
+                                <td>{{cliente.fecha}}</td>
+                                <td>{{cliente.id_u}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+       
+            </div>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $("#clientes").DataTable({
+            "language":{
+                "url":"{{url_for('static', filename='dt/json/DTSpanish.json')}}"
+            },
+            <!-- responsive: true, -->
+            dom: "Bfrtpli",
+            buttons: [
+                {
+                    extend: "copyHtml5",
+                    text: '<img src ="static/ico/copy.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Copiar al portapapeles',
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "excelHtml5",
+                    text: '<img src ="static/ico/excel2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar Excel",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "csvHtml5",
+                    text: '<img src ="static/ico/csv.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a csv",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "pdfHtml5",
+                    text: '<img src ="static/ico/pdf2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a PDF",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: 'print',
+                    text: '<img src ="static/ico/print.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-primary',
+
+                },
+            ]
+        });
+    });
+</script>
+
+{% endblock %}
