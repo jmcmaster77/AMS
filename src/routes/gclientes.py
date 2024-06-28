@@ -14,22 +14,38 @@ gc = Blueprint("gclientes", __name__)
 @login_required
 def clientes():
     registros = Clientes.query.all()
-    print("Clientes R:", registros)
+    
     return render_template("gclientes/clientes.html", clientes=registros, deleted=False)
 
 @gc.route("/clientes_deleted")
 @login_required
 def clientes_deleted():
     registros = Clientes.query.all()
-    print("Clientes R:", registros)
+    
     return render_template("gclientes/clientes.html", clientes=registros, deleted=True)
 
 @gc.route("/registrarc", methods=["GET", "POST"])
 @login_required
 def registrar_clientes():
     if request.method == "GET":
-    
-        return render_template("gclientes/registroc.html")
-    else:
         
         return render_template("gclientes/registroc.html")
+    else:
+
+        print("Datos cliente del form: ", request.form)
+        cliente = Clientes.query.filter_by(documento=request.form['documento']).first()
+        cliente2 = Clientes.query.session.get("documento", request.form['documento'])
+        if cliente is None:
+
+            fecha = datetime.now()
+            # fechaf = fecha.strftime("%d/%m/%Y %H:%M:%S")
+            fechaf = fecha.strftime("%Y/%m/%d %H:%M:%S")
+            clientef = Clientes(request.form['fullname'], request.form['tipod'], request.form['documento'], request.form['numero'] , request.form['email'],
+                                request.form['direccion'], fechaf, False, current_user.id)
+            print("Cliente F: ", clientef)
+            flash({'title': "AMS", 'message': "Cliente: " + request.form['fullname'] + " registrado satisfactoriamente"}, 'success')
+            return render_template("gclientes/registroc.html")
+        else:
+            flash({'title': "AMS", 'message': "Documento: " + request.form['documento'] + " ya esta registrado"}, 'error')
+            return render_template("gclientes/registroc.html")
+        
