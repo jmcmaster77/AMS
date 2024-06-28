@@ -34,7 +34,7 @@ def registrar_clientes():
 
         print("Datos cliente del form: ", request.form)
         cliente = Clientes.query.filter_by(documento=request.form['documento']).first()
-        cliente2 = Clientes.query.session.get("documento", request.form['documento'])
+        # cliente2 = Clientes. experimentando con nuevas formas 
         if cliente is None:
 
             fecha = datetime.now()
