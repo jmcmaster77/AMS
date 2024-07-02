@@ -14,7 +14,7 @@ gu = Blueprint("gusuarios", __name__)
 def usuarios():
     if current_user.rol == 0:
 
-        resgistros = Usuarios.query.all()
+        
         # print("consulta \n", resgistros[0])
         # for registro in resgistros:
         #     print("id: ", registro.id)
@@ -33,7 +33,13 @@ def usuarios():
         # dia = fechan.day
         # mes = fechan.month
         # year = fechan.year
-        return render_template("gusuarios/usuarios.html", usuarios=resgistros, deleted=False)
+        registros = Usuarios.query.all()
+        if registros is not None:
+            for registro in registros:
+                registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+            return render_template("gusuarios/usuarios.html", usuarios=registros, deleted=False)
+        else:
+            return render_template("gusuarios/usuarios.html", usuarios=registros, deleted=False)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))
@@ -44,8 +50,13 @@ def usuarios():
 def usuarios_all():
     if current_user.rol == 0:
 
-        resgistros = Usuarios.query.all()
-        return render_template("gusuarios/usuarios.html", usuarios=resgistros, deleted=True)
+        registros = Usuarios.query.all()
+        if registros is not None:
+            for registro in registros:
+                registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+            return render_template("gusuarios/usuarios.html", usuarios=registros, deleted=True)
+        else:
+            return render_template("gusuarios/usuarios.html", usuarios=registros, deleted=True)
     else:
         flash({'title': "AMS", 'message': "Un administrador solo puede gestionar usuarios"}, 'error')
         return redirect(url_for("home.home_page"))

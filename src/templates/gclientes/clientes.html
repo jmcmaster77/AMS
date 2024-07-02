@@ -35,9 +35,9 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Tipo Doc</th>
                             <th scope="col">Documento</th>
-                            <th scope="col">Número</th>
+                            <!-- <th scope="col">Número</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Direccion</th>
+                            <th scope="col">Direccion</th> -->
                             <th scope="col">Fecha</th>
                             <th scope="col">Registrado</th>
                             <th scope="col">Acción</th>
@@ -52,18 +52,58 @@
                                 <td>{{cliente.fullname}}</td>
                                 <td>{{cliente.tipod}}</td>
                                 <td>{{cliente.documento}}</td>
-                                <td>{{cliente.numero}}</td>
+                                <!-- <td>{{cliente.numero}}</td>
                                 <td>{{cliente.email}}</td>
-                                <td>{{cliente.direccion}}</td>
+                                <td>{{cliente.direccion}}</td> -->
                                 <td>{{cliente.fecha}}</td>
                                 <td>{{cliente.id_u}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                        <a href="/eliminarur/{{usuario.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
+                                        <!-- <a href="/detallesc/{{cliente.id}}" class="btn btn-primary text-white btn-sm " >Detalles</a> -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                              <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#cliente_detalles_{{cliente.id}}" href="#">Detalles
+                                              </a>
+                                            </li>
+                                          </ul>
+                                        <a href="/modificarc/{{cliente.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarcr/{{cliente.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Modal detalles cliente-->
+
+                            <div class="modal fade" id="cliente_detalles_{{cliente.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-dark">
+                                        <h5 class="modal-title text-white" id="exampleModalLabel">Detalles clientes</h5>
+                                        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-dark">
+                                                
+                                            <div>
+                                                <h6>Nombre: {{cliente.fullname}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Número: {{cliente.numero}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Correo: {{cliente.email}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Dirección: {{cliente.direccion}}</h6>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer bg-dark">
+
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             {% else %}
                                 {% if cliente.deleted == false and deleted == false%}
                             <tr>
@@ -71,18 +111,57 @@
                                 <td>{{cliente.fullname}}</td>
                                 <td>{{cliente.tipod}}</td>
                                 <td>{{cliente.documento}}</td>
-                                <td>{{cliente.numero}}</td>
+                                <!-- <td>{{cliente.numero}}</td>
                                 <td>{{cliente.email}}</td>
-                                <td>{{cliente.direccion}}</td>
+                                <td>{{cliente.direccion}}</td> -->
                                 <td>{{cliente.fecha}}</td>
                                 <td>{{cliente.id_u}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="/modificaru/{{usuario.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                        <a href="/eliminaru/{{usuario.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                        <!-- <a href="/detallesc/{{cliente.id}}" class="btn btn-primary text-white btn-sm " >Detalles</a> -->
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#cliente_detalles_{{cliente.id}}" href="#">Detalles
+                                                </a>
+                                            </li>
+                                            </ul>
+                                        <a href="/modificarc/{{cliente.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarc/{{cliente.id}}" class="btn btn-danger btn-sm ">Borrar</a>
                                     </div>
                                 </td>
                             </tr>
+                                <!-- Modal detalles cliente-->
+
+                                <div class="modal fade" id="cliente_detalles_{{cliente.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles clientes</h5>
+                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                
+                                                <div>
+                                                    <h6>Nombre: {{cliente.fullname}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Número: {{cliente.numero}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Correo: {{cliente.email}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Dirección: {{cliente.direccion}}</h6>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer bg-dark">
+
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
@@ -97,6 +176,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <script>
     $(function() {
