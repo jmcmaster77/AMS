@@ -9,6 +9,7 @@ from routes.glogin import glogin
 from routes.home import home
 from routes.gusuarios import gu
 from routes.gclientes import gc
+from routes.gproveedores import gp
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
 from flask_toastr import Toastr
@@ -75,6 +76,7 @@ app.register_blueprint(glogin)
 app.register_blueprint(home)
 app.register_blueprint(gu)
 app.register_blueprint(gc)
+app.register_blueprint(gp)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 
-{% block title %} Admin me Store | Registro de clientes {% endblock %}
+{% block title %} Admin me Store | Registro de proveedor {% endblock %}
 
 
 {% block body %}
@@ -9,7 +9,7 @@
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4> Registro de cliente </h4>
+            <h4> Registro de proveedor</h4>
             <div class="mb-3">
                 <label for="" class="form-label">Modo</label>
                 <label for="" class="text-danger">{{ current_user.rol }}</label>
@@ -19,13 +19,13 @@
         <div class="d-flex justify-content-end">
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
-                <a href="{{ url_for('gclientes.clientes') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('gproveedores.proveedores') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
         
 
-        <form action="/registrarc" method="post" class="mt-2">
+        <form action="/registrarp" method="post" class="mt-2">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
             <div class="row">
@@ -47,8 +47,8 @@
                     <div class="input-group">
                         <label class="input-group-text" for="inputGroupSelect01">Tipo Documento</label>
                         <select class="form-select" id="inputGroupSelect01" name="tipod">
-                          <option selected value="C">Cédula</option>
-                          <option value="R">RIF</option>
+                          <option value="C">Cédula</option>
+                          <option selected value="R">RIF</option>
                           <option value="O">Otro</option>
                         </select>
                       </div>
@@ -86,7 +86,7 @@
                     <div class="col">
                         <div class="btn-group">
                             <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
-                            <a href="{{ url_for('gclientes.clientes') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a href="{{ url_for('gproveedores.proveedores') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                             <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
                         </div>
                     </div>

@@ -1,0 +1,217 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Gestion de proveedores {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4> Gestion de proveedores </h4>
+        </div>
+            
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="/registrarp" class="btn btn-success text-white btn-sm" >Agregar</a>
+                {% if deleted == true %}
+                <a href="/proveedores" class="btn btn-primary text-white btn-sm" >Ocultar Borrrados</a>
+                {% else %}
+                <a href="/proveedores_deleted" class="btn btn-primary text-white btn-sm" >Mostrar Borrrados</a>
+                {% endif %}
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+        <div class="container mt-3">
+
+            <div class="">
+            
+                    <table id="proveedores" class="table table-dark table-striped table-sm">
+                        <thead>
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo Doc</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Registrado</th>
+                            <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="Trproveedores">
+                        {% for proveedor in proveedores %}
+                            {% if proveedor.deleted == true and deleted == true %}
+                            <tr>
+                                <th scope="row">{{proveedor.id}}</th>
+                                <td>{{proveedor.fullname}}</td>
+                                <td>{{proveedor.tipod}}</td>
+                                <td>{{proveedor.documento}}</td>
+                                <td>{{proveedor.fecha}}</td>
+                                <td>{{proveedor.id_u}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                              <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#proveedor_detalles_{{proveedor.id}}" href="#">Detalles
+                                              </a>
+                                            </li>
+                                          </ul>
+                                        <a href="/modificarp/{{proveedor.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarpr/{{proveedor.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Modal detalles proveedor-->
+
+                            <div class="modal fade" id="proveedor_detalles_{{proveedor.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-dark">
+                                        <h5 class="modal-title text-white" id="exampleModalLabel">Detalles proveedor</h5>
+                                        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-dark">
+                                                
+                                            <div>
+                                                <h6>Nombre: {{proveedor.fullname}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Número: {{proveedor.numero}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Correo: {{proveedor.email}}</h6>
+                                            </div>
+                                            <div>
+                                                <h6>Dirección: {{proveedor.direccion}}</h6>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer bg-dark">
+
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                                {% if proveedor.deleted == false and deleted == false%}
+                            <tr>
+                                <th scope="row">{{proveedor.id}}</th>
+                                <td>{{proveedor.fullname}}</td>
+                                <td>{{proveedor.tipod}}</td>
+                                <td>{{proveedor.documento}}</td>
+                                <td>{{proveedor.fecha}}</td>
+                                <td>{{proveedor.id_u}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#proveedor_detalles_{{proveedor.id}}" href="#">Detalles
+                                                </a>
+                                            </li>
+                                            </ul>
+                                        <a href="/modificarp/{{proveedor.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
+                                        <a href="/eliminarp/{{proveedor.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                                <!-- Modal detalles proveedor-->
+
+                                <div class="modal fade" id="proveedor_detalles_{{proveedor.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles proveedor</h5>
+                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                
+                                                <div>
+                                                    <h6>Nombre: {{proveedor.fullname}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Número: {{proveedor.numero}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Correo: {{proveedor.email}}</h6>
+                                                </div>
+                                                <div>
+                                                    <h6>Dirección: {{proveedor.direccion}}</h6>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer bg-dark">
+
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+       
+            </div>
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(function() {
+        $("#proveedores").DataTable({
+            "language":{
+                "url":"{{url_for('static', filename='dt/json/DTSpanish.json')}}"
+            },
+            <!-- responsive: true, -->
+            dom: "Bfrtpli",
+            buttons: [
+                {
+                    extend: "copyHtml5",
+                    text: '<img src ="static/ico/copy.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Copiar al portapapeles',
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "excelHtml5",
+                    text: '<img src ="static/ico/excel2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar Excel",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "csvHtml5",
+                    text: '<img src ="static/ico/csv.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a csv",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: "pdfHtml5",
+                    text: '<img src ="static/ico/pdf2.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: "Exportar a PDF",
+                    className: "btn btn-primary"
+                },
+                {
+                    extend: 'print',
+                    text: '<img src ="static/ico/print.svg" alt="PDF" width="25" height="25"/>',
+                    titleAttr: 'Imprimir',
+                    className: 'btn btn-primary',
+
+                },
+            ]
+        });
+    });
+</script>
+
+{% endblock %}
