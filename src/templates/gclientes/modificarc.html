@@ -1,0 +1,116 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Registro de clientes {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h4> Modificar datos del cliente </h4>
+            <div class="mb-3">
+                <label for="" class="form-label">Modo</label>
+                <label for="" class="text-danger">{{ current_user.rol }}</label>
+            </div>
+        </div>
+            
+        <div class="d-flex justify-content-end">
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="{{ url_for('gclientes.clientes') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+        
+
+        <form action="/modificarc/{{cliente.id}}" method="post" class="mt-2">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="row">
+                <div class="col">
+                    
+                    <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Nombre Completo" name = "fullname" id="fullname" minlength="4" maxlength="40" value="{{cliente.fullname}}" required>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $("#fullname").keypress(function(event) {
+                            var key = event.which || event.keyCode;
+                            if((key!=32) && (key<65) || (key>90) && (key<97) || (key>122 && key != 241 && key != 209 && key != 225 && key != 233 && key != 237 && key != 243 && key != 250 && key != 193 && key != 201 && key != 205 && key != 211 && key != 218)){
+                                return false;
+                            }
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <label class="input-group-text" for="inputGroupSelect01">Tipo Documento</label>
+                        {% if cliente.tipod == "C" %}
+                        <select class="form-select" id="inputGroupSelect01" name="tipod">
+                          <option selected value="C">Cédula</option>
+                          <option value="R">RIF</option>
+                          <option value="O">Otro</option>
+                        </select>
+                        {% elif cliente.tipod == "R" %}
+                        <select class="form-select" id="inputGroupSelect01" name="tipod">
+                            <option value="C">Cédula</option>
+                            <option selected value="R">RIF</option>
+                            <option value="O">Otro</option>
+                        </select>
+                        {% else %}
+                        <select class="form-select" id="inputGroupSelect01" name="tipod">
+                            <option value="C">Cédula</option>
+                            <option value="R">RIF</option>
+                            <option selected value="O">Otro</option>
+                        </select>                       
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Documento" aria-label="Documento" name = "documento" id="documento" minlength="4" maxlength="10" value="{{cliente.documento}}" required>
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $("#documento").keypress(function(event) {
+                            var key = event.which || event.keyCode;
+                            if ((key<65) && (key!=57) &&  (key!=48) &&  (key!=49) &&  (key!=50) &&  (key!=51) &&  (key!=52) &&  (key!=53) &&  (key!=54) && (key!=55) && (key!=56) || (key>90) && (key<97) ||  (key>122 && key != 241 && key != 209 && key != 225 && key != 233 && key != 237 && key != 243 && key != 250 && key != 193 && key != 201 && key != 205 && key != 211 && key != 218)){
+                                return false;
+                            }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <input type="tel" class="form-control" placeholder="número telefónico" pattern="[0-9]{11}" name="numero" id="numero" value="{{cliente.numero}}" required>
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="correo electrónico (xxx@xxx.xxx)" value="{{cliente.email}}" pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$" required>
+                </div> 
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <textarea name="direccion" id="direccion" placeholder="direccion" class="form-control"> {{cliente.direccion}} </textarea>
+                    
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="row mt-2">
+                    <div class="col">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                            <a href="{{ url_for('gclientes.clientes') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+{% endblock %}

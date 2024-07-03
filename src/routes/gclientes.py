@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import delete
 from models.ModelClientesdb import Clientes
 from datetime import datetime  # para manejar fechas papu
+from routes.glogin import login
 from utils.db import db
 from utils.log import logger
 
@@ -22,13 +23,6 @@ def clientes():
     else:
         return render_template("gclientes/clientes.html", clientes=registros, deleted=False)
 
-
-@gc.route("/detallesc/<id>")
-@login_required
-def detalles_clietes(id):
-    cliente_data = Clientes.query.get(id)
-    
-    return render_template("gclientes/clientes.html", modalc=True, cliente = cliente_data)
 
 @gc.route("/clientes_deleted")
 @login_required
@@ -59,6 +53,8 @@ def registrar_clientes():
                                request.form['direccion'], fechaf, False, current_user.id)
             db.session.add(cliente)
             db.session.commit()  # guarda los cambios mosca con esto
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                        " | Registro " + request.form['documento'] + " | " + request.form['fullname'])
             flash({'title': "AMS", 'message': "Cliente: " +
                   request.form['fullname'] + " registrado satisfactoriamente"}, 'success')
             return redirect(url_for("gclientes.clientes"))
@@ -66,3 +62,67 @@ def registrar_clientes():
             flash({'title': "AMS", 'message': "Documento: " +
                   request.form['documento'] + " ya esta registrado"}, 'error')
             return render_template("gclientes/registroc.html")
+
+
+@gc.route("/modificarc/<id>", methods=["GET", "POST"])
+@login_required
+def modificar_cliente(id):
+    cliente_data = Clientes.query.get(id)
+    if request.method == "POST":
+        fecha = datetime.now()
+        cliente_data.fullname = request.form['fullname']
+        cliente_data.tipod = request.form['tipod']
+        cliente_data.documento = request.form['documento']
+        cliente_data.numero = request.form['numero']
+        cliente_data.email = request.form['email']
+        cliente_data.direccion = request.form['direccion']
+
+        # la base de datos acepta el datetime en ese formato papi
+        cliente_data.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+        cliente_data.id_u = current_user.id
+        db.session.commit()
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                    " | Modifico " + request.form['documento'] + " | " + request.form['fullname'])
+        flash({'title': "AMS", 'message': "Cliente: " +
+               request.form['fullname'] + " modificado"}, 'info')
+        return redirect(url_for("gclientes.clientes"))
+    return render_template("gclientes/modificarc.html", cliente=cliente_data)
+
+
+@gc.route("/eliminarc/<id>")
+@login_required
+def eliminarc(id):
+    cliente_data = Clientes.query.get(id)
+    fecha = datetime.now()
+
+    cliente_data.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+    cliente_data.deleted = True
+    cliente_data.id_u = current_user.id
+    db.session.commit()
+    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                " | Elimino " + cliente_data.documento + " | " + cliente_data.fullname)
+    flash({'title': "AMS", 'message': "Cliente: " +
+           cliente_data.fullname + " eliminado"}, 'warning')
+    return redirect(url_for("gclientes.clientes"))
+
+
+@gc.route("/eliminarcr/<id>")
+@login_required
+def retaurarc(id):
+    if current_user.rol == 0:
+        cliente_data = Clientes.query.get(id)
+        fecha = datetime.now()
+
+        cliente_data.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+        cliente_data.deleted = False
+        cliente_data.id_u = current_user.id
+        db.session.commit()
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+            " | Restauro " + cliente_data.documento + " | " + cliente_data.fullname)
+        flash({'title': "AMS", 'message': "Cliente: " +
+                cliente_data.fullname + " restaurado"}, 'info')
+        return redirect(url_for("gclientes.clientes"))
+    else:
+
+        flash({'title': "AMS", 'message': "Un administrador solo puede restaurar clientes"}, 'error')
+        return redirect(url_for("gclientes.clientes"))
