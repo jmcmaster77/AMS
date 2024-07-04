@@ -26,8 +26,13 @@ def proveedores():
 @login_required
 def proveedores_deleted():
     registros = Proveedores.query.all()
+    if registros is not None:
+        for registro in registros:
+            registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
 
-    return render_template("gproveedores/proveedores.html", proveedores=registros, deleted=True)
+        return render_template("gproveedores/proveedores.html", proveedores=registros, deleted=True)
+    else:
+        return render_template("gproveedores/proveedores.html", proveedores=registros, deleted=True)
 
 
 @gp.route("/registrarp", methods=["GET", "POST"])

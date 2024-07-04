@@ -26,8 +26,13 @@ def clientes():
 @login_required
 def clientes_deleted():
     registros = Clientes.query.all()
-
-    return render_template("gclientes/clientes.html", clientes=registros, deleted=True)
+    if registros is not None:
+        for registro in registros:
+            registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+        
+        return render_template("gclientes/clientes.html", clientes=registros, deleted=True)
+    else:
+        return render_template("gclientes/clientes.html", clientes=registros, deleted=True)
 
 
 @gc.route("/registrarc", methods=["GET", "POST"])

@@ -77,8 +77,22 @@
             </div>
             <div class="row mt-2">
                 <div class="col">
-                    <textarea name="direccion" id="direccion" placeholder="direccion" class="form-control"></textarea>
-                    
+                    <textarea name="direccion" id="direccion" placeholder="dirección" class="form-control" maxlength="150" rows="2"></textarea>
+                    <div class="d-flex justify-content-end">
+                        <label for="count_message" class="me-1">Caracteres</label>
+                        <span class="" id="count_message"></span>
+                    </div>
+                    <script type="text/javascript">
+                        var text_max = 150;
+                        $('#count_message').html('0 / ' + text_max );
+    
+                        $('#direccion').keyup(function() {
+                        var text_length = $('#direccion').val().length;
+                        var text_remaining = text_max - text_length;
+                        
+                        $('#count_message').html(text_length + ' / ' + text_max);
+                        });
+                    </script>
                 </div>
             </div>
             <div class="d-flex justify-content-end">

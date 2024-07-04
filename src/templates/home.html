@@ -10,11 +10,13 @@
                     <h5> Inicio </h5>
                 </div>
                 <div class="col-4">
-                    <h6>Modo</h6>
+                    <label for="modo">
+                        Modo
+                    </label>
                     {% if current_user.rol == 0 %}
-                    <h6 class="text-danger">Administrador</h6>
+                    <label for="" class="text-danger" id="modo"><strong>Administrador</strong></label>
                     {% else %}
-                    <h6 class="text-danger">Usuario</h6>
+                    <label for="" class="text-danger" id="modo"><strong>Usuario</strong></label>
                     {% endif %}
                 </div>
             </div>
@@ -26,24 +28,27 @@
             </div>
             <div class="row justify-content-evenly">
                 {% if current_user.rol == 0 %}
-                <div class="col-4">
+                <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}"> Usuarios </a>
                 </div>
                 
                 {% else %}
-                <div class="col-4">
+                <div class="col">
                     <a type="button" class="btn btn-secondary disabled" style="color:grey" href="" disabled> Usuarios </a>
                 </div>
                 {% endif %}
-                <div class="col-4">
+                <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('gclientes.clientes')}}"> Clientes </a>
                 </div>
-                <div class="col-4">
+                <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('gproveedores.proveedores')}}"> Proveedores </a>
+                </div>
+                <div class="col">
+                    <a type="button" class="btn btn-secondary" href="{{ url_for('gproductos.productos')}}"> Productos </a>
                 </div>
             </div>
             <div class="row justify-content-evenly mt-2">
-                <div class="col-4">
+                <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
                 </div>
             </div>
