@@ -9,11 +9,9 @@
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4> Gestion de productos </h4>
-        </div>
-            
-        <div class="d-flex justify-content-end">
+            <h5> Gestion de productos </h5>
             <div class="btn-group">
+                
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
                 <a href="/rproducto" class="btn btn-success text-white btn-sm" >Agregar</a>
                 {% if deleted == true %}
@@ -72,9 +70,9 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!-- Modal detalles productos-->
+                            <!-- Modal detalles productos borrados-->
 
-                            <div class="modal fade" id="producto_detalles_{{proveedor.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header bg-dark">
@@ -83,7 +81,8 @@
                                         </div>
                                         <div class="modal-body bg-dark">
                                             <div>
-                                                <img src="{{ url_for('static', filename='productos/{{producto.imagen}}') }}" class="img-thumbnail" alt="...">
+                                                {% set rarchivo = "img/productos/" + producto.imagen %}
+                                                <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
                                             </div>
                                             <div>
                                                 <h6>Id: {{producto.id}}</h6>
@@ -95,7 +94,7 @@
                                                 <h6>Categoria: {{producto.categoria}}</h6>
                                             </div>
                                             <div>
-                                                <h6>Descripcion: {{producto.direccion}}</h6>
+                                                <h6>Descripcion: {{producto.descripcion}}</h6>
                                             </div>
                                             <div>
                                                 <h6>Itereccion por: {{producto.id_u}}</h6>
@@ -135,9 +134,9 @@
                                     </div>
                                 </td>
                             </tr>
-                                <!-- Modal detalles productos-->
+                                <!-- Modal detalles productos -->
 
-                                <div class="modal fade" id="producto_detalles_{{proveedor.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-dark">
@@ -146,7 +145,8 @@
                                             </div>
                                             <div class="modal-body bg-dark">
                                                 <div>
-                                                    <img src="{{ url_for('static', filename='productos/{{producto.imagen}}') }}" class="img-thumbnail" alt="...">
+                                                    {% set rarchivo = "img/productos/" + producto.imagen %}
+                                                    <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
                                                 </div>
                                                 <div>
                                                     <h6>Id: {{producto.id}}</h6>
@@ -158,10 +158,10 @@
                                                     <h6>Categoria: {{producto.categoria}}</h6>
                                                 </div>
                                                 <div>
-                                                    <h6>Descripcion: {{producto.direccion}}</h6>
+                                                    <h6 >Descripcion: {{producto.descripcion}}</h6>
                                                 </div>
                                                 <div>
-                                                    <h6>Itereccion por: {{producto.id_u}}</h6>
+                                                    <h6>Itereccion por id usuario: {{producto.id_u}}</h6>
                                                 </div>
                                             </div>
                                             <div class="modal-footer bg-dark">

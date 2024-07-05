@@ -5,7 +5,7 @@ from datetime import datetime
 from utils.db import db
 from utils.log import logger
 from werkzeug.utils import secure_filename
-import os 
+import os
 
 gprod = Blueprint("gproductos", __name__)
 
@@ -18,9 +18,9 @@ def productos():
         for registro in registros:
             registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
 
-        return render_template("gproductos/productos.html", proveedores=registros, deleted=False)
+        return render_template("gproductos/productos.html", productos=registros, deleted=False)
     else:
-        return render_template("gproductos/productos.html", proveedores=registros, deleted=False)
+        return render_template("gproductos/productos.html", productos=registros, deleted=False)
 
 
 @gprod.route("/productos_deleted")
@@ -31,9 +31,9 @@ def productos_deleted():
         for registro in registros:
             registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
 
-        return render_template("gproductos/productos.html", proveedores=registros, deleted=True)
+        return render_template("gproductos/productos.html", productos=registros, deleted=True)
     else:
-        return render_template("gproductos/productos.html", proveedores=registros, deleted=True)
+        return render_template("gproductos/productos.html", productos=registros, deleted=True)
 
 
 @gprod.route("/rproducto", methods=["GET", "POST"])
@@ -45,47 +45,51 @@ def registrar_producto():
     else:
         producto = Productos.query.filter_by(
             codigo=request.form['codigo']).first()
-        
+
         if producto is None:
 
             fecha = datetime.now()
             fechaf = fecha.strftime("%Y/%m/%d %H:%M:%S")
-            # recuerda borrar el siguiente print papi 
+            # recuerda borrar el siguiente print papi
             print("datain:", request.form)
 
-            # trabajando con la imagen 
+            # trabajando con la imagen
             archivo = request.files["imagen"]
-    
+
             if archivo.filename != "":
                 archivo = request.files["imagen"]
-                basepath = os.path.dirname (__file__)
+                basepath = os.path.dirname(__file__)
                 nombrearchivo = secure_filename(archivo.filename)
 
-                # capturando la ext del archivo 
+                # capturando la ext del archivo
                 ext = os.path.splitext(nombrearchivo)[1]
                 nuevoNombreArchivo = request.form["codigo"] + ext
-
-                # rutaarchivo = os.path.join (basepath, "static/img/productos", nuevoNombreArchivo)
-                rutaarchivo = os.path.abspath(f"src/static/img/productos/" + nuevoNombreArchivo)
-                # logfile = os.path.abspath("ams.log")
-                # url_for('static', filename='css/login.css')
+                rutaarchivo = os.path.abspath(
+                    f"src/static/img/productos/" + nuevoNombreArchivo)
                 archivo.save(rutaarchivo)
-                
-                print("archivo guardado papi")
+                # creando el registro del producto en la db
+                producto = Productos(request.form['codigo'], request.form['nombre'], 0, 0, request.form['porcentaje'], 0, request.form['categoria'],
+                                     request.form['descripcion'], nuevoNombreArchivo, fechaf, False, current_user.id)
+                db.session.add(producto)
+                db.session.commit()  # guarda los cambios mosca con esto
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                            " | Registro " + request.form['codigo'] + " | " + request.form['nombre'])
+                flash({'title': "AMS", 'message': "Producto: " +
+                       request.form['nombre'] + " registrado satisfactoriamente"}, 'success')
+                return redirect(url_for("gproductos.productos"))
             else:
-                print("no hay archivo")
-            #atento a los datos a guardar 
-            # producto = Productos(request.form['fullname'], request.form['tipod'], request.form['documento'], request.form['numero'], request.form['email'],
-            #                    request.form['direccion'], fechaf, False, current_user.id)
-            # db.session.add(producto)
-            # db.session.commit()  # guarda los cambios mosca con esto
-            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                        " | Registro " + request.form['codigo'] + " | " + request.form['nombre'])
-            flash({'title': "AMS", 'message': "Producto: " +
-                  request.form['nombre'] + " registrado satisfactoriamente"}, 'success')
-            return redirect(url_for("gproductos.productos"))
+
+                # creando el registro del producto en la db
+                producto = Productos(request.form['codigo'], request.form['nombre'], 0, 0, request.form['porcentaje'], 0, request.form['categoria'],
+                                     request.form['descripcion'], "box.png", fechaf, False, current_user.id)
+                db.session.add(producto)
+                db.session.commit()  # guarda los cambios mosca con esto
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                            " | Registro " + request.form['codigo'] + " | " + request.form['nombre'])
+                flash({'title': "AMS", 'message': "Producto: " +
+                       request.form['nombre'] + " registrado satisfactoriamente"}, 'success')
+                return redirect(url_for("gproductos.productos"))
         else:
             flash({'title': "AMS", 'message': "Codigo: " +
                   request.form['codigo'] + " ya esta registrado"}, 'error')
             return render_template("gproductos/rproducto.html")
-        
