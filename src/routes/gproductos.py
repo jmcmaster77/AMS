@@ -50,15 +50,13 @@ def registrar_producto():
 
             fecha = datetime.now()
             fechaf = fecha.strftime("%Y/%m/%d %H:%M:%S")
-            # recuerda borrar el siguiente print papi
-            print("datain:", request.form)
-
+           
             # trabajando con la imagen
             archivo = request.files["imagen"]
 
             if archivo.filename != "":
-                archivo = request.files["imagen"]
-                basepath = os.path.dirname(__file__)
+                
+                
                 nombrearchivo = secure_filename(archivo.filename)
 
                 # capturando la ext del archivo
@@ -93,3 +91,59 @@ def registrar_producto():
             flash({'title': "AMS", 'message': "Codigo: " +
                   request.form['codigo'] + " ya esta registrado"}, 'error')
             return render_template("gproductos/rproducto.html")
+        
+
+@gprod.route("/mproducto/<id>", methods=["GET", "POST"])
+@login_required
+def modificar_producto(id):
+    producto = Productos.query.get(id)
+    if request.method == "POST":
+        print("datain:", request.form)
+        print("Valor Radio", request.form["mantener"])
+        print("Valor CheckMmg", request.form["checkboxmmg"])
+        archivo = request.files["imagen"]
+        if archivo.filename != "":
+            
+            nombrearchivo = secure_filename(archivo.filename)
+            # capturando la ext del archivo
+            ext = os.path.splitext(nombrearchivo)[1]
+            nuevoNombreArchivo = request.form["codigo"] + ext
+            rutaarchivo = os.path.abspath(
+                f"src/static/img/productos/" + nuevoNombreArchivo)
+            archivo.save(rutaarchivo)
+
+            fecha = datetime.now()
+            producto.codigo = request.form['codigo']
+            producto.nombre = request.form['nombre']
+            producto.porcentaje = request.form['porcentaje']
+            producto.categoria = request.form['categoria']
+            producto.descripcion = request.form['descripcion']
+            producto.imagen = nuevoNombreArchivo
+            # la base de datos acepta el datetime en ese formato papi
+            producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+            producto.id_u = current_user.id
+            db.session.commit()
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                        " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+            flash({'title': "AMS", 'message': "Producto: " +
+                    request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+            return redirect(url_for("gproductos.productos"))
+        else:
+            fecha = datetime.now()
+            producto.codigo = request.form['codigo']
+            producto.nombre = request.form['nombre']
+            producto.porcentaje = request.form['porcentaje']
+            producto.categoria = request.form['categoria']
+            producto.descripcion = request.form['descripcion']
+            producto.imagen = "box.png"
+            # la base de datos acepta el datetime en ese formato papi
+            producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+            producto.id_u = current_user.id
+            db.session.commit()
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                        " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+            flash({'title': "AMS", 'message': "Producto: " +
+                    request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+
+            return redirect(url_for("gproductos.productos"))
+    return render_template("gproductos/mproducto.html", producto=producto)
