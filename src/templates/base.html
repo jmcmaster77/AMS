@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +8,20 @@
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
     <!-- scripts para fucionalidad de busqueda de la tabla -->
-    <script src="{{url_for('static', filename='js/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js')}}"></script>
+    <!-- <script src="{{url_for('static', filename='js/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/jquery3.7.1.min.js')}}"></script>
     <!-- Style DataTables  -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='dt/css/dataTables.bootstrap5.min.css')}}">
-    <!-- Date toastr js  -->
-    <script src="{{url_for('static', filename='js/toastr.min.js')}}"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='dt/css/dataTables.bootstrap5.min.css')}}"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='ndt/dataTables.dataTables.min.css')}}">
+
 
     <!-- Date picker  -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/datepicker_1.9.0_css_bootstrap-datepicker.min.css')}}"/>
     <script src="{{url_for('static', filename='js/bootstrap-datepicker.min.js')}}"></script>
     <!-- Estilos Bootstrap 5 offline-->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/>
-    
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}"/> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.min.css')}}"/>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.bundle.min.js')}}"></script>
     <!-- Estilos personalizados-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}} ">
     
@@ -37,30 +39,43 @@
 </head>
 <body>
     
-    <!-- <div class="container"> -->
-        <!-- <div class="container p-2 "> -->
+
             
             {% block body %}
             {% endblock %}
-        <!-- </div> -->
-    <!-- </div> -->
+
+    <!-- Date toastr js  -->
+    <script src="{{url_for('static', filename='js/toastr.min.js')}}"></script>
+    <!-- scripts para fucionalidad de navbar b5.0.2 -->
+
+    <!-- <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script> -->
+
+    <!-- scripts Datatables -->
+    <!-- <script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/jquery.dataTables.min.js')}}" ></script> -->
+    <!-- <script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/dataTables.bootstrap5.min.js')}}" ></script> -->
+    <!-- <script src="{{url_for('static', filename='dt/js/dataTables.responsive.min.js')}}" ></script> -->
+    <!-- <script src="{{url_for('static', filename='dt/js/datetime.js')}}" ></script> -->
+    <!-- New Dt  -->
+    
+    <!-- <script src="{{url_for('static', filename='ndt/dataTables.js')}}" ></script> -->
+    <script src="{{url_for('static', filename='ndt/dataTables.min.js')}}" ></script>
+
+
+    <!-- scripts Botones Datatables old-->
+    <!-- <script src="{{url_for('static', filename='dt/js/dataTables.buttons.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='dt/js/jszip.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='dt/js/pdfmake.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='dt/js/vfs_fonts.js')}}" ></script>
+    <script src="{{url_for('static', filename='dt/js/buttons.html5.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='dt/js/buttons.print.min.js')}}" ></script> -->
+    <!-- scripts Botones Datatables New-->
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/dataTables.buttons.js')}}" ></script>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/jszip.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/pdfmake.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/vfs_fonts.js')}}" ></script>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/buttons.html5.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/buttons.print.min.js')}}" ></script>
+
+
 </body>
-<!-- scripts para fucionalidad de navbar -->
-
-<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
-<!-- scripts Datatables -->
-
-<script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/jquery.dataTables.min.js')}}" ></script>
-<script type="text/javascript" language="javascript" src="{{url_for('static', filename='dt/js/dataTables.bootstrap5.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/dataTables.responsive.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/datetime.js')}}" ></script>
-
-<!-- scripts Botones Datatables -->
-<script src="{{url_for('static', filename='dt/js/dataTables.buttons.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/jszip.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/pdfmake.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/vfs_fonts.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/buttons.html5.min.js')}}" ></script>
-<script src="{{url_for('static', filename='dt/js/buttons.print.min.js')}}" ></script>
-
 </html>

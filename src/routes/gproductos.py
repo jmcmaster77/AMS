@@ -168,3 +168,42 @@ def modificar_producto(id):
 
                 return redirect(url_for("gproductos.productos"))
     return render_template("gproductos/mproducto.html", producto=producto)
+
+
+@gprod.route("/eproducto/<id>")
+@login_required
+def eliminar_productos(id):
+    producto = Productos.query.get(id)
+    fecha = datetime.now()
+
+    producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+    producto.deleted = True
+    producto.id_u = current_user.id
+    db.session.commit()
+    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                " | Elimino " + producto.codigo + " | " + producto.nombre)
+    flash({'title': "AMS", 'message': "Producto: " +
+           producto.nombre + " eliminado"}, 'warning')
+    return redirect(url_for("gproductos.productos"))
+
+
+@gprod.route("/rproducto/<id>")
+@login_required
+def retaurar_productos(id):
+    if current_user.rol == 0:
+        producto = Productos.query.get(id)
+        fecha = datetime.now()
+
+        producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+        producto.deleted = False
+        producto.id_u = current_user.id
+        db.session.commit()
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                    " | Restauro " + producto.codigo + " | " + producto.nombre)
+        flash({'title': "AMS", 'message': "Producto: " +
+               producto.nombre + " restaurado"}, 'info')
+        return redirect(url_for("gproductos.productos"))
+    else:
+
+        flash({'title': "AMS", 'message': "Un administrador solo puede restaurar productos"}, 'error')
+        return redirect(url_for("gproductos.productos"))

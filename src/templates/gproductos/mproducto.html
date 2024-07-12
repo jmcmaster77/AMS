@@ -32,14 +32,15 @@
                     </div>
                 </div>  
             </div>
+
             <div class="row mt-2">
                 <div class="col">
-                    <textarea name="descripcion" id="descripcion" placeholder="Descripción" class="form-control" maxlength="150" rows="2">{{producto.descripcion}}</textarea>
-                    <div class="d-flex justify-content-end">
-                        <label for="count_message" class="me-1">Caracteres</label>
-                        <span class="" id="count_message"> </span>
+                    <div class="position-relative">
+                        <textarea name="descripcion" id="descripcion" placeholder="Descripción" class="form-control" maxlength="150" rows="2">{{producto.descripcion}}</textarea>
+                        <div class="position-absolute bottom-0 end-0">
+                            <span id="count_message" class="badge bg-secondary mb-1"></span>
+                        </div>
                     </div>
-                        
                 </div>
                 <script type="text/javascript">
                     var text_max = 150;
@@ -49,7 +50,7 @@
                     var text_length = $('#descripcion').val().length;
                     var text_remaining = text_max - text_length;
                     
-                    $('#count_message').html(text_length + ' / ' + text_max);
+                    $('#count_message').html(+ text_length + ' / ' + text_max);
                     });
                 </script>
 

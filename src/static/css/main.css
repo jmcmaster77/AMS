@@ -1,8 +1,17 @@
 body {
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0F2027, #203A43, #2C5364);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0F2027, #203A43, #2C5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0f2027,
+    #203a43,
+    #2c5364
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0f2027,
+    #203a43,
+    #2c5364
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 a.disabled {
@@ -32,8 +41,18 @@ textarea {
   resize: none;
 }
 
-/* #count_message {
-background-color: smoke;
-margin-top: -20px;
-margin-right: 5px;
-} */
+#count_message {
+  
+  
+  margin-right: 5px !important;
+
+}
+
+.tcentrartodo {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.tcentrarh {
+  text-align: center !important;
+}

@@ -22,167 +22,171 @@
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
-        <div class="container mt-3">
-
-            <div class="">
+        <table id="productos" class="table table-striped table-dark">
+            <thead>
+                <tr>
+                <th >Id</th>
+                <th >Codigo</th>
+                <th >Producto</th>
+                <th >Cant</th>
+                <th >Costo</th>
+                <th >Porcentaje</th>
+                <th >Precio</th>
+                <th >Categoria</th>
+                <th >Fecha</th>
+                <th >Registrado</th>
+                <th >Acción</th>
+                </tr>
+            </thead>
             
-                    <table id="productos" class="table table-dark table-striped table-sm">
-                        <thead>
-                            <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Codigo</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Cant</th>
-                            <th scope="col">Costo</th>
-                            <th scope="col">Porcentaje</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Registrado</th>
-                            <th scope="col">Acción</th>
-                            </tr>
-                        </thead>
-                        
-                        <tbody id="Trproductos">
-                        {% for producto in productos %}
-                            {% if producto.deleted == true and deleted == true %}
-                            <tr>
-                                <th scope="row">{{producto.id}}</th>
-                                <td>{{producto.codigo}}</td>
-                                <td>{{producto.nombre}}</td>
-                                <td>{{producto.cantidad}}</td>
-                                <td>{{producto.costo}}</td>
-                                <td>{{producto.porcentaje}}</td>
-                                <td>{{producto.precio}}</td>
-                                <td>{{producto.categoria}}</td>
-                                <td>{{producto.fecha}}</td>
-                                <td>{{producto.id_u}}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                              <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#producto_detalles_{{producto.id}}" href="#">Detalles
-                                              </a>
-                                            </li>
-                                          </ul>
-                                        <a href="/mproducto/{{producto.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                        <a href="/eproducto/{{producto.id}}" class="btn btn-primary btn-sm ">Restaurar</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Modal detalles productos borrados-->
+            <tbody id="Trproductos">
+            {% for producto in productos %}
+                {% if producto.deleted == true and deleted == true %}
+                <tr>
+                    <th>{{producto.id}}</th>
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>{{producto.costo}}</td>
+                    <td>{{producto.porcentaje}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.categoria}}</td>
+                    <td>{{producto.fecha}}</td>
+                    <td>{{producto.id_u}}</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                  <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#producto_detalles_{{producto.id}}" href="#">D
+                                  </a>
+                                </li>
+                              </ul>
+                            <a href="/mproducto/{{producto.id}}" class="btn btn-success text-white btn-sm " >M</a>
+                            <a href="/rproducto/{{producto.id}}" class="btn btn-primary btn-sm ">R</a>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Modal detalles productos borrados-->
 
-                            <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-dark">
-                                        <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
-                                        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body bg-dark">
-                                            <div>
-                                                {% set rarchivo = "img/productos/" + producto.imagen %}
-                                                <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
-                                            </div>
-                                            <div>
-                                                <h6>Id: {{producto.id}}</h6>
-                                            </div>
-                                            <div>
-                                                <h6>Codigo: {{producto.codigo}}</h6>
-                                            </div>
-                                            <div>
-                                                <h6>Categoria: {{producto.categoria}}</h6>
-                                            </div>
-                                            <div>
-                                                <h6>Descripcion: {{producto.descripcion}}</h6>
-                                            </div>
-                                            <div>
-                                                <h6>Itereccion por: {{producto.id_u}}</h6>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer bg-dark">
-
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
-
-                                    </div>
+                <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark">
+                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
+                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bg-dark">
+                                <div>
+                                    {% set rarchivo = "img/productos/" + producto.imagen %}
+                                    <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
+                                </div>
+                                <div>
+                                    <h6>Id: {{producto.id}}</h6>
+                                </div>
+                                <div>
+                                    <h6>Codigo: {{producto.codigo}}</h6>
+                                </div>
+                                <div>
+                                    <h6>Categoria: {{producto.categoria}}</h6>
+                                </div>
+                                <div>
+                                    <h6>Descripcion: {{producto.descripcion}}</h6>
+                                </div>
+                                <div>
+                                    <h6>Itereccion por: {{producto.id_u}}</h6>
                                 </div>
                             </div>
-                            {% else %}
-                                {% if producto.deleted == false and deleted == false%}
-                            <tr>
-                                <th scope="row">{{producto.id}}</th>
-                                <td>{{producto.codigo}}</td>
-                                <td>{{producto.nombre}}</td>
-                                <td>{{producto.cantidad}}</td>
-                                <td>{{producto.costo}}</td>
-                                <td>{{producto.porcentaje}}</td>
-                                <td>{{producto.precio}}</td>
-                                <td>{{producto.categoria}}</td>
-                                <td>{{producto.fecha}}</td>
-                                <td>{{producto.id_u}}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#producto_detalles_{{producto.id}}" href="#">Detalles
-                                                </a>
-                                            </li>
-                                            </ul>
-                                        <a href="/mproducto/{{producto.id}}" class="btn btn-success text-white btn-sm " >Modificar</a>
-                                        <a href="/eproducto/{{producto.id}}" class="btn btn-danger btn-sm ">Borrar</a>
+                            <div class="modal-footer bg-dark">
+
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    {% if producto.deleted == false and deleted == false%}
+                <tr>
+                    <th>{{producto.id}}</th>
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>{{producto.costo}}</td>
+                    <td>{{producto.porcentaje}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.categoria}}</td>
+                    <td>{{producto.fecha}}</td>
+                    <td>{{producto.id_u}}</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#producto_detalles_{{producto.id}}" href="#">D
+                                    </a>
+                                </li>
+                                </ul>
+                            <a href="/mproducto/{{producto.id}}" class="btn btn-success text-white btn-sm " >M</a>
+                            <a href="/eproducto/{{producto.id}}" class="btn btn-danger btn-sm ">B</a>
+                        </div>
+                    </td>
+                </tr>
+                    <!-- Modal detalles productos -->
+
+                    <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-dark">
+                                <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
+                                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body bg-dark">
+                                    <div>
+                                        {% set rarchivo = "img/productos/" + producto.imagen %}
+                                        <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
                                     </div>
-                                </td>
-                            </tr>
-                                <!-- Modal detalles productos -->
-
-                                <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-dark">
-                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
-                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body bg-dark">
-                                                <div>
-                                                    {% set rarchivo = "img/productos/" + producto.imagen %}
-                                                    <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
-                                                </div>
-                                                <div>
-                                                    <h6>Id: {{producto.id}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Codigo: {{producto.codigo}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Categoria: {{producto.categoria}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6 >Descripcion: {{producto.descripcion}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Interacción por id usuario: {{producto.id_u}}</h6>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer bg-dark">
-
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <h6>Id: {{producto.id}}</h6>
+                                    </div>
+                                    <div>
+                                        <h6>Codigo: {{producto.codigo}}</h6>
+                                    </div>
+                                    <div>
+                                        <h6>Categoria: {{producto.categoria}}</h6>
+                                    </div>
+                                    <div>
+                                        <h6 >Descripcion: {{producto.descripcion}}</h6>
+                                    </div>
+                                    <div>
+                                        <h6>Interacción por id usuario: {{producto.id_u}}</h6>
                                     </div>
                                 </div>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                        </tbody>
-                    </table>
-       
-            </div>
-            <div class="d-flex justify-content-end">
-                <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
-            </div>
+                                <div class="modal-footer bg-dark">
 
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- <div class="container my-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                   
+                </div>
+
+            </div>
+        </div> -->
+
+
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
         </div>
+
+
     </div>
 </div>
 
@@ -190,48 +194,78 @@
 
 
 <script>
-    $(function() {
-        $("#productos").DataTable({
-            "language":{
-                "url":"{{url_for('static', filename='dt/json/DTSpanish.json')}}"
-            },
-            <!-- responsive: true, -->
-            dom: "Bfrtpli",
-            buttons: [
-                {
-                    extend: "copyHtml5",
-                    text: '<img src ="static/ico/copy.svg" alt="PDF" width="25" height="25"/>',
-                    titleAttr: 'Copiar al portapapeles',
-                    className: "btn btn-primary"
-                },
-                {
-                    extend: "excelHtml5",
-                    text: '<img src ="static/ico/excel2.svg" alt="PDF" width="25" height="25"/>',
-                    titleAttr: "Exportar Excel",
-                    className: "btn btn-primary"
-                },
-                {
-                    extend: "csvHtml5",
-                    text: '<img src ="static/ico/csv.svg" alt="PDF" width="25" height="25"/>',
-                    titleAttr: "Exportar a csv",
-                    className: "btn btn-primary"
-                },
-                {
-                    extend: "pdfHtml5",
-                    text: '<img src ="static/ico/pdf2.svg" alt="PDF" width="25" height="25"/>',
-                    titleAttr: "Exportar a PDF",
-                    className: "btn btn-primary"
-                },
-                {
-                    extend: 'print',
-                    text: '<img src ="static/ico/print.svg" alt="PDF" width="25" height="25"/>',
-                    titleAttr: 'Imprimir',
-                    className: 'btn btn-primary',
 
-                },
-            ]
-        });
+    let datatable; 
+    let dataTablesIsInitialized = false;
+
+    const dataTableOptions = {
+        //scrollX: "1000px",
+        lengthMenu : [2, 5, 10, 20],
+        columnDefs: [{className: "tcentrarh", targets : [0,1,3,9] },
+        {orderable: false, targets: [6]},
+        {width: "25%", targets:[2]},
+        {width: "5%", targets:[0, 1, 3, 5, 9]},
+        ],
+        pageLength: 2,
+        destroy: true,
+        language:{
+            "url":"{{url_for('static', filename='dt/json/DTSpanish.json')}}",
+        },
+        buttons: [
+        {
+            extend: "copyHtml5",
+            text: '<img src ="static/ico/copy.svg" alt="PDF" width="25" height="25"/>',
+            titleAttr: 'Copiar al portapapeles',
+            className: "btn btn-primary"
+        },
+        {
+            extend: "excelHtml5",
+            text: '<img src ="static/ico/excel2.svg" alt="PDF" width="25" height="25"/>',
+            titleAttr: "Exportar Excel",
+            className: "btn btn-primary"
+        },
+        {
+            extend: "csvHtml5",
+            text: '<img src ="static/ico/csv.svg" alt="PDF" width="25" height="25"/>',
+            titleAttr: "Exportar a csv",
+            className: "btn btn-primary"
+        },
+        {
+            extend: "pdfHtml5",
+            text: '<img src ="static/ico/pdf2.svg" alt="PDF" width="25" height="25"/>',
+            titleAttr: "Exportar a PDF",
+            className: "btn btn-primary"
+        },
+        {
+            extend: 'print',
+            text: '<img src ="static/ico/print.svg" alt="PDF" width="25" height="25"/>',
+            titleAttr: 'Imprimir',
+            className: 'btn btn-primary',
+
+        },
+        ],
+        layout: {
+            topStart: 'pageLength', topEnd : { search: {
+                placeholder: 'Escribe para buscar'
+            }},
+            top2: 'buttons' 
+        }
+            
+    };
+
+    const iniDataTable = async () => {
+        if (dataTablesIsInitialized) {
+            datatable.destroy();
+        }
+        datatable = $('#productos').DataTable(dataTableOptions);
+        dataTablesIsInitialized = true;
+        
+    };
+    window.addEventListener('load', async () => {
+        await iniDataTable();
     });
+
+   
 </script>
 
 {% endblock %}
