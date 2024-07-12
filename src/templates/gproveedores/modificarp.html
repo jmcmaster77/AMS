@@ -10,21 +10,12 @@
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <h5> Modificar datos del proveedor </h5>
-            <div class="mb-3">
-                <label for="" class="form-label">Modo</label>
-                <label for="" class="text-danger">{{ current_user.rol }}</label>
-            </div>
-        </div>
-            
-        <div class="d-flex justify-content-end">
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
                 <a href="{{ url_for('gproveedores.proveedores') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
-        
-
         <form action="/modificarp/{{proveedor.id}}" method="post" class="mt-2">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 

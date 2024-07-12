@@ -9,21 +9,13 @@
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4> Registro de producto</h4>
-            <div class="mb-3">
-                <label for="" class="form-label">Modo</label>
-                <label for="" class="text-danger">{{ current_user.rol }}</label>
-            </div>
-        </div>
-            
-        <div class="d-flex justify-content-end">
+            <h5> Registro de producto</h5>
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
                 <a href="{{ url_for('gproductos.productos') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
-        
 
         <form action="/rproducto" method="post" enctype="multipart/form-data" class="mt-2">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

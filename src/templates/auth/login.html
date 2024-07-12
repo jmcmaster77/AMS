@@ -7,12 +7,13 @@
 
 {% block body %}
 <form class="form-signin" action="/login" method="POST">
-    <div class="mb-2 text-white">
+    <div class="mb-2 text-white text-center">
         <h2 class="h3 mb-3 fw-normal">Admin me Store</h2>
     </div>
-    <img class="mb-4" src="{{ url_for('static', filename='img/auth.png') }}" alt="" width="175" height="150">
-
-    <div class="mb-2 text-white">
+    <div style="text-align: center">
+        <img class="mb-4" src="{{ url_for('static', filename='img/auth.png') }}" style="text-align: center" alt="" width="175" height="150">
+    </div>
+    <div class="mb-2 text-white text-center">
         <h2 class="h3 mb-3 fw-normal">Inicia sesión</h2>
     </div>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
