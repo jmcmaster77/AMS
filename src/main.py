@@ -11,6 +11,7 @@ from routes.gusuarios import gu
 from routes.gclientes import gc
 from routes.gproveedores import gp
 from routes.gproductos import gprod
+from routes.gcompras import gcomp
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
 from flask_toastr import Toastr
@@ -79,6 +80,7 @@ app.register_blueprint(gu)
 app.register_blueprint(gc)
 app.register_blueprint(gp)
 app.register_blueprint(gprod)
+app.register_blueprint(gcomp)
 
 
 if __name__ == '__main__':
