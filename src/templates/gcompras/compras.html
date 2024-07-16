@@ -40,7 +40,8 @@
                                 <th >Pagada</th>
                                 <th >Total</th>
                                 <th >Fecha</th>
-                                <th >Registrado</th>
+                                <th >Cant P</th>
+                                <th >ID U</th>
                                 <th >Acción</th>
                                 </tr>
                             </thead>
@@ -56,6 +57,7 @@
                                     <td>{{compra.pagada}}</td>
                                     <td>{{compra.totalc}}</td>
                                     <td>{{compra.fecha}}</td>
+                                    <td>{{compra.productos.productos | count}}</td>
                                     <td>{{compra.id_u}}</td>
                                     <td>
                                         <div class="btn-group" role="group">
@@ -70,32 +72,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Modal detalles compra borrados-->
-                
-                                <div class="modal fade" id="compra_detalles_{{compra.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-dark">
-                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles compra</h5>
-                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body bg-dark">
-                                                <div>
-                                                    <h6>Id: {{compra.productos}}</h6>
-                                                    
-                                                </div>
-                                                <div>
-                                                    <h6>Itereccion por: {{compra.id_u}}</h6>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer bg-dark">
-                
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            </div>
-                
-                                        </div>
-                                    </div>
-                                </div>
+
                                 {% else %}
                                     {% if compra.deleted == false and deleted == false%}
                                 <tr>
@@ -106,6 +83,7 @@
                                     <td>{{compra.pagada}}</td>
                                     <td>{{compra.totalc}}</td>
                                     <td>{{compra.fecha}}</td>
+                                    <td>{{compra.productos.productos | count}}</td>
                                     <td>{{compra.id_u}}</td>
                                     <td>
                                         <div class="btn-group" role="group">
@@ -127,51 +105,98 @@
                             </tbody>
                         </table>
 
-                        <!-- Modal detalles compra -->
+                        
                         {% for compra in compras %}
-                        {% if compra.deleted == false and deleted == false%}
-                        <div class="modal fade" id="compra_detalles_{{compra.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-dark">
-                                    <h5 class="modal-title text-white" id="exampleModalLabel">Detalles Compra</h5>
-                                    <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body bg-dark">
-                                        <div>
-                                            <table class="table table-striped table-dark table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Producto</th>
-                                                        <th>Cantidad</th>
-                                                        <th>Costo</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for producto in compra.productos.productos%}
-                                                    <tr>
-                                                        <td>{{producto.id}}</td>
-                                                        <td>{{producto.nombre}}</td>
-                                                        <td>{{producto.cantidad}}</td>
-                                                        <td>{{producto.costo}}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
+                            {% if compra.deleted == true and deleted == true %}
+                                <!-- Modal detalles compra borrados-->
+
+                                <div class="modal fade" id="compra_detalles_{{compra.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles compra</h5>
+                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                <table class="table table-striped table-dark table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Producto</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Costo</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for producto in compra.productos.productos%}
+                                                        <tr>
+                                                            <td>{{producto.id}}</td>
+                                                            <td>{{producto.nombre}}</td>
+                                                            <td>{{producto.cantidad}}</td>
+                                                            <td>{{producto.costo}}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                                <div>
+                                                    <h6>Itereccion por: {{compra.id_u}}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer bg-dark">
+                
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                
                                         </div>
-                                        <div>
-                                            <h6>Interacción por id usuario: {{compra.id_u}}</h6>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer bg-dark">
-    
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        {% endif %}
+                            
+                            {% else %}                                
+                                {% if compra.deleted == false and deleted == false%}
+                                    <!-- Modal detalles compra -->
+                                    <div class="modal fade" id="compra_detalles_{{compra.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-dark">
+                                                <h5 class="modal-title text-white" id="exampleModalLabel">Detalles Compra</h5>
+                                                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body bg-dark">
+                                                    <div>
+                                                        <table class="table table-striped table-dark table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>Producto</th>
+                                                                    <th>Cantidad</th>
+                                                                    <th>Costo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {% for producto in compra.productos.productos%}
+                                                                <tr>
+                                                                    <td>{{producto.id}}</td>
+                                                                    <td>{{producto.nombre}}</td>
+                                                                    <td>{{producto.cantidad}}</td>
+                                                                    <td>{{producto.costo}}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div>
+                                                        <h6>Interacción por id usuario: {{compra.id_u}}</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer bg-dark">
+                
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
                         {% endfor %}
                 </div>
             </div>

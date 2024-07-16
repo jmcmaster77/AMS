@@ -53,7 +53,9 @@ def registro_compras():
         # print("datos recibidos", request.form)
         # print("Proveedor: ", request.form["proveedor"])
         # print("Cantidad de Item: ", request.form["item"])
-
+        if request.form['proveedor'] == "":
+            flash({'title': "AMS", 'message': "Seleccionar Proveedor: "}, 'warning')
+            return redirect(url_for("gcompras.registro_compras"))
         data = {}
         data["productos"] = []
         
@@ -67,6 +69,9 @@ def registro_compras():
                     "cantidad":int(request.form["cantidad"]),
                     "costo":float(request.form["costo"])
                 })
+                pdata.cantidad = int(request.form["cantidad"])
+                pdata.costo = float(request.form["costo"])
+                pdata.precio = float(request.form["costo"]) * ((pdata.porcentaje/100)+1)
                 totalc = float(request.form["costo"]) * int(request.form["cantidad"])
                 # print("data:",data)
                 # print("Data JSON: ", json.dumps(data))
@@ -79,19 +84,27 @@ def registro_compras():
                     "cantidad":int(request.form[f"cantidad"+str(x)]),
                     "costo":float(request.form[f"costo"+str(x)])
                 })
+                pdata.cantidad = int(request.form[f"cantidad"+str(x)])
+                pdata.costo = float(request.form[f"costo"+str(x)])
+                pdata.precio = float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
                 totalc = totalc + (float(request.form[f"costo"+str(x)]) * int(request.form[f"cantidad"+str(x)]))
         provdata = Proveedores.query.filter_by(fullname=request.form['proveedor']).first()
-        print("Proveedor id", str(provdata.id) + " | " + provdata.fullname )
-        print("Data JSON: ", json.dumps(data))
-        print("Total Compra: ", "%.2f" %totalc)
+        # print("Proveedor id", str(provdata.id) + " | " + provdata.fullname )
+        # print("Data JSON: ", json.dumps(data))
+        # print("Total Compra: ", "%.2f" %totalc)
         fecha = datetime.now()
         fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+        if request.form["tcompra"] == "Contado":
+            pagado = True
+        else: 
+            pagado = False
 
-        compra = Compras(provdata.id, data, request.form["tcompra"], request.form["mpago"], True, totalc, fecha, False,  current_user.id)
+        compra = Compras(provdata.id, data, request.form["tcompra"], request.form["mpago"], pagado, totalc, fecha, False,  current_user.id)
         db.session.add(compra)
         db.session.commit()
+        
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                    " | Registro compra id dev")
+                    " | Registro compra id "+ str(compra.id))
         flash({'title': "AMS", 'message': "Compra: " +
-                "id dev" + " registrado satisfactoriamente"}, 'success')
+                "id "+ str(compra.id) + " registrado satisfactoriamente"}, 'success')
         return redirect(url_for("gcompras.compras"))
