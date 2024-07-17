@@ -98,25 +98,29 @@ def registrar_producto():
 def modificar_producto(id):
     producto = Productos.query.get(id)
     if request.method == "POST":
-        print("datain:", request.form)
+        # check para validar si mantiene la imagen de producto
         check = request.form.getlist("check[]")
-        
+
         if len(check) != 0:
-            fecha = datetime.now()
-            producto.codigo = request.form['codigo']
-            producto.nombre = request.form['nombre']
-            producto.porcentaje = request.form['porcentaje']
-            producto.categoria = request.form['categoria']
-            producto.descripcion = request.form['descripcion']
-            
-            # la base de datos acepta el datetime en ese formato papi
-            producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
-            producto.id_u = current_user.id
-            db.session.commit()
-            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                        " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
-            flash({'title': "AMS", 'message': "Producto: " +
-                    request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+            if producto.precio != 0:
+                fecha = datetime.now()
+                # reajusta el precio del producto papi
+                producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)  # float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                
+                producto.codigo = request.form['codigo']
+                producto.nombre = request.form['nombre']
+                producto.porcentaje = request.form['porcentaje']
+                producto.categoria = request.form['categoria']
+                producto.descripcion = request.form['descripcion']
+                
+                # la base de datos acepta el datetime en ese formato papi
+                producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                producto.id_u = current_user.id
+                db.session.commit()
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                            " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                flash({'title': "AMS", 'message': "Producto: " +
+                        request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
 
             return redirect(url_for("gproductos.productos"))
 
@@ -124,47 +128,53 @@ def modificar_producto(id):
             
             archivo = request.files["imagen"]
             if archivo.filename != "":
-                
-                nombrearchivo = secure_filename(archivo.filename)
-                # capturando la ext del archivo
-                ext = os.path.splitext(nombrearchivo)[1]
-                nuevoNombreArchivo = request.form["codigo"] + ext
-                rutaarchivo = os.path.abspath(
-                    f"src/static/img/productos/" + nuevoNombreArchivo)
-                archivo.save(rutaarchivo)
+                if producto.precio != 0:
+                    # reajusta el precio del producto papi
+                    producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)
+                    
+                    nombrearchivo = secure_filename(archivo.filename)
+                    # capturando la ext del archivo
+                    ext = os.path.splitext(nombrearchivo)[1]
+                    nuevoNombreArchivo = request.form["codigo"] + ext
+                    rutaarchivo = os.path.abspath(
+                        f"src/static/img/productos/" + nuevoNombreArchivo)
+                    archivo.save(rutaarchivo)
 
-                fecha = datetime.now()
-                producto.codigo = request.form['codigo']
-                producto.nombre = request.form['nombre']
-                producto.porcentaje = request.form['porcentaje']
-                producto.categoria = request.form['categoria']
-                producto.descripcion = request.form['descripcion']
-                producto.imagen = nuevoNombreArchivo
-                # la base de datos acepta el datetime en ese formato papi
-                producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
-                producto.id_u = current_user.id
-                db.session.commit()
-                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                            " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
-                flash({'title': "AMS", 'message': "Producto: " +
-                        request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                    fecha = datetime.now()
+                    producto.codigo = request.form['codigo']
+                    producto.nombre = request.form['nombre']
+                    producto.porcentaje = request.form['porcentaje']
+                    producto.categoria = request.form['categoria']
+                    producto.descripcion = request.form['descripcion']
+                    producto.imagen = nuevoNombreArchivo
+                    # la base de datos acepta el datetime en ese formato papi
+                    producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                    producto.id_u = current_user.id
+                    db.session.commit()
+                    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                                " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                    flash({'title': "AMS", 'message': "Producto: " +
+                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
                 return redirect(url_for("gproductos.productos"))
             else:
-                fecha = datetime.now()
-                producto.codigo = request.form['codigo']
-                producto.nombre = request.form['nombre']
-                producto.porcentaje = request.form['porcentaje']
-                producto.categoria = request.form['categoria']
-                producto.descripcion = request.form['descripcion']
-                producto.imagen = "box.png"
-                # la base de datos acepta el datetime en ese formato papi
-                producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
-                producto.id_u = current_user.id
-                db.session.commit()
-                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                            " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
-                flash({'title': "AMS", 'message': "Producto: " +
-                        request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                if producto.precio != 0:
+                    # reajusta el precio del producto papi
+                    producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)
+                    fecha = datetime.now()
+                    producto.codigo = request.form['codigo']
+                    producto.nombre = request.form['nombre']
+                    producto.porcentaje = request.form['porcentaje']
+                    producto.categoria = request.form['categoria']
+                    producto.descripcion = request.form['descripcion']
+                    producto.imagen = "box.png"
+                    # la base de datos acepta el datetime en ese formato papi
+                    producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                    producto.id_u = current_user.id
+                    db.session.commit()
+                    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                                " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                    flash({'title': "AMS", 'message': "Producto: " +
+                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
 
                 return redirect(url_for("gproductos.productos"))
     return render_template("gproductos/mproducto.html", producto=producto)

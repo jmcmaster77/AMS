@@ -15,8 +15,8 @@
         <div class="d-flex justify-content-center">
                 <h5>Modulos</h5>
         </div>
-        <div class="container">
-            <div class="row">
+        <div class="container border border-primary-subtle rounded-3 mt-2 mb-2">
+            <div class="row mt-2 mb-2">
                 {% if current_user.rol == 0 %}
                 <div class="col">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}"> Usuarios </a>
@@ -45,7 +45,7 @@
                     <a type="button" class="btn btn-secondary" href="#"> Ventas </a>
                 </div>
             </div>
-            <div class="row mt-2 ">
+            <div class="row mt-2 mb-2">
                 <div class="col d-flex justify-content-end">
                     <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
                 </div>

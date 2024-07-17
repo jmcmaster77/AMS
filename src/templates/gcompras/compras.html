@@ -35,6 +35,8 @@
                                 <tr>
                                 <th >Id</th>
                                 <th >Id Prov</th>
+                                <th ># Fact</th>
+                                <th >Fecha Fact</th>
                                 <th >Tipo Comp</th>
                                 <th >Mpago</th>
                                 <th >Pagada</th>
@@ -52,6 +54,8 @@
                                 <tr>
                                     <th>{{compra.id}}</th>
                                     <td>{{compra.id_p}}</td>
+                                    <td>{{compra.nfact}}</td>
+                                    <td>{{compra.fechaf}}</td>
                                     <td>{{compra.tcompra}}</td>
                                     <td>{{compra.mpago}}</td>
                                     <td>{{compra.pagada}}</td>
@@ -69,6 +73,7 @@
                                               </ul>
                                             <a href="/mcompra/{{compra.id}}" class="btn btn-success text-white btn-sm " >M</a>
                                             <a href="/rcompra/{{compra.id}}" class="btn btn-primary btn-sm ">R</a>
+                                            <a href="/comprobantec/{{compra.id}}" class="btn btn-light btn-sm ">C</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -78,6 +83,8 @@
                                 <tr>
                                     <th>{{compra.id}}</th>
                                     <td>{{compra.id_p}}</td>
+                                    <td>{{compra.nfact}}</td>
+                                    <td>{{compra.fechaf}}</td>
                                     <td>{{compra.tcompra}}</td>
                                     <td>{{compra.mpago}}</td>
                                     <td>{{compra.pagada}}</td>
@@ -95,6 +102,7 @@
                                                 </ul>
                                             <a href="/mcompra/{{compra.id}}" class="btn btn-success text-white btn-sm " >M</a>
                                             <a href="/rcompra/{{compra.id}}" class="btn btn-danger btn-sm ">B</a>
+                                            <a href="/comprobantec/{{compra.id}}" class="btn btn-light btn-sm ">C</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -220,10 +228,10 @@
     const dataTableOptions = {
         //scrollX: "1000px",
         lengthMenu : [5, 10, 20],
-        columnDefs: [{className: "tcentrarh", targets : [0,1,2,3,4,8] },
-        {orderable: false, targets: [8]},
+        columnDefs: [{className: "tcentrarh", targets : [0,1,2,3,4,5,6,10,11] },
+        {orderable: false, targets: [10]},
         //{width: "25%", targets:[2]},
-        {width: "5%", targets:[0, 1, 7]},
+        {width: "5%", targets:[0, 1, 9]},
         ],
         pageLength: 10,
         destroy: true,

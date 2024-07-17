@@ -26,10 +26,10 @@
             {% if proveedores == "No" %}
             <h6>No hay proveedores que seleccionar</h6>
             {% else %}
-            <div class="container-lg">
+            <div class="container-lg border border-primary-subtle rounded-3 ">
                 <div class="row">
-                    <div class="col">
-                        <table>
+                    <div class="col mt-2 mb-2">
+                        <table class="mb-2">
                             <thead>
                                 <tr>
                                     <th>Proveedor</th>
@@ -61,6 +61,43 @@
                                             <option value="Transferencia">Otro</option>
                                         </select>
                                     </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Numero Fact" aria-label="Numero Fact" name = "nfact" id="nfact" minlength="4" maxlength="10" required>
+                                        <script type="text/javascript">
+                                            $(document).ready(function(){
+                                                $("#nfact").keypress(function(event) {
+                                                var key = event.which || event.keyCode;
+                                                if ((key<65) && (key!=57) &&  (key!=48) &&  (key!=49) &&  (key!=50) &&  (key!=51) &&  (key!=52) &&  (key!=53) &&  (key!=54) && (key!=55) && (key!=56) || (key>90) && (key<97) ||  (key>122 && key != 241 && key != 209 && key != 225 && key != 233 && key != 237 && key != 243 && key != 250 && key != 193 && key != 201 && key != 205 && key != 211 && key != 218)){
+                                                    return false;
+                                                }
+                                                });
+                                            });
+                                        </script>
+                                    </td>
+                                    <td>
+                                        <div class="input-group date" id="datepicker">
+                                            <input type="text" class="form-control" placeholder="Fecha Factura" name="fechaf" id="date" minlength="9" maxlength="10" required/>
+                                            <span class="input-group-append">
+                                                <span class="input-group-text bg-light d-block">
+                                                <img src="{{url_for('static', filename='ico/calendar2-date.svg')}}" alt="ico">
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <script type="text/javascript">
+                                            jQuery(document).ready(function(){
+                                                // Listen for the input event.
+                                                jQuery("#date").on('input', function (evt) {
+                                                    // Allow only numbers.
+                                                    jQuery(this).val(jQuery(this).val().replace(/[^0-9,/]/g, ''));
+                                                });
+                                            });
+                                        </script>
+                                        <script>
+                                            $(function(){
+                                                $('#datepicker').datepicker();
+                                            });
+                                        </script>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,8 +111,8 @@
                                     <th>Acción</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
+                            <tbody class="table-group-divider border-primary-subtle">
+                                <tr > 
                                     <td width="350"> 
                                         <select class="form-select val" aria-label="Default select example" name="producto" required>
                                         <option value="">Selecciona un producto</option>

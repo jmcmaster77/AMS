@@ -4,6 +4,8 @@ from utils.db import db
 class Compras(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_p = db.Column(db.Integer)
+    nfact = db.Column(db.String(10))
+    fechaf = db.Column(db.Date)
     productos = db.Column(db.JSON)
     tcompra = db.Column(db.String(10))
     mpago = db.Column(db.String(15))
@@ -13,8 +15,10 @@ class Compras(db.Model):
     deleted = db.Column(db.Boolean)
     id_u = db.Column(db.Integer)
 
-    def __init__(self, id_p, productos, tcompra, mpago, pagada, totalc, fecha, deleted, id_u):
+    def __init__(self, id_p, nfact, fechaf,productos, tcompra, mpago, pagada, totalc, fecha, deleted, id_u):
         self.id_p = id_p
+        self.nfact = nfact
+        self.fechaf = fechaf
         self.productos = productos
         self.tcompra = tcompra
         self.mpago = mpago

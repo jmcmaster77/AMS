@@ -74,44 +74,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Modal detalles productos borrados-->
-                
-                                <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-dark">
-                                            <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
-                                            <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body bg-dark">
-                                                <div>
-                                                    {% set rarchivo = "img/productos/" + producto.imagen %}
-                                                    <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
-                                                </div>
-                                                <div>
-                                                    <h6>Id: {{producto.id}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Codigo: {{producto.codigo}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Categoria: {{producto.categoria}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Descripcion: {{producto.descripcion}}</h6>
-                                                </div>
-                                                <div>
-                                                    <h6>Itereccion por: {{producto.id_u}}</h6>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer bg-dark">
-                
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            </div>
-                
-                                        </div>
-                                    </div>
-                                </div>
+
                                 {% else %}
                                     {% if producto.deleted == false and deleted == false%}
                                 <tr>
@@ -138,49 +101,116 @@
                                         </div>
                                     </td>
                                 </tr>
-                                    <!-- Modal detalles productos -->
-                
-                                    <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-dark">
-                                                <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
-                                                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body bg-dark">
-                                                    <div>
-                                                        {% set rarchivo = "img/productos/" + producto.imagen %}
-                                                        <img src="{{ url_for('static', filename=rarchivo) }}" class="" alt="..." width="450" height="425">
-                                                    </div>
-                                                    <div>
-                                                        <h6>Id: {{producto.id}}</h6>
-                                                    </div>
-                                                    <div>
-                                                        <h6>Codigo: {{producto.codigo}}</h6>
-                                                    </div>
-                                                    <div>
-                                                        <h6>Categoria: {{producto.categoria}}</h6>
-                                                    </div>
-                                                    <div>
-                                                        <h6 >Descripcion: {{producto.descripcion}}</h6>
-                                                    </div>
-                                                    <div>
-                                                        <h6>Interacción por id usuario: {{producto.id_u}}</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer bg-dark">
-                
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
-                    
+                        {% for producto in productos %}
+                            {% if producto.deleted == true and deleted == true %}
+                        <!-- Modal detalles productos borrados-->
+
+                        <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark">
+                                    <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
+                                    <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body bg-dark">
+                                        <div class="card bg-dark" style="width: 29rem;">
+                                            {% set rarchivo = "img/productos/" + producto.imagen %}
+                                            <img src="{{ url_for('static', filename=rarchivo) }}" class="card-img-top" alt="..." height="350">
+                                            <div class="card-body text-white">
+                                                <p class="card-text">
+                                                    <table class="table table-dark table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID:</th>
+                                                                <td>{{producto.id}}</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Codigo:</th>
+                                                                <td>{{producto.codigo}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Categoria:</th>
+                                                                <td>{{producto.categoria}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Descripcion:</th>
+                                                                <td> {{producto.descripcion}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Iteraccion por:</th>
+                                                                <td>{{producto.id_u}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                            {% if producto.deleted == false and deleted == false%}
+                        <!-- Modal detalles productos -->
+
+                        <div class="modal fade" id="producto_detalles_{{producto.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark">
+                                        <h5 class="modal-title text-white" id="exampleModalLabel">Detalles producto</h5>
+                                        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body bg-dark">
+                                        <div class="card bg-dark" style="width: 29rem;">
+                                            {% set rarchivo = "img/productos/" + producto.imagen %}
+                                            <img src="{{ url_for('static', filename=rarchivo) }}" class="card-img-top" alt="..." height="350">
+                                            <div class="card-body text-white">
+                                                <p class="card-text">
+                                                    <table class="table table-dark table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID:</th>
+                                                                <td>{{producto.id}}</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Codigo:</th>
+                                                                <td>{{producto.codigo}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Categoria:</th>
+                                                                <td>{{producto.categoria}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Descripcion:</th>
+                                                                <td> {{producto.descripcion}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Iteraccion por:</th>
+                                                                <td>{{producto.id_u}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </p>
+                                            </div>
+                                        </div>   
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
