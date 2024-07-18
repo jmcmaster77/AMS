@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS | Comprobante | {{compra.id}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.min.css')}}"/>
+    <script src="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.bundle.min.js')}}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/comprobante.css')}}">
+    
+</head>
+
+<body>
+    <div class="parent-border">
+        <div class="border">
+            <div class="parent parent-invoice-logo-type">
+                <img class="invoice-logo child1" src="{{ url_for('static', filename='ico/store-svgrepo-com2.svg') }}" alt="" width="100" height="100">
+                <span class="invoice-type child2">
+                    Admin My Store - Comprobante Compra
+                </span>
+                <span class="numeroc">
+                   Comprobante CC{{compra.id}}
+                </span>
+                <p class="fw-semibold fechac">Fecha {{fechac}}</p>
+            </div>
+
+
+            <div class="direccion">
+                <p class="margen0">Dirección Altavista #163 Direccion Altavista #163 </p>
+                <p>jmcmaster77@gmail.com - 0414-299-34-87 </p>
+            </div>
+            <hr class="hrtop">
+            <div class="parent parent-invoice-table-address">
+
+                <table class="child invoice-table-address" style="border-spacing: 0;">
+                    <tr class="table-addresses">
+                        <th class="pcolumna">Proveedor</th>
+                        <th>Factura</th>
+                    </tr>
+                    <tr class="temp">
+                        <td>{{provdata.fullname}} {{provdata.documento}}</td>
+                        <td>{{compra.nfact}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{provdata.direccion}}</td>
+                        <td>Fecha:</td>
+                    </tr>
+                    <tr>
+                        <td>{{provdata.email}}</td>
+                        <td>{{fechaf}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{provdata.numero}}</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <p class="resumen">Resumen del pedido</p>
+            <div class="parent parent-invoice-table">
+                <table class="invoice-table" style="border-spacing: 0;">
+                    <thead>
+                        <tr class="table-row-border">
+                            <th>ID</th>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in compra.productos.productos%}
+                        <tr class="table-row-pedido">
+                            <td class="rc1">{{producto.id}}</td>
+                            <td class="rc2">{{producto.nombre}}</td>
+                            <td class="rc3">{{producto.cantidad}}</td>
+                            <td class="rc4">{{producto.costo}}</td>
+                            {% set totalitem = producto.cantidad * producto.costo %}
+                            <td class="text-end rc5">{{'%0.2f' % totalitem}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr class="tr-sub-total">
+                            <th colspan="4" class="text-end">Sub Total</th>
+                            <td class="text-end sub-total">{{'%0.2f' % compra.totalc}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="4" class="text-end">
+                                Iva</th>
+                                {% set civa = compra.totalc * 0.16 %}
+                            <td class="text-end">{{ '%0.2f' % civa}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="4" class="text-end">Total</th>
+                            {% set gtotal = compra.totalc + civa %}
+                            <td class="text-end fw-semibold">{{'%0.2f' % gtotal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- <div class="parent  parent-invoice-total">
+                <span class="invoice-total-text child">
+                    TOTAL :
+                </span>
+
+                <span class="invoice-total child">
+                    RS: 12000/-
+                </span>
+            </div> -->
+
+            <div class="parent  parent-invoice-terms">
+                <div class="invoice-terms">
+                    <div class="d-print-none mt-4">
+                        <div class="float-end">
+                            <a href="javascript:window.print()" class="btn btn-success me-1">
+                                <img src="{{ url_for('static', filename='ico/printer.svg') }}" alt="" width="35" height="24" class="d-inline-block align-text-top">
+                            </a>
+                            <a href="/compras" class="btn btn-secondary w-md">Retorno</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

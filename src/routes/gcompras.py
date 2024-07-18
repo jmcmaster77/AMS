@@ -37,6 +37,7 @@ def compras_deleted():
     else:
         return render_template("gcompras/compras.html", compras=registros, deleted=True)
 
+
 @gcomp.route("/rcompras", methods=["GET", "POST"])
 @login_required
 def registro_compras():
@@ -44,12 +45,11 @@ def registro_compras():
         proveedores = Proveedores.query.all()
         if proveedores is not None:
             productos = Productos.query.all()
-            return render_template("gcompras/rcompra.html", proveedores=proveedores, productos=productos) 
-        else: 
-            return render_template("gcompras/rcompra.html", proveedores="No") 
-        
-    else:
+            return render_template("gcompras/rcompra.html", proveedores=proveedores, productos=productos)
+        else:
+            return render_template("gcompras/rcompra.html", proveedores="No")
 
+    else:
 
         # print("datos recibidos", request.form)
         # print("Proveedor: ", request.form["proveedor"])
@@ -59,60 +59,72 @@ def registro_compras():
             return redirect(url_for("gcompras.registro_compras"))
         data = {}
         data["productos"] = []
-        
+
         for x in range(int(request.form["item"])):
             if x == 0:
                 # print("Producto: ",request.form["producto"], "Cantidad: ", request.form["cantidad"], "Costo: ", request.form["costo"])
-                pdata = Productos.query.filter_by(nombre=request.form['producto']).first()
+                pdata = Productos.query.filter_by(
+                    nombre=request.form['producto']).first()
                 data["productos"].append({
                     "id": pdata.id,
                     "nombre": request.form["producto"],
-                    "cantidad":int(request.form["cantidad"]),
-                    "costo":float(request.form["costo"])
+                    "cantidad": int(request.form["cantidad"]),
+                    "costo": float(request.form["costo"])
                 })
                 if pdata.cantidad == 0:
 
                     pdata.cantidad = int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
-                    pdata.precio = float(request.form["costo"]) * ((pdata.porcentaje/100)+1)
-                    
+                    pdata.precio = float(
+                        request.form["costo"]) * ((pdata.porcentaje/100)+1)
+
                 else:
-                    pdata.cantidad = pdata.cantidad + int(request.form["cantidad"])
+                    pdata.cantidad = pdata.cantidad + \
+                        int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
-                    pdata.precio = float(request.form["costo"]) * ((pdata.porcentaje/100)+1)
-                    
-                totalc = float(request.form["costo"]) * int(request.form["cantidad"])
+                    pdata.precio = float(
+                        request.form["costo"]) * ((pdata.porcentaje/100)+1)
+
+                totalc = float(request.form["costo"]) * \
+                    int(request.form["cantidad"])
                 # print("data:",data)
                 # print("Data JSON: ", json.dumps(data))
             else:
                 # print(f"Producto "+str(x)+": ",request.form[f"producto"+str(x)], "Cantidad: ", request.form[f"cantidad"+str(x)], "Costo: ", request.form[f"costo"+str(x)])
-                pdata = Productos.query.filter_by(nombre=request.form[f"producto"+str(x)]).first()
+                pdata = Productos.query.filter_by(
+                    nombre=request.form[f"producto"+str(x)]).first()
                 if pdata.cantidad == 0:
-                    
+
                     data["productos"].append({
                         "id": pdata.id,
                         "nombre": request.form[f"producto"+str(x)],
-                        "cantidad":int(request.form[f"cantidad"+str(x)]),
-                        "costo":float(request.form[f"costo"+str(x)])
+                        "cantidad": int(request.form[f"cantidad"+str(x)]),
+                        "costo": float(request.form[f"costo"+str(x)])
                     })
                     pdata.cantidad = int(request.form[f"cantidad"+str(x)])
                     pdata.costo = float(request.form[f"costo"+str(x)])
-                    pdata.precio = float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
-                    
+                    pdata.precio = float(
+                        request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+
                 else:
                     data["productos"].append({
                         "id": pdata.id,
                         "nombre": request.form[f"producto"+str(x)],
-                        "cantidad":int(request.form[f"cantidad"+str(x)]),
-                        "costo":float(request.form[f"costo"+str(x)])
+                        "cantidad": int(request.form[f"cantidad"+str(x)]),
+                        "costo": float(request.form[f"costo"+str(x)])
                     })
-                    pdata.cantidad = pdata.cantidad + int(request.form[f"cantidad"+str(x)])
+                    pdata.cantidad = pdata.cantidad + \
+                        int(request.form[f"cantidad"+str(x)])
                     pdata.costo = float(request.form[f"costo"+str(x)])
-                    pdata.precio = float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
-                
-                totalc = totalc + (float(request.form[f"costo"+str(x)]) * int(request.form[f"cantidad"+str(x)]))
-            
-        provdata = Proveedores.query.filter_by(fullname=request.form['proveedor']).first()
+                    pdata.precio = float(
+                        request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+
+                totalc = totalc + \
+                    (float(request.form[f"costo"+str(x)])
+                     * int(request.form[f"cantidad"+str(x)]))
+
+        provdata = Proveedores.query.filter_by(
+            fullname=request.form['proveedor']).first()
         # print("Proveedor id", str(provdata.id) + " | " + provdata.fullname )
         # print("Data JSON: ", json.dumps(data))
         # print("Total Compra: ", "%.2f" %totalc)
@@ -120,32 +132,44 @@ def registro_compras():
         fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
         if request.form["tcompra"] == "Contado":
             pagado = True
-        else: 
+        else:
             pagado = False
         nfact = request.form["nfact"]
         fechaf = datetime.strptime(request.form["fechaf"], "%d/%m/%Y")
-        
-        compra = Compras(provdata.id, nfact, fechaf, data, request.form["tcompra"], request.form["mpago"], pagado, totalc, fecha, False,  current_user.id)
+
+        compra = Compras(provdata.id, nfact, fechaf, data,
+                         request.form["tcompra"], request.form["mpago"], pagado, totalc, fecha, False,  current_user.id)
         db.session.add(compra)
         db.session.commit()
-        
-        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                    " | Registro compra id "+ str(compra.id))
-        flash({'title': "AMS", 'message': "Compra: " +
-                "id "+ str(compra.id) + " registrado satisfactoriamente"}, 'success')
-        return redirect(url_for("gcompras.compras"))
-    
 
-    
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                    " | Registro compra id " + str(compra.id))
+        flash({'title': "AMS", 'message': "Compra: " +
+               "id " + str(compra.id) + " registrado satisfactoriamente"}, 'success')
+        return redirect(url_for("gcompras.compras"))
+
+
 @gcomp.route("/comprobantec/<id>")
 @login_required
 def comprobantec(id):
-    # obteniendo datos de la compra 
+    # obteniendo datos de la compra
     compradata = Compras.query.get(id)
     # obteniendo datos del proveedor
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
     fechaf = compradata.fechaf.strftime("%d/%m/%Y")
-        
 
-    return render_template("comprobantes/comprobantec.html", compra = compradata, provdata = provdata, fechac = fechac, fechaf=fechaf) 
+    return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+
+
+@gcomp.route("/comprobantectpdf/<id>")
+@login_required
+def comprobantectpdf(id):
+    # obteniendo datos de la compra
+    compradata = Compras.query.get(id)
+    # obteniendo datos del proveedor
+    provdata = Proveedores.query.get(compradata.id_p)
+    fechac = compradata.fecha.strftime("%d/%m/%Y")
+    fechaf = compradata.fechaf.strftime("%d/%m/%Y")
+
+    return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
