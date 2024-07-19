@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, render_template, flash
+from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
 from flask_login import login_required, current_user
 from models.ModelComprasdb import Compras
 from models.ModelProveedoresdb import Proveedores
@@ -7,6 +7,10 @@ from datetime import datetime
 from utils.db import db
 from utils.log import logger
 import json
+import jinja2
+import pdfkit
+import os
+
 
 gcomp = Blueprint("gcompras", __name__)
 
@@ -162,6 +166,42 @@ def comprobantec(id):
     return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
 
 
+def creaPdf(ruta_template, compradata, provdata, fechac, fechaf):
+    template_name = ruta_template.split('\\')[-1]
+    ruta_template = ruta_template.replace(template_name, '')
+
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(ruta_template))
+    template = env.get_template(template_name)
+    rutaimglogo = os.path.abspath(f"src/static/ico/store-svgrepo-com2.svg")
+    html = template.render(compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+    
+    options = {
+        "page-size" : "Letter",
+        "margin-top" : "0.5in",
+        "margin-bottom" : "0.5in", 
+        "margin-right" : "0.5in",
+        "margin-left" : "0.5in",
+        "encoding" : "UTF-8",
+        "enable-local-file-access": None
+    }
+        # para posible implementacion 
+    # file_name = 'invoice.pdf'
+    # pdf_path = os.path.join(settings.BASE_DIR, 'static', 'pdf', file_name)
+    
+    # ummm 
+    # return FileResponse(open(pdf_path, 'rb'), filename=file_name, content_type='application/pdf')
+
+    #config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf") 
+    rutaarchivo = os.path.abspath(f"src/static/ext/bin/wkhtmltopdf.exe")
+    config = pdfkit.configuration(wkhtmltopdf=rutaarchivo) 
+    ruta_salida = os.path.abspath(f"src/static/pdf/test.pdf")
+    cssfile = os.path.abspath(f"src/static/css/comprobante.css")
+    pdfkit.from_string(html, ruta_salida, options=options, configuration=config)
+
+    # print(html)
+    return html
+
+
 @gcomp.route("/comprobantectpdf/<id>")
 @login_required
 def comprobantectpdf(id):
@@ -171,5 +211,13 @@ def comprobantectpdf(id):
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
     fechaf = compradata.fechaf.strftime("%d/%m/%Y")
+    
+    # rutaarchivo = os.path.abspath(f"src/static/img/productos/")
+    ruta_template = "C:\\CODE\\AMS\\src\\templates\\comprobantes\\comprobantepdf.html" # 'C:\CODE\AMS\src\templates\comprobantes\comprobante.html'
+    #template = "comprobante.html"
 
-    return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+    respuesta = creaPdf(ruta_template, compradata,
+                       provdata, fechac, fechaf)
+
+    # return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+    return respuesta 
