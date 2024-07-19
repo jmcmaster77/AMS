@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from models.ModelComprasdb import Compras
 from models.ModelProveedoresdb import Proveedores
 from models.ModelProductosdb import Productos
+from models.ModelReversosdb import Reversos
 from datetime import datetime
 from utils.db import db
 from utils.log import logger
@@ -75,13 +76,18 @@ def registro_compras():
                     "cantidad": int(request.form["cantidad"]),
                     "costo": float(request.form["costo"])
                 })
+                
                 if pdata.cantidad == 0:
-
                     pdata.cantidad = int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
                     pdata.precio = float(
                         request.form["costo"]) * ((pdata.porcentaje/100)+1)
-
+                    # insertando en la base de datos de reverso el movimiento 
+                    fechar = datetime.now()
+                    fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                    reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                    db.session.add(reverso)
+                    db.session.commit()
                 else:
                     pdata.cantidad = pdata.cantidad + \
                         int(request.form["cantidad"])
@@ -91,8 +97,11 @@ def registro_compras():
 
                 totalc = float(request.form["costo"]) * \
                     int(request.form["cantidad"])
-                # print("data:",data)
-                # print("Data JSON: ", json.dumps(data))
+                fechar = datetime.now()
+                fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                db.session.add(reverso)
+                db.session.commit()
             else:
                 # print(f"Producto "+str(x)+": ",request.form[f"producto"+str(x)], "Cantidad: ", request.form[f"cantidad"+str(x)], "Costo: ", request.form[f"costo"+str(x)])
                 pdata = Productos.query.filter_by(
@@ -109,7 +118,11 @@ def registro_compras():
                     pdata.costo = float(request.form[f"costo"+str(x)])
                     pdata.precio = float(
                         request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
-
+                    fechar = datetime.now()
+                    fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                    reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                    db.session.add(reverso)
+                    db.session.commit()
                 else:
                     data["productos"].append({
                         "id": pdata.id,
@@ -126,7 +139,11 @@ def registro_compras():
                 totalc = totalc + \
                     (float(request.form[f"costo"+str(x)])
                      * int(request.form[f"cantidad"+str(x)]))
-
+                fechar = datetime.now()
+                fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                db.session.add(reverso)
+                db.session.commit()
         provdata = Proveedores.query.filter_by(
             fullname=request.form['proveedor']).first()
         # print("Proveedor id", str(provdata.id) + " | " + provdata.fullname )
@@ -145,7 +162,11 @@ def registro_compras():
                          request.form["tcompra"], request.form["mpago"], pagado, totalc, fecha, False,  current_user.id)
         db.session.add(compra)
         db.session.commit()
+        # sess.query(User).filter(User.age == 25).\
+        # update({User.age: User.age - 10}, synchronize_session=False)
 
+        db.session.query(Reversos).filter(Reversos.registrando == True).update({Reversos.registrando : False, Reversos.id_t : compra.id})
+        db.session.commit()
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                     " | Registro compra id " + str(compra.id))
         flash({'title': "AMS", 'message': "Compra: " +
@@ -238,9 +259,29 @@ def editarCompra(id):
     productos = Productos.query.all()
     if current_user.rol == 0:
         if request.method == "POST":
-            print("Compra a modificar papu",datacompra.id)
+            itemdb = datacompra.productos
+            nitem = len(itemdb["productos"])
+            itemlist = itemdb["productos"]
+            # revertir la transaccion en los productos 
+            for item in itemlist:
+                # print("item id", item["id"], item["nombre"], item["cantidad"],item["costo"])
+                producto = Productos.query.get(item["id"])
+                producto.cantidad = producto.cantidad - item["cantidad"]
+                # esperate hay que crear una tabla para almacenar los datos anteriorers y colocar esos valores 
+                # producto.cantidad = 
 
-            return redirect(url_for("gcompras.compras"))
+            data = {}
+            data["productos"] = []
+            for x in range(int(request.form["item"])):
+                if x == 0:
+
+                    flash({'title': "AMS", 'message': "la cantidad de productos es "+ str(nitem) }, 'info')
+                    return redirect(url_for("gcompras.compras"))        
+                else:
+                    
+
+                    flash({'title': "AMS", 'message': "la cantidad de productos es "+ str(nitem) }, 'info')
+                    return redirect(url_for("gcompras.compras"))        
         else:
 
             return render_template("gcompras/mcompras.html", fechaf = fechaf, datacompra = datacompra, dataproveedor = dataproveedor, productos = productos, provee = proveedor)
