@@ -6,6 +6,7 @@
     <title>AMS | Comprobante | {{compra.id}}</title>
     <link rel="shortcut icon" href="http://10.0.0.57:5000/static/ico/favicon.ico">
     <link rel="stylesheet" href="http://10.0.0.57:5000/static/nBootstrap5.3.3/bootstrap.min.css"/>
+    
     <link rel="stylesheet" href="http://10.0.0.57:5000/static/css/comprobante.css">
 </head>
 
@@ -32,24 +33,24 @@
             <div class="parent parent-invoice-table-address">
 
                 <table class="child invoice-table-address" style="border-spacing: 0;">
-                    <tr class="table-addresses">
+                    <tr class="table-addresses" style="border-style : hidden!important">
                         <th class="pcolumna">Proveedor</th>
-                        <th>Factura</th>
+                        <th style="border-style : hidden!important">Factura</th>
                     </tr>
-                    <tr class="temp">
-                        <td>{{provdata.fullname}} {{provdata.documento}}</td>
+                    <tr class="temp" style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{provdata.fullname}} {{provdata.documento}}</td>
                         <td>{{compra.nfact}}</td>
                     </tr>
-                    <tr>
-                        <td>{{provdata.direccion}}</td>
-                        <td>Fecha:</td>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{provdata.direccion}}</td>
+                        <td style="border-style : hidden!important">Fecha:</td>
                     </tr>
-                    <tr>
-                        <td>{{provdata.email}}</td>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{provdata.email}}</td>
                         <td>{{fechaf}}</td>
                     </tr>
-                    <tr>
-                        <td>{{provdata.numero}}</td>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{provdata.numero}}</td>
                         <td></td>
                     </tr>
                 </table>
@@ -59,38 +60,38 @@
                 <table class="invoice-table" style="border-spacing: 0;">
                     <thead>
                         <tr class="table-row-border">
-                            <th>ID</th>
+                            <th >ID</th>
                             <th>Item</th>
                             <th>Cantidad</th>
                             <th>Costo</th>
                             <th>Precio</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {% for producto in compra.productos.productos%}
                         <tr class="table-row-pedido">
-                            <td class="rc1">{{producto.id}}</td>
-                            <td class="rc2">{{producto.nombre}}</td>
-                            <td class="rc3">{{producto.cantidad}}</td>
-                            <td class="rc4">{{producto.costo}}</td>
+                            <td class="rc1" style="border-style : hidden!important">{{producto.id}}</td>
+                            <td class="rc2" style="border-style : hidden!important">{{producto.nombre}}</td>
+                            <td class="rc3" style="border-style : hidden!important">{{producto.cantidad}}</td>
+                            <td class="rc4" style="border-style : hidden!important">{{producto.costo}}</td>
                             {% set totalitem = producto.cantidad * producto.costo %}
-                            <td class="text-end rc5">{{'%0.2f' % totalitem}}</td>
+                            <td class="text-end rc5" style="border-style : hidden!important">{{'%0.2f' % totalitem}}</td>
                         </tr>
                         {% endfor %}
-                        <tr class="tr-sub-total">
-                            <th colspan="4" class="text-end">Sub Total</th>
-                            <td class="text-end sub-total">{{'%0.2f' % compra.totalc}}</td>
+                        <tr class="tr-sub-total" style="border-style : hidden!important">
+                            <th colspan="4" class="text-end" style="border-style : hidden!important">Sub Total</th>
+                            <td class="text-end sub-total" style="border-style : hidden!important">{{'%0.2f' % compra.totalc}}</td>
                         </tr>
-                        <tr>
+                        <tr style="border-style : hidden!important">
                             <th colspan="4" class="text-end">
                                 Iva</th>
                                 {% set civa = compra.totalc * 0.16 %}
-                            <td class="text-end">{{ '%0.2f' % civa}}</td>
-                        </tr>
-                        <tr>
-                            <th colspan="4" class="text-end">Total</th>
+                            <td class="text-end" style="border-style : hidden!important">{{ '%0.2f' % civa}}</td>
+                        </tr style="border-style : hidden!important">
+                        <tr style="border-style : hidden!important">
+                            <th colspan="4" class="text-end" style="border-style : hidden!important">Total</th>
                             {% set gtotal = compra.totalc + civa %}
-                            <td class="text-end fw-semibold">{{'%0.2f' % gtotal}}</td>
+                            <td class="text-end fw-semibold" style="border-style : hidden!important">{{'%0.2f' % gtotal}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -106,8 +107,8 @@
                     RS: 12000/-
                 </span>
             </div> -->
-<!-- 
-            <div class="parent  parent-invoice-terms">
+
+            <!-- <div class="parent  parent-invoice-terms">
                 <div class="invoice-terms">
                     <div class="d-print-none mt-4">
                         <div class="float-end">

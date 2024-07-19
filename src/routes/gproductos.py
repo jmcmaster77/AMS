@@ -185,7 +185,7 @@ def modificar_producto(id):
 def eliminar_productos(id):
     producto = Productos.query.get(id)
     fecha = datetime.now()
-
+    
     producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
     producto.deleted = True
     producto.id_u = current_user.id

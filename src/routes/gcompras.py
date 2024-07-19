@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, render_template, flash, current_app
+from flask import Blueprint, request, redirect, url_for, render_template, flash, send_from_directory
 from flask_login import login_required, current_user
 from models.ModelComprasdb import Compras
 from models.ModelProveedoresdb import Proveedores
@@ -158,6 +158,7 @@ def registro_compras():
 def comprobantec(id):
     # obteniendo datos de la compra
     compradata = Compras.query.get(id)
+    
     # obteniendo datos del proveedor
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
@@ -166,40 +167,42 @@ def comprobantec(id):
     return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
 
 
-def creaPdf(ruta_template, compradata, provdata, fechac, fechaf):
+def creaPdf(ruta_template, compradata, provdata, fechac, fechaf, id):
     template_name = ruta_template.split('\\')[-1]
     ruta_template = ruta_template.replace(template_name, '')
 
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(ruta_template))
     template = env.get_template(template_name)
     rutaimglogo = os.path.abspath(f"src/static/ico/store-svgrepo-com2.svg")
-    html = template.render(compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
-    
+    html = template.render(
+        compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+
     options = {
-        "page-size" : "Letter",
-        "margin-top" : "0.5in",
-        "margin-bottom" : "0.5in", 
-        "margin-right" : "0.5in",
-        "margin-left" : "0.5in",
-        "encoding" : "UTF-8",
+        "page-size": "Letter",
+        "margin-top": "0.5in",
+        "margin-bottom": "0.5in",
+        "margin-right": "0.5in",
+        "margin-left": "0.5in",
+        "encoding": "UTF-8",
         "enable-local-file-access": None
     }
-        # para posible implementacion 
-    # file_name = 'invoice.pdf'
+    # para posible implementacion
+    file_name = f"ams_cc_{id}.pdf"
     # pdf_path = os.path.join(settings.BASE_DIR, 'static', 'pdf', file_name)
-    
-    # ummm 
+
+    # ummm
     # return FileResponse(open(pdf_path, 'rb'), filename=file_name, content_type='application/pdf')
 
-    #config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf") 
+    # config = pdfkit.configuration(wkhtmltopdf="C:\\Program Files\\wkhtmltopdf")
     rutaarchivo = os.path.abspath(f"src/static/ext/bin/wkhtmltopdf.exe")
-    config = pdfkit.configuration(wkhtmltopdf=rutaarchivo) 
-    ruta_salida = os.path.abspath(f"src/static/pdf/test.pdf")
+    config = pdfkit.configuration(wkhtmltopdf=rutaarchivo)
+    ruta_salida = os.path.abspath(f"src/static/pdf/{file_name}")
     cssfile = os.path.abspath(f"src/static/css/comprobante.css")
-    pdfkit.from_string(html, ruta_salida, options=options, configuration=config)
+    pdfkit.from_string(html, ruta_salida, options=options,
+                       configuration=config)
 
     # print(html)
-    return html
+    return file_name
 
 
 @gcomp.route("/comprobantectpdf/<id>")
@@ -211,13 +214,69 @@ def comprobantectpdf(id):
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
     fechaf = compradata.fechaf.strftime("%d/%m/%Y")
-    
-    # rutaarchivo = os.path.abspath(f"src/static/img/productos/")
-    ruta_template = "C:\\CODE\\AMS\\src\\templates\\comprobantes\\comprobantepdf.html" # 'C:\CODE\AMS\src\templates\comprobantes\comprobante.html'
-    #template = "comprobante.html"
 
-    respuesta = creaPdf(ruta_template, compradata,
-                       provdata, fechac, fechaf)
+    # rutaarchivo = os.path.abspath(f"src/static/img/productos/")
+    # 'C:\CODE\AMS\src\templates\comprobantes\comprobante.html'
+    ruta_template = "C:\\CODE\\AMS\\src\\templates\\comprobantes\\comprobantepdf.html"
+    # template = "comprobante.html"
+
+    pdf_file = creaPdf(ruta_template, compradata,
+                        provdata, fechac, fechaf, id)
 
     # return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
-    return respuesta 
+    # return redirect(url_for("static", filename="/pdf/" + pdf_file), code=301)
+    return send_from_directory("static/pdf", pdf_file, as_attachment=True) #OHS
+
+
+@gcomp.route("/modcompra/<id>", methods=["GET", "POST"])
+@login_required
+def editarCompra(id):
+    datacompra = Compras.query.get(id)
+    fechaf = datacompra.fechaf.strftime("%d/%m/%Y")
+    proveedor = Proveedores.query.get(datacompra.id_p)
+    dataproveedor = Proveedores.query.all()
+    productos = Productos.query.all()
+    if current_user.rol == 0:
+        if request.method == "POST":
+            print("Compra a modificar papu",datacompra.id)
+
+            return redirect(url_for("gcompras.compras"))
+        else:
+
+            return render_template("gcompras/mcompras.html", fechaf = fechaf, datacompra = datacompra, dataproveedor = dataproveedor, productos = productos, provee = proveedor)
+    else:
+
+        flash({'title': "AMS", 'message': "Un administrador solo puede modificar compras"}, 'error')
+        return redirect(url_for("gcompras.compras"))
+
+@gcomp.route("/elcompra/<id>")
+@login_required
+def deletedCompra(id):
+    if current_user.rol == 0:
+        if request.method == "POST":
+
+            return redirect(url_for("gcompras.compras"))
+        else:
+
+            return redirect(url_for("gcompras.compras"))
+    else:
+
+        flash({'title': "AMS", 'message': "Un administrador solo puede eliminar compras"}, 'error')
+        return redirect(url_for("gcompras.compras"))
+    
+
+
+@gcomp.route("/retcompra/<id>")
+@login_required
+def restoreCompra(id):
+    if current_user.rol == 0:
+        if request.method == "POST":
+
+            return redirect(url_for("gcompras.compras"))
+        else:
+
+            return redirect(url_for("gcompras.compras"))
+    else:
+
+        flash({'title': "AMS", 'message': "Un administrador solo puede restaurar compras"}, 'error')
+        return redirect(url_for("gcompras.compras"))

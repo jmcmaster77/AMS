@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 
-{% block title %} Admin me Store | Registro de compra {% endblock %}
+{% block title %} Admin me Store | Modificar compra {% endblock %}
 
 
 {% block body %}
@@ -13,7 +13,7 @@
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h5> Registro de compra</h5>
+            <h5> Modificar compra</h5>
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
                 <a href="{{ url_for('gcompras.compras') }}" class="btn btn-secondary btn-sm ">Retorno</a>
@@ -21,9 +21,9 @@
             </div>
         </div>
 
-        <form action="/rcompras" method="post" class="mt-2" name="registro" id="registro">
+        <form action="/modcompra/{{datacompra.id}}" method="post" class="mt-2" name="registro" id="registro">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            {% if proveedores == "No" %}
+            {% if dataproveedor == "No" %}
             <h6>No hay proveedores que seleccionar</h6>
             {% else %}
             <div class="container-lg border border-primary-subtle rounded-3 ">
@@ -41,18 +41,31 @@
                                 <tr>
                                     <td width="350">
                                         <select class="form-select" aria-label="Default select example" name="proveedor" id="provee" required>
-                                            <option value="">Selecciona proveedor</option>
-                                            {% for proveedor in proveedores %}
+                                            {% for proveedor in dataproveedor %}
+                                            {% if provee.fullname == proveedor.fullname %}
+                                            <option value="{{provee.fullname}}"selected>{{provee.fullname}}</option>
+                                            {% else %}
                                             <option value="{{ proveedor.fullname }}">{{ proveedor.fullname }}</option>
+                                            {%endif%}
                                             {% endfor %}
                                           </select>
                                     </td>
+                                    {% if datacompra.tcompra == "Contado" %}
                                     <td>
                                         <select class="form-select" aria-label="Default Tipo de Compra" name="tcompra">
                                             <option value="Contado" selected>Contado</option>
                                             <option value="Credito">Credito</option>
                                         </select>
                                     </td>
+                                    {% else %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Tipo de Compra" name="tcompra">
+                                            <option value="Contado">Contado</option>
+                                            <option value="Credito" selected>Credito</option>
+                                        </select>
+                                    </td>
+                                    {% endif %}
+                                    {% if datacompra.mpago == "Efectivo" %}
                                     <td>
                                         <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
                                             <option value="Efectivo" selected>Efectivo</option>
@@ -61,8 +74,40 @@
                                             <option value="Otro">Otro</option>
                                         </select>
                                     </td>
+                                    {% else %}
+                                    {% if datacompra.mpago == "Tarjeta" %}
                                     <td>
-                                        <input type="text" class="form-control" placeholder="Numero Fact" aria-label="Numero Fact" name = "nfact" id="nfact" minlength="4" maxlength="10" required>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" selected>Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    {% if datacompra.mpago == "Transferencia" %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" >Tarjeta</option>
+                                            <option value="Transferencia" selected>Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" >Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro" selected>Otro</option>
+                                        </select>
+                                    </td>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endif %}
+                                    <td>
+                                        <input type="text" class="form-control"  value="{{datacompra.nfact}}" placeholder="Numero Fact" aria-label="Numero Fact" name = "nfact" id="nfact" minlength="4" maxlength="10" required>
                                         <script type="text/javascript">
                                             $(document).ready(function(){
                                                 $("#nfact").keypress(function(event) {
@@ -76,7 +121,7 @@
                                     </td>
                                     <td>
                                         <div class="input-group date" id="datepicker">
-                                            <input type="text" class="form-control" placeholder="Fecha Factura" name="fechaf" id="date" minlength="9" maxlength="10" required/>
+                                            <input type="text" class="form-control" value="{{fechaf}}" placeholder="Fecha Factura" name="fechaf" id="date" minlength="9" maxlength="10" required/>
                                             <span class="input-group-append">
                                                 <span class="input-group-text bg-light d-block">
                                                 <img src="{{url_for('static', filename='ico/calendar2-date.svg')}}" alt="ico">
@@ -112,27 +157,60 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider border-primary-subtle">
+                                {% for pcompra in datacompra.productos.productos%}
                                 <tr > 
+                                    {%set n = loop.index -1%}
+                                    
+                                    {% if loop.index == 1 %}
+                                   
                                     <td width="350"> 
                                         <select class="form-select val" aria-label="Default select example" name="producto" required>
-                                        <option value="">Selecciona un producto</option>
-                                        {% for producto in productos %}
-                                        <option value="{{ producto.nombre }}">{{ producto.nombre }}</option>
+                                        {% for product in productos %}
+                                            {% if pcompra.nombre == product.nombre %}
+                                            <option value="{{pcompra.nombre}}"selected>{{pcompra.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
                                         {% endfor %}
                                         </select>
-                                        {% endif %}
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
+                                        <input type="number" class="form-control" placeholder="" value="{{pcompra.cantidad}}" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="costo" maxlength="10" step="0.01" min="0" max="9999999999" id="costo">
+                                        <input type="number" class="form-control" placeholder="" value="{{pcompra.costo}}" inputmode="numeric" name="costo" maxlength="10" step="0.01" min="0" max="9999999999" id="costo">
                                     </td>
                                     <td>
                                         <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                        
                                     </td>
+                                    {%else%}
+                                    
+                                    <td width="350"> 
+                                        <select class="form-select val" aria-label="Default select example" name="producto{{n}}" required>
+                                        {% for product in productos %}
+                                            {% if pcompra.nombre == product.nombre %}
+                                            <option value="{{pcompra.nombre}}"selected>{{pcompra.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
+                                        {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pcompra.cantidad}}" inputmode="numeric" name="cantidad{{n}}" maxlength="4" min="1" max="9999" id="cantidad{{n}}">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pcompra.costo}}" inputmode="numeric" name="costo{{n}}" maxlength="10" step="0.01" min="0" max="9999999999" id="costo{{n}}">
+                                    </td>
+                                    <td>
+                                        <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                        <a onclick="eliminar()"><img src="{{ url_for('static', filename='ico/add-minus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                    </td>
+                                    {%endif%}
                                 </tr>
-            
+                                {% endfor %}
+             {%endif%}
                             </tbody>
                         </table>
                     </div>
@@ -160,6 +238,7 @@
         
     </div>
 </div>
+{% set number = datacompra.productos.productos | count %}
 <script>
                 
     $(document).ready(function() {
@@ -207,11 +286,11 @@
             return false;;
         }
     }
-
-
-    var n = 1;
+    
+    var n = JSON.parse('{{number | tojson}}');
     function setValue(id, newvalue){
         var s = document.getElementById(id);
+        // console.log("valor de newvalue es:" + newvalue);
         s.value = newvalue;
     } 
     window.onload = function() {
