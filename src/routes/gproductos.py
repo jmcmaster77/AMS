@@ -96,7 +96,8 @@ def registrar_producto():
 @gprod.route("/mproducto/<id>", methods=["GET", "POST"])
 @login_required
 def modificar_producto(id):
-    producto = Productos.query.get(id)
+    # producto = Productos.query.get(id)
+    producto = db.session.get(Productos,id)
     if request.method == "POST":
         # check para validar si mantiene la imagen de producto
         check = request.form.getlist("check[]")
@@ -183,7 +184,8 @@ def modificar_producto(id):
 @gprod.route("/eproducto/<id>")
 @login_required
 def eliminar_productos(id):
-    producto = Productos.query.get(id)
+    # producto = Productos.query.get(id)
+    producto = db.session.get(Productos,id)
     fecha = datetime.now()
     
     producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
@@ -201,7 +203,8 @@ def eliminar_productos(id):
 @login_required
 def retaurar_productos(id):
     if current_user.rol == 0:
-        producto = Productos.query.get(id)
+        # producto = Productos.query.get(id)
+        producto = db.session.get(Productos,id)
         fecha = datetime.now()
 
         producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")

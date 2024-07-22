@@ -69,7 +69,8 @@ def registrar_proveedor():
 @gp.route("/modificarp/<id>", methods=["GET", "POST"])
 @login_required
 def modificar_proveedor(id):
-    proveedor = Proveedores.query.get(id)
+    # proveedor = Proveedores.query.get(id)
+    proveedor = db.session.get(Proveedores, id)
     if request.method == "POST":
         fecha = datetime.now()
         proveedor.fullname = request.form['fullname']
@@ -94,7 +95,8 @@ def modificar_proveedor(id):
 @gp.route("/eliminarp/<id>")
 @login_required
 def eliminarc(id):
-    proveedor = Proveedores.query.get(id)
+    # proveedor = Proveedores.query.get(id)
+    proveedor = db.session.get(Proveedores, id)
     fecha = datetime.now()
 
     proveedor.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
@@ -112,7 +114,8 @@ def eliminarc(id):
 @login_required
 def retaurarp(id):
     if current_user.rol == 0:
-        proveedor = Proveedores.query.get(id)
+        # proveedor = Proveedores.query.get(id)
+        proveedor = db.session.get(Proveedores, id)
         fecha = datetime.now()
 
         proveedor.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")

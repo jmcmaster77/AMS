@@ -62,6 +62,7 @@ def registro_compras():
         if request.form['proveedor'] == "":
             flash({'title': "AMS", 'message': "Seleccionar Proveedor: "}, 'warning')
             return redirect(url_for("gcompras.registro_compras"))
+
         data = {}
         data["productos"] = []
 
@@ -76,16 +77,17 @@ def registro_compras():
                     "cantidad": int(request.form["cantidad"]),
                     "costo": float(request.form["costo"])
                 })
-                
+
                 if pdata.cantidad == 0:
                     pdata.cantidad = int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
                     pdata.precio = float(
                         request.form["costo"]) * ((pdata.porcentaje/100)+1)
-                    # insertando en la base de datos de reverso el movimiento 
+                    # insertando en la base de datos de reverso el movimiento
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
-                    reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                    reverso = Reversos(None, pdata.id, pdata.cantidad, pdata.costo,
+                                       pdata.precio, "compra", fechar, current_user.id, True, False)
                     db.session.add(reverso)
                     db.session.commit()
                 else:
@@ -99,7 +101,8 @@ def registro_compras():
                     int(request.form["cantidad"])
                 fechar = datetime.now()
                 fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
-                reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                reverso = Reversos(None, pdata.id, pdata.cantidad, pdata.costo,
+                                   pdata.precio, "compra", fechar, current_user.id, True, False)
                 db.session.add(reverso)
                 db.session.commit()
             else:
@@ -120,7 +123,8 @@ def registro_compras():
                         request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
-                    reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                    reverso = Reversos(None, pdata.id, pdata.cantidad, pdata.costo,
+                                       pdata.precio, "compra", fechar, current_user.id, True, False)
                     db.session.add(reverso)
                     db.session.commit()
                 else:
@@ -141,7 +145,8 @@ def registro_compras():
                      * int(request.form[f"cantidad"+str(x)]))
                 fechar = datetime.now()
                 fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
-                reverso = Reversos(None,pdata.id, pdata.cantidad, pdata.costo, pdata.precio, "compra", fechar, current_user.id, True)
+                reverso = Reversos(None, pdata.id, pdata.cantidad, pdata.costo,
+                                   pdata.precio, "compra", fechar, current_user.id, True, False)
                 db.session.add(reverso)
                 db.session.commit()
         provdata = Proveedores.query.filter_by(
@@ -164,8 +169,9 @@ def registro_compras():
         db.session.commit()
         # sess.query(User).filter(User.age == 25).\
         # update({User.age: User.age - 10}, synchronize_session=False)
-
-        db.session.query(Reversos).filter(Reversos.registrando == True).update({Reversos.registrando : False, Reversos.id_t : compra.id})
+        # ajusta los reversos de esta compra a procesados registrados a True
+        db.session.query(Reversos).filter(Reversos.registrando == True).update(
+            {Reversos.registrando: False, Reversos.id_t: compra.id})
         db.session.commit()
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                     " | Registro compra id " + str(compra.id))
@@ -178,8 +184,9 @@ def registro_compras():
 @login_required
 def comprobantec(id):
     # obteniendo datos de la compra
-    compradata = Compras.query.get(id)
-    
+    # compradata = Compras.query.get(id)
+    compradata = db.session.get(Compras, id)
+
     # obteniendo datos del proveedor
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
@@ -230,7 +237,8 @@ def creaPdf(ruta_template, compradata, provdata, fechac, fechaf, id):
 @login_required
 def comprobantectpdf(id):
     # obteniendo datos de la compra
-    compradata = Compras.query.get(id)
+    # compradata = Compras.query.get(id)
+    compradata = db.session.get(Compras, id)
     # obteniendo datos del proveedor
     provdata = Proveedores.query.get(compradata.id_p)
     fechac = compradata.fecha.strftime("%d/%m/%Y")
@@ -242,17 +250,19 @@ def comprobantectpdf(id):
     # template = "comprobante.html"
 
     pdf_file = creaPdf(ruta_template, compradata,
-                        provdata, fechac, fechaf, id)
+                       provdata, fechac, fechaf, id)
 
     # return render_template("comprobantes/comprobante.html", compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
     # return redirect(url_for("static", filename="/pdf/" + pdf_file), code=301)
-    return send_from_directory("static/pdf", pdf_file, as_attachment=True) #OHS
+    # OHS
+    return send_from_directory("static/pdf", pdf_file, as_attachment=True)
 
 
 @gcomp.route("/modcompra/<id>", methods=["GET", "POST"])
 @login_required
 def editarCompra(id):
-    datacompra = Compras.query.get(id)
+    # datacompra = Compras.query.get(id)
+    datacompra = db.session.get(Compras, id)
     fechaf = datacompra.fechaf.strftime("%d/%m/%Y")
     proveedor = Proveedores.query.get(datacompra.id_p)
     dataproveedor = Proveedores.query.all()
@@ -262,33 +272,47 @@ def editarCompra(id):
             itemdb = datacompra.productos
             nitem = len(itemdb["productos"])
             itemlist = itemdb["productos"]
-            # revertir la transaccion en los productos 
+            # revertir la transaccion en los productos
             for item in itemlist:
                 # print("item id", item["id"], item["nombre"], item["cantidad"],item["costo"])
+                # db.session.query(Reversos).filter(Reversos.registrando == True).update({Reversos.registrando : False, Reversos.id_t : compra.id})
+                # get({"id_t" : datacompra.id, "id_p" : item["id"]})
+                # datareverso = db.session.query(Reversos).filter(Reversos.id_t == datacompra.id ).filter(Reversos.id_t == item["id"])
+
+                datareverso = Reversos.query.filter(
+                    Reversos.id_t == datacompra.id).filter(Reversos.id_p == item["id"])
+                # print("busqueda reverso", datareverso)
+                for data in datareverso:
+                    print("datareverso", data.id, data.id_t, data.id_p, data.cantidad, data.precio,
+                          data.transaccion, data.fecha, data.id_u, data.registrando, data.reversado)
+                print("datacompra.id", datacompra.id)
+                print("Id_p", item["id"])
                 producto = Productos.query.get(item["id"])
                 producto.cantidad = producto.cantidad - item["cantidad"]
-                # esperate hay que crear una tabla para almacenar los datos anteriorers y colocar esos valores 
-                # producto.cantidad = 
+                # esperate hay que crear una tabla para almacenar los datos anteriorers y colocar esos valores
+                # producto.cantidad =
 
             data = {}
             data["productos"] = []
             for x in range(int(request.form["item"])):
                 if x == 0:
 
-                    flash({'title': "AMS", 'message': "la cantidad de productos es "+ str(nitem) }, 'info')
-                    return redirect(url_for("gcompras.compras"))        
+                    flash(
+                        {'title': "AMS", 'message': "la cantidad de productos es " + str(nitem)}, 'info')
+                    return redirect(url_for("gcompras.compras"))
                 else:
-                    
 
-                    flash({'title': "AMS", 'message': "la cantidad de productos es "+ str(nitem) }, 'info')
-                    return redirect(url_for("gcompras.compras"))        
+                    flash(
+                        {'title': "AMS", 'message': "la cantidad de productos es " + str(nitem)}, 'info')
+                    return redirect(url_for("gcompras.compras"))
         else:
 
-            return render_template("gcompras/mcompras.html", fechaf = fechaf, datacompra = datacompra, dataproveedor = dataproveedor, productos = productos, provee = proveedor)
+            return render_template("gcompras/mcompras.html", fechaf=fechaf, datacompra=datacompra, dataproveedor=dataproveedor, productos=productos, provee=proveedor)
     else:
 
         flash({'title': "AMS", 'message': "Un administrador solo puede modificar compras"}, 'error')
         return redirect(url_for("gcompras.compras"))
+
 
 @gcomp.route("/elcompra/<id>")
 @login_required
@@ -302,9 +326,9 @@ def deletedCompra(id):
             return redirect(url_for("gcompras.compras"))
     else:
 
-        flash({'title': "AMS", 'message': "Un administrador solo puede eliminar compras"}, 'error')
+        flash(
+            {'title': "AMS", 'message': "Un administrador solo puede eliminar compras"}, 'error')
         return redirect(url_for("gcompras.compras"))
-    
 
 
 @gcomp.route("/retcompra/<id>")

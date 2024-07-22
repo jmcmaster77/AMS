@@ -121,7 +121,10 @@ def modificaru(id):
     if current_user.rol == 0:
         # validar que el id 1 solo pueda ser modificado por el mismo
         if current_user.id == 1 and id == "1":
-            userdata = Usuarios.query.get(id)
+            # metodo obsoleto 
+            # userdata = Usuarios.query.get(id)
+            # metodo nuevo 
+            userdata =  db.session.get(Usuarios, id) 
             if request.method == 'POST':
                 # validar que las claves coinciden 
                 if request.form['clave1'] == request.form['clave2']:
@@ -147,7 +150,10 @@ def modificaru(id):
             return redirect(url_for("gusuarios.usuarios"))
         # validacion que puedan modificar cualquier usuario menos el id 1 
         elif id != "1":  
-            userdata = Usuarios.query.get(id)
+            # metodo obsoleto 
+            # userdata = Usuarios.query.get(id)
+            # metodo actual 
+            userdata = db.session.get(Usuarios, id) 
             if request.method == 'POST':
                 # validacion que el id 4 siempre sea admin 
                 if id == "4":
@@ -198,7 +204,10 @@ def modificaru(id):
 def eliminaru(id):
     if current_user.rol == 0:
         if id != "1" and id != "2" and id != "4":
-            userdata = Usuarios.query.get(id)
+            # metodo obsoleto 
+            # userdata = Usuarios.query.get(id)
+            # metodo actual 
+            userdata = db.session.get(Usuarios, id) 
             logger.warning("User id " + str(current_user.id) + " | " + current_user.fullname + " | usuario id " + id + " | " + userdata.fullname + " eliminado")
             flash({'title': "AMS", 'message': "Usuario con el id " + id + " | " + userdata.fullname + " eliminado"}, 'warning')
             # no se va a borrar se marcara como borrado 
@@ -220,7 +229,10 @@ def eliminaru(id):
 @login_required
 def eliminarur(id):
     if current_user.rol == 0:
-        userdata = Usuarios.query.get(id)
+        # metodo obsoleto 
+        # userdata = Usuarios.query.get(id)
+        # metodo actual 
+        userdata = db.session.get(Usuarios, id) 
         userdata.deleted = False
         fecha = datetime.now()
         userdata.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S") # la base de datos acepta el datetime en ese formato papi

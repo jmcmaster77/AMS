@@ -4,6 +4,7 @@ from utils.log import logger
 from utils.db import db
 from models.ModelTasadb import Tasa
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
 from flask_wtf.csrf import CSRFProtect
 from routes.glogin import glogin
 from routes.home import home
@@ -32,12 +33,23 @@ app.config['TOASTR_TIMEOUT'] = '1500'
 # db conexion
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONEXION_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# modificando la configuracion de SQLAlchemy
 db.init_app(app)
-db = SQLAlchemy()
+
+# modificacion que falla a la primera 
+# class Base(DeclarativeBase):
+#     pass
+
+
+# db = SQLAlchemy(app, model_class=Base)
+
 
 @app.context_processor
 def tasa():
-    tasa = Tasa.query.get(1)
+    # metodo obsoletro (deprecated) pero funciona
+    # tasa = Tasa.query.get(1)
+    # es el nuevo metodo pero explota
+    tasa = db.session.get(Tasa, 1)
     
     return dict(tasa=tasa)
 
@@ -56,20 +68,23 @@ def user_loader(id):
     return Authenticate.get_by_id(id)
 
 # manejando en caso de respuesta 401 y 404
-# validacion del CSRF token | experimental 
+# validacion del CSRF token | experimental
+
+
 def status_400(error):
 
     flash({'title': "AMS", 'message': "Token experiado"}, 'info')
     return redirect(url_for("login.login"))
 
+
 def status_401(error):
-    
+
     flash({'title': "AMS", 'message': "Por favor inicar sesión"}, 'info')
     return redirect(url_for("login.login"))
 
 
 def status_404(error):
-    
+
     return redirect(url_for("home.error"))
 
 
@@ -84,7 +99,7 @@ app.register_blueprint(gcomp)
 
 
 if __name__ == '__main__':
-    
+
     from waitress import serve
     csrf.init_app(app)
     print(appinfo)

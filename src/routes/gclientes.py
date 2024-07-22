@@ -70,7 +70,10 @@ def registrar_clientes():
 @gc.route("/modificarc/<id>", methods=["GET", "POST"])
 @login_required
 def modificar_cliente(id):
-    cliente_data = Clientes.query.get(id)
+    # metodo obsoleto 
+    # cliente_data = Clientes.query.get(id)
+    # metodo nuevo 
+    cliente_data = db.session.get(Clientes, id)
     if request.method == "POST":
         fecha = datetime.now()
         cliente_data.fullname = request.form['fullname']
@@ -95,7 +98,9 @@ def modificar_cliente(id):
 @gc.route("/eliminarc/<id>")
 @login_required
 def eliminarc(id):
-    cliente_data = Clientes.query.get(id)
+    # cliente_data = Clientes.query.get(id)
+
+    cliente_data = db.session.get(Clientes, id)
     fecha = datetime.now()
 
     cliente_data.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
@@ -113,7 +118,8 @@ def eliminarc(id):
 @login_required
 def retaurarc(id):
     if current_user.rol == 0:
-        cliente_data = Clientes.query.get(id)
+        # cliente_data = Clientes.query.get(id)
+        cliente_data = db.session.get(Clientes, id)
         fecha = datetime.now()
 
         cliente_data.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")

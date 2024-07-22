@@ -12,8 +12,9 @@ class Reversos(db.Model):
     fecha = db.Column(db.DateTime)
     id_u = db.Column(db.Integer)
     registrando = db.Column(db.Boolean)
+    reversado = db.Column(db.Boolean)
 
-    def __init__(self, id_t, id_p, cantidad,costo, precio, transaccion, fecha, id_u, registrando):
+    def __init__(self, id_t, id_p, cantidad,costo, precio, transaccion, fecha, id_u, registrando, reversado):
         self.id_t = id_t
         self.id_p = id_p
         self.cantidad = cantidad
@@ -23,3 +24,4 @@ class Reversos(db.Model):
         self.fecha = fecha
         self.id_u = id_u
         self.registrando = registrando
+        self.reversado = reversado

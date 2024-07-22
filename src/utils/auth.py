@@ -1,7 +1,7 @@
 from models.entities.User import User
 from models.ModelUsersdb import Usuarios
 from flask_login import login_user
-
+from .db import db
 
 class Authenticate():
     @classmethod
@@ -25,8 +25,10 @@ class Authenticate():
     def get_by_id(self, id):
 
         try:
-
-            userdata = Usuarios.query.get(id)
+            # modificacion metodo de busqueda 
+            # userdata = Usuarios.query.get(id)
+            # nuevo metodo 
+            userdata = db.session.get(Usuarios, id)
 
             if userdata != None:
                 # pasa los parametros al UserMixin
