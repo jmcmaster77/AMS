@@ -39,8 +39,8 @@ def home_page():
 @login_required
 def cambiotasa():
     if current_user.rol == 0:
-        tasa = Tasa.query.get(1)
-        print(request.form["ntasa"])
+        # tasa = Tasa.query.get(1)
+        tasa = db.session.get(Tasa,1)
 
         tasa.valor = float(request.form["ntasa"])
         db.session.commit()
