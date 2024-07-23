@@ -39,3 +39,52 @@ def ventas_deleted():
         return render_template("gventas/ventas.html", compras=registros, deleted=True)
     else:
         return render_template("gventas/ventas.html", compras=registros, deleted=True)
+
+
+@gventas.route("/rventas", methods=["GET", "POST"])
+@login_required
+def rventas():
+    if request.method == "GET":
+        clientes = Clientes.query.all()
+        if clientes is not None:
+            productos = Productos.query.all()
+            jproductos = {}
+            jproductos["productos"] = []      
+            for producto in productos:
+                jproductos["productos"].append({
+                        "id": producto.id,
+                        "nombre": producto.nombre,
+                        "cantidad": producto.cantidad,
+                        "precio": producto.precio
+                })
+            jproductos = json.dumps(jproductos, indent=4)
+            jpl = json.loads(jproductos)
+                
+    
+            return render_template("gventas/rventas.html", clientes=clientes, productos=productos, jproductos=jproductos)
+        else:
+            return render_template("gventas/rventas.html", clientes=None)
+    else:
+        check = request.form.getlist("check[]")
+        if len(check) != 0:
+            # bolivares si 
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                        " | Registro venta id " + str(1))
+            flash({'title': "AMS", 'message': "Compra: " +
+                   "id " + str(1) + " registrado satisfactoriamente"}, 'success')
+            # logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+            #             " | Registro venta id " + str(venta.id))
+            # flash({'title': "AMS", 'message': "Compra: " +
+            #        "id " + str(venta.id) + " registrado satisfactoriamente"}, 'success')
+        else:
+            # bolivares no
+
+            logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                        " | Registro venta id " + str(1))
+            flash({'title': "AMS", 'message': "Compra: " +
+                   "id " + str(1) + " registrado satisfactoriamente"}, 'success')
+            # logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+            #             " | Registro venta id " + str(venta.id))
+            # flash({'title': "AMS", 'message': "Compra: " +
+            #        "id " + str(venta.id) + " registrado satisfactoriamente"}, 'success')
+        return render_template("gventas/ventas.html")
