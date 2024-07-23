@@ -13,6 +13,7 @@ from routes.gclientes import gc
 from routes.gproveedores import gp
 from routes.gproductos import gprod
 from routes.gcompras import gcomp
+from routes.gventas import gventas
 from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
 from utils.auth import Authenticate
 from flask_toastr import Toastr
@@ -96,6 +97,7 @@ app.register_blueprint(gc)
 app.register_blueprint(gp)
 app.register_blueprint(gprod)
 app.register_blueprint(gcomp)
+app.register_blueprint(gventas)
 
 
 if __name__ == '__main__':

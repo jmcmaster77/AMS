@@ -37,6 +37,7 @@ def compras_deleted():
     if registros is not None:
         for registro in registros:
             registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+            registro.fechaf = registro.fechaf.strftime("%d/%m/%y")
 
         return render_template("gcompras/compras.html", compras=registros, deleted=True)
     else:
@@ -308,11 +309,11 @@ def editarCompra(id):
                     reverso = db.session.get(Reversos, data.id)
                     db.session.delete(reverso)
                     db.session.commit()
-                    # el reverso id no le estas utilizando para nada ATENCION borrar antes de entregar
+                    
             # y realizado el reverso continuamos agregando los nuevos item de la compra 24/07/23
             data = {}
             data["productos"] = []
-            #registrando cada productos y actualizando catidad costo y precio  
+            # registrando cada productos y actualizando catidad costo y precio
             for x in range(int(request.form["item"])):
                 if x == 0:
                     pdata = Productos.query.filter_by(
@@ -431,7 +432,7 @@ def editarCompra(id):
             datacompra.id_u = current_user.id
             # compra = Compras(provdata.id, nfact, fechaf, data,
             #                  request.form["tcompra"], request.form["mpago"], pagado, totalc, fecha, False,  current_user.id)
-            
+
             db.session.commit()
             # sess.query(User).filter(User.age == 25).\
             # update({User.age: User.age - 10}, synchronize_session=False)
@@ -457,30 +458,32 @@ def editarCompra(id):
 @login_required
 def deletedCompra(id):
     if current_user.rol == 0:
-        if request.method == "POST":
-
-            return redirect(url_for("gcompras.compras"))
-        else:
-
-            return redirect(url_for("gcompras.compras"))
+        datacompra = db.session.get(Compras, id)
+        itemdb = datacompra.productos
+        itemlist = itemdb["productos"]
+        # revertir la transaccion en los productos 
+        for item in itemlist:
+            datareverso = Reversos.query.filter(
+                Reversos.id_t == datacompra.id).filter(Reversos.id_p == item["id"])
+            # print("busqueda reverso", datareverso)
+            for data in datareverso:
+                # print("datareverso", data.id, data.id_t, data.id_p, data.cantidad, data.costo, data.precio,
+                #       data.transaccion, data.fecha, data.id_u, data.registrando, data.reversado)
+                producto = db.session.get(Productos, item["id"])
+                producto.cantidad = data.cantidad
+                producto.costo = data.costo
+                producto.precio = data.precio
+                reverso = db.session.get(Reversos, data.id)
+                db.session.delete(reverso)
+                datacompra.deleted = True
+                db.session.commit()
+                
+        # realizado el reverso continuamos marcando la compra como deleted 
+        
+        flash({'title': "AMS", 'message': "Compra: " +
+                   "id " + str(datacompra.id) + " marcada como borrada"}, 'info')
+        return redirect(url_for("gcompras.compras"))
     else:
-
         flash(
             {'title': "AMS", 'message': "Un administrador solo puede eliminar compras"}, 'error')
-        return redirect(url_for("gcompras.compras"))
-
-
-@gcomp.route("/retcompra/<id>")
-@login_required
-def restoreCompra(id):
-    if current_user.rol == 0:
-        if request.method == "POST":
-
-            return redirect(url_for("gcompras.compras"))
-        else:
-
-            return redirect(url_for("gcompras.compras"))
-    else:
-
-        flash({'title': "AMS", 'message': "Un administrador solo puede restaurar compras"}, 'error')
         return redirect(url_for("gcompras.compras"))
