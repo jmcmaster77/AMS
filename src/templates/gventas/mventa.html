@@ -1,0 +1,296 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Modificar venta {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+<style>
+    select option{
+     background-color:rgb(125, 134, 144) !important;
+    }
+</style>
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h5> Modificar venta</h5>
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="{{ url_for('gventas.ventas') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+
+        <form action="/mventa/{{dataventa.id}}" method="post" class="mt-2" name="registro" id="registro">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            {% if datacliente == "No" %}
+            <h6>No hay clientes que seleccionar</h6>
+            {% else %}
+            <div class="container-lg border border-primary-subtle rounded-3 ">
+                <div class="row">
+                    <div class="col mt-2 mb-2">
+                        <table class="mb-2">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Tipo de Compra</th>
+                                    <th>Metodo de Pago</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="350">
+                                        <select class="form-select" aria-label="Default select example" name="cliente" id="cliente" required>
+                                            {% for cliente in datacliente %}
+                                            {% if clien.fullname == cliente.fullname %}
+                                            <option value="{{clien.fullname}}"selected>{{clien.fullname}}</option>
+                                            {% else %}
+                                            <option value="{{ cliente.fullname }}">{{ cliente.fullname }}</option>
+                                            {%endif%}
+                                            {% endfor %}
+                                          </select>
+                                    </td>
+                                    {% if dataventa.tcompra == "Contado" %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Tipo de Compra" name="tcompra">
+                                            <option value="Contado" selected>Contado</option>
+                                            <option value="Credito">Credito</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Tipo de Compra" name="tcompra">
+                                            <option value="Contado">Contado</option>
+                                            <option value="Credito" selected>Credito</option>
+                                        </select>
+                                    </td>
+                                    {% endif %}
+                                    {% if dataventa.mpago == "Efectivo" %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo" selected>Efectivo</option>
+                                            <option value="Tarjeta">Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    {% if dataventa.mpago == "Tarjeta" %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" selected>Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    {% if dataventa.mpago == "Transferencia" %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" >Tarjeta</option>
+                                            <option value="Transferencia" selected>Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    {% else %}
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo">Efectivo</option>
+                                            <option value="Tarjeta" >Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro" selected>Otro</option>
+                                        </select>
+                                    </td>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endif %}
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+            
+                        <table id="tproductos" class="mt-2">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider border-primary-subtle">
+                                {% for pventa in dataventa.productos.productos%}
+                                <tr > 
+                                    {%set n = loop.index -1%}
+                                    
+                                    {% if loop.index == 1 %}
+                                   
+                                    <td width="350"> 
+                                        <select class="form-select val" aria-label="Default select example" name="producto" required>
+                                        {% for product in productos %}
+                                            {% if pventa.nombre == product.nombre %}
+                                            <option value="{{pventa.nombre}}"selected>{{pventa.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
+                                        {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="costo" maxlength="10" step="0.01" min="0" max="9999999999" id="costo" readonly>
+                                    </td>
+                                    <td>
+                                        <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                        
+                                    </td>
+                                    {%else%}
+                                    
+                                    <td width="350"> 
+                                        <select class="form-select val" aria-label="Default select example" name="producto{{n}}" required>
+                                        {% for product in productos %}
+                                            {% if pventa.nombre == pventa.nombre %}
+                                            <option value="{{pventa.nombre}}"selected>{{pventa.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
+                                        {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad{{n}}" maxlength="4" min="1" max="9999" id="cantidad{{n}}">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="precio{{n}}" maxlength="10" step="0.01" min="0" max="9999999999" id="precio{{n}}" readonly>
+                                    </td>
+                                    <td>
+                                        <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                        <a onclick="eliminar()"><img src="{{ url_for('static', filename='ico/add-minus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                    </td>
+                                    {%endif%}
+                                </tr>
+                                {% endfor %}
+             {%endif%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <input type="hidden" name="item" id="item">
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="row mt-2">
+                    <div class="col">
+                        <div class="btn-group">
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
+                            <a href="{{ url_for('gventas.ventas') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+{% set number = dataventa.productos.productos | count %}
+<script>
+                
+    $(document).ready(function() {
+        $('#registro').on('submit', function(e){
+          // validation code here
+          
+          if(hayduplicados()) {
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr.warning("Se encontraron productos duplicados");
+            return false;
+          }
+          
+        });
+      });
+      
+       
+    function hayduplicados(){
+        const controls=document.querySelectorAll('.val');
+        var val=[];
+        for(var i = 0; i < controls.length; i++) {
+            if(val.includes(controls[i].value)){
+                var dale = true;
+                break;
+            } 
+            val.push(controls[i].value);
+        }
+        if(dale) {
+            return dale;
+        } else {
+            return false;;
+        }
+    }
+    
+    var n = JSON.parse('{{number | tojson}}');
+    function setValue(id, newvalue){
+        var s = document.getElementById(id);
+        // console.log("valor de newvalue es:" + newvalue);
+        s.value = newvalue;
+    } 
+    window.onload = function() {
+        setValue("item", n);
+        // console.log("valor de n es:" + n);
+    }
+    function agregar() {
+        if (n<10) {
+            var table = document.getElementById("tproductos")
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            
+            cell1.innerHTML = '<select class="form-select val" aria-label="Default select example" name="producto'+ n +'" required><option value="">Selecciona un producto</option>{% for producto in productos %}<option value="{{ producto.nombre }}">{{ producto.nombre }}</option>{% endfor %}</select>';
+            cell2.innerHTML = '<input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad'+ n +'" maxlength="4" min="1" max="9999" id="cantidad'+ n +'">';
+            cell3.innerHTML = '<input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio'+ n +'" maxlength="10" step="0.01" min="0" max="9999999999" id="precio'+ n +'" readonly>';
+            cell4.innerHTML = '<a onclick="agregar()"><img src="{{ url_for("static", filename="ico/add-plus.svg") }}" alt="" width="50" height="35" style="filter: invert(1)"></a><a onclick="eliminar()"><img src="{{ url_for("static", filename="ico/add-minus.svg") }}" alt="" width="50" height="35" style="filter: invert(1)"></a>';
+            ++n;
+            setValue("item", n);
+            //console.log("valor de n es:" + n);
+        }
+    }   
+
+    function eliminar() {
+        document.getElementById("tproductos").deleteRow(-1);
+        --n
+        setValue("item", n);
+        //console.log("valor de n es:" + n);
+    }
+</script>
+
+{% endblock %}

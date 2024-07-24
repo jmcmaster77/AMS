@@ -7,16 +7,18 @@ class Ventas(db.Model):
     productos = db.Column(db.JSON)
     tventa = db.Column(db.String(10))
     mpago = db.Column(db.String(15))
+    bolivares = db.Column(db.Boolean)
     totalv = db.Column(db.Float)
     fecha = db.Column(db.DateTime)
     deleted = db.Column(db.Boolean)
     id_u = db.Column(db.Integer)
 
-    def __init__(self, id_p, productos, tcompra, mpago, totalv, fecha, deleted, id_u):
-        self.id_c = id_p
+    def __init__(self, id_c, productos,tventa, mpago, bolivares, totalv, fecha, deleted, id_u):
+        self.id_c = id_c
         self.productos = productos
-        self.tcompra = tcompra
+        self.tventa = tventa
         self.mpago = mpago
+        self.bolivares = bolivares
         self.totalv = totalv
         self.fecha = fecha
         self.deleted = deleted

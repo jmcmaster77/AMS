@@ -24,7 +24,7 @@
         <form action="/rventas" method="post" class="mt-2" name="registro" id="registro">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             {% if clientes is none %}
-            <h6>No hay cleintes que seleccionar</h6>
+            <h6>No hay clientes que seleccionar</h6>
             {% else %}
             <div class="container-lg border border-primary-subtle rounded-3 ">
                 <div class="row">
@@ -40,7 +40,7 @@
                             <tbody>
                                 <tr>
                                     <td width="350">
-                                        <select class="form-select" aria-label="Default select example" name="cliente" id="provee" required>
+                                        <select class="form-select" aria-label="Default select example" name="cliente" id="cliente" required>
                                             <option value="">Selecciona cliente</option>
                                             {% for cliente in clientes %}
                                             <option value="{{ cliente.fullname }}">{{ cliente.fullname }}</option>
@@ -48,7 +48,7 @@
                                           </select>
                                     </td>
                                     <td>
-                                        <select class="form-select" aria-label="Default Tipo de venta" name="tcompra">
+                                        <select class="form-select" aria-label="Default Tipo de venta" name="tventa">
                                             <option value="Contado" selected>Contado</option>
                                             <option value="Credito">Credito</option>
                                         </select>
@@ -98,7 +98,7 @@
                                         <input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio" maxlength="10" step="0.01" min="0.01" max="9999999999" id="precio" disabled>
+                                        <input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio" maxlength="10" step="0.01" min="0.01" max="9999999999" id="precio" readonly>
                                     </td>
                                     <td>
                                         <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>

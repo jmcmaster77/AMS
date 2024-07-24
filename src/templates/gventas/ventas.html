@@ -37,6 +37,7 @@
                                 <th >Id Cliente</th>
                                 <th >Tipo Venta</th>
                                 <th >Mpago</th>
+                                <th>Bsd</th>
                                 <th >Total</th>
                                 <th >Fecha</th>
                                 <th >Cant P</th>
@@ -53,6 +54,11 @@
                                     <td>{{venta.id_c}}</td>
                                     <td>{{venta.tventa}}</td>
                                     <td>{{venta.mpago}}</td>
+                                    {% if venta.bolivares == true %}
+                                    <td>Si</td>
+                                    {% else %}
+                                    <td>No</td>
+                                    {% endif%}
                                     <td>{{venta.totalv}}</td>
                                     <td>{{venta.fecha}}</td>
                                     <td>{{venta.productos.productos | count}}</td>
@@ -75,6 +81,11 @@
                                     <td>{{venta.id_c}}</td>
                                     <td>{{venta.tventa}}</td>
                                     <td>{{venta.mpago}}</td>
+                                    {% if venta.bolivares == true %}
+                                    <td>Si</td>
+                                    {% else %}
+                                    <td>No</td>
+                                    {% endif%}
                                     <td>{{venta.totalv}}</td>
                                     <td>{{venta.fecha}}</td>
                                     <td>{{venta.productos.productos | count}}</td>
@@ -87,7 +98,7 @@
                                                 </li>
                                                 </ul>
                                             <a href="/mventa/{{venta.id}}" class="btn btn-success text-white btn-sm " >M</a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#compra_delete_{{venta.id}}" class="btn btn-danger btn-sm ">B</a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#venta_delete_{{venta.id}}" class="btn btn-danger btn-sm ">B</a>
                                             <a href="/comprobantev/{{venta.id}}" class="btn btn-light btn-sm ">C</a>
                                             <a href="/comprobantevtpdf/{{venta.id}}" class="btn btn-light btn-sm ">P</a>
                                         </div>
@@ -128,7 +139,7 @@
                                                             <td>{{producto.id}}</td>
                                                             <td>{{producto.nombre}}</td>
                                                             <td>{{producto.cantidad}}</td>
-                                                            <td>{{producto.costo}}</td>
+                                                            <td>{{producto.precio}}</td>
                                                         </tr>
                                                     {% endfor %}
                                                     </tbody>
@@ -173,7 +184,7 @@
                                                                     <td>{{producto.id}}</td>
                                                                     <td>{{producto.nombre}}</td>
                                                                     <td>{{producto.cantidad}}</td>
-                                                                    <td>{{producto.costo}}</td>
+                                                                    <td>{{producto.precio}}</td>
                                                                 </tr>
                                                             {% endfor %}
                                                             </tbody>
@@ -238,10 +249,10 @@
     const dataTableOptions = {
         //scrollX: "1000px",
         lengthMenu : [5, 10, 20],
-        columnDefs: [{className: "tcentrarh", targets : [0,1,2,6,7,8] },
-        {orderable: false, targets: [8]},
+        columnDefs: [{className: "tcentrarh", targets : [0,1,2,6,7,9] },
+        {orderable: false, targets: [9]},
         //{width: "25%", targets:[2]},
-        {width: "5%", targets:[0, 1, 7]},
+        {width: "5%", targets:[0, 1, 8]},
         ],
         pageLength: 10,
         destroy: true,
