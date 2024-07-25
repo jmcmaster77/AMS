@@ -1,29 +1,29 @@
 {% extends './base.html' %}
 
-{% block title %} Admin me Store | Registro de venta {% endblock %}
+{% block title %} Admin me Store | Modificar presupuesto {% endblock %}
 
 
 {% block body %}
 {% include('partials/_navbar.html') %}
 <style>
     select option{
-     background-color:rgb(85, 136, 196) !important;
+     background-color:rgb(125, 134, 144) !important;
     }
 </style>
 <div class="card mb-1 text-white bg-dark mt-1">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h5> Registro de venta</h5>
+            <h5> Modificar presupuesto</h5>
             <div class="btn-group">
                 <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
-                <a href="{{ url_for('gventas.ventas') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('gpresupuestos.presupuestos') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
 
-        <form action="/rventas" method="post" class="mt-2" name="registro" id="registro">
+        <form action="/mpresupuesto/{{datapresu.id}}" method="post" class="mt-2" name="registro" id="registro">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            {% if clientes is none %}
+            {% if datacliente == "No" %}
             <h6>No hay clientes que seleccionar</h6>
             {% else %}
             <div class="container-lg border border-primary-subtle rounded-3 ">
@@ -32,9 +32,7 @@
                         <table class="mb-2">
                             <thead>
                                 <tr>
-                                    <th>Clientes</th>
-                                    <th>Tipo de venta</th>
-                                    <th>Metodo de Pago</th>
+                                    <th>Cliente</th>
                                     <th>Bolivares</th>
                                 </tr>
                             </thead>
@@ -42,36 +40,28 @@
                                 <tr>
                                     <td width="350">
                                         <select class="form-select" aria-label="Default select example" name="cliente" id="cliente" required>
-                                            <option value="">Selecciona cliente</option>
-                                            {% for cliente in clientes %}
+                                            {% for cliente in datacliente %}
+                                            {% if clien.fullname == cliente.fullname %}
+                                            <option value="{{clien.fullname}}"selected>{{clien.fullname}}</option>
+                                            {% else %}
                                             <option value="{{ cliente.fullname }}">{{ cliente.fullname }}</option>
+                                            {%endif%}
                                             {% endfor %}
                                           </select>
                                     </td>
+
                                     <td>
-                                        <select class="form-select" aria-label="Default Tipo de venta" name="tventa">
-                                            <option value="Contado" selected>Contado</option>
-                                            <option value="Credito">Credito</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
-                                            <option value="Efectivo" selected>Efectivo</option>
-                                            <option value="Tarjeta">Tarjeta</option>
-                                            <option value="Transferencia">Transferencia</option>
-                                            <option value="Otro">Otro</option>
-                                        </select>
-                                    </td>
-                                    
-                                    <td >
                                         <div class="form-check form-switch ms-4">
+                                            {% if datapresu.bolivares == True %}
                                             <input class="form-check-input" type="checkbox" name="check[]" value=True id="flexCheckChecked" checked>
+                                            {% else %}
+                                            <input class="form-check-input" type="checkbox" name="check[]" value=False id="flexCheckChecked">
+                                            {% endif %}
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-            
                         <table id="tproductos" class="mt-2">
                             <thead>
                                 <tr>
@@ -82,76 +72,71 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider border-primary-subtle">
+                                {% for pventa in datapresu.productos.productos%}
                                 <tr > 
+                                    {%set n = loop.index -1%}
+                                    
+                                    {% if loop.index == 1 %}
+                                   
                                     <td width="350"> 
                                         <select class="form-select val" aria-label="Default select example" onchange="copyValue(this.id)" name="producto" id="producto" required>
-                                        <option value="">Selecciona un producto</option>
-                                        {% for producto in productos %}
-                                        <option value="{{ producto.nombre }}">{{ producto.nombre }}</option>
+                                        {% for product in productos %}
+                                            {% if pventa.nombre == product.nombre %}
+                                            <option value="{{pventa.nombre}}"selected>{{pventa.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
                                         {% endfor %}
                                         </select>
-                                        {% endif %}
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio" maxlength="10" step="0.01" min="0.01" max="9999999999" id="precio" readonly>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="precio" maxlength="10" step="0.01" min="0" max="9999999999" id="precio" readonly>
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="25" height="25" style="filter: invert(1)"></a>
+                                            <a onclick="agregar()" ><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="25" height="25" style="filter: invert(1)"></a>
                                         </div>
                                     </td>
-                                </tr>
-            
-                            </tbody>
-                            <input type="hidden" id="jproductos" value="{{jproductos}}">
-                            <script type="text/javascript">
-                                function copyValue(id) {
-                                    var valor = document.getElementById(id).value;
-                                    var productos = JSON.parse(document.getElementById('jproductos').value) ;
-                                    //console.log(productos)
+                                    {%else%}
                                     
-                                    if (id == "producto") {
-                                        precioid = "precio";
-                                        cantidadid = "cantidad";
-                                        const keys = Object.keys(productos.productos)
-                                        for (let i = 0; i < keys.length; i++) {
-                                            if (productos.productos[i].nombre == valor) {
-                                                document.getElementById(precioid).value = productos.productos[i].precio
-                                                document.getElementById(cantidadid).max = productos.productos[i].cantidad
-                                                document.getElementById(cantidadid).value = 1
-                                            } 
-                                        } 
-
-                                        // console.log(productos.productos[0].nombre)
-    
-                                    } else {
-                                        ln = id.substr(id.length - 1);
-                                        precioid = "precio"+ln;
-                                        cantidadid = "cantidad"+ln;
-                                        const keys = Object.keys(productos.productos)
-                                        for (let i = 0; i < keys.length; i++) {
-                                            if (productos.productos[i].nombre == valor) {
-                                                document.getElementById(precioid).value = productos.productos[i].precio
-                                                document.getElementById(cantidadid).max = productos.productos[i].cantidad
-                                                document.getElementById(cantidadid).value = 1
-                                            } 
-                                        } 
-                                    }
-                                }
-
-
-                                    // var val = document.getElementById("p").value;
-                                    // document.getElementById("precio").value = val
-
-                                
-                            </script>
+                                    <td width="350"> 
+                                        <select class="form-select val" aria-label="Default select example" onchange="copyValue(this.id)" name="producto{{n}}" id="producto{{n}}" required>
+                                        {% for product in productos %}
+                                            {% if pventa.nombre == product.nombre %}
+                                            <option value="{{pventa.nombre}}"selected>{{pventa.nombre}}</option>
+                                            {% else %}
+                                            <option value="{{ product.nombre }}">{{ product.nombre }}</option>
+                                            {%endif%}
+                                        {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad{{n}}" maxlength="4" min="1" max="9999" id="cantidad{{n}}">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="precio{{n}}" maxlength="10" step="0.01" min="0" max="9999999999" id="precio{{n}}" readonly>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a onclick="agregar()" ><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="25" height="25" style="filter: invert(1)"></a>
+                                            <a onclick="eliminar()" ><img src="{{ url_for('static', filename='ico/add-minus.svg') }}" alt="" width="25" height="25" style="filter: invert(1)"></a>
+                                        </div>
+                                    </td>
+                                    {%endif%}
+                                </tr>
+                                {% endfor %}
+             {%endif%}
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+
+
+
             <div>
                 <input type="hidden" name="item" id="item">
             </div>
@@ -161,7 +146,7 @@
                         <div class="btn-group">
                             
                             <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
-                            <a href="{{ url_for('gventas.ventas') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a href="{{ url_for('gpresupuestos.presupuestos') }}" class="btn btn-secondary btn-sm ">Retorno</a>
                             <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
                         </div>
                     </div>
@@ -171,6 +156,50 @@
         
     </div>
 </div>
+{% set number = datapresu.productos.productos | count %}
+<input type="hidden" id="jproductos" value="{{jproductos}}">
+<script type="text/javascript">
+    function copyValue(id) {
+        
+        var valor = document.getElementById(id).value;
+        var productos = JSON.parse(document.getElementById('jproductos').value);
+        // console.log(productos)
+        
+        if (id == "producto") {
+            precioid = "precio";
+            cantidadid = "cantidad";
+            const keys = Object.keys(productos.productos)
+            for (let i = 0; i < keys.length; i++) {
+                if (productos.productos[i].nombre == valor) {
+                    document.getElementById(precioid).value = productos.productos[i].precio
+                    document.getElementById(cantidadid).max = productos.productos[i].cantidad
+                    document.getElementById(cantidadid).value = 1
+                } 
+            } 
+
+            // console.log(productos.productos[0].nombre)
+
+        } else {
+            ln = id.substr(id.length - 1);
+            precioid = "precio"+ln;
+            cantidadid = "cantidad"+ln;
+            const keys = Object.keys(productos.productos)
+            for (let i = 0; i < keys.length; i++) {
+                if (productos.productos[i].nombre == valor) {
+                    document.getElementById(precioid).value = productos.productos[i].precio
+                    document.getElementById(cantidadid).max = productos.productos[i].cantidad
+                    document.getElementById(cantidadid).value = 1
+                } 
+            } 
+        }
+    }
+
+
+        // var val = document.getElementById("p").value;
+        // document.getElementById("precio").value = val
+
+    
+</script>
 <script>
                 
     $(document).ready(function() {
@@ -218,11 +247,11 @@
             return false;;
         }
     }
-
-
-    var n = 1;
+    
+    var n = JSON.parse('{{number | tojson}}');
     function setValue(id, newvalue){
         var s = document.getElementById(id);
+        // console.log("valor de newvalue es:" + newvalue);
         s.value = newvalue;
     } 
     window.onload = function() {
@@ -240,7 +269,7 @@
             
             cell1.innerHTML = '<select class="form-select val" aria-label="Default select example" name="producto'+ n +'" id="producto'+ n +'" onchange="copyValue(this.id)" required><option value="">Selecciona un producto</option>{% for producto in productos %}<option value="{{ producto.nombre }}">{{ producto.nombre }}</option>{% endfor %}</select>';
             cell2.innerHTML = '<input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad'+ n +'" maxlength="4" min="1" max="9999" id="cantidad'+ n +'">';
-            cell3.innerHTML = '<input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio'+ n +'" maxlength="10" step="0.01" min="0.01" max="9999999999" id="precio'+ n +'">';
+            cell3.innerHTML = '<input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="precio'+ n +'" maxlength="10" step="0.01" min="0" max="9999999999" id="precio'+ n +'" readonly>';
             cell4.innerHTML = '<div class="btn-group" role="group"><a onclick="agregar()"><img src="{{ url_for("static", filename="ico/add-plus.svg") }}" alt="" width="25" height="25" style="filter: invert(1)"></a><a onclick="eliminar()"><img src="{{ url_for("static", filename="ico/add-minus.svg") }}" alt="" width="25" height="25" style="filter: invert(1)"></a></div>';
             ++n;
             setValue("item", n);

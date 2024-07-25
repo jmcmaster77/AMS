@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS | Comprobante | {{presupuesto.id}}</title>
+    <link rel="shortcut icon" href="http://10.0.0.57:5000/static/ico/favicon.ico">
+    <link rel="stylesheet" href="http://10.0.0.57:5000/static/nBootstrap5.3.3/bootstrap.min.css"/>
+    
+    <link rel="stylesheet" href="http://10.0.0.57:5000/static/css/comprobante.css">
+</head>
+
+<body>
+    <div class="parent-border">
+        <div class="border">
+            <div class="parent parent-invoice-logo-type">
+                <img class="invoice-logo child1" src="http://10.0.0.57:5000/static/img/ferreterialeal.png" alt="" width="100" height="100">
+                <span class="invoice-type child2">
+                    Admin My Store - Presupuesto
+                </span>
+                <span class="numeroc">
+                   P#{{presupuesto.id}}
+                </span>
+                <p class="fw-semibold fechac">Fecha {{fecha}}</p>
+            </div>
+
+
+            <div class="direccion">
+                <p class="margen0">Rif: J-50310338-8 | Direccion Altavista calle el club </p>
+                <p>ventas@ferreterial47.com - 0424-250-22-95 </p>
+            </div>
+            <hr class="hrtop">
+            <div class="parent parent-invoice-table-address">
+
+                <table class="child invoice-table-address" style="border-spacing: 0;">
+                    <tr class="table-addresses" style="border-style : hidden!important">
+                        <th class="pcolumna">Cliente</th>
+                        <th style="border-style : hidden!important"></th>
+                    </tr>
+                    <tr class="temp" style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{cliente.fullname}} {{cliente.documento}}</td>
+                        <td></td>
+                    </tr>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{cliente.direccion}}</td>
+                        <td style="border-style : hidden!important"></td>
+                    </tr>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{cliente.email}}</td>
+                        <td></td>
+                    </tr>
+                    <tr style="border-style : hidden!important">
+                        <td style="border-style : hidden!important">{{cliente.numero}}</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <p class="resumen">Resumen del pedido</p>
+            <div class="parent parent-invoice-table">
+                <table class="invoice-table" style="border-spacing: 0;">
+                    <thead>
+                        <tr class="table-row-border">
+                            <th >ID</th>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for producto in presupuesto.productos.productos%}
+                        <tr class="table-row-pedido">
+                            <td class="rc1" style="border-style : hidden!important">{{producto.id}}</td>
+                            <td class="rc2" style="border-style : hidden!important">{{producto.nombre}}</td>
+                            <td class="rc3" style="border-style : hidden!important">{{producto.cantidad}}</td>
+                            {% if presupuesto.bolivares == true %}
+                            {% set titem = producto.precio * tasa.valor %}
+                            <td class="rc4" style="border-style : hidden!important">{{'%0.2f' % titem }}</td>
+                            {% else %}
+                            <td class="rc4" style="border-style : hidden!important">{{producto.precio}}</td>
+                            {% endif %}
+                            {% if presupuesto.bolivares == true %}
+                            {% set totalitem = producto.cantidad * titem %}
+                            <td class="text-end rc5" style="border-style : hidden!important">{{'%0.2f' % totalitem}}</td>
+                            {% else %}
+                            {% set totalitem = producto.cantidad * producto.precio %}
+                            <td class="text-end rc5" style="border-style : hidden!important">{{'%0.2f' % totalitem}}</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        <tr class="tr-sub-total" style="border-style : hidden!important">
+                            <th colspan="4" class="text-end" style="border-style : hidden!important">Sub Total</th>
+                            <td class="text-end sub-total" style="border-style : hidden!important">{{'%0.2f' % presupuesto.totalp}}</td>
+                        </tr>
+                        <tr style="border-style : hidden!important">
+                            <th colspan="4" class="text-end">
+                                Iva</th>
+                                {% set civa = presupuesto.totalp * 0.16 %}
+                            <td class="text-end" style="border-style : hidden!important">{{ '%0.2f' % civa}}</td>
+                        </tr style="border-style : hidden!important">
+                        <tr style="border-style : hidden!important">
+                            {% if presupuesto.bolivares == true %}
+                            <th colspan="4" class="text-end" style="border-style : hidden!important">Total Bsd</th>
+                            {% else %}
+                            <th colspan="4" class="text-end" style="border-style : hidden!important">Total $</th>
+                            {% endif %}
+                            {% set gtotal = presupuesto.totalp + civa %}
+                            <td class="text-end fw-semibold" style="border-style : hidden!important">{{'%0.2f' % gtotal}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- <div class="parent  parent-invoice-total">
+                <span class="invoice-total-text child">
+                    TOTAL :
+                </span>
+
+                <span class="invoice-total child">
+                    RS: 12000/-
+                </span>
+            </div> -->
+
+            <!-- <div class="parent  parent-invoice-terms">
+                <div class="invoice-terms">
+                    <div class="d-print-none mt-4">
+                        <div class="float-end">
+                            <a href="javascript:window.print()" class="btn btn-success me-1">
+                                <img src="http://10.0.0.57:5000/static/ico/printer.svg" alt="" width="35" height="24" class="d-inline-block align-text-top">
+                            </a>
+                            <a href="/compras" class="btn btn-secondary w-md">Retorno</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
