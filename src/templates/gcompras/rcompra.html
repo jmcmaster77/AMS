@@ -129,7 +129,9 @@
                                         <input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="costo" maxlength="10" step="0.01" min="0.01" max="9999999999" id="costo">
                                     </td>
                                     <td>
-                                        <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="50" height="35" style="filter: invert(1)"></a>
+                                        <div class="btn-group" role="group">
+                                            <a onclick="agregar()"><img src="{{ url_for('static', filename='ico/add-plus.svg') }}" alt="" width="25" height="25" style="filter: invert(1)"></a>
+                                        </div>
                                     </td>
                                 </tr>
             
@@ -230,7 +232,7 @@
             cell1.innerHTML = '<select class="form-select val" aria-label="Default select example" name="producto'+ n +'" required><option value="">Selecciona un producto</option>{% for producto in productos %}<option value="{{ producto.nombre }}">{{ producto.nombre }}</option>{% endfor %}</select>';
             cell2.innerHTML = '<input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad'+ n +'" maxlength="4" min="1" max="9999" id="cantidad'+ n +'">';
             cell3.innerHTML = '<input type="number" class="form-control" placeholder="" value="0.00" inputmode="numeric" name="costo'+ n +'" maxlength="10" step="0.01" min="0.01" max="9999999999" id="costo'+ n +'">';
-            cell4.innerHTML = '<a onclick="agregar()"><img src="{{ url_for("static", filename="ico/add-plus.svg") }}" alt="" width="50" height="35" style="filter: invert(1)"></a><a onclick="eliminar()"><img src="{{ url_for("static", filename="ico/add-minus.svg") }}" alt="" width="50" height="35" style="filter: invert(1)"></a>';
+            cell4.innerHTML = '<div class="btn-group" role="group"><a onclick="agregar()"><img src="{{ url_for("static", filename="ico/add-plus.svg") }}" alt="" width="25" height="25" style="filter: invert(1)"></a><a onclick="eliminar()"><img src="{{ url_for("static", filename="ico/add-minus.svg") }}" alt="" width="25" height="25" style="filter: invert(1)"></a></div>';
             ++n;
             setValue("item", n);
             //console.log("valor de n es:" + n);

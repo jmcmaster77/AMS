@@ -37,9 +37,9 @@ def ventas_deleted():
         for registro in registros:
             registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
 
-        return render_template("gventas/ventas.html", compras=registros, deleted=True)
+        return render_template("gventas/ventas.html", ventas=registros, deleted=True)
     else:
-        return render_template("gventas/ventas.html", compras=registros, deleted=True)
+        return render_template("gventas/ventas.html", ventas=registros, deleted=True)
 
 
 @gventas.route("/rventas", methods=["GET", "POST"])
@@ -220,6 +220,18 @@ def mventa(id):
     cliente = db.session.get(Clientes, dataventa.id_c)
     dataclientes = Clientes.query.all()
     productos = Productos.query.all()
+
+    jproductos = {}
+    jproductos["productos"] = []
+    for producto in productos:
+        jproductos["productos"].append({
+            "id": producto.id,
+            "nombre": producto.nombre,
+            "cantidad": producto.cantidad,
+            "precio": producto.precio
+        })
+    jproductos = json.dumps(jproductos, indent=4)
+
     if current_user.rol == 0:
         if request.method == "POST":
             itemdb = dataventa.productos
@@ -227,15 +239,15 @@ def mventa(id):
             for item in itemlist:
                 datareverso = Reversos.query.filter(
                     Reversos.id_t == dataventa.id).filter(Reversos.id_p == item["id"])
-                
+
                 for data in datareverso:
                     producto = db.session.get(Productos, item["id"])
                     producto.cantidad = data.cantidad
                     reverso = db.session.get(Reversos, data.id)
                     db.session.delete(reverso)
                     db.session.commit()
-                
-                # Reverso cantidad productos realizado 
+
+                # Reverso cantidad productos realizado
             data = {}
             data["productos"] = []
             for x in range(int(request.form["item"])):
@@ -254,12 +266,13 @@ def mventa(id):
                     # almacenando los datos existente antes de la compra
                     cantidaexi = pdata.cantidad
 
-                    pdata.cantidad = pdata.cantidad - int(request.form["cantidad"])
+                    pdata.cantidad = pdata.cantidad - \
+                        int(request.form["cantidad"])
                     # insertando en la base de datos de reverso el movimiento
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
                     reverso = Reversos(None, pdata.id, cantidaexi, 0,
-                                    0, "venta", fechar, current_user.id, True, False)
+                                       0, "venta", fechar, current_user.id, True, False)
                     db.session.add(reverso)
                     db.session.commit()
                     totalv = pdata.precio * \
@@ -282,13 +295,14 @@ def mventa(id):
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
                     reverso = Reversos(None, pdata.id, cantidaexi, 0,
-                                    0, "compra", fechar, current_user.id, True, False)
+                                       0, "compra", fechar, current_user.id, True, False)
                     db.session.add(reverso)
                     db.session.commit()
                     totalv = totalv + (pdata.precio *
-                                    int(request.form[f"cantidad"+str(x)]))
+                                       int(request.form[f"cantidad"+str(x)]))
+
             check = request.form.getlist("check[]")
-            
+
             bolivares = False
             if len(check) != 0:
                 # bolivares si
@@ -321,14 +335,46 @@ def mventa(id):
             logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                         " | Modifico venta id " + str(dataventa.id))
             flash({'title': "AMS", 'message': "Compra: " +
-                "id " + str(dataventa.id) + " modificado satisfactoriamente"}, 'success')
+                   "id " + str(dataventa.id) + " modificado satisfactoriamente"}, 'success')
             return redirect(url_for("gventas.ventas"))
-    
-    
-        else: 
-            
-            return render_template("gventas/mventa.html", dataventa=dataventa, datacliente=dataclientes, productos=productos, clien=cliente)
+
+        else:
+
+            return render_template("gventas/mventa.html", dataventa=dataventa, datacliente=dataclientes, productos=productos, clien=cliente, jproductos=jproductos)
     else:
 
         flash({'title': "AMS", 'message': "Un administrador solo puede modificar compras"}, 'error')
+        return redirect(url_for("gventas.ventas"))
+
+
+@gventas.route("/elventa/<id>")
+@login_required
+def deletedVenta(id):
+    if current_user.rol == 0:
+        dataventa = db.session.get(Ventas, id)
+        itemdb = dataventa.productos
+        itemlist = itemdb["productos"]
+        # revertir la transaccion en los productos
+        for item in itemlist:
+            datareverso = Reversos.query.filter(
+                Reversos.id_t == dataventa.id).filter(Reversos.id_p == item["id"])
+            # print("busqueda reverso", datareverso)
+            for data in datareverso:
+                # print("datareverso", data.id, data.id_t, data.id_p, data.cantidad, data.costo, data.precio,
+                #       data.transaccion, data.fecha, data.id_u, data.registrando, data.reversado)
+                producto = db.session.get(Productos, item["id"])
+                producto.cantidad = data.cantidad
+                reverso = db.session.get(Reversos, data.id)
+                db.session.delete(reverso)
+                dataventa.deleted = True
+                db.session.commit()
+
+        # realizado el reverso continuamos marcando la compra como deleted
+
+        flash({'title': "AMS", 'message': "Venta: " +
+               "id " + str(dataventa.id) + " marcada como borrada"}, 'info')
+        return redirect(url_for("gventas.ventas"))
+    else:
+        flash(
+            {'title': "AMS", 'message': "Un administrador solo puede eliminar compras"}, 'error')
         return redirect(url_for("gventas.ventas"))

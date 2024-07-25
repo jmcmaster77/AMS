@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMS | Comprobante | {{venta.id}}</title>
+    <title>AMS | Comprobante | {{compra.id}}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.min.css')}}"/>
     <script src="{{url_for('static', filename='nBootstrap5.3.3/bootstrap.bundle.min.js')}}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
@@ -16,43 +16,43 @@
     <div class="parent-border">
         <div class="border">
             <div class="parent parent-invoice-logo-type">
-                <img class="invoice-logo child1" src="{{ url_for('static', filename='img/ferreterialeal.png') }}" alt="" width="100" height="100">
+                <img class="invoice-logo child1" src="{{ url_for('static', filename='ico/store-svgrepo-com2.svg') }}" alt="" width="100" height="100">
                 <span class="invoice-type child2">
-                    Admin My Store - Comprobante Venta
+                    Admin My Store - Comprobante Compra
                 </span>
                 <span class="numeroc">
-                   Comprobante CV{{venta.id}}
+                   Comprobante CC{{compra.id}}
                 </span>
-                <p class="fw-semibold fechac">Fecha {{fecha}}</p>
+                <p class="fw-semibold fechac">Fecha {{fechac}}</p>
             </div>
 
 
             <div class="direccion">
-                <p class="margen0">Rif: J-50310338-8 | Direccion Altavista calle el club</p>
-                <p>ventas@ferreterial47.com - 0424-250-22-95</p>
+                <p class="margen0">Dirección Altavista #163 Direccion Altavista #163 </p>
+                <p>jmcmaster77@gmail.com - 0414-299-34-87 </p>
             </div>
             <hr class="hrtop">
             <div class="parent parent-invoice-table-address">
 
                 <table class="child invoice-table-address" style="border-spacing: 0;">
                     <tr class="table-addresses">
-                        <th class="pcolumna">Cliente</th>
-                        <th></th>
+                        <th class="pcolumna">Proveedor</th>
+                        <th>Factura</th>
                     </tr>
                     <tr class="temp">
-                        <td>{{cliente.fullname}} {{cliente.documento}}</td>
-                        <td></td>
+                        <td>{{provdata.fullname}} {{provdata.documento}}</td>
+                        <td>{{compra.nfact}}</td>
                     </tr>
                     <tr>
-                        <td>{{cliente.direccion}}</td>
-                        <td></td>
+                        <td>{{provdata.direccion}}</td>
+                        <td>Fecha:</td>
                     </tr>
                     <tr>
-                        <td>{{cliente.email}}</td>
-                        <td></td>
+                        <td>{{provdata.email}}</td>
+                        <td>{{fechaf}}</td>
                     </tr>
                     <tr>
-                        <td>{{cliente.numero}}</td>
+                        <td>{{provdata.numero}}</td>
                         <td></td>
                     </tr>
                 </table>
@@ -70,43 +70,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for producto in venta.productos.productos%}
+                        {% for producto in compra.productos.productos%}
                         <tr class="table-row-pedido">
                             <td class="rc1">{{producto.id}}</td>
                             <td class="rc2">{{producto.nombre}}</td>
                             <td class="rc3">{{producto.cantidad}}</td>
-                            {% if venta.bolivares == true %}
-                            {% set titem = producto.precio * tasa.valor %}
-                            <td class="rc4">{{'%0.2f' % titem }}</td>
-                            {% else %}
-                            <td class="rc4">{{producto.precio }}</td>
-                            {% endif %}
-                            {% if venta.bolivares == true %}
-                            {% set totalitem = producto.cantidad * titem %}
+                            <td class="rc4">{{producto.costo}}</td>
+                            {% set totalitem = producto.cantidad * producto.costo %}
                             <td class="text-end rc5">{{'%0.2f' % totalitem}}</td>
-                            {% else %}
-                            {% set totalitem = producto.cantidad * producto.precio %}
-                            <td class="text-end rc5">{{'%0.2f' % totalitem}}</td>
-                            {% endif %}
                         </tr>
                         {% endfor %}
                         <tr class="tr-sub-total">
                             <th colspan="4" class="text-end">Sub Total</th>
-                            <td class="text-end sub-total">{{'%0.2f' % venta.totalv}}</td>
+                            <td class="text-end sub-total">{{'%0.2f' % compra.totalc}}</td>
                         </tr>
                         <tr>
                             <th colspan="4" class="text-end">
                                 Iva</th>
-                                {% set civa = venta.totalv * 0.16 %}
+                                {% set civa = compra.totalc * 0.16 %}
                             <td class="text-end">{{ '%0.2f' % civa}}</td>
                         </tr>
                         <tr>
-                            {% if venta.bolivares == true %}
-                            <th colspan="4" class="text-end">Total Bsd</th>
-                            {% else %}
-                            <th colspan="4" class="text-end">Total $</th>
-                            {% endif %}
-                            {% set gtotal = venta.totalv + civa %}
+                            <th colspan="4" class="text-end">Total</th>
+                            {% set gtotal = compra.totalc + civa %}
                             <td class="text-end fw-semibold">{{'%0.2f' % gtotal}}</td>
                         </tr>
                     </tbody>
@@ -131,7 +117,7 @@
                             <a href="javascript:window.print()" class="btn btn-success me-1">
                                 <img src="{{ url_for('static', filename='ico/printer.svg') }}" alt="" width="35" height="24" class="d-inline-block align-text-top">
                             </a>
-                            <a href="/ventas" class="btn btn-secondary w-md">Retorno</a>
+                            <a href="/compras" class="btn btn-secondary w-md">Retorno</a>
                         </div>
                         
                     </div>
