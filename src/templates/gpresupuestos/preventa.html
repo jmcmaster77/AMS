@@ -1,0 +1,132 @@
+{% extends './base.html' %}
+
+{% block title %} Admin me Store | Venta desde presupuesto {% endblock %}
+
+
+{% block body %}
+{% include('partials/_navbar.html') %}
+<style>
+    select option{
+     background-color:rgb(125, 134, 144) !important;
+    }
+</style>
+<div class="card mb-1 text-white bg-dark mt-1">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <h5> Venta desde presupuesto</h5>
+            <div class="btn-group">
+                <a href="/home" class="btn btn-secondary btn-sm ">Inicio</a>
+                <a href="{{ url_for('gpresupuestos.presupuestos') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
+            </div>
+        </div>
+
+        <form action="/presupuestov/{{datapresu.id}}" method="post" class="mt-2" name="registro" id="registro">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            
+            <div class="container-lg border border-primary-subtle rounded-3 ">
+                <div class="row">
+                    <div class="col mt-2 mb-2">
+                        <table class="mb-2">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="350">
+                                        <input type="text" class="form-control" value="{{datacliente.fullname}}" name="cliente" id="" readonly>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="tproductos" class="mt-2">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider border-primary-subtle">
+                                {% for pventa in datapresu.productos.productos%}
+                                <tr > 
+                                    {%set n = loop.index -1%}
+                                    
+                                    {% if loop.index == 1 %}
+                                   
+                                    <td width="350"> 
+                                        <input type="text" class="form-control" value="{{pventa.nombre}}" name="producto" id="producto" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="precio" maxlength="10" step="0.01" min="0" max="9999999999" id="precio" readonly>
+                                    </td>
+                                    {%else%}
+                                    <td width="350"> 
+                                        <input type="text" class="form-control" value="{{pventa.nombre}}" name="producto{{n}}" id="producto{{n}}" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.cantidad}}" inputmode="numeric" name="cantidad{{n}}" maxlength="4" min="1" max="9999" id="cantidad{{n}}" readonly>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" placeholder="" value="{{pventa.precio}}" inputmode="numeric" name="precio{{n}}" maxlength="10" step="0.01" min="0" max="9999999999" id="precio{{n}}" readonly>
+                                    </td>
+                             
+                                    {%endif%}
+                                </tr>
+                                {% endfor %}
+             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <input type="hidden" name="item" id="item">
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="row mt-2">
+                    <div class="col">
+                        <div class="btn-group">
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
+                            <a href="{{ url_for('gpresupuestos.presupuestos') }}" class="btn btn-secondary btn-sm ">Retorno</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ url_for('login.logout') }}">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+{% set number = datapresu.productos.productos | count %}
+
+
+<script>
+                
+    
+    var n = JSON.parse('{{number | tojson}}');
+    function setValue(id, newvalue){
+        var s = document.getElementById(id);
+        // console.log("valor de newvalue es:" + newvalue);
+        s.value = newvalue;
+    } 
+    window.onload = function() {
+        setValue("item", n);
+        // console.log("valor de n es:" + n);
+    }
+  
+
+ 
+</script>
+
+{% endblock %}

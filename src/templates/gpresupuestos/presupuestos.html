@@ -35,6 +35,7 @@
                                 <tr>
                                 <th >Id</th>
                                 <th >Id Cliente</th>
+                                <th>Cliente</th>
                                 <th>Bsd</th>
                                 <th >Total</th>
                                 <th >Fecha</th>
@@ -50,13 +51,14 @@
                                 <tr>
                                     <th>{{presupuesto.id}}</th>
                                     <td>{{presupuesto.id_c}}</td>
+                                    <td>{{presupuesto.fullname}}</td>
                                     {% if presupuesto.bolivares == true %}
                                     <td>Si</td>
                                     {% else %}
                                     <td>No</td>
                                     {% endif%}
                                     <td>{{presupuesto.totalp}}</td>
-                                    <td>{{presupuesto.fecha}}</td>
+                                    <td>{{presupuesto.fecha.strftime("%d/%m/%y")}}</td>
                                     <td>{{presupuesto.productos.productos | count}}</td>
                                     <td>{{presupuesto.id_u}}</td>
                                     <td>
@@ -78,13 +80,14 @@
                                 <tr>
                                     <th>{{presupuesto.id}}</th>
                                     <td>{{presupuesto.id_c}}</td>
+                                    <td>{{presupuesto.fullname}}</td>
                                     {% if presupuesto.bolivares == true %}
                                     <td>Si</td>
                                     {% else %}
                                     <td>No</td>
                                     {% endif%}
                                     <td>{{presupuesto.totalp}}</td>
-                                    <td>{{presupuesto.fecha}}</td>
+                                    <td>{{presupuesto.fecha.strftime("%d/%m/%y")}}</td>
                                     <td>{{presupuesto.productos.productos | count}}</td>
                                     <td>{{presupuesto.id_u}}</td>
                                     <td>
@@ -94,6 +97,9 @@
                                                     <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#presupuesto_detalles_{{presupuesto.id}}" href="#">D</a>
                                                 </li>
                                                 </ul>
+                                            <a href="/presupuestov/{{presupuesto.id}}" class="btn btn-info text-white btn-sm " >
+                                                <img src ="static/ico/buy.svg" alt="PDF" width="17" height="17"/>
+                                            </a>
                                             <a href="/mpresupuesto/{{presupuesto.id}}" class="btn btn-success text-white btn-sm " >M</a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#venta_delete_{{presupuesto.id}}" class="btn btn-danger btn-sm ">B</a>
                                             <a href="/comprobantep/{{presupuesto.id}}" class="btn btn-light btn-sm ">C</a>
@@ -244,11 +250,11 @@
     const dataTableOptions = {
         //scrollX: "1000px",
         lengthMenu : [5, 10, 20],
-        columnDefs: [{className: "tcentrarh", targets : [0,1,2,5,6,7] },
-        {orderable: false, targets: [7]},
+        columnDefs: [{className: "tcentrarh", targets : [0,1,3,6,7,8] },
+        {orderable: false, targets: [8]},
         //{width: "25%", targets:[2]},
-        {width: "5%", targets:[0, 1, 2, 6]},
-        {width: "10%", targets:[3,4,5]},
+        {width: "5%", targets:[0, 1, 3, 7]},
+        {width: "10%", targets:[4,5,6]},
         ],
         pageLength: 10,
         destroy: true,

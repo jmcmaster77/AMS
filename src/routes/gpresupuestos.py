@@ -19,15 +19,16 @@ gpresu = Blueprint("gpresupuestos", __name__)
 @gpresu.route("/presupuestos")
 @login_required
 def presupuestos():
-    registros = Presupuestos.query.all()
+    # registros = Presupuestos.query.all()
 
-    busqueda = db.session.query(Presupuestos.id, Clientes.id, Clientes.fullname, Presupuestos.bolivares, Presupuestos.totalp,
-                                Presupuestos.productos, Presupuestos.id_u, Presupuestos.deleted, Presupuestos.fecha).filter(Presupuestos.id_c == Clientes.id).all()
-    # print(busqueda)
+    registros = db.session.query(Presupuestos.id, Clientes.fullname, Presupuestos.bolivares, Presupuestos.totalp, Presupuestos.id_c,
+                                 Presupuestos.productos, Presupuestos.id_u, Presupuestos.deleted, Presupuestos.fecha).filter(Presupuestos.id_c == Clientes.id).all()
+
     if registros is not None:
-        for registro in registros:
-            registro.fecha = registro.fecha.strftime("%d/%m/%y")
-
+        # for registro in registros:
+        # registro.fecha = registro.fecha.strftime("%d/%m/%y")
+        # print(registro.fecha.strftime("%d/%m/%y"))
+        # registro.fecha.strftime("%d/%m/%y")
         return render_template("gpresupuestos/presupuestos.html", presupuestos=registros, deleted=False)
     else:
         return render_template("gpresupuestos/presupuestos.html", presupuestos=registros, deleted=False)
@@ -36,10 +37,11 @@ def presupuestos():
 @gpresu.route("/presupuestos_deleted")
 @login_required
 def presupuestos_deleted():
-    registros = Presupuestos.query.all()
+    registros = db.session.query(Presupuestos.id, Clientes.fullname, Presupuestos.bolivares, Presupuestos.totalp, Presupuestos.id_c,
+                                 Presupuestos.productos, Presupuestos.id_u, Presupuestos.deleted, Presupuestos.fecha).filter(Presupuestos.id_c == Clientes.id).all()
     if registros is not None:
-        for registro in registros:
-            registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+        # for registro in registros:
+        #     registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
 
         return render_template("gpresupuestos/presupuestos.html", presupuestos=registros, deleted=True)
     else:
@@ -285,7 +287,8 @@ def elpresupuesto(id):
 
     datapresu.deleted = True
     db.session.commit()
-
+    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                " | marco presupuesto id " + str(datapresu.id) + " marcado como borrado")
     flash({'title': "AMS", 'message': "Presupuesto: " +
            "id " + str(datapresu.id) + " marcado como borrado"}, 'info')
     return redirect(url_for("gpresupuestos.presupuestos"))
@@ -298,7 +301,65 @@ def res_presupuesto(id):
 
     datapresu.deleted = False
     db.session.commit()
-
+    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                " | restauro presupuesto id " + str(datapresu.id))
     flash({'title': "AMS", 'message': "Presupuesto: " +
            "id " + str(datapresu.id) + " restaurado"}, 'info')
     return redirect(url_for("gpresupuestos.presupuestos"))
+
+
+@gpresu.route("/presupuestov/<id>", methods=["GET", "POST"])
+@login_required
+def presupuesto_venta(id):
+    if request.method == "POST":
+        print(request.form)
+        for x in range(int(request.form["item"])):
+            print(request.form["item"])
+
+        return redirect(url_for("gpresupuestos.presupuestos"))
+    else:
+
+
+        datapresu = db.session.get(Presupuestos, id)
+        datacliente = db.session.get(Clientes, datapresu.id_c)
+        itemdb = datapresu.productos
+        itemlist = itemdb["productos"]
+        # revertir la transaccion en los productos
+        data = {}
+        data["itempass"] = []
+        data["itemfail"] = []
+        for item in itemlist:
+            dataproducto = db.session.get(Productos, item["id"])
+            if item["cantidad"] <= dataproducto.cantidad:
+                data["itempass"].append({
+                    "nombre": dataproducto.nombre,
+                    "cantidad": dataproducto.cantidad,
+                    "cantidadr": item["cantidad"]
+                })
+                
+            else:
+                data["itemfail"].append({
+                    "nombre": dataproducto.nombre,
+                    "cantidad": dataproducto.cantidad,
+                    "cantidadr": item["cantidad"]
+                })
+                
+        # print("Item pass", data["itempass"])
+        # print("Item fail", data["itemfail"])
+        # comprobar si hay item 
+        # print(" Len item pass", len(data["itempass"]))
+        # print(" Len item pass", len(data["itemfail"]))
+
+        if len(data["itemfail"]) > 0:
+
+            flash({'title': "AMS", 'message': "Presupuesto: " +
+            "id " + str(datapresu.id) + " tiene productos con cantidades insuficientes"}, 'error')
+                
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente )
+        
+        else: 
+            flash({'title': "AMS", 'message': "Presupuesto: " +
+                "id " + str(datapresu.id) + " en proceso"}, 'info')
+
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente)
+
