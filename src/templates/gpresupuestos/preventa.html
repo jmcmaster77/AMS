@@ -20,10 +20,12 @@
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
-
+        {% if continuo == true%}
         <form action="/presupuestov/{{datapresu.id}}" method="post" class="mt-2" name="registro" id="registro">
+        {% else %}
+        <form action="#" method="post" class="mt-2" name="registro" id="registro"></form>            
+        {% endif %}
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            
             <div class="container-lg border border-primary-subtle rounded-3 ">
                 <div class="row">
                     <div class="col mt-2 mb-2">
@@ -31,12 +33,36 @@
                             <thead>
                                 <tr>
                                     <th>Cliente</th>
+                                    <th>Tipo de venta</th>
+                                    <th>Metodo de Pago</th>
+                                    <th>Bolivares</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td width="350">
                                         <input type="text" class="form-control" value="{{datacliente.fullname}}" name="cliente" id="" readonly>
+                                    </td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default Tipo de venta" name="tventa">
+                                            <option value="Contado" selected>Contado</option>
+                                            <option value="Credito">Credito</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default Metodo de Pago" name="mpago">
+                                            <option value="Efectivo" selected>Efectivo</option>
+                                            <option value="Tarjeta">Tarjeta</option>
+                                            <option value="Transferencia">Transferencia</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </td>
+                                    <td width="50">
+                                        {% if datapresu.bolivares == true%}
+                                        <input class="form-control" type="text" name="bo" value="SI" id="" readonly>
+                                        {% else %}
+                                        <input class="form-control" type="text" name="bo" value="NO" id="" readonly>
+                                        {% endif %}
                                     </td>
                                 </tr>
                             </tbody>
@@ -47,7 +73,7 @@
                                     <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Precio</th>
-                                    <th>Acción</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider border-primary-subtle">
@@ -82,13 +108,70 @@
                                 {% endfor %}
              
                             </tbody>
+                            {{show}}
                         </table>
                     </div>
                 </div>
             </div>
+            {% if show %}
+            <script>
+                $(document).ready(function(){
+                    $("#pfail").modal('show');
+                });
+            </script>
+            {% endif %}
 
+            <!-- Modal deleted presupuesto -->
+            
+            <div class="modal fade" id="pfail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Detalles </h5>
+                        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-dark">
+                            <div class="" style="text-align: center">
+                                <img class="mb-4" src="{{ url_for('static', filename='img/warning.svg') }}" alt="" width="175" height="150">
+                                <p> Detalles productos sin existencias suficientes</p>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table-dark" width="450">
+                                                <thead>
+                                                  <tr>
+                                                    <th >Producto</th>
+                                                    <th >Disponibilidad</th>
+                                                    <th >Requerido</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% if show %}
+                                                  {% for d in data.itemfail %}
+                                                  <tr>
+                                                      <th style="text-align: left;">{{d.nombre}}</th>
+                                                      <th>{{d.cantidad}}</th>
+                                                      <th>{{d.cantidadr}}</th>
+                                                  </tr>
+                                                  {% endfor %}
+                                                {% endif %}
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                    </div>
 
+                                </div>
 
+                                
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-dark">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div>
                 <input type="hidden" name="item" id="item">
             </div>

@@ -1,63 +1,137 @@
 {% extends './base.html' %} {% block title %}Admin me Store | home{% endblock %}
 {% block body %}
 {% include('partials/_navbar.html') %}
-<div class="card mb-1 text-white bg-dark mt-1">
-    <div class="card-body">
-        <div class="d-flex justify-content-between" >
-            <h5> Inicio </h5>
-            
-            {% if current_user.rol == 0 %}
-            <b>Modo <b class="text-danger">Administrador</b> </b>
-            {% else %}
-            <b>Modo <b class="text-danger">Usuario</b> </b>
-            {% endif %}
+<div>
+    <div width:200px>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 200px;">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <span class="fs-4">Sidebar</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                  Customers
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <!-- <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div> -->
         </div>
-        <div class="d-flex justify-content-center">
-                <h5>Modulos</h5>
-        </div>
-        <div class="container border border-primary-subtle rounded-3 mt-2 mb-2">
-            <div class="row mt-2 mb-2">
-                {% if current_user.rol == 0 %}
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}"> Usuarios </a>
-                </div>
-                
-                {% else %}
-                <div class="col">
-                    <a type="button" class="btn btn-secondary disabled" style="color:grey" href="" disabled> Usuarios </a>
-                </div>
-                {% endif %}
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gclientes.clientes')}}"> Clientes </a>
-                </div>
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gproveedores.proveedores')}}"> Proveedores </a>
-                </div>
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gproductos.productos')}}"> Productos </a>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gcompras.compras')}}"> Compras </a>
-                </div>
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gventas.ventas')}}"> Ventas </a>
-                </div>
-                <div class="col">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('gpresupuestos.presupuestos')}}"> Presupuestos </a>
-                </div>
-            </div>
-            <div class="row mt-2 mb-2">
-                <div class="col d-flex justify-content-end">
-                    <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
-                </div>
-            </div>
-        </div>
-        
     </div>
-
+    <div>
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-2">
+        
+        
+                </div>
+                <div class="col py-3">
+                    <div class="card mb-1 text-white bg-dark mt-1">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between" >
+                                <h5> Inicio </h5>
+                                
+                                {% if current_user.rol == 0 %}
+                                <b>Modo <b class="text-danger">Administrador</b> </b>
+                                {% else %}
+                                <b>Modo <b class="text-danger">Usuario</b> </b>
+                                {% endif %}
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                    <h5>Modulos</h5>
+                            </div>
+                            <div class="container border border-primary-subtle rounded-3 mt-2 mb-2">
+                                <div class="row mt-2 mb-2">
+                                    {% if current_user.rol == 0 %}
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gusuarios.usuarios')}}"> Usuarios </a>
+                                    </div>
+                                    
+                                    {% else %}
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary disabled" style="color:grey" href="" disabled> Usuarios </a>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gclientes.clientes')}}"> Clientes </a>
+                                    </div>
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gproveedores.proveedores')}}"> Proveedores </a>
+                                    </div>
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gproductos.productos')}}"> Productos </a>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gcompras.compras')}}"> Compras </a>
+                                    </div>
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gventas.ventas')}}"> Ventas </a>
+                                    </div>
+                                    <div class="col">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('gpresupuestos.presupuestos')}}"> Presupuestos </a>
+                                    </div>
+                                </div>
+                                <div class="row mt-2 mb-2">
+                                    <div class="col d-flex justify-content-end">
+                                        <a type="button" class="btn btn-secondary" href="{{ url_for('login.logout')}}"> Salir </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+                  </div>
+            </div>
+        
+        </div>
+    </div>
 </div>
+
+
+  
+
 
 
 {% endblock %}

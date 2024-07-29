@@ -1,6 +1,7 @@
 from flask import Blueprint, request, redirect, url_for, render_template, flash, send_from_directory
 from flask_login import login_required, current_user
 from models.ModelVentasdb import Ventas
+from models.ModelReversosdb import Reversos
 from models.ModelClientesdb import Clientes
 from models.ModelProductosdb import Productos
 from models.ModelPresupuestosdb import Presupuestos
@@ -313,9 +314,82 @@ def res_presupuesto(id):
 def presupuesto_venta(id):
     if request.method == "POST":
         print(request.form)
+        data = {}
+        data["productos"] = []
         for x in range(int(request.form["item"])):
-            print(request.form["item"])
+            # se procesa la venta 
+            
+            if x == 0:
 
+                pdata = Productos.query.filter_by(
+                    nombre=request.form['producto']).first()
+                data["productos"].append({
+                    "id": pdata.id,
+                    "nombre": request.form["producto"],
+                    "cantidad": int(request.form["cantidad"]),
+                    "precio": pdata.precio
+                })
+                # almacenando los datos existente antes de la compra
+                cantidaexi = pdata.cantidad
+
+                pdata.cantidad = pdata.cantidad - int(request.form["cantidad"])
+                # insertando en la base de datos de reverso el movimiento
+                fechar = datetime.now()
+                fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                reverso = Reversos(None, pdata.id, cantidaexi, 0,
+                                   0, "venta", fechar, current_user.id, True, False)
+                db.session.add(reverso)
+                db.session.commit()
+                totalv = pdata.precio * \
+                    int(request.form["cantidad"])
+
+            else:
+                pdata = Productos.query.filter_by(
+                    nombre=request.form[f"producto"+str(x)]).first()
+                cantidaexi = pdata.cantidad
+                data["productos"].append({
+                    "id": pdata.id,
+                    "nombre": request.form[f"producto"+str(x)],
+                    "cantidad": int(request.form[f"cantidad"+str(x)]),
+                    "precio": pdata.precio
+                })
+
+                pdata.cantidad = pdata.cantidad - \
+                    int(request.form[f"cantidad"+str(x)])
+
+                fechar = datetime.now()
+                fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
+                reverso = Reversos(None, pdata.id, cantidaexi, 0,
+                                   0, "compra", fechar, current_user.id, True, False)
+                db.session.add(reverso)
+                db.session.commit()
+                totalv = totalv + (pdata.precio *
+                                   int(request.form[f"cantidad"+str(x)]))
+                # final de ventas 
+        datapresu = db.session.get(Presupuestos, id)
+        bolivares = datapresu.bolivares
+        if bolivares:
+            # bolivares si
+            tasa = db.session.get(Tasa, 1)
+            totalv = totalv * tasa.valor
+        
+        cliente = db.session.get(Clientes, datapresu.id_c)
+        datapresu.deleted = True
+        fecha = datetime.now()
+        fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+        venta = Ventas(cliente.id, data,
+                       request.form["tventa"], request.form["mpago"], bolivares, totalv, fecha, False,  current_user.id)
+        db.session.add(venta)
+        db.session.commit()
+        db.session.query(Reversos).filter(Reversos.registrando == True).update(
+            {Reversos.registrando: False, Reversos.id_t: venta.id})
+        db.session.commit()
+
+        # finalizando y respondiendo
+        logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                    " | Registro venta id " + str(venta.id))        
+        flash({'title': "AMS", 'message': "Presupuesto: " +
+            "id " + str(id) + " procesando venta"}, 'info')
         return redirect(url_for("gpresupuestos.presupuestos"))
     else:
 
@@ -351,15 +425,15 @@ def presupuesto_venta(id):
         # print(" Len item pass", len(data["itemfail"]))
 
         if len(data["itemfail"]) > 0:
-
+            
             flash({'title': "AMS", 'message': "Presupuesto: " +
             "id " + str(datapresu.id) + " tiene productos con cantidades insuficientes"}, 'error')
                 
-            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente )
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente, continuo = False, show = True, data = data)
         
         else: 
             flash({'title': "AMS", 'message': "Presupuesto: " +
                 "id " + str(datapresu.id) + " en proceso"}, 'info')
 
-            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente)
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente, continuo = True)
 
