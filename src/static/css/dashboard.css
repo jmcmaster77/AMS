@@ -6,9 +6,12 @@
   --black2: #999;
 }
 
+/* pila con esto que es posible que lo tenga que renombrar  */
+
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  background: var(--black2);
 }
 
 .contenedor {
@@ -20,12 +23,16 @@ body {
 
 .navigation {
   position: fixed;
-  width: 300px;
+  width: 280px;
   height: 100%;
   background: var(--blue);
   border-left: 10px solid var(--black2);
   transition: 0.5s;
   overflow: hidden;
+}
+
+.navigation.active {
+  width: 112px;
 }
 
 .navigation ul {
@@ -35,8 +42,9 @@ body {
   width: 100%;
 }
 
-.navigation ul li:hover {
-  background-color: var(--white);
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--black2);
 }
 
 .navigation ul li {
@@ -55,15 +63,22 @@ body {
 .navigation ul li a {
   position: relative;
   display: block;
+  font-size: 1.2rem;
   width: 100%;
   display: flex;
   text-decoration: none;
   color: var(--white);
 }
 
-.navigation ul li:hover a {
-  /* color: var(--blue); <- para aplicar un solor especifico al texto pero ecesito que los iconos tambien */
-  filter: invert();
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  /* color: var(--blue); <- para aplicar un solor especifico al texto pero necesito que los iconos tambien */
+  color: var(--black1);
+  font-weight: bold;
+  font-size: 1.3rem;
+  .icon {
+    filter: invert();
+  }
 }
 
 .navigation ul li a .icon {
@@ -76,8 +91,8 @@ body {
 }
 
 .navigation ul li a .icon img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 34px;
   filter: invert(1);
   /* font-size: 1.75rem;  <- en caso de colocar un icono de una CDN como ion-icon */
 }
@@ -90,5 +105,236 @@ body {
   line-height: 60px;
 }
 
+/* ---------- curve outside ----------- */
 
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--black2);
+  pointer-events: none;
+}
 
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--black2);
+  pointer-events: none;
+}
+
+/* ================ Contenido ======================= */
+
+/* ----- top bar ---- */
+
+.contenido {
+  position: absolute;
+  width: calc(100% - 280px);
+  left: 280px;
+  min-height: 100vh;
+  background: var(--black2);
+  transition: 0.5s;
+}
+
+.contenido.active {
+  width: calc(100% - 107px);
+  left: 115px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  display: flex;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+
+.logo {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========== tarjetas =========== */
+
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardname {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardname {
+  color: var(--white);
+}
+
+/* ===== Detalles de las Ordenes ===== */
+
+.detalles {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.detalles .ordenesRecientes {
+  position: relative;
+  display: grid;
+  min-height: 250px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.detalles .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.cardHeader .boton {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.detalles table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.detalles table thead th {
+  font-weight: 600;
+}
+
+.detalles .ordenesRecientes table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detalles .ordenesRecientes table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.detalles .ordenesRecientes table tr th {
+  padding: 10px;
+}
+
+.detalles .ordenesRecientes table tr td {
+  padding: 10px;
+}
+
+.detalles .ordenesRecientes table tr th:last-child {
+  text-align: end;
+}
+
+.detalles .ordenesRecientes table tr td:last-child {
+  text-align: end;
+}
+
+.detalles .ordenesRecientes table tr th:nth-child(2) {
+  text-align: end;
+}
+
+.detalles .ordenesRecientes table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.detalles .ordenesRecientes table tr th:nth-child(3) {
+  text-align: center;
+}
+
+.detalles .ordenesRecientes table tr td:nth-child(3) {
+  text-align: center;
+}

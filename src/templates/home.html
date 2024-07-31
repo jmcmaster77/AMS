@@ -1,7 +1,10 @@
 {% extends './base.html' %} {% block title %}Admin me Store | home{% endblock %}
 {% block body %} {% include('partials/_navbar.html') %}
-    <!-- Dashboard - css  -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}"/>
+<!-- Dashboard - css  -->
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/dashboard.css')}}"
+/>
 
 <!-- Navegacion  -->
 <div class="contenedor">
@@ -9,8 +12,11 @@
     <ul>
       <li>
         <a href="#">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/menu.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/menu.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Menu</span>
         </a>
@@ -18,8 +24,11 @@
       <li>
         {% if current_user.rol == 0 %}
         <a href="{{ url_for('gusuarios.usuarios')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/users.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/users.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Usuarios</span>
         </a>
@@ -29,65 +38,187 @@
       </li>
       <li>
         <a href="{{ url_for('gclientes.clientes')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/clientes.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/clientes.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Clientes</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('gproveedores.proveedores')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/factory.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/factory.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Proveedores</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('gproductos.productos')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/product.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/product.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Productos</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('gcompras.compras')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/buy.svg') }}" alt="">
+          <span class="icon">
+            <img src="{{ url_for('static', filename='ico/buy.svg') }}" alt="" />
           </span>
           <span class="title">Compras</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('gventas.ventas')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/sell.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/sell.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Ventas</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('gpresupuestos.presupuestos')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/budget.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/budget.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Presupuestos</span>
         </a>
       </li>
       <li>
         <a href="{{ url_for('login.logout')}}">
-          <span class="icon" >
-            <img src="{{ url_for('static', filename='ico/logout.svg') }}" alt="">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/logout.svg') }}"
+              alt=""
+            />
           </span>
           <span class="title">Salir</span>
         </a>
       </li>
     </ul>
   </div>
+  <!-- ========= Contenido =========== -->
+  <div class="contenido">
+    <div class="topbar">
+      <div class="toggle">
+        <img src="{{ url_for('static', filename='ico/toggle.svg') }}" alt="" />
+      </div>
+      <div class="logo">
+        <img
+          src="{{ url_for('static', filename='img/ferreterialeal.png') }}"
+          alt=""
+        />
+      </div>
+    </div>
+    <!-- tarjetas  -->
+    <div class="cardBox">
+      <div class="card">
+        <div class="numbers">21</div>
+        <div class="cardname">tarjeta 1</div>
+        <div class="iconBx">
+          <img
+            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="numbers">22</div>
+        <div class="cardname">Tarjeta 2</div>
+        <div class="iconBx">
+          <img
+            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="numbers">23</div>
+        <div class="cardname">Tarjeta 3</div>
+        <div class="iconBx">
+          <img
+            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="card">
+        <div class="numbers">24</div>
+        <div class="cardname">Tarjeta 4</div>
+        <div class="iconBx">
+          <img
+            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- detalles  -->
+
+    <div class="detalles">
+      <div class="ordenesRecientes">
+        <div class="cardHeader">
+          <h2>Ordenes Recientes</h2>
+          <a href="#" class="boton">Ver todas</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Paymen</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Star Refri</td>
+              <td>$1200</td>
+              <td>Paid</td>
+              <td><span class="status delivered">Delivered</span></td>
+            </tr>
+            <tr>
+              <td>Dell Laptop</td>
+              <td>$750</td>
+              <td>Paid</td>
+              <td><span class="status delivered">Pending</span></td>
+            </tr>
+            <tr>
+              <td>Smart Watch</td>
+              <td>$110</td>
+              <td>Paid</td>
+              <td><span class="status return">Return</span></td>
+            </tr>
+            <tr>
+              <td>Addidas Shoes</td>
+              <td>$75</td>
+              <td>Due</td>
+              <td><span class="status inProgress">In Progress</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-
+<script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
 
 {% endblock %}
