@@ -1,5 +1,5 @@
 {% extends './base.html' %} {% block title %}Admin me Store | home{% endblock %}
-{% block body %} {% include('partials/_navbar.html') %}
+{% block body %}
 <!-- Dashboard - css  -->
 <link
   rel="stylesheet"
@@ -18,7 +18,12 @@
               alt=""
             />
           </span>
-          <span class="title">Menu</span>
+          <span class="title">AMS </span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="username">{{current_user.fullname}} </span>
         </a>
       </li>
       <li>
@@ -100,6 +105,17 @@
         </a>
       </li>
       <li>
+        <a href="/acercade">
+          <span class="icon">
+            <img
+              src="{{ url_for('static', filename='ico/info.svg') }}"
+              alt=""
+            />
+          </span>
+          <span class="title">Informacion</span>
+        </a>
+      </li>
+      <li>
         <a href="{{ url_for('login.logout')}}">
           <span class="icon">
             <img
@@ -118,11 +134,29 @@
       <div class="toggle">
         <img src="{{ url_for('static', filename='ico/toggle.svg') }}" alt="" />
       </div>
-      <div class="logo">
-        <img
-          src="{{ url_for('static', filename='img/ferreterialeal.png') }}"
-          alt=""
-        />
+      <div class="tasa">
+        {% if current_user.rol == 0 %}
+        <a data-bs-toggle="modal" data-bs-target="#cambiotasaModal" href="#">
+          <span class="icono">
+            <img src="{{ url_for('static', filename='ico/pop-dollar.svg') }}" alt=""/>
+          </span>
+          <span class="tasav">{{tasa.valor}}</span>
+        </a>
+        {% else %}
+        <a class="disabled" data-bs-toggle="modal" data-bs-target="#cambiotasaModal" href="#">
+          <span class="icono">
+            <img src="{{ url_for('static', filename='ico/pop-dollar.svg') }}" alt=""/>
+          </span>
+          <span class="tasav">{{tasa.valor}}</span>
+        </a>
+        {% endif %}
+      </div>
+      <div class="tipoUsuario">
+        {% if current_user.rol == 0 %}
+        <img src="{{ url_for('static', filename='ico/admin.svg') }}" alt=""/>
+        {% else %}
+        <img src="{{ url_for('static', filename='ico/user.svg') }}" alt=""/>
+        {% endif %}
       </div>
     </div>
     <!-- tarjetas  -->
@@ -198,7 +232,7 @@
               <td>Dell Laptop</td>
               <td>$750</td>
               <td>Paid</td>
-              <td><span class="status delivered">Pending</span></td>
+              <td><span class="status pending">Pending</span></td>
             </tr>
             <tr>
               <td>Smart Watch</td>
@@ -215,10 +249,110 @@
           </tbody>
         </table>
       </div>
+      <!-- ============ Nuevos clientes ================ -->
+      <div class="productosRecientes">
+        <h2>Productos Recientes</h2>
+        <!-- <a href="#" class="boton">Ver Todos </a> -->
+        <table>
+          <tr>
+            <td width="60px">
+              <div class="imgBx">
+                <img
+                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  alt=""
+                />
+              </div>
+            </td>
+            <td>
+              <h5>Producto <br> <span>cant 3</span></h5> 
+            </td>
+          </tr>
+          <tr>
+            <td width="60px">
+              <div class="imgBx">
+                <img
+                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  alt=""
+                />
+              </div>
+            </td>
+            <td>
+              <h5>Producto <br> <span>cant 3</span></h5> 
+            </td>
+          </tr>
+          <tr>
+            <td width="60px">
+              <div class="imgBx">
+                <img
+                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  alt=""
+                />
+              </div>
+            </td>
+            <td>
+              <h5>Producto <br> <span>cant 3</span></h5> 
+            </td>
+          </tr>
+          <tr>
+            <td width="60px">
+              <div class="imgBx">
+                <img
+                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  alt=""
+                />
+              </div>
+            </td>
+            <td>
+              <h5>Producto <br> <span>cant 3</span></h5> 
+            </td>
+          </tr>
+          <tr>
+            <td width="60px">
+              <div class="imgBx">
+                <img
+                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  alt=""
+                />
+              </div>
+            </td>
+            <td>
+              <h5>Producto <br> <span>cant 3</span></h5> 
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Modal cambio de tasa dolar BCV-->
+<div class="modal fade" id="cambiotasaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">
+          Indicar la tasa de cambio del dolar del BCV
+        </h5>
+        <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <form action="/cambiotasa" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <input type="number" class="form-control" placeholder="tasa dolar bcv" value="" inputmode="numeric" name="ntasa" 
+          maxlength="4" step="0.01" min="0" max="99" id="" required/>
+          <div class="modal-footer bg-dark">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cerrar
+            </button>
+            <button type="submit" class="btn btn-primary">Cambiar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==============  Scripts ==================== -->
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
 
 {% endblock %}

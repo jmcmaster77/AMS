@@ -17,6 +17,7 @@ body {
 .contenedor {
   position: relative;
   width: 100%;
+  /* height: 750px;   */
 }
 
 /* ============ Navigation ============== */
@@ -56,8 +57,13 @@ body {
 }
 
 .navigation ul li:nth-child(1) {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   pointer-events: none;
+}
+
+.navigation ul li:nth-child(2) {
+  pointer-events: none;
+  margin-left: 60px;
 }
 
 .navigation ul li a {
@@ -105,6 +111,15 @@ body {
   line-height: 60px;
 }
 
+.navigation ul li a .username {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
 /* ---------- curve outside ----------- */
 
 .navigation ul li:hover a::before,
@@ -143,7 +158,7 @@ body {
   position: absolute;
   width: calc(100% - 280px);
   left: 280px;
-  min-height: 100vh;
+  min-height: 100vh; 
   background: var(--black2);
   transition: 0.5s;
 }
@@ -170,7 +185,47 @@ body {
   cursor: pointer;
 }
 
-.logo {
+.tasa {
+  position: relative;
+  width: 115px;
+  height: 55px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 5px 5px;
+  border: 2px solid var(--black1);
+  border-radius: 5px;
+}
+
+.tasa .icono {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 45px;
+  height: 45px;
+  img {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+  }
+  /* object-fit: cover; */
+}
+
+.tasa a {
+  text-decoration: none;
+  color: var(--black1);
+  font-weight: 800;
+}
+
+.tasa .tasav {
+  position: relative;
+  text-align: end;
+  display: block;
+  padding: 0 10px;
+  height: 45px;
+  line-height: 40px;
+}
+
+.tipoUsuario {
   position: relative;
   width: 45px;
   height: 45px;
@@ -179,7 +234,7 @@ body {
   cursor: pointer;
 }
 
-.logo img {
+.tipoUsuario img {
   position: absolute;
   top: 0;
   left: 0;
@@ -259,8 +314,8 @@ body {
 
 .detalles .ordenesRecientes {
   position: relative;
-  display: grid;
-  min-height: 250px;
+  /* display: grid; */
+  /* min-height: 250px; */
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -271,6 +326,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  /* height: 70px; */
 }
 
 .cardHeader h2 {
@@ -290,10 +346,14 @@ body {
 .detalles table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .detalles table thead th {
+  font-weight: bold;
+}
+
+.detalles table tbody td {
   font-weight: 600;
 }
 
@@ -337,4 +397,119 @@ body {
 
 .detalles .ordenesRecientes table tr td:nth-child(3) {
   text-align: center;
+}
+
+.status.delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.pending {
+  padding: 2px 4px;
+  background: #f9ca3f;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.productosRecientes {
+  position: relative;
+  /* display: grid; */
+  min-height: 500px;
+  padding: 20px;
+  color: var(--blue);
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.productosRecientes .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.productosRecientes .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productosRecientes table {
+  color: var(--black1);
+  
+}
+
+.productosRecientes table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+
+
+/* =========== Responsive Desing ============ */
+
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .contenido {
+    width: 100%;
+    left: 0;
+
+  }
+  .contenido.active {
+    left:300px;
+  }
+  .cardBox{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width:768px) {
+  .detalles {
+    grid-template-columns: 1fr;
+  }
+  .ordenesRecientes {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width:480px){
+  .cardBox {
+    grid-template-columns: repeat(1,1fr);
+  }
 }
