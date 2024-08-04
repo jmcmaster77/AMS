@@ -372,7 +372,8 @@ body {
 }
 
 .detalles .ordenesRecientes table tr td {
-  padding: 10px;
+  height: 45px;
+  padding: 2px;
 }
 
 .detalles .ordenesRecientes table tr th:last-child {
@@ -399,7 +400,7 @@ body {
   text-align: center;
 }
 
-.status.delivered {
+.status.efectivo {
   padding: 2px 4px;
   background: #8de02c;
   color: var(--white);
@@ -408,7 +409,7 @@ body {
   font-weight: 500;
 }
 
-.status.pending {
+.status.tarjeta {
   padding: 2px 4px;
   background: #f9ca3f;
   color: var(--white);
@@ -417,7 +418,16 @@ body {
   font-weight: 500;
 }
 
-.status.return {
+.status.transferencia {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.otro {
   padding: 2px 4px;
   background: #f00;
   color: var(--white);
@@ -426,14 +436,7 @@ body {
   font-weight: 500;
 }
 
-.status.inProgress {
-  padding: 2px 4px;
-  background: #1795ce;
-  color: var(--white);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ===== Productos con baja disponibilidad  */
 
 .productosRecientes {
   position: relative;

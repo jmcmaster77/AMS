@@ -162,163 +162,119 @@
     <!-- tarjetas  -->
     <div class="cardBox">
       <div class="card">
-        <div class="numbers">21</div>
-        <div class="cardname">tarjeta 1</div>
+        <div class="numbers">{{tclientes}}</div>
+        <div class="cardname">Clientes</div>
         <div class="iconBx">
           <img
-            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            src="{{ url_for('static', filename='ico/clientes.svg') }}"
             alt=""
           />
         </div>
       </div>
 
       <div class="card">
-        <div class="numbers">22</div>
-        <div class="cardname">Tarjeta 2</div>
+        <div class="numbers">{{tproveedores}}</div>
+        <div class="cardname">Proveedores</div>
         <div class="iconBx">
           <img
-            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            src="{{ url_for('static', filename='ico/factory.svg') }}"
             alt=""
           />
         </div>
       </div>
 
       <div class="card">
-        <div class="numbers">23</div>
-        <div class="cardname">Tarjeta 3</div>
+        <div class="numbers">{{tproductos}}</div>
+        <div class="cardname">Productos | BD {{tproductosdb}}</div>
         <div class="iconBx">
           <img
-            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            src="{{ url_for('static', filename='ico/product.svg') }}"
             alt=""
           />
         </div>
       </div>
       <div class="card">
-        <div class="numbers">24</div>
-        <div class="cardname">Tarjeta 4</div>
+        <div class="numbers">{{tventasd}}</div>
+        <div class="cardname">Total Ventas Diarias</div>
         <div class="iconBx">
           <img
-            src="{{ url_for('static', filename='ico/toggle.svg') }}"
+            src="{{ url_for('static', filename='ico/sell.svg') }}"
             alt=""
           />
         </div>
       </div>
     </div>
-    <!-- detalles  -->
+    <!-- Ventas Recientes   -->
 
     <div class="detalles">
       <div class="ordenesRecientes">
         <div class="cardHeader">
-          <h2>Ordenes Recientes</h2>
-          <a href="#" class="boton">Ver todas</a>
+          <h2>Ventas Recientes</h2>
+          <a href="/ventas" class="boton">Ver todas</a>
         </div>
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Paymen</th>
-              <th>Status</th>
+              <th>Cliente</th>
+              <th>Cantidad Item</th>
+              <th>Total Venta</th>
+              <th>Moneda</th>
+              <th>Tipo de Pago</th>
+              <th>A</th>
             </tr>
           </thead>
           <tbody>
+            {% for vr in ventasr %}
             <tr>
-              <td>Star Refri</td>
-              <td>$1200</td>
-              <td>Paid</td>
-              <td><span class="status delivered">Delivered</span></td>
+              <td>{{vr.fullname}}</td>
+              <td>{{vr.productos.productos | count}}</td>
+              <td>{{vr.totalv}}</td>
+              {% if vr.bolivares %}
+              <td>Bsd</td>
+              {% else %}
+              <td>$</td>
+              {% endif%}
+              {% if vr.mpago == "Efectivo" %}
+              <td><span class="status efectivo">Efectivo</span></td>
+              {% endif %}
+              {% if vr.mpago == "Tarjeta" %}
+              <td><span class="status tarjeta">Tarjeta</span></td>
+              {% endif %}
+              {% if vr.mpago == "Transferencia" %}
+              <td><span class="status transferencia">Transferencia</span></td>
+              {% endif %}
+              {% if vr.mpago == "Otro" %}
+              <td><span class="status otro">Otro</span></td>
+              {% endif %}
+              <td>
+                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#venta_detalles_{{vr.id}}" href="#">D</a>
+              </td>
             </tr>
-            <tr>
-              <td>Dell Laptop</td>
-              <td>$750</td>
-              <td>Paid</td>
-              <td><span class="status pending">Pending</span></td>
-            </tr>
-            <tr>
-              <td>Smart Watch</td>
-              <td>$110</td>
-              <td>Paid</td>
-              <td><span class="status return">Return</span></td>
-            </tr>
-            <tr>
-              <td>Addidas Shoes</td>
-              <td>$75</td>
-              <td>Due</td>
-              <td><span class="status inProgress">In Progress</span></td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
-      <!-- ============ Nuevos clientes ================ -->
+      <!-- ============ Productos con baja disponibilidad ================ -->
       <div class="productosRecientes">
-        <h2>Productos Recientes</h2>
+        <h4>Prod con baja diponibilidad</h4>
         <!-- <a href="#" class="boton">Ver Todos </a> -->
         <table>
+          {% for producto in productosbd%}
           <tr>
             <td width="60px">
               <div class="imgBx">
+                {% set rarchivo = "img/productos/" + producto.imagen %}
                 <img
-                  src="{{ url_for('static', filename='img/productos/box.png') }}"
+                  src="{{ url_for('static', filename=rarchivo) }}"
                   alt=""
                 />
               </div>
             </td>
             <td>
-              <h5>Producto <br> <span>cant 3</span></h5> 
+              <h6>{{producto.nombre}} <span>- {{producto.cantidad}}</span></h6> 
             </td>
           </tr>
-          <tr>
-            <td width="60px">
-              <div class="imgBx">
-                <img
-                  src="{{ url_for('static', filename='img/productos/box.png') }}"
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <h5>Producto <br> <span>cant 3</span></h5> 
-            </td>
-          </tr>
-          <tr>
-            <td width="60px">
-              <div class="imgBx">
-                <img
-                  src="{{ url_for('static', filename='img/productos/box.png') }}"
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <h5>Producto <br> <span>cant 3</span></h5> 
-            </td>
-          </tr>
-          <tr>
-            <td width="60px">
-              <div class="imgBx">
-                <img
-                  src="{{ url_for('static', filename='img/productos/box.png') }}"
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <h5>Producto <br> <span>cant 3</span></h5> 
-            </td>
-          </tr>
-          <tr>
-            <td width="60px">
-              <div class="imgBx">
-                <img
-                  src="{{ url_for('static', filename='img/productos/box.png') }}"
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <h5>Producto <br> <span>cant 3</span></h5> 
-            </td>
-          </tr>
+          {%endfor%}
         </table>
       </div>
     </div>
@@ -351,6 +307,52 @@
     </div>
   </div>
 </div>
+
+
+{% for vr in ventasr %}
+<!-- Modal detalles venta -->
+<div class="modal fade" id="venta_detalles_{{vr.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header bg-dark">
+          <h5 class="modal-title text-white" id="exampleModalLabel">Detalles venta</h5>
+          <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body bg-dark">
+              <div>
+                  <table class="table table-striped table-dark table-hover">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Producto</th>
+                              <th>Cantidad</th>
+                              <th>Costo</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      {% for producto in vr.productos.productos%}
+                          <tr>
+                              <td>{{producto.id}}</td>
+                              <td>{{producto.nombre}}</td>
+                              <td>{{producto.cantidad}}</td>
+                              <td>{{producto.precio}}</td>
+                          </tr>
+                      {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+              <div>
+                  <h6>Interacción por id usuario: dev</h6>
+              </div>
+          </div>
+          <div class="modal-footer bg-dark">
+
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+  </div>
+</div>
+{% endfor %}
 
 <!-- ==============  Scripts ==================== -->
 <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
