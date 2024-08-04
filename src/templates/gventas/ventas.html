@@ -37,7 +37,7 @@
                                 <th >Id Cliente</th>
                                 <th >Tipo Venta</th>
                                 <th >Mpago</th>
-                                <th>Bsd</th>
+                                <th>Moneda</th>
                                 <th >Total</th>
                                 <th >Fecha</th>
                                 <th >Cant P</th>
@@ -55,9 +55,9 @@
                                     <td>{{venta.tventa}}</td>
                                     <td>{{venta.mpago}}</td>
                                     {% if venta.bolivares == true %}
-                                    <td>Si</td>
+                                    <td>Bsd</td>
                                     {% else %}
-                                    <td>No</td>
+                                    <td>$</td>
                                     {% endif%}
                                     <td>{{venta.totalv}}</td>
                                     <td>{{venta.fecha}}</td>
@@ -82,9 +82,9 @@
                                     <td>{{venta.tventa}}</td>
                                     <td>{{venta.mpago}}</td>
                                     {% if venta.bolivares == true %}
-                                    <td>Si</td>
+                                    <td>Bsd</td>
                                     {% else %}
-                                    <td>No</td>
+                                    <td>$</td>
                                     {% endif%}
                                     <td>{{venta.totalv}}</td>
                                     <td>{{venta.fecha}}</td>

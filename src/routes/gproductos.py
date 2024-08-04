@@ -35,6 +35,24 @@ def productos_deleted():
     else:
         return render_template("gproductos/productos.html", productos=registros, deleted=True)
 
+# === Productos por disponibilidad ===
+@gprod.route("/productosxd", methods=["POST"])
+@login_required
+def productos_disponibilidad():
+    cant = int(request.form['cantidad'])
+    # registros = db.session.query(Productos).filter(
+    #     Productos.cantidad <= cant).all()
+    registros = db.session.query(Productos).filter(Productos.cantidad <= cant).order_by(Productos.fecha.desc()).all()
+    if registros is not None:
+        for registro in registros:
+            registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
+        flash({'title': "AMS", 'message': "Filtro aplicado para cantidad: " +
+                       request.form['cantidad']}, 'info')
+        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro = True)
+    else:
+        flash({'title': "AMS", 'message': "No hay Productos con cant menor a: " + request.form['cantidad']}, 'info')
+        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro = True)
+
 
 @gprod.route("/rproducto", methods=["GET", "POST"])
 @login_required
@@ -50,13 +68,12 @@ def registrar_producto():
 
             fecha = datetime.now()
             fechaf = fecha.strftime("%Y/%m/%d %H:%M:%S")
-           
+
             # trabajando con la imagen
             archivo = request.files["imagen"]
 
             if archivo.filename != "":
-                
-                
+
                 nombrearchivo = secure_filename(archivo.filename)
 
                 # capturando la ext del archivo
@@ -91,13 +108,13 @@ def registrar_producto():
             flash({'title': "AMS", 'message': "Codigo: " +
                   request.form['codigo'] + " ya esta registrado"}, 'error')
             return render_template("gproductos/rproducto.html")
-        
+
 
 @gprod.route("/mproducto/<id>", methods=["GET", "POST"])
 @login_required
 def modificar_producto(id):
     # producto = Productos.query.get(id)
-    producto = db.session.get(Productos,id)
+    producto = db.session.get(Productos, id)
     if request.method == "POST":
         # check para validar si mantiene la imagen de producto
         check = request.form.getlist("check[]")
@@ -106,14 +123,16 @@ def modificar_producto(id):
             if producto.precio != 0:
                 fecha = datetime.now()
                 # reajusta el precio del producto papi
-                producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)  # float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
-                
+                # float(request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                producto.precio = producto.costo * \
+                    ((float(request.form['porcentaje'])/100)+1)
+
                 producto.codigo = request.form['codigo']
                 producto.nombre = request.form['nombre']
                 producto.porcentaje = request.form['porcentaje']
                 producto.categoria = request.form['categoria']
                 producto.descripcion = request.form['descripcion']
-                
+
                 # la base de datos acepta el datetime en ese formato papi
                 producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
                 producto.id_u = current_user.id
@@ -121,18 +140,19 @@ def modificar_producto(id):
                 logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                             " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
                 flash({'title': "AMS", 'message': "Producto: " +
-                        request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                       request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
 
             return redirect(url_for("gproductos.productos"))
 
         else:
-            
+
             archivo = request.files["imagen"]
             if archivo.filename != "":
                 if producto.precio != 0:
                     # reajusta el precio del producto papi
-                    producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)
-                    
+                    producto.precio = producto.costo * \
+                        ((float(request.form['porcentaje'])/100)+1)
+
                     nombrearchivo = secure_filename(archivo.filename)
                     # capturando la ext del archivo
                     ext = os.path.splitext(nombrearchivo)[1]
@@ -155,12 +175,13 @@ def modificar_producto(id):
                     logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                                 " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
                     flash({'title': "AMS", 'message': "Producto: " +
-                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                           request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
                 return redirect(url_for("gproductos.productos"))
             else:
                 if producto.precio != 0:
                     # reajusta el precio del producto papi
-                    producto.precio =  producto.costo * ((float(request.form['porcentaje'])/100)+1)
+                    producto.precio = producto.costo * \
+                        ((float(request.form['porcentaje'])/100)+1)
                     fecha = datetime.now()
                     producto.codigo = request.form['codigo']
                     producto.nombre = request.form['nombre']
@@ -175,7 +196,7 @@ def modificar_producto(id):
                     logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
                                 " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
                     flash({'title': "AMS", 'message': "Producto: " +
-                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                           request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
 
                 return redirect(url_for("gproductos.productos"))
     return render_template("gproductos/mproducto.html", producto=producto)
@@ -185,9 +206,9 @@ def modificar_producto(id):
 @login_required
 def eliminar_productos(id):
     # producto = Productos.query.get(id)
-    producto = db.session.get(Productos,id)
+    producto = db.session.get(Productos, id)
     fecha = datetime.now()
-    
+
     producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
     producto.deleted = True
     producto.id_u = current_user.id
@@ -204,7 +225,7 @@ def eliminar_productos(id):
 def retaurar_productos(id):
     if current_user.rol == 0:
         # producto = Productos.query.get(id)
-        producto = db.session.get(Productos,id)
+        producto = db.session.get(Productos, id)
         fecha = datetime.now()
 
         producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")

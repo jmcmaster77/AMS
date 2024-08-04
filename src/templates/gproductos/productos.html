@@ -23,6 +23,11 @@
                 {% else %}
                 <a href="/productos_deleted" class="btn btn-primary text-white btn-sm" >Mostrar Borrrados</a>
                 {% endif %}
+                {% if filtro == true %}
+                <a class="btn btn-outline-secondary btn-sm" href="/productos" >Quitar Fitro Disp.</a>
+                {% else %}
+                <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#buscar_disponibilidad" href="#">Buscar Disponibilidad</a>
+                {% endif %}
                 <a href="{{ url_for('login.logout') }}" class="btn btn-secondary btn-sm " >Salir</a>
             </div>
         </div>
@@ -235,7 +240,30 @@
 </div>
 
 
+<!-- Modal busqueda por disponibilidad cant -->
 
+<div class="modal fade" id="buscar_disponibilidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Busqueda por disponibilidad</h5>
+                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-dark">
+                <div class="card bg-dark" style="width: 29rem;">
+                    <div class="card-body text-white">
+                        <form action="/productosxd" method="post">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="number" class="form-control" placeholder="" value="1" inputmode="numeric" name="cantidad" maxlength="4" min="1" max="9999" id="cantidad">
+                            
+                            <button type="submit" class="btn btn-primary" > Aplicar </button>
+                        </form>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 
