@@ -15,7 +15,7 @@ from routes.gproductos import gprod
 from routes.gcompras import gcomp
 from routes.gventas import gventas
 from routes.gpresupuestos import gpresu
-from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI
+from config import FLASK_RUN_HOST, FLASK_RUN_PORT, appinfo, storeinfo, creator, sk, DATABASE_CONEXION_URI, ipserver
 from utils.auth import Authenticate
 from flask_toastr import Toastr
 
@@ -109,6 +109,7 @@ if __name__ == '__main__':
     print(appinfo)
     print(storeinfo)
     print(creator)
+    print("Ip Server: ", ipserver)
 
     app.register_error_handler(400, status_400)
     app.register_error_handler(401, status_401)

@@ -13,6 +13,7 @@ import json
 import jinja2
 import pdfkit
 import os
+from config import ipserver
 
 gpresu = Blueprint("gpresupuestos", __name__)
 
@@ -152,7 +153,7 @@ def creaPdf(ruta_template, presudata, cliente, fecha, id):
     template = env.get_template(template_name)
 
     html = template.render(
-        presupuesto=presudata, cliente=cliente, fecha=fecha, tasa=tasa)
+        presupuesto=presudata, cliente=cliente, fecha=fecha, tasa=tasa, ipserver=ipserver)
 
     options = {
         "page-size": "Letter",

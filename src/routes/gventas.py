@@ -12,6 +12,7 @@ import json
 import jinja2
 import pdfkit
 import os
+from config import ipserver
 
 gventas = Blueprint("gventas", __name__)
 
@@ -170,7 +171,7 @@ def creaPdf(ruta_template, ventadata, cliente, fecha, id):
     template = env.get_template(template_name)
     rutaimglogo = os.path.abspath(f"src/static/ico/store-svgrepo-com2.svg")
     html = template.render(
-        venta=ventadata, cliente=cliente, fecha=fecha, tasa=tasa)
+        venta=ventadata, cliente=cliente, fecha=fecha, tasa=tasa, ipserver=ipserver)
 
     options = {
         "page-size": "Letter",

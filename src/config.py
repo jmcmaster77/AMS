@@ -13,6 +13,7 @@ FLASK_RUN_PORT = os.environ["FLASK_RUN_PORT"]
 appinfo = os.environ["appinfo"]
 storeinfo = os.environ["storeinfo"]
 creator = os.environ["creator"]
+ipserver = os.environ["IPSERVER"]
 
 
 DATABASE_CONEXION_URI = f'mariadb+mariadbconnector://{usermdb}:{pwdb}@{hostdbs}/{dbname}'

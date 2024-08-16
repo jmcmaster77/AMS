@@ -11,6 +11,7 @@ import json
 import jinja2
 import pdfkit
 import os
+from config import ipserver
 
 
 gcomp = Blueprint("gcompras", __name__)
@@ -218,7 +219,7 @@ def creaPdf(ruta_template, compradata, provdata, fechac, fechaf, id):
     template = env.get_template(template_name)
     rutaimglogo = os.path.abspath(f"src/static/ico/store-svgrepo-com2.svg")
     html = template.render(
-        compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf)
+        compra=compradata, provdata=provdata, fechac=fechac, fechaf=fechaf, ipserver=ipserver)
 
     options = {
         "page-size": "Letter",
