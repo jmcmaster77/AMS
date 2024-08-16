@@ -36,22 +36,26 @@ def productos_deleted():
         return render_template("gproductos/productos.html", productos=registros, deleted=True)
 
 # === Productos por disponibilidad ===
+
+
 @gprod.route("/productosxd", methods=["POST"])
 @login_required
 def productos_disponibilidad():
     cant = int(request.form['cantidad'])
     # registros = db.session.query(Productos).filter(
     #     Productos.cantidad <= cant).all()
-    registros = db.session.query(Productos).filter(Productos.cantidad <= cant).order_by(Productos.fecha.desc()).all()
+    registros = db.session.query(Productos).filter(
+        Productos.cantidad <= cant).order_by(Productos.fecha.desc()).all()
     if registros is not None:
         for registro in registros:
             registro.fecha = registro.fecha.strftime("%d/%m/%y %H:%M")
         flash({'title': "AMS", 'message': "Filtro aplicado para cantidad: " +
-                       request.form['cantidad']}, 'info')
-        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro = True)
+               request.form['cantidad']}, 'info')
+        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro=True)
     else:
-        flash({'title': "AMS", 'message': "No hay Productos con cant menor a: " + request.form['cantidad']}, 'info')
-        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro = True)
+        flash({'title': "AMS", 'message': "No hay Productos con cant menor a: " +
+              request.form['cantidad']}, 'info')
+        return render_template("gproductos/productos.html", productos=registros, deleted=False, filtro=True)
 
 
 @gprod.route("/rproducto", methods=["GET", "POST"])
@@ -118,8 +122,9 @@ def modificar_producto(id):
     if request.method == "POST":
         # check para validar si mantiene la imagen de producto
         check = request.form.getlist("check[]")
-
-        if len(check) != 0:
+        
+        # Validacion del check para mantener la imagen de producto
+        if len(check) != 0:  # manteniendo la imagen de producto
             if producto.precio != 0:
                 fecha = datetime.now()
                 # reajusta el precio del producto papi
@@ -141,13 +146,30 @@ def modificar_producto(id):
                             " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
                 flash({'title': "AMS", 'message': "Producto: " +
                        request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                return redirect(url_for("gproductos.productos"))
+            else:
+                fecha = datetime.now()
+                producto.codigo = request.form['codigo']
+                producto.nombre = request.form['nombre']
+                producto.porcentaje = request.form['porcentaje']
+                producto.categoria = request.form['categoria']
+                producto.descripcion = request.form['descripcion']
 
-            return redirect(url_for("gproductos.productos"))
+                # la base de datos acepta el datetime en ese formato papi
+                producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                producto.id_u = current_user.id
+                db.session.commit()
+                logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                            " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                flash({'title': "AMS", 'message': "Producto: " +
+                       request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                return redirect(url_for("gproductos.productos"))
 
         else:
-
+            # cambiando la imagen 
             archivo = request.files["imagen"]
-            if archivo.filename != "":
+            if archivo.filename != "":  # valida si no hay archivo para la imagen 
+                # hay archivo de imagen 
                 if producto.precio != 0:
                     # reajusta el precio del producto papi
                     producto.precio = producto.costo * \
@@ -176,8 +198,34 @@ def modificar_producto(id):
                                 " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
                     flash({'title': "AMS", 'message': "Producto: " +
                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
-                return redirect(url_for("gproductos.productos"))
-            else:
+                    return redirect(url_for("gproductos.productos"))
+                else:
+                    nombrearchivo = secure_filename(archivo.filename)
+                    # capturando la ext del archivo
+                    ext = os.path.splitext(nombrearchivo)[1]
+                    nuevoNombreArchivo = request.form["codigo"] + ext
+                    rutaarchivo = os.path.abspath(
+                        f"src/static/img/productos/" + nuevoNombreArchivo)
+                    archivo.save(rutaarchivo)
+
+                    fecha = datetime.now()
+                    producto.codigo = request.form['codigo']
+                    producto.nombre = request.form['nombre']
+                    producto.porcentaje = request.form['porcentaje']
+                    producto.categoria = request.form['categoria']
+                    producto.descripcion = request.form['descripcion']
+                    producto.imagen = nuevoNombreArchivo
+                    # la base de datos acepta el datetime en ese formato papi
+                    producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                    producto.id_u = current_user.id
+                    db.session.commit()
+                    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                                " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                    flash({'title': "AMS", 'message': "Producto: " +
+                           request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                    return redirect(url_for("gproductos.productos"))
+            else: 
+                # no hay archivo de imagen 
                 if producto.precio != 0:
                     # reajusta el precio del producto papi
                     producto.precio = producto.costo * \
@@ -198,7 +246,24 @@ def modificar_producto(id):
                     flash({'title': "AMS", 'message': "Producto: " +
                            request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
 
-                return redirect(url_for("gproductos.productos"))
+                    return redirect(url_for("gproductos.productos"))
+                else:
+                    fecha = datetime.now()
+                    producto.codigo = request.form['codigo']
+                    producto.nombre = request.form['nombre']
+                    producto.porcentaje = request.form['porcentaje']
+                    producto.categoria = request.form['categoria']
+                    producto.descripcion = request.form['descripcion']
+                    producto.imagen = "box.png"
+                    # la base de datos acepta el datetime en ese formato papi
+                    producto.fecha = fecha.strftime("%Y/%m/%d %H:%M:%S")
+                    producto.id_u = current_user.id
+                    db.session.commit()
+                    logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
+                                " | Modifico " + request.form['codigo'] + " | " + request.form['nombre'])
+                    flash({'title': "AMS", 'message': "Producto: " +
+                           request.form['nombre'] + " Modificado satisfactoriamente"}, 'success')
+                    return redirect(url_for("gproductos.productos"))
     return render_template("gproductos/mproducto.html", producto=producto)
 
 
