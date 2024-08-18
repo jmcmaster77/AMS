@@ -56,7 +56,7 @@ def rpresupuestos():
     if request.method == "GET":
         clientes = Clientes.query.all()
         if clientes is not None:
-            productos = Productos.query.all()
+            productos = Productos.query.filter(Productos.cantidad > 0).all()
             jproductos = {}
             jproductos["productos"] = []
             for producto in productos:
@@ -318,8 +318,8 @@ def presupuesto_venta(id):
         data = {}
         data["productos"] = []
         for x in range(int(request.form["item"])):
-            # se procesa la venta 
-            
+            # se procesa la venta
+
             if x == 0:
 
                 pdata = Productos.query.filter_by(
@@ -366,14 +366,14 @@ def presupuesto_venta(id):
                 db.session.commit()
                 totalv = totalv + (pdata.precio *
                                    int(request.form[f"cantidad"+str(x)]))
-                # final de ventas 
+                # final de ventas
         datapresu = db.session.get(Presupuestos, id)
         bolivares = datapresu.bolivares
         if bolivares:
             # bolivares si
             tasa = db.session.get(Tasa, 1)
             totalv = totalv * tasa.valor
-        
+
         cliente = db.session.get(Clientes, datapresu.id_c)
         datapresu.deleted = True
         fecha = datetime.now()
@@ -388,12 +388,11 @@ def presupuesto_venta(id):
 
         # finalizando y respondiendo
         logger.info("User id " + str(current_user.id) + " | " + current_user.fullname +
-                    " | Registro venta id " + str(venta.id))        
+                    " | Registro venta id " + str(venta.id))
         flash({'title': "AMS", 'message': "Presupuesto: " +
-            "id " + str(id) + " procesando venta"}, 'info')
+               "id " + str(id) + " procesando venta"}, 'info')
         return redirect(url_for("gpresupuestos.presupuestos"))
     else:
-
 
         datapresu = db.session.get(Presupuestos, id)
         datacliente = db.session.get(Clientes, datapresu.id_c)
@@ -411,30 +410,29 @@ def presupuesto_venta(id):
                     "cantidad": dataproducto.cantidad,
                     "cantidadr": item["cantidad"]
                 })
-                
+
             else:
                 data["itemfail"].append({
                     "nombre": dataproducto.nombre,
                     "cantidad": dataproducto.cantidad,
                     "cantidadr": item["cantidad"]
                 })
-                
+
         # print("Item pass", data["itempass"])
         # print("Item fail", data["itemfail"])
-        # comprobar si hay item 
+        # comprobar si hay item
         # print(" Len item pass", len(data["itempass"]))
         # print(" Len item pass", len(data["itemfail"]))
 
         if len(data["itemfail"]) > 0:
-            
-            flash({'title': "AMS", 'message': "Presupuesto: " +
-            "id " + str(datapresu.id) + " tiene productos con cantidades insuficientes"}, 'error')
-                
-            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente, continuo = False, show = True, data = data)
-        
-        else: 
-            flash({'title': "AMS", 'message': "Presupuesto: " +
-                "id " + str(datapresu.id) + " en proceso"}, 'info')
 
-            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente = datacliente, continuo = True)
+            flash({'title': "AMS", 'message': "Presupuesto: " +
+                   "id " + str(datapresu.id) + " tiene productos con cantidades insuficientes"}, 'error')
 
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente=datacliente, continuo=False, show=True, data=data)
+
+        else:
+            flash({'title': "AMS", 'message': "Presupuesto: " +
+                   "id " + str(datapresu.id) + " en proceso"}, 'info')
+
+            return render_template("gpresupuestos/preventa.html", datapresu=datapresu, datacliente=datacliente, continuo=True)

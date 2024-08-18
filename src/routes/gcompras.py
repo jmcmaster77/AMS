@@ -45,6 +45,13 @@ def compras_deleted():
         return render_template("gcompras/compras.html", compras=registros, deleted=True)
 
 
+def cal_porcentaje(precio, costo):
+
+    diferencia = (float(precio) - float(costo))
+    porcentaje = (diferencia / float(precio))*100
+    return porcentaje
+
+
 @gcomp.route("/rcompras", methods=["GET", "POST"])
 @login_required
 def registro_compras():
@@ -87,8 +94,10 @@ def registro_compras():
                     precioexi = pdata.precio
                     pdata.cantidad = int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
-                    pdata.precio = float(
-                        request.form["costo"]) * ((pdata.porcentaje/100)+1)
+                    # el precio ahora se esta definiendo en el registro del producto
+                    # pdata.precio = float(
+                    #     request.form["costo"]) * ((pdata.porcentaje/100)+1)
+                    pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
                     # insertando en la base de datos de reverso el movimiento
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
@@ -103,8 +112,7 @@ def registro_compras():
                     pdata.cantidad = pdata.cantidad + \
                         int(request.form["cantidad"])
                     pdata.costo = float(request.form["costo"])
-                    pdata.precio = float(
-                        request.form["costo"]) * ((pdata.porcentaje/100)+1)
+                    pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
 
                 totalc = float(request.form["costo"]) * \
                     int(request.form["cantidad"])
@@ -130,8 +138,7 @@ def registro_compras():
                     })
                     pdata.cantidad = int(request.form[f"cantidad"+str(x)])
                     pdata.costo = float(request.form[f"costo"+str(x)])
-                    pdata.precio = float(
-                        request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                    pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
                     fechar = datetime.now()
                     fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
                     reverso = Reversos(None, pdata.id, cantidaexi, costoexi,
@@ -151,8 +158,7 @@ def registro_compras():
                     pdata.cantidad = pdata.cantidad + \
                         int(request.form[f"cantidad"+str(x)])
                     pdata.costo = float(request.form[f"costo"+str(x)])
-                    pdata.precio = float(
-                        request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                    pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
 
                 totalc = totalc + \
                     (float(request.form[f"costo"+str(x)])
@@ -310,7 +316,7 @@ def editarCompra(id):
                     reverso = db.session.get(Reversos, data.id)
                     db.session.delete(reverso)
                     db.session.commit()
-                    
+
             # y realizado el reverso continuamos agregando los nuevos item de la compra 24/07/23
             data = {}
             data["productos"] = []
@@ -333,8 +339,9 @@ def editarCompra(id):
                         precioexi = pdata.precio
                         pdata.cantidad = int(request.form["cantidad"])
                         pdata.costo = float(request.form["costo"])
-                        pdata.precio = float(
-                            request.form["costo"]) * ((pdata.porcentaje/100)+1)
+                        pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
+                        # pdata.precio = float(
+                        #     request.form["costo"]) * ((pdata.porcentaje/100)+1)
                         # insertando en la base de datos de reverso el movimiento
                         fechar = datetime.now()
                         fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
@@ -349,8 +356,9 @@ def editarCompra(id):
                         pdata.cantidad = pdata.cantidad + \
                             int(request.form["cantidad"])
                         pdata.costo = float(request.form["costo"])
-                        pdata.precio = float(
-                            request.form["costo"]) * ((pdata.porcentaje/100)+1)
+                        pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
+                        # pdata.precio = float(
+                        #     request.form["costo"]) * ((pdata.porcentaje/100)+1)
 
                     totalc = float(request.form["costo"]) * \
                         int(request.form["cantidad"])
@@ -375,8 +383,7 @@ def editarCompra(id):
                         })
                         pdata.cantidad = int(request.form[f"cantidad"+str(x)])
                         pdata.costo = float(request.form[f"costo"+str(x)])
-                        pdata.precio = float(
-                            request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                        pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
                         fechar = datetime.now()
                         fechar = fechar.strftime("%Y/%m/%d %H:%M:%S")
                         reverso = Reversos(None, pdata.id, cantidaexi, costoexi,
@@ -396,8 +403,7 @@ def editarCompra(id):
                         pdata.cantidad = pdata.cantidad + \
                             int(request.form[f"cantidad"+str(x)])
                         pdata.costo = float(request.form[f"costo"+str(x)])
-                        pdata.precio = float(
-                            request.form[f"costo"+str(x)]) * ((pdata.porcentaje/100)+1)
+                        pdata.porcentaje = cal_porcentaje(pdata.precio, pdata.costo)
 
                     totalc = totalc + \
                         (float(request.form[f"costo"+str(x)])
@@ -462,7 +468,7 @@ def deletedCompra(id):
         datacompra = db.session.get(Compras, id)
         itemdb = datacompra.productos
         itemlist = itemdb["productos"]
-        # revertir la transaccion en los productos 
+        # revertir la transaccion en los productos
         for item in itemlist:
             datareverso = Reversos.query.filter(
                 Reversos.id_t == datacompra.id).filter(Reversos.id_p == item["id"])
@@ -478,11 +484,11 @@ def deletedCompra(id):
                 db.session.delete(reverso)
                 datacompra.deleted = True
                 db.session.commit()
-                
-        # realizado el reverso continuamos marcando la compra como deleted 
-        
+
+        # realizado el reverso continuamos marcando la compra como deleted
+
         flash({'title': "AMS", 'message': "Compra: " +
-                   "id " + str(datacompra.id) + " marcada como borrada"}, 'info')
+               "id " + str(datacompra.id) + " marcada como borrada"}, 'info')
         return redirect(url_for("gcompras.compras"))
     else:
         flash(

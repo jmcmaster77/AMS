@@ -49,7 +49,8 @@ def rventas():
     if request.method == "GET":
         clientes = Clientes.query.all()
         if clientes is not None:
-            productos = Productos.query.all()
+            # buscar productos con contidad > 0 papu 
+            productos = Productos.query.filter(Productos.cantidad > 0).all()
             jproductos = {}
             jproductos["productos"] = []
             for producto in productos:
