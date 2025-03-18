@@ -1,4 +1,4 @@
-## Admin My Store 
+## Admin Me Store 
 WEB App - StanAlone 
 
 ## Login User
@@ -16,7 +16,7 @@ Rol de usuario
 user: jorgeu - pass: Ryusen999*
 ```
 
-pega imagen del login aqui bebe 
+![image](https://github.com/user-attachments/assets/d6410b61-ded4-40eb-ac80-d57a0a2778eb)
 
 ## dashboard 
 

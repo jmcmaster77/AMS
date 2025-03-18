@@ -93,5 +93,6 @@ http://10.0.0.3:5000/main
 
 ### Documentación adicional 
 
-En el siguiente apartado, se puede ver la documentacion mas detallada de la WEBAPP
+En el siguiente apartado, se puede ver la documentacion mas detallada de la WEBAPP.
+
 [Documentación detallada](DETAILS.md)
