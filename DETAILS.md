@@ -20,6 +20,7 @@ user: jorgeu - pass: Ryusen999*
 
 ## dashboard 
 
-pega imagen del dashboard aqui bebe 
+![image](https://github.com/user-attachments/assets/42254e0e-094c-4d8c-a5a7-e94eb7e2c627)
+
 
 ## Dev por agregar mas datos ^_^
