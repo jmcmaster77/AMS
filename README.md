@@ -65,10 +65,14 @@ python src/main.py
 ```bash
 ejemplo 10.0.0.3:5000
 ```
+![image](https://github.com/user-attachments/assets/34ad6139-6414-46d9-8a88-a2a1cbdbc626)
 
 ### en siguiente url muesta la vista del login 
 
 http://10.0.0.3:5000/main
+
+![image](https://github.com/user-attachments/assets/d6410b61-ded4-40eb-ac80-d57a0a2778eb)
+
 
 > [!TIP] 
 > verificar que la webapp esta en ejecucion 
