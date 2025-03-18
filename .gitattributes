@@ -1,2 +1,2 @@
-/src/static/js/* linguist-vendored
+src/static/js/* linguist-vendored
 *.min.js linguist-generated
