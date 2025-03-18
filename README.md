@@ -59,6 +59,20 @@ python src/main.py
 ```
 
 > [!NOTE]
+> Antes de ejecutar la webapp se debe crear una base de datos llamada ams y agregar y restaurar los datos del siguiente backup
+> el parametro -p se utiliza para colocar la contraseña en caso de que el usuaro root la tenga configurada de lo contrario e puede omitir
+
+Desde una consola de comandos de windows 
+```bash
+mariadb -u root -p ams < ams240804_0322.sql
+```
+
+Desde una consola de powershell
+```bash
+Get-Content ams240705.db | mariadb -u root -p ams
+```
+
+> [!NOTE]
 > La ip por la cual se puede acceder a la web app es la del servidor el puerto 5000 y el puerto 3006 para el servidor de mariadb.
 
 
