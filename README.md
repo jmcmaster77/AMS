@@ -1,6 +1,6 @@
 # Project name
 ## Admin me Store
-
+Stanalone Project
 ## Version 
 
 Versión en desarrollo v.0.5
@@ -93,5 +93,5 @@ http://10.0.0.3:5000/main
 
 ### Documentación adicional 
 
-> [!TIP] 
-> en desarrollo 
+En el siguiente apartado, se puede ver la documentacion mas detallada de la WEBAPP
+[Documentación detallada](DETAILS.md)
