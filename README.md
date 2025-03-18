@@ -59,16 +59,16 @@ python src/main.py
 ```
 
 > [!NOTE]
-> Esta api está configurada con el puerto 5000 para la webapp y el puerto 3006 para el servidor de mariadb.
+> La ip por la cual se puede acceder a la web app es la del servidor el puerto 5000 y el puerto 3006 para el servidor de mariadb.
 
 
 ```bash
-docker-compose up
+ejemplo 10.0.0.3:5000
 ```
 
 ### en siguiente url muesta la vista del login 
 
-http://localhost:5000/main
+http://10.0.0.3:5000/main
 
 > [!TIP] 
 > verificar que la webapp esta en ejecucion 
